@@ -58,5 +58,51 @@ extension Day {
 }
 
 extension Day : Identifiable {
-
+    
+    /// Checks to see if any Day objects exist in database in order to determine if this is the first time the app has launched or not.
+    static func checkIfFirstLaunch() -> Bool {
+        let request: NSFetchRequest<Day> = Day.fetchRequest()
+        var count = 0
+        do {
+            count = try CoreDataManager.shared.managedContext.count(for: request)
+        } catch let error as NSError {
+            print("Could not count. \(error)")
+        }
+        return count != 0
+    }
+    
+    /// Creates a specified number of  DateIntervals for the creation of Day Objects to be saved in Core Data.
+    static func createDays(numberOfDays: Int) -> [DateInterval] {
+        var dayIntervals: [DateInterval] = []
+        let firstDay = EventKitManager.shared.calendar.startOfDay(for: Date())
+        let unit = 86400.0
+        
+        for day in 0 ... numberOfDays {
+            let dayInterval = DateInterval(start: firstDay + (Double(day) * unit), end: firstDay + (Double(day + 1) * unit))
+            dayIntervals.append(dayInterval)
+        }
+        
+        return dayIntervals
+    }
+    
+    static func byDate(_ date: Date) -> Day? {
+        
+        let start = EventKitManager.shared.calendar.startOfDay(for: date)
+        let end = start + 86400.0
+        
+        
+        let request: NSFetchRequest<Day> = Day.fetchRequest()
+       // let start = date.startDate
+       // let end = date.endDate
+        
+        let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
+        request.predicate = predicate
+        
+        do {
+            return try CoreDataManager.shared.managedContext.fetch(request).first
+        } catch {
+            return nil
+        }
+    }
 }
+

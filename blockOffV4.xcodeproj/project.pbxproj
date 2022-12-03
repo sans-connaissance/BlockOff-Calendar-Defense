@@ -22,7 +22,10 @@
 		41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */; };
 		41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */; };
 		41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */; };
-		41F4B9B3293BA3A2009A6FD2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */; };
+		41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */; };
+		41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B5293BA401009A6FD2 /* Helpers.swift */; };
+		41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */; };
+		41F4B9BA293BB256009A6FD2 /* EventKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +45,10 @@
 		41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		41F4B9B5293BA401009A6FD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
+		41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		41CD6D52293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXGroup;
 			children = (
+				41F4B9B4293BA3EB009A6FD2 /* Helpers */,
 				41F4B9B0293BA32C009A6FD2 /* Models */,
 				41F4B9B1293BA36F009A6FD2 /* CoreData Stack */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
@@ -92,14 +99,15 @@
 		41F4B9B0293BA32C009A6FD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
-				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
+				41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */,
 				41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */,
 				41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */,
-				41F4B9A4293BA327009A6FD2 /* Unit+CoreDataClass.swift */,
-				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
 				41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */,
 				41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */,
+				41F4B9A4293BA327009A6FD2 /* Unit+CoreDataClass.swift */,
+				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
+				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
+				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,9 +115,18 @@
 		41F4B9B1293BA36F009A6FD2 /* CoreData Stack */ = {
 			isa = PBXGroup;
 			children = (
-				41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */,
+				41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */,
+				41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */,
 			);
 			path = "CoreData Stack";
+			sourceTree = "<group>";
+		};
+		41F4B9B4293BA3EB009A6FD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				41F4B9B5293BA401009A6FD2 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,13 +206,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */,
+				41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
+				41F4B9BA293BB256009A6FD2 /* EventKitManager.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
-				41F4B9B3293BA3A2009A6FD2 /* CoreDataStack.swift in Sources */,
+				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
+				41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */,
 				41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,

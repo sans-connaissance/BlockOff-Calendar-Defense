@@ -8,14 +8,14 @@
 import CoreData
 import Foundation
 
-class CoreDataStack {
+class CoreDataManager {
   private let modelName: String
 
   lazy var managedContext: NSManagedObjectContext = {
     return self.storeContainer.viewContext
   }()
 
-    static var shared = CoreDataStack(modelName: "BlockOffDataModel")
+    static var shared = CoreDataManager(modelName: "BlockOffDataModel")
 
   init(modelName: String) {
     self.modelName = modelName
