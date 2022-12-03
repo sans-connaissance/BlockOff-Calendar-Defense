@@ -14,6 +14,15 @@
 		41CD6D60293B99DE009012DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */; };
 		41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F4B99B293B9CA0009A6FD2 /* CalendarKit */; };
 		41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */; };
+		41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */; };
+		41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */; };
+		41F4B9AA293BA327009A6FD2 /* Check+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */; };
+		41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */; };
+		41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A4293BA327009A6FD2 /* Unit+CoreDataClass.swift */; };
+		41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */; };
+		41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */; };
+		41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */; };
+		41F4B9B3293BA3A2009A6FD2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +34,15 @@
 		41CD6D5F293B99DE009012DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41CD6D61293B99DE009012DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockOffDataModel.xcdatamodel; sourceTree = "<group>"; };
+		41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41F4B9A4293BA327009A6FD2 /* Unit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,8 @@
 		41CD6D52293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXGroup;
 			children = (
+				41F4B9B0293BA32C009A6FD2 /* Models */,
+				41F4B9B1293BA36F009A6FD2 /* CoreData Stack */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
 				41CD6D55293B99DD009012DF /* SceneDelegate.swift */,
 				41CD6D57293B99DD009012DF /* CalendarViewController.swift */,
@@ -67,6 +87,29 @@
 				41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */,
 			);
 			path = blockOffV4;
+			sourceTree = "<group>";
+		};
+		41F4B9B0293BA32C009A6FD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
+				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
+				41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */,
+				41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */,
+				41F4B9A4293BA327009A6FD2 /* Unit+CoreDataClass.swift */,
+				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
+				41F4B9A6293BA327009A6FD2 /* Day+CoreDataClass.swift */,
+				41F4B9A7293BA327009A6FD2 /* Day+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		41F4B9B1293BA36F009A6FD2 /* CoreData Stack */ = {
+			isa = PBXGroup;
+			children = (
+				41F4B9B2293BA3A2009A6FD2 /* CoreDataStack.swift */,
+			);
+			path = "CoreData Stack";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +188,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */,
+				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
+				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
+				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
+				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
+				41F4B9B3293BA3A2009A6FD2 /* CoreDataStack.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
+				41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */,
+				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,
+				41F4B9AA293BA327009A6FD2 /* Check+CoreDataClass.swift in Sources */,
 				41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
