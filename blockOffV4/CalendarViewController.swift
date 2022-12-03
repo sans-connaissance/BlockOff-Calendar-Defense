@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CalendarKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: DayViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        title = "Block Off"
+
     }
 }
 
