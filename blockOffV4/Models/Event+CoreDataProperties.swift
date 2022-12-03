@@ -46,5 +46,53 @@ extension Event {
 }
 
 extension Event : Identifiable {
+    static func all() -> [Event] {
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
 
+        do {
+            return try CoreDataManager.shared.managedContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
+    
+    static func checkIfEventExists(ekID: String) -> Bool {
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "ekID == %@", ekID)
+
+        do {
+            let count = try CoreDataManager.shared.managedContext.count(for: request)
+            if count > 0 {
+                return true
+            } else {
+                return false
+            }
+        } catch let error as NSError {
+            print("could not fetch. \(error), \(error.userInfo)")
+            return false
+        }
+    }
+    
+    static func byEKID(ekID: String) -> [Event] {
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
+        request.predicate = NSPredicate(format: "ekID == %@", ekID)
+
+        do {
+            return try CoreDataManager.shared.managedContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
+    
+    static func byStartAndEndTime(start: Date, end: Date) -> [Event] {
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
+        request.predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
+        
+        do {
+            return try CoreDataManager.shared.managedContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
 }
