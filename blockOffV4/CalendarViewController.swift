@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import EventKit
+import EventKitUI
+import CoreData
 import CalendarKit
 
 class CalendarViewController: DayViewController {
+    
+    lazy var coreDataStack = CoreDataManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Block Off"
-
+        let dayCount = Day.getAllDays()
+        title = "Block Off \(dayCount.count)"
+        
     }
 }
 

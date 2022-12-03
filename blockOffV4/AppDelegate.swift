@@ -13,7 +13,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("Launched!")
+        /// check to see if any Day objects exist
+        let hasLaunchedBefore = Day.checkIfFirstLaunch()
+        /// if not, create days and associated units.
+        if !hasLaunchedBefore {
+            createDaysAndUnits()
+        }
+        
+        func createDaysAndUnits() {
+            let days = Day.createDays(numberOfDays: 365)
+
+            for day in days {
+                let units = Unit.createUnitIntervalsFor(day: day.start)
+                CoreDataManager.shared.saveUnits(units)
+            }
+
+            CoreDataManager.shared.saveDays(days)
+        }
         return true
     }
 

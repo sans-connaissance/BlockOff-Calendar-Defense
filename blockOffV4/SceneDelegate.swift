@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let viewController = CalendarViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.backgroundColor = .lightGray
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

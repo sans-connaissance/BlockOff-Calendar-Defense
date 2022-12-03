@@ -59,6 +59,19 @@ extension Day {
 
 extension Day : Identifiable {
     
+    static func getAllDays() -> [Day] {
+        
+        var fetchResults: [Day] = []
+        do{
+            fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Day]
+            
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return fetchResults
+    }
+    
+    
     /// Checks to see if any Day objects exist in database in order to determine if this is the first time the app has launched or not.
     static func checkIfFirstLaunch() -> Bool {
         let request: NSFetchRequest<Day> = Day.fetchRequest()
