@@ -13,6 +13,7 @@
 		41CD6D5D293B99DE009012DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41CD6D5C293B99DE009012DF /* Assets.xcassets */; };
 		41CD6D60293B99DE009012DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */; };
 		41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F4B99B293B9CA0009A6FD2 /* CalendarKit */; };
+		41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		41CD6D5C293B99DE009012DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41CD6D5F293B99DE009012DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41CD6D61293B99DE009012DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockOffDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				41CD6D5C293B99DE009012DF /* Assets.xcassets */,
 				41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */,
 				41CD6D61293B99DE009012DF /* Info.plist */,
+				41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */,
 			);
 			path = blockOffV4;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,
+				41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +375,19 @@
 			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */,
+			);
+			currentVersion = 41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */;
+			path = BlockOffDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 41CD6D48293B99DD009012DF /* Project object */;
 }
