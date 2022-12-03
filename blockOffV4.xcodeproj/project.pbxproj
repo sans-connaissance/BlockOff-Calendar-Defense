@@ -25,7 +25,7 @@
 		41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */; };
 		41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B5293BA401009A6FD2 /* Helpers.swift */; };
 		41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */; };
-		41F4B9BA293BB256009A6FD2 /* EventKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */; };
+		41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,7 @@
 		41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		41F4B9B5293BA401009A6FD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
-		41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitManager.swift; sourceTree = "<group>"; };
+		41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */,
-				41F4B9B9293BB256009A6FD2 /* EventKitManager.swift */,
+				41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */,
 			);
 			path = "CoreData Stack";
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
-				41F4B9BA293BB256009A6FD2 /* EventKitManager.swift in Sources */,
+				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
@@ -362,6 +362,7 @@
 				DEVELOPMENT_TEAM = 947MDTH7AR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = blockOffV4/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -389,6 +390,7 @@
 				DEVELOPMENT_TEAM = 947MDTH7AR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = blockOffV4/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

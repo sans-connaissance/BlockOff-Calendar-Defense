@@ -87,7 +87,7 @@ extension Day : Identifiable {
     /// Creates a specified number of  DateIntervals for the creation of Day Objects to be saved in Core Data.
     static func createDays(numberOfDays: Int) -> [DateInterval] {
         var dayIntervals: [DateInterval] = []
-        let firstDay = EventKitManager.shared.calendar.startOfDay(for: Date())
+        let firstDay = CalendarManager.shared.calendar.startOfDay(for: Date())
         let unit = 86400.0
         
         for day in 0 ... numberOfDays {
@@ -100,7 +100,7 @@ extension Day : Identifiable {
     
     static func byDate(_ date: Date) -> Day? {
         
-        let start = EventKitManager.shared.calendar.startOfDay(for: date)
+        let start = CalendarManager.shared.calendar.startOfDay(for: date)
         let end = start + 86400.0
         
         

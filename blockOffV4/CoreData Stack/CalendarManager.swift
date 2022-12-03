@@ -7,10 +7,7 @@
 import Foundation
 import EventKit
 
-class EventKitManager {
-    static let shared = EventKitManager()
+class CalendarManager {
+    static let shared = CalendarManager()
     var calendar = Calendar.autoupdatingCurrent
-    
-    
-    
 }
