@@ -11,11 +11,11 @@ import CoreData
 
 
 extension Event {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
     }
-
+    
     @NSManaged public var ekID: String?
     @NSManaged public var text: String?
     @NSManaged public var isAllDay: Bool
@@ -25,30 +25,45 @@ extension Event {
     @NSManaged public var attributedText: String?
     @NSManaged public var day: Day?
     @NSManaged public var units: NSSet?
-
+    
 }
 
 // MARK: Generated accessors for units
 extension Event {
-
+    
     @objc(addUnitsObject:)
     @NSManaged public func addToUnits(_ value: Unit)
-
+    
     @objc(removeUnitsObject:)
     @NSManaged public func removeFromUnits(_ value: Unit)
-
+    
     @objc(addUnits:)
     @NSManaged public func addToUnits(_ values: NSSet)
-
+    
     @objc(removeUnits:)
     @NSManaged public func removeFromUnits(_ values: NSSet)
-
+    
 }
 
 extension Event : Identifiable {
     static func all() -> [Event] {
         let request: NSFetchRequest<Event> = Event.fetchRequest()
-
+        
+        do {
+            return try CoreDataManager.shared.managedContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
+    
+    static func byDate(_ date: Date) -> [Event] {
+        let start = CalendarManager.shared.calendar.startOfDay(for: date)
+        let end = start + 86400.0
+        
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
+        let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
+        request.predicate = predicate
+        
         do {
             return try CoreDataManager.shared.managedContext.fetch(request)
         } catch {
@@ -60,7 +75,7 @@ extension Event : Identifiable {
         let request: NSFetchRequest<Event> = Event.fetchRequest()
         request.fetchLimit = 1
         request.predicate = NSPredicate(format: "ekID == %@", ekID)
-
+        
         do {
             let count = try CoreDataManager.shared.managedContext.count(for: request)
             if count > 0 {
@@ -77,7 +92,7 @@ extension Event : Identifiable {
     static func byEKID(ekID: String) -> [Event] {
         let request: NSFetchRequest<Event> = Event.fetchRequest()
         request.predicate = NSPredicate(format: "ekID == %@", ekID)
-
+        
         do {
             return try CoreDataManager.shared.managedContext.fetch(request)
         } catch {

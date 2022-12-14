@@ -59,9 +59,16 @@ extension CalendarViewController {
         // MARK: Step 4 -- Save Calendar events in Core Data
         CoreDataManager.shared.updateEvents(calendarKitEvents)
         
-        // MARK: Step 5 -- Remove Deleted Events
+        // MARK: Step 5 -- Remove Deleted Events from Core Data
+        let requestDeletion = Event.byDate(date)
+        let events = requestDeletion.map(EventViewModel.init)
+        CoreDataManager.shared.removeDeletedEvents(ekEvents: calendarKitEvents, cdEvents: events)
         
+        // MARK: Step 6 -- Return Events from Core Data
+        let request = Event.byDate(date)
+        let cdEvents = request.map(EventViewModel.init)
         
-        return calendarKitEvents
+        return []
+        
     }
 }

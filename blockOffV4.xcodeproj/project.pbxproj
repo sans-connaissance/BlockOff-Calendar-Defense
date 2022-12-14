@@ -100,9 +100,9 @@
 		41CD6D52293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXGroup;
 			children = (
-				41C337CA29494CEA008F7FF2 /* View Models */,
 				41F4B9B4293BA3EB009A6FD2 /* Helpers */,
 				41F4B9B0293BA32C009A6FD2 /* Models */,
+				41C337CA29494CEA008F7FF2 /* View Models */,
 				41F4B9B1293BA36F009A6FD2 /* CoreData Stack */,
 				41F4B9BB293BF69D009A6FD2 /* CalendarViewController */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
