@@ -133,6 +133,40 @@ class CoreDataManager {
         }
     }
     
+    func removeDeletedEvents(ekEvents: [EKWrapper], cdEvents: [EventViewModel]) {
+        let context = CoreDataManager.shared.managedContext
+        
+        var ekEventIDs: [String] = []
+        var cdEventIDs: [String] = []
+        
+        if ekEvents.count <= cdEvents.count {
+            for event in ekEvents {
+                ekEventIDs.append(event.id)
+            }
+            
+            for event in cdEvents {
+                cdEventIDs.append(event.ekID)
+            }
+            
+            let differenceOfArrays = ekEventIDs.difference(from: cdEventIDs)
+            
+            for event in differenceOfArrays {
+                let eventToDelete: [Event] = Event.byEKID(ekID: event)
+                if eventToDelete.count == 1 {
+                    if let object = eventToDelete.first {
+                        context.delete(object)
+                        do {
+                            try context.save()
+                        } catch {
+                            let nserror = error as NSError
+                            print("Could not delete. \(nserror)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 
 
   func saveContext () {

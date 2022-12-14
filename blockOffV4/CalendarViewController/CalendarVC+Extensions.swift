@@ -59,7 +59,8 @@ extension CalendarViewController {
         // MARK: Step 4 -- Save Calendar events in Core Data
         CoreDataManager.shared.updateEvents(calendarKitEvents)
         
-        // MARK: Step 5 -- Return [EventDescriptor] from Core Data
+        // MARK: Step 5 -- Remove Deleted Events
+        
         
         return calendarKitEvents
     }
