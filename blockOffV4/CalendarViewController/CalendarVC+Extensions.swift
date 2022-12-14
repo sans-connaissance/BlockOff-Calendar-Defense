@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalendarVC+Extensions.swift
 //  blockOffV4
 //
 //  Created by David Malicke on 12/3/22.
@@ -11,26 +11,18 @@ import EventKitUI
 import CoreData
 import CalendarKit
 
-class CalendarViewController: DayViewController {
+extension CalendarViewController {
     
-    lazy var coreDataStack = CoreDataManager.shared
-    private let eventStore = EKEventStore()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let dayCount = Day.getAllDays()
-        title = "Block Off \(dayCount.count)"
-        requestCalendarAppPermission()
-        subscribeToNotifications()
-        
-    }
-    
+    // MARK: Step 2 -- Get Permission to Calendar Code
     func requestCalendarAppPermission() {
         eventStore.requestAccess(to: .event) { success, error in
             
         }
     }
-    //CAN COREDATA RETURN AN ARRAY OF EVENT DESCRIPTOR?
+    
+    // ------------------------------------------------------------
+
+    // MARK: Step 3 -- Subscribe to calendar notifications Code
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object:     nil)
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
@@ -49,25 +41,26 @@ class CalendarViewController: DayViewController {
         
     }
     
-    override func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        return getCalendarEvents(date)
-        
-    }
+    // ------------------------------------------------------------
     
-    private func getCalendarEvents(_ date: Date) -> [EventDescriptor] {
+    func getCalendarEvents(_ date: Date) -> [EKWrapper] {
         let startDate = date
         var oneDayComponent = DateComponents()
         oneDayComponent.day = 1
         
         let endDate = calendar.date(byAdding: oneDayComponent, to: startDate)!
         
-        //NIL = all calendars
+        //NIL == all calendars
         let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
         let eventKitEvents = eventStore.events(matching: predicate)
         
         let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
+        
+        // MARK: Step 4 -- Save Calendar events in Core Data
+        CoreDataManager.shared.updateEvents(calendarKitEvents)
+        
+        // MARK: Step 5 -- Return [EventDescriptor] from Core Data
+        
         return calendarKitEvents
     }
-    
 }
-

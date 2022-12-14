@@ -67,6 +67,73 @@ class CoreDataManager {
             }
         }
     }
+    
+    func updateEvents(_ ekEvents: [EKWrapper]) {
+        let context = CoreDataManager.shared.managedContext
+        let uniqueEvents = Array(Set(ekEvents))
+        var eventExists = true
+        var isBlocked = false
+        
+        for ekEvent in uniqueEvents {
+            eventExists = Event.checkIfEventExists(ekID: ekEvent.id)
+            if !eventExists && ekEvent.isAllDay == false {
+                let eventCD = Event(context: context)
+                eventCD.ekID = ekEvent.id
+                eventCD.text = ekEvent.text
+                eventCD.isAllDay = ekEvent.isAllDay
+                eventCD.start = ekEvent.dateInterval.start
+                eventCD.end = ekEvent.dateInterval.end
+                
+                let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
+                let setUnits = NSSet(array: units)
+                eventCD.units = setUnits
+                
+                isBlocked = Check.isBlockedOff(title: ekEvent.text)
+                
+                if isBlocked {
+                    eventCD.isBlockedOff = true
+                }
+                
+                do {
+                    try context.save()
+                } catch {
+                    let nserror = error as NSError
+                    print("Could not fetch. \(nserror)")
+                }
+            }
+            if eventExists {
+                let eventCD: [Event] = Event.byEKID(ekID: ekEvent.id)
+                if eventCD.count == 1 && ekEvent.isAllDay == false  {
+                    if let eventCD = eventCD.first {
+                        eventCD.ekID = ekEvent.id
+                        eventCD.text = ekEvent.text
+                        eventCD.isAllDay = ekEvent.isAllDay
+                        eventCD.start = ekEvent.dateInterval.start
+                        eventCD.end = ekEvent.dateInterval.end
+                        
+                        let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
+                        let setUnits = NSSet(array: units)
+                        eventCD.units = setUnits
+                        
+                        isBlocked = Check.isBlockedOff(title: ekEvent.text)
+                        
+                        if isBlocked {
+                            eventCD.isBlockedOff = true
+                        }
+                        
+                        do {
+                            try context.save()
+                        } catch {
+                            let nserror = error as NSError
+                            print("Could not update. \(nserror)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+
 
   func saveContext () {
     guard managedContext.hasChanges else { return }

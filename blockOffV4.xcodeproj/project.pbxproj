@@ -26,6 +26,7 @@
 		41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B5293BA401009A6FD2 /* Helpers.swift */; };
 		41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */; };
 		41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */; };
+		41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		41F4B9B5293BA401009A6FD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
 		41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +87,9 @@
 				41F4B9B4293BA3EB009A6FD2 /* Helpers */,
 				41F4B9B0293BA32C009A6FD2 /* Models */,
 				41F4B9B1293BA36F009A6FD2 /* CoreData Stack */,
+				41F4B9BB293BF69D009A6FD2 /* CalendarViewController */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
 				41CD6D55293B99DD009012DF /* SceneDelegate.swift */,
-				41CD6D57293B99DD009012DF /* CalendarViewController.swift */,
 				41CD6D5C293B99DE009012DF /* Assets.xcassets */,
 				41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */,
 				41CD6D61293B99DE009012DF /* Info.plist */,
@@ -127,6 +129,15 @@
 				41F4B9B5293BA401009A6FD2 /* Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		41F4B9BB293BF69D009A6FD2 /* CalendarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				41CD6D57293B99DD009012DF /* CalendarViewController.swift */,
+				41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */,
+			);
+			path = CalendarViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
+				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,
 				41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */,
 				41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,

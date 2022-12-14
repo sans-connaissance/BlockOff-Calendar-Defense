@@ -32,6 +32,10 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
         }
     }
     
+    public var id: String {
+        return ekEvent.eventIdentifier
+    }
+    
     public var isAllDay: Bool {
         get {
             return ekEvent.isAllDay

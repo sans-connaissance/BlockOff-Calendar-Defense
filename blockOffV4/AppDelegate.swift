@@ -12,7 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
+    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //MARK: Step 1 -- Check to see if Day objects exist
         /// check to see if any Day objects exist
         let hasLaunchedBefore = Day.checkIfFirstLaunch()
         /// if not, create days and associated units.
