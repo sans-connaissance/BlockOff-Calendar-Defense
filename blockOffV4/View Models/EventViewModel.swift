@@ -8,8 +8,6 @@
 import CoreData
 import Foundation
 
-
-// IS THIS THE SAME OR DIFFERENT THAN THE WRAPPER
 struct EventViewModel: Hashable {
     let event: Event
     

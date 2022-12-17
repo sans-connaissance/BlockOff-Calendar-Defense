@@ -68,6 +68,25 @@ class CoreDataManager {
         }
     }
     
+    func saveEvents(_ ekEvents: [EKWrapper]) {
+        let context = CoreDataManager.shared.managedContext
+        for ekEvent in ekEvents {
+            let eventCD = Event(context: context)
+            eventCD.ekID = ekEvent.id
+            eventCD.text = ekEvent.text
+            eventCD.isAllDay = ekEvent.isAllDay
+            eventCD.start = ekEvent.dateInterval.start
+            eventCD.end = ekEvent.dateInterval.end
+            
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                print("Could not fetch. \(nserror)")
+            }
+        }
+    }
+    
     func updateEvents(_ ekEvents: [EKWrapper]) {
         let context = CoreDataManager.shared.managedContext
         let uniqueEvents = Array(Set(ekEvents))

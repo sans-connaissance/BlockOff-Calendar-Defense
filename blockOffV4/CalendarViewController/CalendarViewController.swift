@@ -15,13 +15,15 @@ class CalendarViewController: DayViewController {
     
     lazy var coreDataStack = CoreDataManager.shared
     let eventStore = EKEventStore()
+    var eventCount = 0
 
     
     // OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
         let dayCount = Day.getAllDays()
-        title = "Block Off \(dayCount.count)"
+        title = "Block Off \(dayCount.count) Events: \(eventCount)"
+        
         
         // MARK: Step 2 -- Get Permission to Calendar
         requestCalendarAppPermission()
@@ -31,7 +33,10 @@ class CalendarViewController: DayViewController {
         
     }
     
+    // MARK: Step 6 -- Return Events from Core Data
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
+        let events = Event.all()
+        self.eventCount = events.count
         // MAY NOT WORK UNLESS GET CALENDAR EVENTS RETURNS [EVENTDESCRIPTOR]
         return getCalendarEvents(date)
         

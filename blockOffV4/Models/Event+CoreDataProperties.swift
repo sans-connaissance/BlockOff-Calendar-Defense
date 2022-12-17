@@ -58,11 +58,22 @@ extension Event : Identifiable {
     
     static func byDate(_ date: Date) -> [Event] {
         let start = CalendarManager.shared.calendar.startOfDay(for: date)
-        let end = start + 86400.0
+        var oneDayComponent = DateComponents()
+        oneDayComponent.day = 1
         
+        let end = CalendarManager.shared.calendar.date(byAdding: oneDayComponent, to: start)!
+        
+        let unit = 1.0
+        let startPlus1 = start + unit
+        let endMinus1 = end - unit
         let request: NSFetchRequest<Event> = Event.fetchRequest()
-        let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
-        request.predicate = predicate
+        let predicateOne = NSPredicate(format: "start >= %@ AND end <= %@", start as NSDate, end as NSDate)
+        let predicateTwo = NSPredicate(format: "start <= %@ AND end >= %@", start as NSDate, end as NSDate)
+        let predicateThree = NSPredicate(format: "start BETWEEN {%@, %@}", startPlus1 as NSDate, endMinus1 as NSDate)
+        let predicateFour = NSPredicate(format: "end BETWEEN {%@, %@}", startPlus1 as NSDate, endMinus1 as NSDate)
+        let combined = NSCompoundPredicate(orPredicateWithSubpredicates: [predicateOne, predicateTwo, predicateThree, predicateFour])
+
+        request.predicate = combined
         
         do {
             return try CoreDataManager.shared.managedContext.fetch(request)
@@ -110,4 +121,7 @@ extension Event : Identifiable {
             return []
         }
     }
+    
+    
+    
 }

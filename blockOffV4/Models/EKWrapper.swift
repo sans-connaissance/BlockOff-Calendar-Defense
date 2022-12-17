@@ -10,7 +10,8 @@ import CalendarKit
 import EventKit
 
 
-import UIKit
+// THIS NEEDS TO ACCEPT BOTH ekEvents and cdEvents
+// Try following the AnalyticsProduct convienance init pattern
 
 public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable {
     
@@ -59,7 +60,8 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            UIColor(cgColor: ekEvent.calendar.cgColor)
+            return .lightGray
+           // UIColor(cgColor: ekEvent.calendar.cgColor)
         }
     }
     

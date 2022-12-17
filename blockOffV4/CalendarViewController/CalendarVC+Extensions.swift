@@ -24,8 +24,8 @@ extension CalendarViewController {
 
     // MARK: Step 3 -- Subscribe to calendar notifications Code
     func subscribeToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object:     nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
     
     @objc func storeChanged(_ notification: Notification) {
@@ -38,7 +38,6 @@ extension CalendarViewController {
         DispatchQueue.main.async {
             self.reloadData()
         }
-        
     }
     
     // ------------------------------------------------------------
@@ -64,11 +63,22 @@ extension CalendarViewController {
         let events = requestDeletion.map(EventViewModel.init)
         CoreDataManager.shared.removeDeletedEvents(ekEvents: calendarKitEvents, cdEvents: events)
         
-        // MARK: Step 6 -- Return Events from Core Data
+        // MARK: Step 6 -- Return Events from Core Data Code
         let request = Event.byDate(date)
         let cdEvents = request.map(EventViewModel.init)
+        var ekEvents: [EKEvent] = []
+        for cdEvent in cdEvents {
+            let ekEvent = EKEvent(eventStore: eventStore)
+            ekEvent.startDate = cdEvent.startDate
+            ekEvent.endDate = cdEvent.endDate
+            ekEvent.title = cdEvent.text
+            ekEvent.isAllDay = cdEvent.isAllDay
+            ekEvents.append(ekEvent)
+        }
+        let wrappedEvents = ekEvents.map(EKWrapper.init)
         
-        return []
+        // MARK: Step 7 - Add Block-off events
+        return wrappedEvents
         
     }
 }
