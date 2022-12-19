@@ -77,47 +77,26 @@ extension CalendarViewController {
         }
         let wrappedEvents = ekEvents.map(EKWrapper.init)
         
-        // MARK: Step 7 - Add Block-off events
+        // MARK: Step 7 - Create Block-off Units
         let units = getUnitsForBlockOff(date)
         
+        // MARK: Step 8 - Create Block-off Arrays
+        createButtonUnitArrays(units: units)
         
-        //MARK: Step 8 - Combine Events and Block-off Units
-        let combined = combineEvents(events: [units, wrappedEvents])
+        //MARK: Step 9 - Create Block-off Buttons
+        let buttons = createBlockOffEvents(from: buttonUnitArrays)
         
-        //MARK: Step 9 - Return Combined
+        
+        //MARK: Step 9 - Combine Events and Block-off Units
+        let combined = combineEvents(events: [buttons, wrappedEvents])
+        
+        //MARK: Step 10 - Return Combined
         return combined
         
     }
-    
-    func getUnitsForBlockOff(_ date: Date) -> [EKWrapper] {
-        let startDate = date
-        var oneDayComponent = DateComponents()
-        oneDayComponent.day = 1
-        let endDate = calendar.date(byAdding: oneDayComponent, to: startDate)!
-        
-        var units: [UnitViewModel] = []
-        var ekEvents: [EKEvent] = []
-        
-        let units_ = Unit.getUnitsBY(start: startDate, end: endDate)
-        units = units_.map(UnitViewModel.init)
-        
-        for unit in units {
-            let ekEvent = EKEvent(eventStore: eventStore)
-            ekEvent.startDate = unit.startDate
-            ekEvent.endDate = unit.endDate
-            ekEvent.title = "Block Off"
-            ekEvent.isAllDay = false
-            ekEvents.append(ekEvent)
-        }
-        let wrappedEvents = ekEvents.map(EKWrapper.init)
-        
-        return wrappedEvents
-    }
-    
     
     func combineEvents(events: [[EventDescriptor]]) -> [EventDescriptor] {
         let compacted = Array(events.joined())
         return compacted
     }
-    
 }

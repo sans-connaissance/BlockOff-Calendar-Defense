@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
 		41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewModel.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				41CD6D57293B99DD009012DF /* CalendarViewController.swift */,
 				41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */,
+				4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */,
 			);
 			path = CalendarViewController;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
+				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,

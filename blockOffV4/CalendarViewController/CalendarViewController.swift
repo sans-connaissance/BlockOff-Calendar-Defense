@@ -14,6 +14,7 @@ import CalendarKit
 class CalendarViewController: DayViewController {
     
     lazy var coreDataStack = CoreDataManager.shared
+    var buttonUnitArrays: [[UnitViewModel]] = []
     let eventStore = EKEventStore()
     var eventCount = 0
 
@@ -39,6 +40,60 @@ class CalendarViewController: DayViewController {
         self.eventCount = events.count
         // MAY NOT WORK UNLESS GET CALENDAR EVENTS RETURNS [EVENTDESCRIPTOR]
         return getCalendarEvents(date)
+        
+    }
+    
+    override func dayViewDidSelectEventView(_ eventView: EventView) {
+        let newEKEvent = EKEvent(eventStore: eventStore)
+        newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+        
+        var onHourComponents = DateComponents()
+        onHourComponents.hour = 1
+        
+        
+        let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
+        newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
+        newEKEvent.endDate = endDate
+        newEKEvent.title = "Block Off"
+        
+        if let ckEvent = eventView.descriptor as? EKWrapper {
+            let ekEvent = ckEvent.ekEvent
+            if ekEvent.title == "Block Off" {
+                        do {
+                            try eventStore.remove(ekEvent, span: .thisEvent)
+                
+                        } catch {
+                            let nserror = error as NSError
+                            print("Could not delete. \(nserror)")
+                        }
+            } else {
+        //        presentDetailView(ekEvent: ekEvent)
+            }
+        }
+        
+        if let descriptor = eventView.descriptor as? Event {
+            
+            do {
+                try eventStore.save(newEKEvent, span: .thisEvent)
+                
+            } catch {
+                let nserror = error as NSError
+                print("Could not delete. \(nserror)")
+            }
+            
+            //NEED TO PULL THESE FROM COREDATA SO THAT THEY CAN BE DELETED?
+            print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+            
+        }
+    }
+    
+    override func dayView(dayView: DayView, didTapTimelineAt date: Date) {
+        print("\(date)")
+        endEventEditing()
+        print("tapped at: \(date)")
+        //let eventsCD = Event.getAllEvents()
+       // title = "Block Off: Count \(eventsCD.count)"
+        reloadData()
         
     }
 }
