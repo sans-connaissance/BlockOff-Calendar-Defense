@@ -13,7 +13,6 @@ import CalendarKit
 
 extension CalendarViewController {
     
-    
     func getUnitsForBlockOff(_ date: Date) -> [UnitViewModel] {
         let startDate = date
         var oneDayComponent = DateComponents()
@@ -27,7 +26,6 @@ extension CalendarViewController {
         
         return units
     }
-    
     
     func createButtonUnitArrays(units: [UnitViewModel] ) {
         var buttonUnits: [UnitViewModel] = []
@@ -44,7 +42,6 @@ extension CalendarViewController {
         }
     }
     
-    
     func createBlockOffEvents(from arrayOfUnits: [[UnitViewModel]]) -> [EventDescriptor] {
         var ckEvents = [CalendarKit.Event]()
         
@@ -56,8 +53,9 @@ extension CalendarViewController {
                 
                 let ckEvent = CalendarKit.Event()
                 ckEvent.dateInterval.start = units[0].startDate
-                ckEvent.dateInterval.end = units[3].startDate
+                ckEvent.dateInterval.end = units[3].endDate - 1.0
                 ckEvent.text = "Block Off "
+                ckEvent.lineBreakMode = .byClipping
                 ckEvent.isAllDay = false
                 ckEvents.append(ckEvent)
             } else if units[0].events.count >= 1 &&
@@ -75,9 +73,7 @@ extension CalendarViewController {
                 ckEvent.text = "Block Off "
                 ckEvent.isAllDay = false
                 ckEvents.append(ckEvent)
-                
             }
-            
         }
         
         return ckEvents

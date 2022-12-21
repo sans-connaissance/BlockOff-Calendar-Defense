@@ -75,7 +75,7 @@ extension CalendarViewController {
             ekEvent.isAllDay = cdEvent.isAllDay
             ekEvents.append(ekEvent)
         }
-        let wrappedEvents = ekEvents.map(EKWrapper.init)
+      //MAYBE DELETE?  let wrappedEvents = ekEvents.map(EKWrapper.init)
         
         // MARK: Step 7 - Create Block-off Units
         let units = getUnitsForBlockOff(date)
@@ -92,7 +92,6 @@ extension CalendarViewController {
         
         //MARK: Step 10 - Return Combined
         return combined
-        
     }
     
     func combineEvents(events: [[EventDescriptor]]) -> [EventDescriptor] {

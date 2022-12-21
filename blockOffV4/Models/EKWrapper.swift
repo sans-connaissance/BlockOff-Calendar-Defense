@@ -9,10 +9,6 @@ import UIKit
 import CalendarKit
 import EventKit
 
-
-// THIS NEEDS TO ACCEPT BOTH ekEvents and cdEvents
-// Try following the AnalyticsProduct convienance init pattern
-
 public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable {
     
     public static func == (lhs: EKWrapper, rhs: EKWrapper) -> Bool {
