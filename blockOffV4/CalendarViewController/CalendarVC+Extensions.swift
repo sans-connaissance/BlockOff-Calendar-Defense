@@ -87,8 +87,8 @@ extension CalendarViewController {
         let buttons = createBlockOffEvents(from: buttonUnitArrays)
         
         
-        //MARK: Step 9 - Combine Events and Block-off Units
-        let combined = combineEvents(events: [buttons, wrappedEvents])
+        //MARK: Step 9 - Combine CalendarKitEvents and Block-off Units
+        let combined = combineEvents(events: [buttons, calendarKitEvents])
         
         //MARK: Step 10 - Return Combined
         return combined

@@ -56,12 +56,13 @@ class CalendarViewController: DayViewController {
         newEKEvent.endDate = endDate
         newEKEvent.title = "Block Off"
         
+        
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
             if ekEvent.title == "Block Off" {
                         do {
                             try eventStore.remove(ekEvent, span: .thisEvent)
-                
+
                         } catch {
                             let nserror = error as NSError
                             print("Could not delete. \(nserror)")
@@ -71,7 +72,7 @@ class CalendarViewController: DayViewController {
             }
         }
         
-        if let descriptor = eventView.descriptor as? Event {
+        if let descriptor = eventView.descriptor as? CalendarKit.Event {
             
             do {
                 try eventStore.save(newEKEvent, span: .thisEvent)
