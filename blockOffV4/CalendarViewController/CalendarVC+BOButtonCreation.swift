@@ -53,7 +53,7 @@ extension CalendarViewController {
                 
                 let ckEvent = CalendarKit.Event()
                 ckEvent.dateInterval.start = units[0].startDate
-                ckEvent.dateInterval.end = units[3].endDate - 1.0
+                ckEvent.dateInterval.end = units[3].endDate
                 ckEvent.text = "Block Off "
                 ckEvent.lineBreakMode = .byClipping
                 ckEvent.isAllDay = false

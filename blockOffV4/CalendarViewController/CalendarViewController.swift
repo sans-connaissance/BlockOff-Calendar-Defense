@@ -33,6 +33,7 @@ class CalendarViewController: DayViewController {
         
         var style = CalendarStyle()
         style.timeline.eventsWillOverlap = true
+        style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
     }
     
@@ -55,11 +56,11 @@ class CalendarViewController: DayViewController {
         let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
         newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
         newEKEvent.endDate = endDate
-        newEKEvent.title = "Block Off"
+        newEKEvent.title = "Block Off "
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-            if ekEvent.title == "Block Off" {
+            if ekEvent.title == "Block Off " {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
 
@@ -80,8 +81,6 @@ class CalendarViewController: DayViewController {
                 let nserror = error as NSError
                 print("Could not delete. \(nserror)")
             }
-            
-            // NEED TO PULL THESE FROM COREDATA SO THAT THEY CAN BE DELETED?
             print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
         }
     }
