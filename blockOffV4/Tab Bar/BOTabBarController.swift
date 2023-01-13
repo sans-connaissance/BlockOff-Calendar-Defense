@@ -22,7 +22,6 @@ class BOTabBarController: UITabBarController {
     
     func createCalendarViewController() -> UINavigationController {
         let calendarVC = CalendarViewController()
-        calendarVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         return UINavigationController(rootViewController: calendarVC)
     }
     

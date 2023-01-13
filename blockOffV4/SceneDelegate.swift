@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.backgroundColor = UIColor.systemBackground
-        window?.rootViewController = BOTabBarController()
+        let calendarVC = CalendarViewController()
+        window?.rootViewController = UINavigationController(rootViewController: calendarVC)
         window?.makeKeyAndVisible()
     }
 

@@ -56,7 +56,7 @@ extension CalendarViewController {
                 ckEvent.dateInterval.end = units[3].endDate
                 ckEvent.text = " "
                 ckEvent.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.1, alpha: 0.2)
-                ckEvent.color = .systemYellow
+                ckEvent.color = .systemGray3
                 ckEvent.lineBreakMode = .byClipping
                 ckEvent.isAllDay = false
                 ckEvents.append(ckEvent)

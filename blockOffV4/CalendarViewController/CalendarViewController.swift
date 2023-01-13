@@ -34,8 +34,22 @@ class CalendarViewController: DayViewController {
         var style = CalendarStyle()
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
-        style.timeline.backgroundColor = .systemGray6
+       // style.timeline.backgroundColor = .systemGray6
         dayView.updateStyle(style)
+        
+        let editButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = editButton
+        
+        self.navigationController?.isToolbarHidden = false
+        self.navigationController?.toolbar.backgroundColor = .systemBackground
+        var items = [UIBarButtonItem]()
+        items.append(
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        )
+        items.append(
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        )
+        toolbarItems = items
     }
     
     // MARK: Step 6 -- Return Events from Core Data
