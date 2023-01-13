@@ -56,7 +56,12 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            return .lightGray
+            if self.text == "Block Off " {
+                return .systemGreen
+            } else {
+                return .systemRed
+            }
+            
            // UIColor(cgColor: ekEvent.calendar.cgColor)
         }
     }

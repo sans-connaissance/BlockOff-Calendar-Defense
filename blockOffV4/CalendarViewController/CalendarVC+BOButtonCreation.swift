@@ -54,7 +54,9 @@ extension CalendarViewController {
                 let ckEvent = CalendarKit.Event()
                 ckEvent.dateInterval.start = units[0].startDate
                 ckEvent.dateInterval.end = units[3].endDate
-                ckEvent.text = "Block Off "
+                ckEvent.text = " "
+                ckEvent.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.1, alpha: 0.2)
+                ckEvent.color = .systemYellow
                 ckEvent.lineBreakMode = .byClipping
                 ckEvent.isAllDay = false
                 ckEvents.append(ckEvent)
@@ -70,7 +72,7 @@ extension CalendarViewController {
                 let ckEvent = CalendarKit.Event()
                 ckEvent.dateInterval.start = units[0].startDate
                 ckEvent.dateInterval.end = units[3].startDate
-                ckEvent.text = "Block Off "
+                ckEvent.text = " "
                 ckEvent.isAllDay = false
                 ckEvents.append(ckEvent)
             }

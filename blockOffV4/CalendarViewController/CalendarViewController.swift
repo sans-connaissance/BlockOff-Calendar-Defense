@@ -16,7 +16,7 @@ class CalendarViewController: DayViewController {
     var buttonUnitArrays: [[UnitViewModel]] = []
     let eventStore = EKEventStore()
     var eventCount = 0
-
+    
     // OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,7 @@ class CalendarViewController: DayViewController {
         var style = CalendarStyle()
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
+        style.timeline.backgroundColor = .systemGray6
         dayView.updateStyle(style)
     }
     
@@ -42,7 +43,6 @@ class CalendarViewController: DayViewController {
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         let events = Event.all()
         eventCount = events.count
-        // MAY NOT WORK UNLESS GET CALENDAR EVENTS RETURNS [EVENTDESCRIPTOR]
         return getCalendarEvents(date)
     }
     
