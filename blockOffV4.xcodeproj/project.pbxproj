@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
+		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
 		41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
+		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewModel.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41BDABB92970DFAD00ABF867 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
 		41C337CA29494CEA008F7FF2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		41CD6D52293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXGroup;
 			children = (
+				41BDABB92970DFAD00ABF867 /* Tab Bar */,
 				41F4B9B4293BA3EB009A6FD2 /* Helpers */,
 				41F4B9B0293BA32C009A6FD2 /* Models */,
 				41C337CA29494CEA008F7FF2 /* View Models */,
@@ -252,6 +263,7 @@
 				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,
 				41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */,
 				41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */,
+				41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */,
 				41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,

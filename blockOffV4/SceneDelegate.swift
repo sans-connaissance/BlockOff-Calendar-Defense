@@ -13,12 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        let viewController = CalendarViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-       // navigationController.isNavigationBarHidden = true
-        navigationController.navigationBar.backgroundColor = .white
-        window?.rootViewController = navigationController
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.backgroundColor = UIColor.systemBackground
+        window?.rootViewController = BOTabBarController()
         window?.makeKeyAndVisible()
     }
 
