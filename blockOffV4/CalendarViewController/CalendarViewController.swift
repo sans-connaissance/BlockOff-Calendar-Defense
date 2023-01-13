@@ -21,7 +21,8 @@ class CalendarViewController: DayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let dayCount = Day.getAllDays()
-        title = "Block Off \(dayCount.count) Events: \(eventCount)"
+      //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
+        title = "Block Off"
         
         // MARK: Step 2 -- Get Permission to Calendar
 
@@ -37,13 +38,18 @@ class CalendarViewController: DayViewController {
        // style.timeline.backgroundColor = .systemGray6
         dayView.updateStyle(style)
         
-        let editButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goTo8))
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = editButton
+        let editButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(goTo8))
+        let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: nil)
+        let buttonGroup = UIBarButtonItemGroup()
+        buttonGroup.barButtonItems = [editButton, profile]
+        self.navigationController?.navigationBar.topItem?.pinnedTrailingGroup = buttonGroup
+        self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
         
         self.navigationController?.isToolbarHidden = false
         self.navigationController?.toolbar.backgroundColor = .systemBackground
         self.navigationController?.toolbar.tintColor = .systemRed
         var items = [UIBarButtonItem]()
+        
         items.append(
             UIBarButtonItem(title: "Today", image: nil, target: self, action: #selector(goToToday))
         )
@@ -51,7 +57,7 @@ class CalendarViewController: DayViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(title: "Calendars", image: nil, target: self, action: #selector(goToToday))
+            UIBarButtonItem(title: "Calendars", image: nil, target: self, action: #selector(openCalendarsVC))
         )
         items.append(
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -60,6 +66,12 @@ class CalendarViewController: DayViewController {
             UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(goToToday))
         )
         toolbarItems = items
+    }
+    
+    @objc func openCalendarsVC() {
+        let calendarsVC = CalendarsViewController()
+        let navigationController = UINavigationController(rootViewController: calendarsVC)
+        present(navigationController, animated: true)
     }
     
     @objc func goToToday() {

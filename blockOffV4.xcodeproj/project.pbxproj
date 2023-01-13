@@ -17,6 +17,8 @@
 		41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD6D57293B99DD009012DF /* CalendarViewController.swift */; };
 		41CD6D5D293B99DE009012DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41CD6D5C293B99DE009012DF /* Assets.xcassets */; };
 		41CD6D60293B99DE009012DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */; };
+		41D24D0929712E7200AD78F5 /* CalendarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D24D0829712E7200AD78F5 /* CalendarsViewController.swift */; };
+		41D24D0B297137FB00AD78F5 /* CalendarsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D24D0A297137FB00AD78F5 /* CalendarsUIView.swift */; };
 		41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F4B99B293B9CA0009A6FD2 /* CalendarKit */; };
 		41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */; };
 		41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */; };
@@ -47,6 +49,8 @@
 		41CD6D5C293B99DE009012DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41CD6D5F293B99DE009012DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41CD6D61293B99DE009012DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41D24D0829712E7200AD78F5 /* CalendarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsViewController.swift; sourceTree = "<group>"; };
+		41D24D0A297137FB00AD78F5 /* CalendarsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsUIView.swift; sourceTree = "<group>"; };
 		41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockOffDataModel.xcdatamodel; sourceTree = "<group>"; };
 		41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				41C337CA29494CEA008F7FF2 /* View Models */,
 				41F4B9B1293BA36F009A6FD2 /* CoreData Stack */,
 				41F4B9BB293BF69D009A6FD2 /* CalendarViewController */,
+				41D24D0729712E2100AD78F5 /* CalendarsVC */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
 				41CD6D55293B99DD009012DF /* SceneDelegate.swift */,
 				41CD6D5C293B99DE009012DF /* Assets.xcassets */,
@@ -126,6 +131,15 @@
 				41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */,
 			);
 			path = blockOffV4;
+			sourceTree = "<group>";
+		};
+		41D24D0729712E2100AD78F5 /* CalendarsVC */ = {
+			isa = PBXGroup;
+			children = (
+				41D24D0829712E7200AD78F5 /* CalendarsViewController.swift */,
+				41D24D0A297137FB00AD78F5 /* CalendarsUIView.swift */,
+			);
+			path = CalendarsVC;
 			sourceTree = "<group>";
 		};
 		41F4B9B0293BA32C009A6FD2 /* Models */ = {
@@ -253,10 +267,12 @@
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
+				41D24D0B297137FB00AD78F5 /* CalendarsUIView.swift in Sources */,
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
+				41D24D0929712E7200AD78F5 /* CalendarsViewController.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
