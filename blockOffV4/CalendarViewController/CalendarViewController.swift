@@ -37,19 +37,38 @@ class CalendarViewController: DayViewController {
        // style.timeline.backgroundColor = .systemGray6
         dayView.updateStyle(style)
         
-        let editButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        let editButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goTo8))
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = editButton
         
         self.navigationController?.isToolbarHidden = false
         self.navigationController?.toolbar.backgroundColor = .systemBackground
+        self.navigationController?.toolbar.tintColor = .systemRed
         var items = [UIBarButtonItem]()
+        items.append(
+            UIBarButtonItem(title: "Today", image: nil, target: self, action: #selector(goToToday))
+        )
         items.append(
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+            UIBarButtonItem(title: "Calendars", image: nil, target: self, action: #selector(goToToday))
+        )
+        items.append(
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        )
+        items.append(
+            UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(goToToday))
         )
         toolbarItems = items
+    }
+    
+    @objc func goToToday() {
+        dayView.move(to: Date.now)
+        print("\(Date.now)")
+    }
+    
+    @objc func goTo8() {
+        dayView.scrollTo(hour24: 22.0)
     }
     
     // MARK: Step 6 -- Return Events from Core Data
