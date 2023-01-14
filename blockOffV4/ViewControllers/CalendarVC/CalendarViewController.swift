@@ -15,58 +15,56 @@ import SwiftUI
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var buttonUnitArrays: [[UnitViewModel]] = []
-    let eventStore = EKEventStore()
+    var eventStore = EKEventStore()
     var eventCount = 0
     
     // OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dayCount = Day.getAllDays()
+     //   let dayCount = Day.getAllDays()
       //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
         title = "Block Off"
         
         // MARK: Step 2 -- Get Permission to Calendar
-
         requestCalendarAppPermission()
         
         // MARK: Step 3 -- Subscribe to calendar notifications
-
         subscribeToNotifications()
         
+        // MARK: Tabbars and CalendarStyling
+        createTabBars()
         var style = CalendarStyle()
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
-       // style.timeline.backgroundColor = .systemGray6
         dayView.updateStyle(style)
-        
-        let editButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(goTo8))
-        let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
-        let buttonGroup = UIBarButtonItemGroup()
-        buttonGroup.barButtonItems = [profile]
-        self.navigationController?.navigationBar.topItem?.pinnedTrailingGroup = buttonGroup
-        self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
-        
-        self.navigationController?.isToolbarHidden = false
-        self.navigationController?.toolbar.backgroundColor = .systemBackground
-        self.navigationController?.toolbar.tintColor = .systemRed
-        var items = [UIBarButtonItem]()
-        
-        items.append(
-            UIBarButtonItem(title: "Today", image: nil, target: self, action: #selector(goToToday))
-        )
-        items.append(
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        )
-        items.append(
-            UIBarButtonItem(title: "Calendars", image: nil, target: self, action: #selector(openCalendarsVC))
-        )
-        items.append(
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        )
-        items.append(
-            UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(goToToday))
-        )
-        toolbarItems = items
+    }
+    
+    // MARK: Step 2 -- Get Permission to Calendar Code
+    func requestCalendarAppPermission() {
+        eventStore.requestAccess(to: .event) { [weak self] success, error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.initializeStore()
+                CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event)
+                self.subscribeToNotifications()
+                self.reloadData()
+            }
+        }
+    }
+    
+    func initializeStore() {
+        eventStore = EKEventStore()
+    }
+    
+    // MARK: Step 3 -- Subscribe to calendar notifications Code
+    func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
+    }
+    
+    @objc func storeChanged(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
     }
     
     @objc func openCalendarsVC() {
@@ -93,13 +91,13 @@ class CalendarViewController: DayViewController {
     }
     
     // MARK: Step 6 -- Return Events from Core Data
-
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         let events = Event.all()
         eventCount = events.count
         return getCalendarEvents(date)
     }
     
+    //MARK: Overrides
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         let newEKEvent = EKEvent(eventStore: eventStore)
         newEKEvent.calendar = eventStore.defaultCalendarForNewEvents

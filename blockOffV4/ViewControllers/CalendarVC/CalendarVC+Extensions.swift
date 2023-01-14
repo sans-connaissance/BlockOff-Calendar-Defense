@@ -12,38 +12,7 @@ import CoreData
 import CalendarKit
 
 extension CalendarViewController {
-    
-    // MARK: Step 2 -- Get Permission to Calendar Code
-    func requestCalendarAppPermission() {
-        eventStore.requestAccess(to: .event) { success, error in
-            CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event)
-            
-            
-        }
-    }
-    
-    // ------------------------------------------------------------
-
-    // MARK: Step 3 -- Subscribe to calendar notifications Code
-    func subscribeToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
-    }
-    
-    @objc func storeChanged(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.reloadData()
-        }
-    }
-    
-    @objc func contextObjectsDidChange(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.reloadData()
-        }
-    }
-    
-    // ------------------------------------------------------------
-    
+        
     func getCalendarEvents(_ date: Date) -> [EventDescriptor] {
         let startDate = date
         var oneDayComponent = DateComponents()
@@ -77,7 +46,6 @@ extension CalendarViewController {
             ekEvent.isAllDay = cdEvent.isAllDay
             ekEvents.append(ekEvent)
         }
-      //MAYBE DELETE?  let wrappedEvents = ekEvents.map(EKWrapper.init)
         
         // MARK: Step 7 - Create Block-off Units
         let units = getUnitsForBlockOff(date)
@@ -100,4 +68,6 @@ extension CalendarViewController {
         let compacted = Array(events.joined())
         return compacted
     }
+    
+    
 }
