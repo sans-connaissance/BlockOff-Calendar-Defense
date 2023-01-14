@@ -16,6 +16,8 @@ extension CalendarViewController {
     // MARK: Step 2 -- Get Permission to Calendar Code
     func requestCalendarAppPermission() {
         eventStore.requestAccess(to: .event) { success, error in
+            CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event)
+            
             
         }
     }

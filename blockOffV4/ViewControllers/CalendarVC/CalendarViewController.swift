@@ -70,7 +70,7 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openCalendarsVC() {
-        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )})
+        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )}, calendars: CalendarManager.shared.availableCalenders)
         let hostingController = UIHostingController(rootView: calendarsView)
         let navigationController = UINavigationController(rootViewController: hostingController)
         present(navigationController, animated: true)

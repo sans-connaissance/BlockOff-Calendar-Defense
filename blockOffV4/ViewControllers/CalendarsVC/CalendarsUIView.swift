@@ -7,9 +7,11 @@
 
 import SwiftUI
 import UIKit
+import EventKit
 
 struct CalendarsUIView: View {
     var dismissAction: (() -> Void)
+    let calendars: [EKCalendar]
     
     var body: some View {
         VStack {
@@ -20,6 +22,11 @@ struct CalendarsUIView: View {
             } label: {
                 Text("Done")
             }
+            
+            ForEach(calendars, id: \.self) { calendar in
+                Text(calendar.title)
+            }
+            
         }
     }
 }
@@ -27,6 +34,6 @@ struct CalendarsUIView: View {
 struct CalendarsUIView_Previews: PreviewProvider {
     static var previews: some View {
         let dismissAction: (() -> Void) = {   }
-        CalendarsUIView(dismissAction: dismissAction)
+        CalendarsUIView(dismissAction: dismissAction, calendars: MockData.shared.availableCalenders)
     }
 }

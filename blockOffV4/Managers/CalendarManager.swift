@@ -10,4 +10,5 @@ import EventKit
 class CalendarManager {
     static let shared = CalendarManager()
     var calendar = Calendar.autoupdatingCurrent
+    var availableCalenders = [EKCalendar]()
 }
