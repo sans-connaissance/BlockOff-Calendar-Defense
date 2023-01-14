@@ -1,22 +1,21 @@
 //
-//  CalendarsUIView.swift
+//  ProfileUIView.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 1/13/23.
+//  Created by David Malicke on 1/14/23.
 //
 
 import SwiftUI
-import UIKit
 
-struct CalendarsUIView: View {
+struct ProfileUIView: View {
     var dismissAction: (() -> Void)
     
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text("ProfileView")
             Button {
                 dismissAction()
-
+                
             } label: {
                 Text("Done")
             }
@@ -24,9 +23,9 @@ struct CalendarsUIView: View {
     }
 }
 
-struct CalendarsUIView_Previews: PreviewProvider {
+struct ProfileUIView_Previews: PreviewProvider {
     static var previews: some View {
         let dismissAction: (() -> Void) = {   }
-        CalendarsUIView(dismissAction: dismissAction)
+        ProfileUIView(dismissAction: dismissAction)
     }
 }

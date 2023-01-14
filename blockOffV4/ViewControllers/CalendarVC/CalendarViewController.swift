@@ -40,9 +40,9 @@ class CalendarViewController: DayViewController {
         dayView.updateStyle(style)
         
         let editButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(goTo8))
-        let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: nil)
+        let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
         let buttonGroup = UIBarButtonItemGroup()
-        buttonGroup.barButtonItems = [editButton, profile]
+        buttonGroup.barButtonItems = [profile]
         self.navigationController?.navigationBar.topItem?.pinnedTrailingGroup = buttonGroup
         self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
         
@@ -72,6 +72,13 @@ class CalendarViewController: DayViewController {
     @objc func openCalendarsVC() {
         let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )})
         let hostingController = UIHostingController(rootView: calendarsView)
+        let navigationController = UINavigationController(rootViewController: hostingController)
+        present(navigationController, animated: true)
+    }
+    
+    @objc func openProfileVC() {
+        let profileView = ProfileUIView(dismissAction: {self.dismiss( animated: true, completion: nil )})
+        let hostingController = UIHostingController(rootView: profileView)
         let navigationController = UINavigationController(rootViewController: hostingController)
         present(navigationController, animated: true)
     }
