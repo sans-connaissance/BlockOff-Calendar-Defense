@@ -10,6 +10,7 @@ import CoreData
 import EventKit
 import EventKitUI
 import UIKit
+import SwiftUI
 
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
@@ -69,8 +70,9 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openCalendarsVC() {
-        let calendarsVC = CalendarsViewController()
-        let navigationController = UINavigationController(rootViewController: calendarsVC)
+        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )})
+        let hostingController = UIHostingController(rootView: calendarsView)
+        let navigationController = UINavigationController(rootViewController: hostingController)
         present(navigationController, animated: true)
     }
     

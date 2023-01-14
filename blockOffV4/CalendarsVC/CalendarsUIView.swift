@@ -6,15 +6,27 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CalendarsUIView: View {
+    var dismissAction: (() -> Void)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Button {
+                dismissAction()
+
+            } label: {
+                Text("Done")
+            }
+        }
     }
 }
 
 struct CalendarsUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarsUIView()
+        let dismissAction: (() -> Void) = {   }
+        CalendarsUIView(dismissAction: dismissAction)
     }
 }
