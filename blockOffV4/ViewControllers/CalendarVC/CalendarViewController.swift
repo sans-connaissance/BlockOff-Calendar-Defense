@@ -21,8 +21,8 @@ class CalendarViewController: DayViewController {
     // OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   let dayCount = Day.getAllDays()
-      //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
+        //   let dayCount = Day.getAllDays()
+        //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
         title = "Block Off"
         
         // MARK: Step 2 -- Get Permission to Calendar
@@ -45,7 +45,14 @@ class CalendarViewController: DayViewController {
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.initializeStore()
-                CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event)
+                CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
+                
+                if CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") == "" {
+                    if let id = self.eventStore.defaultCalendarForNewEvents?.calendarIdentifier {
+                        CalendarManager.shared.defaults.set(id, forKey: "PrimaryCalendar")
+                    }
+                }
+                
                 self.subscribeToNotifications()
                 self.reloadData()
             }
@@ -63,12 +70,13 @@ class CalendarViewController: DayViewController {
     
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
+            CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
             self.reloadData()
         }
     }
     
     @objc func openCalendarsVC() {
-        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )}, calendars: CalendarManager.shared.availableCalenders)
+        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )}, calendars: CalendarManager.shared.availableCalenders, eventStore: eventStore)
         let hostingController = UIHostingController(rootView: calendarsView)
         let navigationController = UINavigationController(rootViewController: hostingController)
         present(navigationController, animated: true)
@@ -100,7 +108,7 @@ class CalendarViewController: DayViewController {
     //MARK: Overrides
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         let newEKEvent = EKEvent(eventStore: eventStore)
-        newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+        newEKEvent.calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "")
         
         var onHourComponents = DateComponents()
         onHourComponents.hour = 1
@@ -115,7 +123,7 @@ class CalendarViewController: DayViewController {
             if ekEvent.title == "Block Off " {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
-
+                    
                 } catch {
                     let nserror = error as NSError
                     print("Could not delete. \(nserror)")

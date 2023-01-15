@@ -8,7 +8,10 @@ import Foundation
 import EventKit
 
 class CalendarManager {
+    let defaults = UserDefaults.standard
     static let shared = CalendarManager()
     var calendar = Calendar.autoupdatingCurrent
-    var availableCalenders = [EKCalendar]()
+    var availableCalenders: [CalendarViewModel] = []
+    
+   // var primaryCalendar: EKCalendar =
 }
