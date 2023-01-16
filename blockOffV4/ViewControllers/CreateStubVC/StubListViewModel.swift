@@ -1,5 +1,5 @@
 //
-//  BlockOffListViewModel.swift
+//  StubListViewModel.swift
 //  blockOffV4
 //
 //  Created by David Malicke on 1/16/23.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class BlockOffListViewModel: ObservableObject {
+class StubListViewModel: ObservableObject {
     
     @Published var stubs = [StubViewModel]()
     

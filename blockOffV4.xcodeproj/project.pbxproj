@@ -14,7 +14,7 @@
 		41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AF2975AD1A005CE9CC /* StubViewModel.swift */; };
 		41A540B32975AE67005CE9CC /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B12975AE66005CE9CC /* Stub+CoreDataClass.swift */; };
 		41A540B42975AE67005CE9CC /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B22975AE67005CE9CC /* Stub+CoreDataProperties.swift */; };
-		41A540B62975AECF005CE9CC /* BlockOffListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */; };
+		41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B52975AECF005CE9CC /* StubListViewModel.swift */; };
 		41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B72975B82D005CE9CC /* AddStubViewModel.swift */; };
 		41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */; };
 		41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BC2975BC72005CE9CC /* StubUIView.swift */; };
@@ -56,7 +56,7 @@
 		41A540AF2975AD1A005CE9CC /* StubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubViewModel.swift; sourceTree = "<group>"; };
 		41A540B12975AE66005CE9CC /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41A540B22975AE67005CE9CC /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOffListViewModel.swift; sourceTree = "<group>"; };
+		41A540B52975AECF005CE9CC /* StubListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubListViewModel.swift; sourceTree = "<group>"; };
 		41A540B72975B82D005CE9CC /* AddStubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStubViewModel.swift; sourceTree = "<group>"; };
 		41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStubUIView.swift; sourceTree = "<group>"; };
 		41A540BC2975BC72005CE9CC /* StubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUIView.swift; sourceTree = "<group>"; };
@@ -114,9 +114,9 @@
 		41A540B92975BB44005CE9CC /* CreateStubVC */ = {
 			isa = PBXGroup;
 			children = (
-				41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */,
-				41A540B72975B82D005CE9CC /* AddStubViewModel.swift */,
+				41A540B52975AECF005CE9CC /* StubListViewModel.swift */,
 				41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */,
+				41A540B72975B82D005CE9CC /* AddStubViewModel.swift */,
 				41A540BC2975BC72005CE9CC /* StubUIView.swift */,
 			);
 			path = CreateStubVC;
@@ -353,7 +353,7 @@
 				41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
-				41A540B62975AECF005CE9CC /* BlockOffListViewModel.swift in Sources */,
+				41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41A540B42975AE67005CE9CC /* Stub+CoreDataProperties.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,
