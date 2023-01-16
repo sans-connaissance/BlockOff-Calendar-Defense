@@ -12,6 +12,4 @@ class CalendarManager {
     static let shared = CalendarManager()
     var calendar = Calendar.autoupdatingCurrent
     var availableCalenders: [CalendarViewModel] = []
-    
-   // var primaryCalendar: EKCalendar =
 }
