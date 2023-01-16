@@ -63,6 +63,21 @@ class CalendarViewController: DayViewController {
         eventStore = EKEventStore()
     }
     
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+            self.reloadData()
+        }
+    }
+    
     // MARK: Step 3 -- Subscribe to calendar notifications Code
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
@@ -76,7 +91,7 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openCalendarsVC() {
-        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true, completion: nil )}, calendars: CalendarManager.shared.availableCalenders, eventStore: eventStore)
+        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true)}, calendars: CalendarManager.shared.availableCalenders, eventStore: eventStore).onDisappear{self.createSpinnerView()}
         let hostingController = UIHostingController(rootView: calendarsView)
         let navigationController = UINavigationController(rootViewController: hostingController)
         present(navigationController, animated: true)

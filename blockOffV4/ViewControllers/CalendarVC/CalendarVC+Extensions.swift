@@ -21,7 +21,7 @@ extension CalendarViewController {
         let endDate = calendar.date(byAdding: oneDayComponent, to: startDate)!
         
         //NIL == all calendars
-        let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
+        let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: viewableCalendar())
         let eventKitEvents = eventStore.events(matching: predicate)
         
         let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
@@ -69,5 +69,8 @@ extension CalendarViewController {
         return compacted
     }
     
-    
+    func viewableCalendar() -> [EKCalendar]? {
+        guard let calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "") else  { return nil }
+        return [calendar]
+    }
 }

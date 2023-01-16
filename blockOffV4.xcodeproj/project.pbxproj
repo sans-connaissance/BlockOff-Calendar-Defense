@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
+		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				41F4B9BB293BF69D009A6FD2 /* CalendarVC */,
 				41D24D0F2972F58F00AD78F5 /* ProfileVC */,
 				41D24D0729712E2100AD78F5 /* CalendarsVC */,
+				41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
+				41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
