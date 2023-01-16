@@ -14,6 +14,7 @@ import SwiftUI
 
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
+    var defaultBlock = "Block off"
     var buttonUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
@@ -139,12 +140,12 @@ class CalendarViewController: DayViewController {
         let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
         newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
         newEKEvent.endDate = endDate
-        newEKEvent.title = "Block Off "
+        newEKEvent.title = "\(defaultBlock) "
         
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-            if ekEvent.title == "Block Off " {
+            if ekEvent.title == "\(defaultBlock) " {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
                     

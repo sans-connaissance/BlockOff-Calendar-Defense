@@ -56,7 +56,7 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            if self.text == "Block Off " {
+            if self.text == "Block off " {
                 return .systemGreen
             } else {
                 return .systemRed
