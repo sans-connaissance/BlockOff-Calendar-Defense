@@ -28,6 +28,7 @@
         <attribute name="isAllDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Unit" representedClassName="Unit" syncable="YES">
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

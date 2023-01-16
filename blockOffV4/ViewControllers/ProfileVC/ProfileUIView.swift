@@ -14,15 +14,6 @@ struct ProfileUIView: View {
             Section("Subscription") {
                 Text("Active")
             }
-            
-            Section("Block Offs") {
-                List {
-                    Text("Block Off")
-                    Text("Work Block")
-                    Text("Travel Time")
-                    Text("Project Work")
-                }
-            }
         }
     }
 }

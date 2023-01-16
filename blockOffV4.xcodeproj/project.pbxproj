@@ -10,8 +10,14 @@
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
-		41A540AA29758FE6005CE9CC /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */; };
-		41A540AB29758FE6005CE9CC /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */; };
+		41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AD2975ACCC005CE9CC /* View+Extensions.swift */; };
+		41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AF2975AD1A005CE9CC /* StubViewModel.swift */; };
+		41A540B32975AE67005CE9CC /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B12975AE66005CE9CC /* Stub+CoreDataClass.swift */; };
+		41A540B42975AE67005CE9CC /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B22975AE67005CE9CC /* Stub+CoreDataProperties.swift */; };
+		41A540B62975AECF005CE9CC /* BlockOffListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */; };
+		41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B72975B82D005CE9CC /* AddStubViewModel.swift */; };
+		41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */; };
+		41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BC2975BC72005CE9CC /* StubUIView.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -46,8 +52,14 @@
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
-		41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
-		41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41A540AD2975ACCC005CE9CC /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		41A540AF2975AD1A005CE9CC /* StubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubViewModel.swift; sourceTree = "<group>"; };
+		41A540B12975AE66005CE9CC /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41A540B22975AE67005CE9CC /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOffListViewModel.swift; sourceTree = "<group>"; };
+		41A540B72975B82D005CE9CC /* AddStubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStubViewModel.swift; sourceTree = "<group>"; };
+		41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStubUIView.swift; sourceTree = "<group>"; };
+		41A540BC2975BC72005CE9CC /* StubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUIView.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +103,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41A540AC2975ACB9005CE9CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41A540AD2975ACCC005CE9CC /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		41A540B92975BB44005CE9CC /* CreateStubVC */ = {
+			isa = PBXGroup;
+			children = (
+				41A540B52975AECF005CE9CC /* BlockOffListViewModel.swift */,
+				41A540B72975B82D005CE9CC /* AddStubViewModel.swift */,
+				41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */,
+				41A540BC2975BC72005CE9CC /* StubUIView.swift */,
+			);
+			path = CreateStubVC;
+			sourceTree = "<group>";
+		};
 		41BDABB92970DFAD00ABF867 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +137,7 @@
 				41C337CD29494D73008F7FF2 /* EventViewModel.swift */,
 				41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */,
 				41A540A42973928D005CE9CC /* CalendarViewModel.swift */,
+				41A540AF2975AD1A005CE9CC /* StubViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -129,6 +161,7 @@
 		41CD6D52293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXGroup;
 			children = (
+				41A540AC2975ACB9005CE9CC /* Extensions */,
 				41D24D122972FF5C00AD78F5 /* Mock Data */,
 				41BDABB92970DFAD00ABF867 /* Tab Bar */,
 				41F4B9B4293BA3EB009A6FD2 /* Helpers */,
@@ -158,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				41F4B9BB293BF69D009A6FD2 /* CalendarVC */,
+				41A540B92975BB44005CE9CC /* CreateStubVC */,
 				41D24D0F2972F58F00AD78F5 /* ProfileVC */,
 				41D24D0729712E2100AD78F5 /* CalendarsVC */,
 				41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */,
@@ -193,8 +227,8 @@
 				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
 				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
 				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
-				41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */,
-				41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */,
+				41A540B12975AE66005CE9CC /* Stub+CoreDataClass.swift */,
+				41A540B22975AE67005CE9CC /* Stub+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,15 +338,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				41D24D1629733A9200AD78F5 /* CalendarVC+TabBars.swift in Sources */,
+				41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */,
 				41D24D112972F5BE00AD78F5 /* ProfileUIView.swift in Sources */,
 				41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */,
-				41A540AB29758FE6005CE9CC /* Stub+CoreDataProperties.swift in Sources */,
 				41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
-				41A540AA29758FE6005CE9CC /* Stub+CoreDataClass.swift in Sources */,
 				41D24D0B297137FB00AD78F5 /* CalendarsUIView.swift in Sources */,
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
@@ -320,18 +353,25 @@
 				41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
+				41A540B62975AECF005CE9CC /* BlockOffListViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
+				41A540B42975AE67005CE9CC /* Stub+CoreDataProperties.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
 				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,
 				41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */,
 				41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */,
+				41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */,
+				41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */,
 				41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */,
 				41F4B9A8293BA327009A6FD2 /* Event+CoreDataClass.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,
 				41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */,
+				41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */,
+				41A540B32975AE67005CE9CC /* Stub+CoreDataClass.swift in Sources */,
 				41F4B9AA293BA327009A6FD2 /* Check+CoreDataClass.swift in Sources */,
+				41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */,
 				41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -104,6 +104,13 @@ class CalendarViewController: DayViewController {
         self.navigationController?.pushViewController(hostingController, animated: true)
     }
     
+    @objc func openStubVC() {
+        let profileView = StubUIView()
+        let hostingController = UIHostingController(rootView: profileView)
+        hostingController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(hostingController, animated: true)
+    }
+    
     @objc func goToToday() {
         dayView.move(to: Date.now)
         print("\(Date.now)")

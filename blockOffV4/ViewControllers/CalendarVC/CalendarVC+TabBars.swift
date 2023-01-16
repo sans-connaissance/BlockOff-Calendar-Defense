@@ -12,8 +12,9 @@ extension CalendarViewController {
     
     func createTabBars() {
         let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
+        let stubs = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openStubVC))
         let buttonGroup = UIBarButtonItemGroup()
-        buttonGroup.barButtonItems = [profile]
+        buttonGroup.barButtonItems = [stubs, profile]
         self.navigationController?.navigationBar.topItem?.pinnedTrailingGroup = buttonGroup
         self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
         

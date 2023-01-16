@@ -9,27 +9,27 @@ import CoreData
 import Foundation
 
 class CoreDataManager {
-  private let modelName: String
-
-  lazy var managedContext: NSManagedObjectContext = {
-    return self.storeContainer.viewContext
-  }()
-
+    private let modelName: String
+    
+    lazy var managedContext: NSManagedObjectContext = {
+        return self.storeContainer.viewContext
+    }()
+    
     static var shared = CoreDataManager(modelName: "BlockOffDataModel")
-
-  init(modelName: String) {
-    self.modelName = modelName
-  }
-
-  private lazy var storeContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: self.modelName)
-    container.loadPersistentStores { _, error in
-      if let error = error as NSError? {
-        print("Unresolved error \(error), \(error.userInfo)")
-      }
+    
+    init(modelName: String) {
+        self.modelName = modelName
     }
-    return container
-  }()
+    
+    private lazy var storeContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: self.modelName)
+        container.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
     
     func saveUnits(_ units: [DateInterval]) {
         let context = CoreDataManager.shared.managedContext
@@ -186,16 +186,28 @@ class CoreDataManager {
         }
     }
     
-
-
-  func saveContext () {
-    guard managedContext.hasChanges else { return }
-
-    do {
-      try managedContext.save()
-    } catch let error as NSError {
-      print("Unresolved error \(error), \(error.userInfo)")
+    
+    func deleteStub(_ stub: Stub) {
+        managedContext.delete(stub)
+        
+        do {
+            try managedContext.save()
+        } catch {
+            managedContext.rollback()
+            print("Failed to delete movie \(error)")
+        }
+        
     }
-  }
+    
+    
+    func saveContext () {
+        guard managedContext.hasChanges else { return }
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
 }
 
