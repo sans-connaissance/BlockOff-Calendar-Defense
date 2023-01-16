@@ -18,7 +18,6 @@ extension CalendarViewController {
         self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
         
         self.navigationController?.isToolbarHidden = false
-        self.navigationController?.toolbar.backgroundColor = .systemBackground
         self.navigationController?.toolbar.tintColor = .systemRed
         var items = [UIBarButtonItem]()
         

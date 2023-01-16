@@ -100,6 +100,7 @@ class CalendarViewController: DayViewController {
     @objc func openProfileVC() {
         let profileView = ProfileUIView()
         let hostingController = UIHostingController(rootView: profileView)
+        hostingController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(hostingController, animated: true)
     }
     
