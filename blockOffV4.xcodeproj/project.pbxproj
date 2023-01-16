@@ -115,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				41A540B52975AECF005CE9CC /* StubListViewModel.swift */,
-				41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */,
 				41A540B72975B82D005CE9CC /* AddStubViewModel.swift */,
 				41A540BC2975BC72005CE9CC /* StubUIView.swift */,
+				41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */,
 			);
 			path = CreateStubVC;
 			sourceTree = "<group>";

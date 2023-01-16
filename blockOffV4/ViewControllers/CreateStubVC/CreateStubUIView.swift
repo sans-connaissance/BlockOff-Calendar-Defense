@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct CreateStubUIView: View {
+    @StateObject private var vm = AddStubViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text("Create Stub View")
+        Form {
+            TextField("Enter title", text: $vm.title)
+            TextField("Enter text", text: $vm.text)
+            
+            HStack {
+                Spacer()
+                Button("Save") {
+                    vm.save()
+                    presentationMode.wrappedValue.dismiss()
+                }
+                Spacer()
+            }
+            
+        }
+        .navigationTitle("Add Block Off")
+        .embedInNavigationView()
     }
 }
 
