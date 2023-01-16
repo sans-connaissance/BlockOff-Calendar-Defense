@@ -10,6 +10,8 @@
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
+		41A540AA29758FE6005CE9CC /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */; };
+		41A540AB29758FE6005CE9CC /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -44,6 +46,8 @@
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
 				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
 				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
+				41A540A829758FE6005CE9CC /* Stub+CoreDataClass.swift */,
+				41A540A929758FE6005CE9CC /* Stub+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,11 +306,13 @@
 				41D24D1629733A9200AD78F5 /* CalendarVC+TabBars.swift in Sources */,
 				41D24D112972F5BE00AD78F5 /* ProfileUIView.swift in Sources */,
 				41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */,
+				41A540AB29758FE6005CE9CC /* Stub+CoreDataProperties.swift in Sources */,
 				41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
+				41A540AA29758FE6005CE9CC /* Stub+CoreDataClass.swift in Sources */,
 				41D24D0B297137FB00AD78F5 /* CalendarsUIView.swift in Sources */,
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,

@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct ProfileUIView: View {
-    var dismissAction: (() -> Void)
     
     var body: some View {
-        VStack {
-            Text("ProfileView")
-            Button {
-                dismissAction()
-                
-            } label: {
-                Text("Done")
+        Form {
+            Section("Subscription") {
+                Text("Active")
+            }
+            
+            Section("Block Offs") {
+                List {
+                    Text("Block Off")
+                    Text("Work Block")
+                    Text("Travel Time")
+                    Text("Project Work")
+                }
             }
         }
     }
@@ -25,7 +29,6 @@ struct ProfileUIView: View {
 
 struct ProfileUIView_Previews: PreviewProvider {
     static var previews: some View {
-        let dismissAction: (() -> Void) = {   }
-        ProfileUIView(dismissAction: dismissAction)
+        ProfileUIView()
     }
 }

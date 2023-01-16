@@ -98,10 +98,9 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openProfileVC() {
-        let profileView = ProfileUIView(dismissAction: {self.dismiss( animated: true, completion: nil )})
+        let profileView = ProfileUIView()
         let hostingController = UIHostingController(rootView: profileView)
-        let navigationController = UINavigationController(rootViewController: hostingController)
-        present(navigationController, animated: true)
+        self.navigationController?.pushViewController(hostingController, animated: true)
     }
     
     @objc func goToToday() {
@@ -128,10 +127,12 @@ class CalendarViewController: DayViewController {
         var onHourComponents = DateComponents()
         onHourComponents.hour = 1
         
+        //FIX THESE FORCE UNWRAPS
         let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
         newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
         newEKEvent.endDate = endDate
         newEKEvent.title = "Block Off "
+        
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
@@ -144,7 +145,7 @@ class CalendarViewController: DayViewController {
                     print("Could not delete. \(nserror)")
                 }
             } else {
-                //        presentDetailView(ekEvent: ekEvent)
+                print("red event")
             }
         }
         
