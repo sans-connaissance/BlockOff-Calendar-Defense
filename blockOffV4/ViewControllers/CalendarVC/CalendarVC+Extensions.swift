@@ -24,7 +24,13 @@ extension CalendarViewController {
         let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: viewableCalendar())
         let eventKitEvents = eventStore.events(matching: predicate)
         
-        let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
+      //  let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
+        
+        var calendarKitEvents: [EKWrapper] = []
+        for event in eventKitEvents {
+            let wrappedEvent = EKWrapper(eventKitEvent: event, stubName: defaultBlock + " ")
+            calendarKitEvents.append(wrappedEvent)
+        }
         
         // MARK: Step 4 -- Save Calendar events in Core Data
         CoreDataManager.shared.updateEvents(calendarKitEvents)

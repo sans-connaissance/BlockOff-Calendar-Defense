@@ -56,7 +56,7 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            if self.text == "Block off " {
+            if self.text == stubCheck {
                 return .systemGreen
             } else {
                 return .systemRed
@@ -76,10 +76,11 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
             updateColors()
         }
     }
-    
+    public private(set) var stubCheck: String
     public private(set) var ekEvent: EKEvent
-    public init(eventKitEvent: EKEvent) {
+    public init(eventKitEvent: EKEvent, stubName: String? = nil) {
         self.ekEvent = eventKitEvent
+        self.stubCheck = stubName ?? ""
         self.updateColors()
     }
     
