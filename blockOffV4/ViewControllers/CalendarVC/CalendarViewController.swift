@@ -15,6 +15,7 @@ import SwiftUI
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var defaultBlock = "Block off"
+    var stubs: [StubViewModel] = []
     var buttonUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
@@ -38,6 +39,14 @@ class CalendarViewController: DayViewController {
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
+        getStubs()
+    }
+    
+    func getStubs() {
+        let fetchResults = Stub.getAllStubs()
+        DispatchQueue.main.async {
+            self.stubs = fetchResults.map(StubViewModel.init)
+        }
     }
     
     // MARK: Step 2 -- Get Permission to Calendar Code
