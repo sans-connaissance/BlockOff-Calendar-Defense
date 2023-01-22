@@ -56,12 +56,13 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            if self.text == stubCheck {
+            if stubCheck.contains(where: { title in
+                title == self.text
+            }) {
                 return .systemGreen
             } else {
                 return .systemRed
             }
-            
            // UIColor(cgColor: ekEvent.calendar.cgColor)
         }
     }
@@ -76,11 +77,11 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
             updateColors()
         }
     }
-    public private(set) var stubCheck: String
+    public private(set) var stubCheck: [String]
     public private(set) var ekEvent: EKEvent
-    public init(eventKitEvent: EKEvent, stubName: String? = nil) {
+    public init(eventKitEvent: EKEvent, stubName:[String] = []) {
         self.ekEvent = eventKitEvent
-        self.stubCheck = stubName ?? ""
+        self.stubCheck = stubName
         self.updateColors()
     }
     

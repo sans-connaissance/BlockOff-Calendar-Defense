@@ -14,7 +14,7 @@ import SwiftUI
 
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
-    var defaultBlock = "Block off"
+    var defaultBlock = "Block Off"
     var stubs: [StubViewModel] = []
     var buttonUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
@@ -64,6 +64,7 @@ class CalendarViewController: DayViewController {
                 }
                 
                 self.subscribeToNotifications()
+                self.getStubs()
                 self.reloadData()
             }
         }
@@ -84,6 +85,7 @@ class CalendarViewController: DayViewController {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
+            self.getStubs()
             self.reloadData()
         }
     }
@@ -96,6 +98,7 @@ class CalendarViewController: DayViewController {
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
+            self.getStubs()
             self.reloadData()
         }
     }
@@ -149,12 +152,12 @@ class CalendarViewController: DayViewController {
         let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
         newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
         newEKEvent.endDate = endDate
-        newEKEvent.title = defaultBlock
+        newEKEvent.title = stubs.first?.title ?? "Didn't work"
         
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-            if ekEvent.title == defaultBlock {
+            if ekEvent.title == stubs.first?.title ?? "Didn't work" {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
                     
@@ -185,6 +188,7 @@ class CalendarViewController: DayViewController {
         print("tapped at: \(date)")
         // let eventsCD = Event.getAllEvents()
         // title = "Block Off: Count \(eventsCD.count)"
+        self.getStubs()
         reloadData()
     }
 }

@@ -27,8 +27,9 @@ extension CalendarViewController {
       //  let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
         
         var calendarKitEvents: [EKWrapper] = []
+        let stubTitles = stubs.map { $0.title }
         for event in eventKitEvents {
-            let wrappedEvent = EKWrapper(eventKitEvent: event, stubName: defaultBlock)
+            let wrappedEvent = EKWrapper(eventKitEvent: event, stubName: stubTitles)
             calendarKitEvents.append(wrappedEvent)
         }
         
