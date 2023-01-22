@@ -149,12 +149,12 @@ class CalendarViewController: DayViewController {
         let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
         newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
         newEKEvent.endDate = endDate
-        newEKEvent.title = "\(defaultBlock) "
+        newEKEvent.title = defaultBlock
         
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-            if ekEvent.title == "\(defaultBlock) " {
+            if ekEvent.title == defaultBlock {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
                     
