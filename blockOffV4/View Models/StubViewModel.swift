@@ -16,7 +16,7 @@ struct StubViewModel {
     }
     
     var title: String {
-        return stub.title ?? ""
+        return stub.title ?? "stub view model fail"
     }
     
     var isAllDay: Bool {
@@ -24,7 +24,7 @@ struct StubViewModel {
     }
     
     var text: String {
-        return stub.text ?? ""
+        return stub.text ?? "stub view model fail"
     }
     
 }

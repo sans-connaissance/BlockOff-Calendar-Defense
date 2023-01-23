@@ -117,8 +117,9 @@ class CalendarViewController: DayViewController {
         self.navigationController?.pushViewController(hostingController, animated: true)
     }
     
+    //NEEDS TO AND AN ON DISMISS GET STUBS CALL HERE
     @objc func openStubVC() {
-        let profileView = StubUIView()
+        let profileView = StubUIView().onDisappear{ self.getStubs() }
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(hostingController, animated: true)
