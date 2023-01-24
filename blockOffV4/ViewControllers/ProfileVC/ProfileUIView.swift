@@ -13,6 +13,9 @@ struct ProfileUIView: View {
     @State private var startTime = Date.now
     @State private var endDate = Date.now
     
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+    @State private var selectedColor = "Red"
+    
     var body: some View {
         Form {
             Section("Subscription") {
@@ -20,9 +23,16 @@ struct ProfileUIView: View {
             }
             Section("Work Day") {
                 VStack(alignment: .leading) {
-                    DatePicker("Start Time", selection: $startTime, displayedComponents: .hourAndMinute)
+                    DatePicker("Start time", selection: $startTime, displayedComponents: .hourAndMinute)
                     DatePicker("End Time", selection: $endDate, displayedComponents: .hourAndMinute)
-
+                    
+                }
+            }
+            Section("Calendars") {
+                Picker("Select a calendar", selection: $selectedColor) {
+                    ForEach(colors, id: \.self) {
+                        Text($0)
+                    }
                 }
             }
         }
