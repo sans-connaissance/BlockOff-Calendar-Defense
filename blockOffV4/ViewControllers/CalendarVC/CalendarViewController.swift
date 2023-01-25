@@ -26,7 +26,7 @@ class CalendarViewController: DayViewController {
         //   let dayCount = Day.getAllDays()
         //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
         title = "Block Off"
-        
+        getStubs()
         // MARK: Step 2 -- Get Permission to Calendar
         requestCalendarAppPermission()
         
@@ -39,7 +39,7 @@ class CalendarViewController: DayViewController {
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
-        getStubs()
+ 
     }
     
     func getStubs() {
@@ -81,7 +81,7 @@ class CalendarViewController: DayViewController {
         view.addSubview(child.view)
         child.didMove(toParent: self)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
@@ -111,7 +111,7 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openProfileVC() {
-        let profileView = ProfileUIView()
+        let profileView = ProfileUIView(eventStore: eventStore).onDisappear{self.createSpinnerView()}
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(hostingController, animated: true)

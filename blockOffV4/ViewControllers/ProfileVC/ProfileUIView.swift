@@ -10,11 +10,13 @@ import UIKit
 import EventKit
 
 struct ProfileUIView: View {
+    
+    @StateObject private var vm = ProfileViewModel()
     @State private var startTime = Date.now
     @State private var endDate = Date.now
+
+    let eventStore: EKEventStore
     
-    var colors = ["Red", "Green", "Blue", "Tartan"]
-    @State private var selectedColor = "Red"
     
     var body: some View {
         Form {
@@ -29,21 +31,34 @@ struct ProfileUIView: View {
                 }
             }
             Section("Calendars") {
-                Picker("Select a calendar", selection: $selectedColor) {
-                    ForEach(colors, id: \.self) {
-                        Text($0)
+                Picker("Select a calendar", selection: $vm.selectedCalendar) {
+                    ForEach(vm.editableCalendars, id: \.self) {
+                        Text($0.title).tag($0 as CalendarViewModel?)
                     }
                 }
+                .onChange(of: vm.selectedCalendar, perform: { _ in
+                    vm.setSelectedCalendarAsDefault()
+                })
+                .id(vm.uuid)
             }
         }
         .onAppear {
+            vm.createUUID()
+            vm.getCalendars()
+            vm.getDefaultCalendar(eventStore: eventStore)
             UIDatePicker.appearance().minuteInterval = 15
         }
+        .onDisappear {
+            vm.setSelectedCalendarAsDefault()
+        }
+//        .onChange(of: eventStore) { _ in
+//            vm.getCalendars()
+//        }
     }
 }
 
-struct ProfileUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileUIView()
-    }
-}
+//struct ProfileUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileUIView()
+//    }
+//}
