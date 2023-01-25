@@ -103,13 +103,6 @@ class CalendarViewController: DayViewController {
         }
     }
     
-    @objc func openCalendarsVC() {
-        let calendarsView = CalendarsUIView(dismissAction: {self.dismiss( animated: true)}, calendars: CalendarManager.shared.availableCalenders, eventStore: eventStore).onDisappear{self.createSpinnerView()}
-        let hostingController = UIHostingController(rootView: calendarsView)
-        let navigationController = UINavigationController(rootViewController: hostingController)
-        present(navigationController, animated: true)
-    }
-    
     @objc func openProfileVC() {
         let profileView = ProfileUIView(eventStore: eventStore).onDisappear{self.createSpinnerView()}
         let hostingController = UIHostingController(rootView: profileView)
@@ -117,7 +110,6 @@ class CalendarViewController: DayViewController {
         self.navigationController?.pushViewController(hostingController, animated: true)
     }
     
-    //NEEDS TO AND AN ON DISMISS GET STUBS CALL HERE
     @objc func openStubVC() {
         let profileView = StubUIView().onDisappear{ self.getStubs() }
         let hostingController = UIHostingController(rootView: profileView)

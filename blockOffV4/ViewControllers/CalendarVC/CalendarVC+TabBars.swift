@@ -29,13 +29,13 @@ extension CalendarViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(title: "Calendars", image: nil, target: self, action: #selector(openCalendarsVC))
+            UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(goToToday))
         )
         items.append(
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(goToToday))
+            UIBarButtonItem(title: "Delete All", image: nil, target: self, action: #selector(goToToday))
         )
         toolbarItems = items
     }

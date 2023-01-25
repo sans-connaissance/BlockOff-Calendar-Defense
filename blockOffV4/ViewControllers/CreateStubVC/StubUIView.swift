@@ -22,15 +22,15 @@ struct StubUIView: View {
     
     var body: some View {
         Form {
-            Section("Block Offs") {
+            Section {
                 ForEach(vm.stubs, id: \.id) { stub in
                     Text(stub.title)
                 }.onDelete(perform: deleteStub)
+            } header: {
+                HeaderWithButton(isPresented: $isPresented)
             }
-        }.listStyle(PlainListStyle())
-        .navigationBarItems(trailing: Button("Create") {
-            isPresented = true
-        })
+        }
+        .listStyle(PlainListStyle())
         .sheet(isPresented: $isPresented, onDismiss: {
             vm.getAllStubs()
         },  content: {
@@ -41,6 +41,26 @@ struct StubUIView: View {
         .onAppear(perform: {
             vm.getAllStubs()
         })
+    }
+}
+
+struct HeaderWithButton: View {
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        HStack {
+            Text("Block Offs")
+            Spacer()
+            Button {
+                isPresented = true
+            } label: {
+                Text("Create")
+                    .foregroundColor(.red)
+                    .opacity(0.8)
+              //  Image(systemName: "plus")
+            }
+            
+        }
     }
 }
 
