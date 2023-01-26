@@ -2,7 +2,7 @@
 //  Stub+CoreDataProperties.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 1/16/23.
+//  Created by David Malicke on 1/25/23.
 //
 //
 
@@ -16,13 +16,15 @@ extension Stub {
         return NSFetchRequest<Stub>(entityName: "Stub")
     }
 
-    @NSManaged public var index: Int64
-    @NSManaged public var start: Date?
+    @NSManaged public var availability: Int64
     @NSManaged public var end: Date?
+    @NSManaged public var index: Int64
     @NSManaged public var isAllDay: Bool
+    @NSManaged public var start: Date?
     @NSManaged public var text: String?
-    @NSManaged public var availability: String?
     @NSManaged public var title: String?
+    @NSManaged public var location: String?
+    @NSManaged public var notes: String?
 
 }
 
@@ -49,7 +51,5 @@ extension Stub : Identifiable {
             print(error)
             return nil
         }
-        
     }
-
 }

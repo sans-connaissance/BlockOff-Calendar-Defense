@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		418D107E2980999D008BBCF5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D107D2980999D008BBCF5 /* ProfileViewModel.swift */; };
-		418D1081298217FF008BBCF5 /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D107F298217FF008BBCF5 /* Stub+CoreDataClass.swift */; };
-		418D1082298217FF008BBCF5 /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D1080298217FF008BBCF5 /* Stub+CoreDataProperties.swift */; };
+		418D108D298220C9008BBCF5 /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D108B298220C9008BBCF5 /* Stub+CoreDataClass.swift */; };
+		418D108E298220C9008BBCF5 /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D108C298220C9008BBCF5 /* Stub+CoreDataProperties.swift */; };
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
@@ -51,8 +51,8 @@
 
 /* Begin PBXFileReference section */
 		418D107D2980999D008BBCF5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		418D107F298217FF008BBCF5 /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
-		418D1080298217FF008BBCF5 /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		418D108B298220C9008BBCF5 /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
+		418D108C298220C9008BBCF5 /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -230,8 +230,8 @@
 				41F4B9A5293BA327009A6FD2 /* Unit+CoreDataProperties.swift */,
 				41F4B9A0293BA327009A6FD2 /* Event+CoreDataClass.swift */,
 				41F4B9A1293BA327009A6FD2 /* Event+CoreDataProperties.swift */,
-				418D107F298217FF008BBCF5 /* Stub+CoreDataClass.swift */,
-				418D1080298217FF008BBCF5 /* Stub+CoreDataProperties.swift */,
+				418D108B298220C9008BBCF5 /* Stub+CoreDataClass.swift */,
+				418D108C298220C9008BBCF5 /* Stub+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				41D24D112972F5BE00AD78F5 /* ProfileUIView.swift in Sources */,
 				41F4B9A9293BA327009A6FD2 /* Event+CoreDataProperties.swift in Sources */,
 				41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */,
-				418D1081298217FF008BBCF5 /* Stub+CoreDataClass.swift in Sources */,
+				418D108D298220C9008BBCF5 /* Stub+CoreDataClass.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
@@ -354,8 +354,8 @@
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
+				418D108E298220C9008BBCF5 /* Stub+CoreDataProperties.swift in Sources */,
 				41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */,
-				418D1082298217FF008BBCF5 /* Stub+CoreDataProperties.swift in Sources */,
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */,

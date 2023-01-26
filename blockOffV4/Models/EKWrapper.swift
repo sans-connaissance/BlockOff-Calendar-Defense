@@ -83,6 +83,7 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
         self.ekEvent = eventKitEvent
         self.stubCheck = stubName
         self.updateColors()
+        
     }
     
     public func makeEditable() -> EKWrapper {
