@@ -22,7 +22,7 @@
         <relationship name="units" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Unit" inverseName="events" inverseEntity="Unit"/>
     </entity>
     <entity name="Stub" representedClassName="Stub" syncable="YES">
-        <attribute name="availability" optional="YES" attributeType="String"/>
+        <attribute name="availability" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isAllDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
