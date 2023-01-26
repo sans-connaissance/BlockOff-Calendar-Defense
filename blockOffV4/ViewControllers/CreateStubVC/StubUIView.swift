@@ -57,9 +57,7 @@ struct HeaderWithButton: View {
                 Text("Create")
                     .foregroundColor(.red)
                     .opacity(0.8)
-              //  Image(systemName: "plus")
             }
-            
         }
     }
 }

@@ -11,6 +11,8 @@ class AddStubViewModel: ObservableObject {
     
     var title: String = ""
     var text: String = ""
+    var isAllDay: Bool = false
+    
     
     func save() {
         
