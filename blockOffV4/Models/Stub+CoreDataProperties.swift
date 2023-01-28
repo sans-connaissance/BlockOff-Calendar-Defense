@@ -2,7 +2,7 @@
 //  Stub+CoreDataProperties.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 1/25/23.
+//  Created by David Malicke on 1/28/23.
 //
 //
 
@@ -20,11 +20,12 @@ extension Stub {
     @NSManaged public var end: Date?
     @NSManaged public var index: Int64
     @NSManaged public var isAllDay: Bool
+    @NSManaged public var location: String?
+    @NSManaged public var notes: String?
     @NSManaged public var start: Date?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
-    @NSManaged public var location: String?
-    @NSManaged public var notes: String?
+    @NSManaged public var isDefault: Bool
 
 }
 

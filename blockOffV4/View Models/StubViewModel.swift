@@ -39,4 +39,8 @@ struct StubViewModel {
         return stub.text ?? "stub view model fail"
     }
     
+    var isDefault: Bool {
+        return stub.isDefault
+    }
+    
 }

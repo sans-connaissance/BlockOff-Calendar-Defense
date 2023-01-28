@@ -51,6 +51,33 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
         }
     }
     
+    public var location: String? {
+        get {
+            return ekEvent.location
+        }
+        set {
+            return ekEvent.location = newValue
+        }
+    }
+    
+    public var notes: String? {
+        get {
+            return ekEvent.notes
+        }
+        set {
+            return ekEvent.notes = newValue
+        }
+    }
+    
+    public var availability: EKEventAvailability {
+        get {
+            return ekEvent.availability
+        }
+        set {
+            return ekEvent.availability = newValue
+        }
+    }
+    
     public var attributedText: NSAttributedString?
     public var lineBreakMode: NSLineBreakMode?
     

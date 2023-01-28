@@ -17,6 +17,7 @@ class AddStubViewModel: ObservableObject {
     
     @Published var availability: Availability = .busy
     @Published var selectedAvailability: Availability = .busy
+    @Published var isDefault: Bool = false
     
     
     func save() {
