@@ -12,6 +12,11 @@ class AddStubViewModel: ObservableObject {
     var title: String = ""
     var text: String = ""
     var isAllDay: Bool = false
+    var location: String = ""
+    var notes: String = ""
+    
+    @Published var availability: Availability = .busy
+    @Published var selectedAvailability: Availability = .busy
     
     
     func save() {
@@ -20,7 +25,34 @@ class AddStubViewModel: ObservableObject {
         let stub = Stub(context: manager.managedContext)
         stub.title = title
         stub.text = text
+        stub.availability = Int64(selectedAvailability.rawValue)
+        stub.location = location
+        stub.notes = notes
         manager.saveContext()
     }
+}
+
+enum Availability: Int, CaseIterable {
+    case notSupported = -1
+    case busy = 0
+    case free = 1
+    case tentative = 2
+    case unavailable = 3
     
+    static let list: [Availability] = [.busy, .tentative, .unavailable]
+    
+    var displayText: String {
+        switch self {
+        case .notSupported:
+            return "Not Supported"
+        case .busy:
+            return "Busy"
+        case .free:
+            return "Free"
+        case .tentative:
+            return "Tentative"
+        case .unavailable:
+            return "Unavailable"
+        }
+    }
 }

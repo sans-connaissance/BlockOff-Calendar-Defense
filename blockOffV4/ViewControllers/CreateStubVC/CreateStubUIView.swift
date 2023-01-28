@@ -13,9 +13,20 @@ struct CreateStubUIView: View {
     
     var body: some View {
         Form {
-            TextField("Enter title", text: $vm.title)
-            TextField("Enter text", text: $vm.text)
-            
+            Section("") {
+                TextField("Enter title", text: $vm.title)
+                TextField("Location or Video Call", text: $vm.location)
+            }
+            Section("") {
+                Picker("Select Availability", selection: $vm.selectedAvailability) {
+                    ForEach(Availability.list, id: \.self) {
+                        Text($0.displayText)
+                    }
+                }
+            }
+            Section("") {
+                TextField("Add Notes", text: $vm.notes)
+            }
             HStack {
                 Spacer()
                 Button("Save") {
@@ -26,7 +37,7 @@ struct CreateStubUIView: View {
             }
             
         }
-        .navigationTitle("Add Block Off")
+        .navigationTitle("Create Block")
         .embedInNavigationView()
     }
 }

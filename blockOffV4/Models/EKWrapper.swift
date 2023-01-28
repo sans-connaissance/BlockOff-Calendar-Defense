@@ -77,6 +77,7 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
             updateColors()
         }
     }
+    // ADD NEW STUB LOCATION, AVAILABILITY, NOTES
     public private(set) var stubCheck: [String]
     public private(set) var ekEvent: EKEvent
     public init(eventKitEvent: EKEvent, stubName:[String] = []) {

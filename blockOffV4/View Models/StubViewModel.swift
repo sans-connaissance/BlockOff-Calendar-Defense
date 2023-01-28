@@ -23,6 +23,18 @@ struct StubViewModel {
         return stub.isAllDay
     }
     
+    var location: String {
+        return stub.location ?? ""
+    }
+    
+    var notes: String {
+        return stub.notes ?? ""
+    }
+    
+    var availability: Int64 {
+        return stub.availability
+    }
+    
     var text: String {
         return stub.text ?? "stub view model fail"
     }
