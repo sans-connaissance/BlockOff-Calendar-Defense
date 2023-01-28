@@ -40,7 +40,7 @@ enum Availability: Int, CaseIterable {
     case tentative = 2
     case unavailable = 3
     
-    static let list: [Availability] = [.busy, .tentative, .unavailable]
+    static let list: [Availability] = [.busy, .free, .tentative, .unavailable]
     
     var displayText: String {
         switch self {

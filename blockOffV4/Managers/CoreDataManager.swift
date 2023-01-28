@@ -77,6 +77,9 @@ class CoreDataManager {
             eventCD.isAllDay = ekEvent.isAllDay
             eventCD.start = ekEvent.dateInterval.start
             eventCD.end = ekEvent.dateInterval.end
+            eventCD.location = ekEvent.location
+            eventCD.notes = ekEvent.notes
+            eventCD.availability = Int64(ekEvent.availability.rawValue)
             
             do {
                 try context.save()
@@ -102,6 +105,9 @@ class CoreDataManager {
                 eventCD.isAllDay = ekEvent.isAllDay
                 eventCD.start = ekEvent.dateInterval.start
                 eventCD.end = ekEvent.dateInterval.end
+                eventCD.location = ekEvent.location
+                eventCD.notes = ekEvent.notes
+                eventCD.availability = Int64(ekEvent.availability.rawValue)
                 
                 let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
                 let setUnits = NSSet(array: units)
@@ -129,6 +135,9 @@ class CoreDataManager {
                         eventCD.isAllDay = ekEvent.isAllDay
                         eventCD.start = ekEvent.dateInterval.start
                         eventCD.end = ekEvent.dateInterval.end
+                        eventCD.location = ekEvent.location
+                        eventCD.notes = ekEvent.notes
+                        eventCD.availability = Int64(ekEvent.availability.rawValue)
                         
                         let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
                         let setUnits = NSSet(array: units)

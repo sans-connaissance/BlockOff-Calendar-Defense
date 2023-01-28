@@ -147,6 +147,24 @@ class CalendarViewController: DayViewController {
         newEKEvent.endDate = endDate
         newEKEvent.title = stubs.first?.title ?? "Didn't work"
         
+        guard let availability = stubs.first?.availability else { return }
+        switch availability {
+        case -1:
+            newEKEvent.availability = .notSupported
+        case 0:
+            newEKEvent.availability = .busy
+        case 1:
+            newEKEvent.availability = .free
+        case 2:
+            newEKEvent.availability = .tentative
+        case 3:
+            newEKEvent.availability = .unavailable
+        default:
+            break
+        }
+        newEKEvent.notes = stubs.first?.notes ?? ""
+        newEKEvent.location = stubs.first?.location ?? ""
+        
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
