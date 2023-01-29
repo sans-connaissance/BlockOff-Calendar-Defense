@@ -57,9 +57,9 @@ class CalendarViewController: DayViewController {
                 self.initializeStore()
                 CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
                 
-                if CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") == "" {
+                if UserDefaults.primaryCalendar == "" {
                     if let id = self.eventStore.defaultCalendarForNewEvents?.calendarIdentifier {
-                        CalendarManager.shared.defaults.set(id, forKey: "PrimaryCalendar")
+                        UserDefaults.primaryCalendar = id
                     }
                 }
                 
@@ -136,7 +136,7 @@ class CalendarViewController: DayViewController {
     //MARK: Overrides
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         let newEKEvent = EKEvent(eventStore: eventStore)
-        newEKEvent.calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "")
+        newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
         
         var onHourComponents = DateComponents()
         onHourComponents.hour = 1

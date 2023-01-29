@@ -35,12 +35,14 @@ struct CalendarsUIView: View {
                 }
             }
             .onAppear {
-                if let calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "") {
+                if let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) {
                     selectedCalendar = CalendarViewModel(calendar: calendar)
                 }
             }
             .onDisappear {
-                CalendarManager.shared.defaults.set(selectedCalendar?.id, forKey: "PrimaryCalendar")
+                if let newCalendar = selectedCalendar?.id {
+                    UserDefaults.primaryCalendar = newCalendar
+                }
             }
         }
     }

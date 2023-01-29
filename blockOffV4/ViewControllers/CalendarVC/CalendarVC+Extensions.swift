@@ -77,7 +77,7 @@ extension CalendarViewController {
     }
     
     func viewableCalendar() -> [EKCalendar]? {
-        guard let calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "") else  { return nil }
+        guard let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) else  { return nil }
         return [calendar]
     }
 }

@@ -23,7 +23,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getDefaultCalendar(eventStore: EKEventStore) {
-        if let calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "") {
+        if let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) {
             selectedCalendar = CalendarViewModel(calendar: calendar)
         }
     }
@@ -38,7 +38,9 @@ class ProfileViewModel: ObservableObject {
     }
     
     func setSelectedCalendarAsDefault() {
-        CalendarManager.shared.defaults.set(selectedCalendar?.id, forKey: "PrimaryCalendar")
+        if let selectedCalendar = selectedCalendar?.id {
+            UserDefaults.primaryCalendar = selectedCalendar
+        }
     }
     
     func createUUID() {
