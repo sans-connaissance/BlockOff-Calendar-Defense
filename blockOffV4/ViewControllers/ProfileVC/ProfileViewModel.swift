@@ -15,8 +15,6 @@ class ProfileViewModel: ObservableObject {
     @Published var selectedCalendar: CalendarViewModel?
     @Published var uuid = UUID()
     
-    
-    
     func getCalendars() {
         let calendars = CalendarManager.shared.availableCalenders
         editableCalendars = calendars.filter({ $0.editable })
