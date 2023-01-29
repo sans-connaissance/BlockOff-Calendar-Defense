@@ -13,10 +13,10 @@ class ProfileViewModel: ObservableObject {
     
     @Published var editableCalendars: [CalendarViewModel] = []
     @Published var selectedCalendar: CalendarViewModel?
-    @Published var startTime = Date.now
-    @Published var endTime = Date.now
+    @Published var startTime = Date()
+    @Published var endTime = Date()
     @Published var uuid = UUID()
-    
+        
     func getCalendars() {
         let calendars = CalendarManager.shared.availableCalenders
         editableCalendars = calendars.filter({ $0.editable })
@@ -28,13 +28,25 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    // -> use this to update both the datepickers and the userdefault values
-    func setTimes(startTime: Date, endTime: Date) {
+    func setDefaultTime(startTime: Date, endTime: Date) {
         let startOfDay = CalendarManager.shared.calendar.startOfDay(for: startTime)
-        let distanceFromStartOfDay = startTime.distance(to: startOfDay)
+        self.startTime = Date(timeInterval: UserDefaults.distanceFromStartOfDay, since: startOfDay)
         
         let endOfDay = startOfDay.addingTimeInterval(86400.0)
-        let distanceFromEndOfDay = endTime.distance(to: endTime)
+        self.endTime = Date(timeInterval: -UserDefaults.distanceFromEndOfDay, since: endOfDay)
+    }
+    
+    func updateDefaultTimes(startTime: Date, endTime: Date) {
+        let startOfDay = CalendarManager.shared.calendar.startOfDay(for: startTime)
+        let distanceFromStartOfDay = startOfDay.distance(to: startTime)
+        UserDefaults.distanceFromStartOfDay = distanceFromStartOfDay
+       // self.startTime = Date(timeInterval: UserDefaults.distanceFromStartOfDay, since: startOfDay)
+        
+        
+        let endOfDay = startOfDay.addingTimeInterval(86400.0)
+        let distanceFromEndOfDay = endTime.distance(to: endOfDay)
+        UserDefaults.distanceFromEndOfDay = distanceFromEndOfDay
+       // self.endTime = Date(timeInterval: -UserDefaults.distanceFromEndOfDay, since: endOfDay)
     }
     
     func setSelectedCalendarAsDefault() {

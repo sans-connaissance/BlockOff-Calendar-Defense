@@ -12,11 +12,7 @@ import EventKit
 struct ProfileUIView: View {
     
     @StateObject private var vm = ProfileViewModel()
-    @State private var startTime = Date.now
-    @State private var endDate = Date.now
-
     let eventStore: EKEventStore
-    
     
     var body: some View {
         Form {
@@ -25,8 +21,8 @@ struct ProfileUIView: View {
             }
             Section("Work Day") {
                 VStack(alignment: .leading) {
-                    DatePicker("Start time", selection: $startTime, displayedComponents: .hourAndMinute)
-                    DatePicker("End Time", selection: $endDate, displayedComponents: .hourAndMinute)
+                    DatePicker("Start time", selection: $vm.startTime, displayedComponents: .hourAndMinute)
+                    DatePicker("End Time", selection: $vm.endTime, displayedComponents: .hourAndMinute)
                     
                 }
             }
@@ -44,12 +40,14 @@ struct ProfileUIView: View {
         }
         .onAppear {
             vm.createUUID()
+            vm.setDefaultTime(startTime: Date.now, endTime: Date.now)
             vm.getCalendars()
             vm.getDefaultCalendar(eventStore: eventStore)
             UIDatePicker.appearance().minuteInterval = 15
         }
         .onDisappear {
             vm.setSelectedCalendarAsDefault()
+            vm.updateDefaultTimes(startTime: vm.startTime, endTime: vm.endTime)
         }
 //        .onChange(of: eventStore) { _ in
 //            vm.getCalendars()

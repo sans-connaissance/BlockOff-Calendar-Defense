@@ -31,10 +31,14 @@ struct UserDefault<Value> {
 }
 
 extension UserDefaults {
-
-//    @UserDefault(key: "primary_calendar", defaultValue: false)
-//    static var hasSeenAppIntroduction: Bool
     
     @UserDefault(key: "primary_calendar", defaultValue: "")
     static var primaryCalendar: String
+    
+    //900.0 = 15 min
+    @UserDefault(key: "system_start_time", defaultValue: 28800.0)
+    static var distanceFromStartOfDay: Double
+    
+    @UserDefault(key: "system_end_time", defaultValue: 21600.0)
+    static var distanceFromEndOfDay: Double
 }
