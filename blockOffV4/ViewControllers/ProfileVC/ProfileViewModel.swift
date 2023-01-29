@@ -13,6 +13,8 @@ class ProfileViewModel: ObservableObject {
     
     @Published var editableCalendars: [CalendarViewModel] = []
     @Published var selectedCalendar: CalendarViewModel?
+    @Published var startTime = Date.now
+    @Published var endTime = Date.now
     @Published var uuid = UUID()
     
     func getCalendars() {
@@ -24,6 +26,15 @@ class ProfileViewModel: ObservableObject {
         if let calendar = eventStore.calendar(withIdentifier: CalendarManager.shared.defaults.string(forKey: "PrimaryCalendar") ?? "") {
             selectedCalendar = CalendarViewModel(calendar: calendar)
         }
+    }
+    
+    // -> use this to update both the datepickers and the userdefault values
+    func setTimes(startTime: Date, endTime: Date) {
+        let startOfDay = CalendarManager.shared.calendar.startOfDay(for: startTime)
+        let distanceFromStartOfDay = startTime.distance(to: startOfDay)
+        
+        let endOfDay = startOfDay.addingTimeInterval(86400.0)
+        let distanceFromEndOfDay = endTime.distance(to: endTime)
     }
     
     func setSelectedCalendarAsDefault() {

@@ -14,10 +14,12 @@ import CalendarKit
 extension CalendarViewController {
     
     func getUnitsForBlockOff(_ date: Date) -> [UnitViewModel] {
-        let startDate = date //+ 5400.0
+        //900.0 = 15 min
+        let startDate = date // + 5400.0
         var oneDayComponent = DateComponents()
         oneDayComponent.day = 1
-        let endDate = calendar.date(byAdding: oneDayComponent, to: startDate)!
+        
+        let endDate = startDate.addingTimeInterval(86400.0)
         
         var units: [UnitViewModel] = []
         

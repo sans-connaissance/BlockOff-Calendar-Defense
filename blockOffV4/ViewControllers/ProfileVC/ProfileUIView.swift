@@ -57,8 +57,8 @@ struct ProfileUIView: View {
     }
 }
 
-//struct ProfileUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileUIView()
-//    }
-//}
+struct ProfileUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileUIView(eventStore: MockData.shared.eventStore)
+    }
+}
