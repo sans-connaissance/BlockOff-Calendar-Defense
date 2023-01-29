@@ -11,6 +11,7 @@
 		410AB74A29857598001C7319 /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74829857598001C7319 /* Stub+CoreDataProperties.swift */; };
 		410AB74D2985773F001C7319 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */; };
 		410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */; };
+		410AB7562985F275001C7319 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB7552985F275001C7319 /* ProfileViewModel.swift */; };
 		418D107E2980999D008BBCF5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418D107D2980999D008BBCF5 /* ProfileViewModel.swift */; };
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
@@ -54,6 +55,7 @@
 		410AB74829857598001C7319 /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		410AB7552985F275001C7319 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		418D107D2980999D008BBCF5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				41D24D102972F5BE00AD78F5 /* ProfileUIView.swift */,
 				418D107D2980999D008BBCF5 /* ProfileViewModel.swift */,
+				410AB7552985F275001C7319 /* ProfileViewModel.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
+				410AB7562985F275001C7319 /* ProfileViewModel.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
 				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,
