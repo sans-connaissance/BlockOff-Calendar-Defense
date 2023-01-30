@@ -16,6 +16,7 @@ class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var defaultBlock = "Block Off"
     var stubs: [StubViewModel] = []
+    var checks: [CheckViewModel] = []
     var buttonUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
@@ -27,6 +28,7 @@ class CalendarViewController: DayViewController {
         //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
         title = "Block Off"
         getStubs()
+        getChecks()
         // MARK: Step 2 -- Get Permission to Calendar
         requestCalendarAppPermission()
         
@@ -50,6 +52,13 @@ class CalendarViewController: DayViewController {
         }
     }
     
+    func getChecks() {
+        let fetchResults = Check.getAllChecks()
+        DispatchQueue.main.async {
+            self.checks = fetchResults.map(CheckViewModel.init)
+        }
+    }
+    
     // MARK: Step 2 -- Get Permission to Calendar Code
     func requestCalendarAppPermission() {
         eventStore.requestAccess(to: .event) { [weak self] success, error in
@@ -66,6 +75,7 @@ class CalendarViewController: DayViewController {
                 
                 self.subscribeToNotifications()
                 self.getStubs()
+                self.getChecks()
                 self.reloadData()
             }
         }
@@ -87,6 +97,7 @@ class CalendarViewController: DayViewController {
             child.view.removeFromSuperview()
             child.removeFromParent()
             self.getStubs()
+            self.getChecks()
             self.reloadData()
         }
     }
@@ -100,6 +111,7 @@ class CalendarViewController: DayViewController {
         DispatchQueue.main.async {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
             self.getStubs()
+            self.getChecks()
             self.reloadData()
         }
     }
@@ -195,6 +207,7 @@ class CalendarViewController: DayViewController {
         // let eventsCD = Event.getAllEvents()
         // title = "Block Off: Count \(eventsCD.count)"
         self.getStubs()
+        self.getChecks()
         reloadData()
     }
 }

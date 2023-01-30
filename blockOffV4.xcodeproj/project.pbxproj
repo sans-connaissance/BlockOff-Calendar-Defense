@@ -25,6 +25,7 @@
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
 		41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */; };
 		41CAAB162985F4D00087EB74 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CAAB152985F4D00087EB74 /* ProfileViewModel.swift */; };
+		41CAAB18298766020087EB74 /* CheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CAAB17298766020087EB74 /* CheckViewModel.swift */; };
 		41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD6D53293B99DD009012DF /* AppDelegate.swift */; };
 		41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD6D55293B99DD009012DF /* SceneDelegate.swift */; };
 		41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD6D57293B99DD009012DF /* CalendarViewController.swift */; };
@@ -68,6 +69,7 @@
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewModel.swift; sourceTree = "<group>"; };
 		41CAAB152985F4D00087EB74 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		41CAAB17298766020087EB74 /* CheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewModel.swift; sourceTree = "<group>"; };
 		41CD6D50293B99DD009012DF /* blockOffV4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blockOffV4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CD6D53293B99DD009012DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CD6D55293B99DD009012DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				41C337CF29494DDC008F7FF2 /* UnitViewModel.swift */,
 				41A540A42973928D005CE9CC /* CalendarViewModel.swift */,
 				41A540AF2975AD1A005CE9CC /* StubViewModel.swift */,
+				41CAAB17298766020087EB74 /* CheckViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				410AB74929857598001C7319 /* Stub+CoreDataClass.swift in Sources */,
 				410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
+				41CAAB18298766020087EB74 /* CheckViewModel.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
