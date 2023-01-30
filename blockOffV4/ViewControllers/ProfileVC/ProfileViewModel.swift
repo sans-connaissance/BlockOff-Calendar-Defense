@@ -40,13 +40,10 @@ class ProfileViewModel: ObservableObject {
         let startOfDay = CalendarManager.shared.calendar.startOfDay(for: startTime)
         let distanceFromStartOfDay = startOfDay.distance(to: startTime)
         UserDefaults.distanceFromStartOfDay = distanceFromStartOfDay
-       // self.startTime = Date(timeInterval: UserDefaults.distanceFromStartOfDay, since: startOfDay)
-        
         
         let endOfDay = startOfDay.addingTimeInterval(86400.0)
         let distanceFromEndOfDay = endTime.distance(to: endOfDay)
         UserDefaults.distanceFromEndOfDay = distanceFromEndOfDay
-       // self.endTime = Date(timeInterval: -UserDefaults.distanceFromEndOfDay, since: endOfDay)
     }
     
     func setSelectedCalendarAsDefault() {

@@ -39,6 +39,7 @@ class CalendarViewController: DayViewController {
         style.timeline.eventsWillOverlap = true
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
+        dayView.autoScrollToFirstEvent = true
  
     }
     
