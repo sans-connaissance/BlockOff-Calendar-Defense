@@ -43,7 +43,7 @@ struct ProfileUIView: View {
             vm.setDefaultTime(startTime: Date.now, endTime: Date.now)
             vm.getCalendars()
             vm.getDefaultCalendar(eventStore: eventStore)
-            UIDatePicker.appearance().minuteInterval = 15
+            UIDatePicker.appearance().minuteInterval = 30
         }
         .onDisappear {
             vm.setSelectedCalendarAsDefault()

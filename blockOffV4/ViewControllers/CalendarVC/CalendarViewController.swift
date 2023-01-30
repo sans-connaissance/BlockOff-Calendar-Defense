@@ -136,36 +136,6 @@ class CalendarViewController: DayViewController {
     
     //MARK: Overrides
     override func dayViewDidSelectEventView(_ eventView: EventView) {
-        let newEKEvent = EKEvent(eventStore: eventStore)
-        newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-        
-        var onHourComponents = DateComponents()
-        onHourComponents.hour = 1
-        
-        //FIX THESE FORCE UNWRAPS
-        let endDate = calendar.date(byAdding: onHourComponents, to: (eventView.descriptor?.dateInterval.start)!)
-        newEKEvent.startDate = (eventView.descriptor?.dateInterval.start)!
-        newEKEvent.endDate = endDate
-        newEKEvent.title = stubs.first?.title ?? "Didn't work"
-        
-        guard let availability = stubs.first?.availability else { return }
-        switch availability {
-        case -1:
-            newEKEvent.availability = .notSupported
-        case 0:
-            newEKEvent.availability = .busy
-        case 1:
-            newEKEvent.availability = .free
-        case 2:
-            newEKEvent.availability = .tentative
-        case 3:
-            newEKEvent.availability = .unavailable
-        default:
-            break
-        }
-        newEKEvent.notes = stubs.first?.notes ?? ""
-        newEKEvent.location = stubs.first?.location ?? ""
-        
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
@@ -183,6 +153,30 @@ class CalendarViewController: DayViewController {
         }
         
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
+            let newEKEvent = EKEvent(eventStore: eventStore)
+            newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
+            newEKEvent.title = stubs.first?.title ?? "Didn't work"
+            
+            guard let availability = stubs.first?.availability else { return }
+            switch availability {
+            case -1:
+                newEKEvent.availability = .notSupported
+            case 0:
+                newEKEvent.availability = .busy
+            case 1:
+                newEKEvent.availability = .free
+            case 2:
+                newEKEvent.availability = .tentative
+            case 3:
+                newEKEvent.availability = .unavailable
+            default:
+                break
+            }
+            newEKEvent.notes = stubs.first?.notes ?? ""
+            newEKEvent.location = stubs.first?.location ?? ""
+            newEKEvent.startDate = descriptor.dateInterval.start
+            newEKEvent.endDate = descriptor.dateInterval.end
+            
             do {
                 try eventStore.save(newEKEvent, span: .thisEvent)
                 
