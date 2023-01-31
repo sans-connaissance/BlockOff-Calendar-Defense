@@ -151,7 +151,11 @@ class CalendarViewController: DayViewController {
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-            if ekEvent.title == stubs.first?.title ?? "Didn't work" {
+            
+            let eventIsBlock = Check.checkIfEventExists(ekID: ekEvent.eventIdentifier)
+            let stubIsBlock = Stub.isBlockOff(title: ekEvent.title)
+            
+            if eventIsBlock || stubIsBlock {
                 do {
                     try eventStore.remove(ekEvent, span: .thisEvent)
                     
@@ -188,7 +192,6 @@ class CalendarViewController: DayViewController {
             newEKEvent.location = stubs.first?.location ?? ""
             newEKEvent.startDate = descriptor.dateInterval.start
             newEKEvent.endDate = descriptor.dateInterval.end
-            
             do {
                 try eventStore.save(newEKEvent, span: .thisEvent)
                 
@@ -206,8 +209,8 @@ class CalendarViewController: DayViewController {
         print("tapped at: \(date)")
         // let eventsCD = Event.getAllEvents()
         // title = "Block Off: Count \(eventsCD.count)"
-        self.getStubs()
-        self.getChecks()
+      //  self.getStubs()
+       // self.getChecks()
         reloadData()
     }
 }

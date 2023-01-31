@@ -34,10 +34,20 @@ extension CalendarViewController {
         for event in eventKitEvents {
             
             var isBlockOff = false
+            let eventIsBlock = Check.checkIfEventExists(ekID: event.eventIdentifier)
             let stubIsBlock = Stub.isBlockOff(title: event.title)
-            //let idExists =
+            if !eventIsBlock && stubIsBlock {
+                let newCheck = Check(context: coreDataStack.managedContext)
+                newCheck.title = event.title
+                newCheck.ekID = event.eventIdentifier
+                coreDataStack.saveContext()
+            }
             
-            let wrappedEvent = EKWrapper(eventKitEvent: event, isBlockOff: stubIsBlock)
+            if eventIsBlock || stubIsBlock {
+                isBlockOff = true
+            }
+            
+            let wrappedEvent = EKWrapper(eventKitEvent: event, isBlockOff: isBlockOff)
             calendarKitEvents.append(wrappedEvent)
         }
         
