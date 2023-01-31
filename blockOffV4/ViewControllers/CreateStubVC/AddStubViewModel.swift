@@ -21,10 +21,9 @@ class AddStubViewModel: ObservableObject {
     
     
     func save() {
-        
         let manager = CoreDataManager.shared
         let stub = Stub(context: manager.managedContext)
-        stub.title = title
+        stub.title = title + "  "
         stub.text = text
         stub.availability = Int64(selectedAvailability.rawValue)
         stub.location = location

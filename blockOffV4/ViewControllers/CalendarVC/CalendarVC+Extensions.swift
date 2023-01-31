@@ -24,13 +24,7 @@ extension CalendarViewController {
         let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: viewableCalendar())
         let eventKitEvents = eventStore.events(matching: predicate)
         
-      //  let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
-        
         var calendarKitEvents: [EKWrapper] = []
-        
-        // This should be a bool
-        // check if in stubs, then check if is blocked off
-        
         for event in eventKitEvents {
             
             var isBlockOff = false
