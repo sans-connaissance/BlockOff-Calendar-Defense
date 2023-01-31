@@ -83,14 +83,11 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
     
     public var color: UIColor {
         get {
-            if stubCheck.contains(where: { title in
-                title == self.text
-            }) {
+            if blockOff {
                 return .systemGreen
             } else {
                 return .systemRed
             }
-           // UIColor(cgColor: ekEvent.calendar.cgColor)
         }
     }
     
@@ -105,11 +102,11 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
         }
     }
     // ADD NEW STUB LOCATION, AVAILABILITY, NOTES
-    public private(set) var stubCheck: [String]
+    public private(set) var blockOff: Bool
     public private(set) var ekEvent: EKEvent
-    public init(eventKitEvent: EKEvent, stubName:[String] = []) {
+    public init(eventKitEvent: EKEvent, isBlockOff: Bool = false) {
         self.ekEvent = eventKitEvent
-        self.stubCheck = stubName
+        self.blockOff = isBlockOff
         self.updateColors()
         
     }

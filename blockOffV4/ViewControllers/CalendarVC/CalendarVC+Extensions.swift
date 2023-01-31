@@ -27,9 +27,17 @@ extension CalendarViewController {
       //  let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
         
         var calendarKitEvents: [EKWrapper] = []
-        let stubTitles = stubs.map { $0.title }
+        
+        // This should be a bool
+        // check if in stubs, then check if is blocked off
+        
         for event in eventKitEvents {
-            let wrappedEvent = EKWrapper(eventKitEvent: event, stubName: stubTitles)
+            
+            var isBlockOff = false
+            let stubIsBlock = Stub.isBlockOff(title: event.title)
+            //let idExists =
+            
+            let wrappedEvent = EKWrapper(eventKitEvent: event, isBlockOff: stubIsBlock)
             calendarKitEvents.append(wrappedEvent)
         }
         

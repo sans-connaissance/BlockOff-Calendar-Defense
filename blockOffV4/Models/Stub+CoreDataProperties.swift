@@ -53,4 +53,23 @@ extension Stub : Identifiable {
             return nil
         }
     }
+    
+    static func isBlockOff(title: String) -> Bool {
+        let request: NSFetchRequest<Stub> = Stub.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "title == %@", title)
+
+        do {
+            let count = try CoreDataManager.shared.managedContext.count(for: request)
+            if count > 0 {
+                return true
+            } else {
+                return false
+            }
+        } catch let error as NSError {
+            print("could not fetch. \(error), \(error.userInfo)")
+            return false
+        }
+    }
+    
 }
