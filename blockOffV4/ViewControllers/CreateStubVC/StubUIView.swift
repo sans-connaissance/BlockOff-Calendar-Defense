@@ -24,7 +24,7 @@ struct StubUIView: View {
         Form {
             Section {
                 ForEach(vm.stubs, id: \.id) { stub in
-                    StubRow(stub: stub)
+                    StubRow(stub: stub, vm: vm)
                 }.onDelete(perform: deleteStub)
             } header: {
                 HeaderWithButton(isPresented: $isPresented)
@@ -46,13 +46,18 @@ struct StubUIView: View {
 
 struct StubRow: View {
     let stub: StubViewModel
-    
+    @StateObject var vm: StubListViewModel
+   
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text(stub.title).font(.headline)
                 Spacer()
-                Image(systemName: "star")
+                Button {
+                    vm.setDefault(stub: stub)
+                } label: {
+                    Image(systemName: stub.isDefault ? "star.fill" : "star")
+                }
             }
             Text(stub.location)
             AvailabilityRow(status: stub.availability)

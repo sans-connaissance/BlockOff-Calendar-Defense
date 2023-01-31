@@ -38,7 +38,7 @@ class CalendarViewController: DayViewController {
         // MARK: Tabbars and CalendarStyling
         createTabBars()
         var style = CalendarStyle()
-        style.timeline.eventsWillOverlap = true
+        style.timeline.eventsWillOverlap = false
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
@@ -170,10 +170,11 @@ class CalendarViewController: DayViewController {
         
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             let newEKEvent = EKEvent(eventStore: eventStore)
+            let defaultStub = stubs.first(where: { $0.isDefault })
             newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-            newEKEvent.title = stubs.first?.title ?? "Didn't work"
+            newEKEvent.title = defaultStub?.title ?? "Didn't work"
             
-            guard let availability = stubs.first?.availability else { return }
+            guard let availability = defaultStub?.availability else { return }
             switch availability {
             case -1:
                 newEKEvent.availability = .notSupported
@@ -188,8 +189,8 @@ class CalendarViewController: DayViewController {
             default:
                 break
             }
-            newEKEvent.notes = stubs.first?.notes ?? ""
-            newEKEvent.location = stubs.first?.location ?? ""
+            newEKEvent.notes = defaultStub?.notes ?? ""
+            newEKEvent.location = defaultStub?.location ?? ""
             newEKEvent.startDate = descriptor.dateInterval.start
             newEKEvent.endDate = descriptor.dateInterval.end
             do {

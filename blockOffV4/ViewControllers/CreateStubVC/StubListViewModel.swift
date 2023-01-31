@@ -19,6 +19,22 @@ class StubListViewModel: ObservableObject {
         }
     }
     
+    func setDefault(stub: StubViewModel) {
+        let stubs = Stub.getAllStubs()
+        for stub in stubs {
+            stub.isDefault = false
+            CoreDataManager.shared.saveContext()
+        }
+        
+        let stub = Stub.getStubBy(id: stub.id)
+        if let stub = stub {
+            stub.isDefault = true
+            CoreDataManager.shared.saveContext()
+        }
+        
+        getAllStubs()
+    }
+    
     func getAllStubs() {
         let fetchResults = Stub.getAllStubs()
         DispatchQueue.main.async {

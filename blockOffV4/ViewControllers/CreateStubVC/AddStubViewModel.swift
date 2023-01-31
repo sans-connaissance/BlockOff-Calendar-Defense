@@ -19,7 +19,6 @@ class AddStubViewModel: ObservableObject {
     @Published var selectedAvailability: Availability = .busy
     @Published var isDefault: Bool = false
     
-    
     func save() {
         let manager = CoreDataManager.shared
         let stub = Stub(context: manager.managedContext)
@@ -28,6 +27,7 @@ class AddStubViewModel: ObservableObject {
         stub.availability = Int64(selectedAvailability.rawValue)
         stub.location = location
         stub.notes = notes
+        stub.isDefault = isDefault
         manager.saveContext()
     }
 }
@@ -39,7 +39,7 @@ enum Availability: Int, CaseIterable {
     case tentative = 2
     case unavailable = 3
     
-    static let list: [Availability] = [.busy, .free, .tentative, .unavailable]
+    static let list: [Availability] = [.busy, .free]
     
     var displayText: String {
         switch self {
