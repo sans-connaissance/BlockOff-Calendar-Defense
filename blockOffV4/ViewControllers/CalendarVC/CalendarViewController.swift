@@ -42,7 +42,7 @@ class CalendarViewController: DayViewController {
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
- 
+
     }
     
     func getStubs() {
@@ -135,9 +135,29 @@ class CalendarViewController: DayViewController {
         print("\(Date.now)")
     }
     
-    @objc func goTo8() {
-        dayView.scrollTo(hour24: 22.0)
+    @objc func removeAll() {
+        if let date = dayView.dayHeaderView.state?.selectedDate {
+            var oneDayComponent = DateComponents()
+            oneDayComponent.day = 1
+            let endDate = calendar.date(byAdding: oneDayComponent, to: date)!
+            let predicate = eventStore.predicateForEvents(withStart: date, end: endDate, calendars: viewableCalendar())
+            let eventKitEvents = eventStore.events(matching: predicate)
+            
+            for event in eventKitEvents {
+                let eventIsBlock = Check.checkIfEventExists(ekID: event.eventIdentifier)
+                let stubIsBlock = Stub.isBlockOff(title: event.title)
+                if eventIsBlock || stubIsBlock {
+                    do {
+                        try eventStore.remove(event, span: .thisEvent)
+                    } catch {
+                        let nserror = error as NSError
+                        print("Could not delete. \(nserror)")
+                    }
+                }
+            }
+        }
     }
+    
     
     // MARK: Step 6 -- Return Events from Core Data
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {

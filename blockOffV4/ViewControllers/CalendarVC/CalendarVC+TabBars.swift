@@ -35,7 +35,7 @@ extension CalendarViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(title: "Remove", image: nil, target: self, action: #selector(goToToday))
+            UIBarButtonItem(title: "Remove", image: nil, target: self, action: #selector(removeAll))
         )
         toolbarItems = items
     }

@@ -57,6 +57,8 @@ struct StubRow: View {
                     vm.setDefault(stub: stub)
                 } label: {
                     Image(systemName: stub.isDefault ? "star.fill" : "star")
+                        .foregroundColor(.red)
+                        .opacity(0.8)
                 }
             }
             Text(stub.location)
