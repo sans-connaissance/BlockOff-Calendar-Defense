@@ -12,7 +12,7 @@ import CoreData
 import CalendarKit
 
 extension CalendarViewController {
-        
+        // NEEDS TO CREATE A SEPERATE GET CALENDAR EVENTS FOR BLOCK ALL
     func getCalendarEvents(_ date: Date) -> [EventDescriptor] {
         let startDate = date
         var oneDayComponent = DateComponents()
@@ -74,7 +74,6 @@ extension CalendarViewController {
         
         //MARK: Step 9 - Create Block-off Buttons
         let buttons = createBlockOffEvents(from: buttonUnitArrays)
-        
         
         //MARK: Step 9 - Combine CalendarKitEvents and Block-off Units
         let combined = combineEvents(events: [buttons, calendarKitEvents])

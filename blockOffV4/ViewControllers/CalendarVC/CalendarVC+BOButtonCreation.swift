@@ -43,6 +43,20 @@ extension CalendarViewController {
         }
     }
     
+    func createblockAllUnitArrays(units: [UnitViewModel] ) {
+        var buttonUnits: [UnitViewModel] = []
+        buttonUnits.removeAll()
+        blockAllUnitArrays.removeAll()
+        
+        for unit in units {
+            buttonUnits.append(unit)
+            if buttonUnits.count == 4 {
+                blockAllUnitArrays.append(buttonUnits)
+                buttonUnits.removeAll()
+            }
+        }
+    }
+    
     func createBlockOffEvents(from arrayOfUnits: [[UnitViewModel]]) -> [EventDescriptor] {
         var ckEvents = [CalendarKit.Event]()
  

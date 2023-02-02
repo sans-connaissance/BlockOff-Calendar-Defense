@@ -17,7 +17,9 @@ class CalendarViewController: DayViewController {
     var defaultBlock = "Block Off"
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
+    // create buttonUnitArrays for Block All button
     var buttonUnitArrays: [[UnitViewModel]] = []
+    var blockAllUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
     
@@ -42,7 +44,7 @@ class CalendarViewController: DayViewController {
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
-
+        
     }
     
     func getStubs() {
@@ -91,7 +93,7 @@ class CalendarViewController: DayViewController {
         child.view.frame = view.frame
         view.addSubview(child.view)
         child.didMove(toParent: self)
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
@@ -135,6 +137,51 @@ class CalendarViewController: DayViewController {
         print("\(Date.now)")
     }
     
+    @objc func blockAll() {
+        if let date = dayView.dayHeaderView.state?.selectedDate {
+            let units = getUnitsForBlockOff(date)
+            createblockAllUnitArrays(units: units)
+            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            
+            for event in events {
+                if let descriptor = event as? CalendarKit.Event {
+                    let newEKEvent = EKEvent(eventStore: eventStore)
+                    let defaultStub = stubs.first(where: { $0.isDefault })
+                    newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
+                    newEKEvent.title = defaultStub?.title ?? "Didn't work"
+                    
+                    guard let availability = defaultStub?.availability else { return }
+                    switch availability {
+                    case -1:
+                        newEKEvent.availability = .notSupported
+                    case 0:
+                        newEKEvent.availability = .busy
+                    case 1:
+                        newEKEvent.availability = .free
+                    case 2:
+                        newEKEvent.availability = .tentative
+                    case 3:
+                        newEKEvent.availability = .unavailable
+                    default:
+                        newEKEvent.availability = .busy
+                    }
+                    newEKEvent.notes = defaultStub?.notes ?? ""
+                    newEKEvent.location = defaultStub?.location ?? ""
+                    newEKEvent.startDate = descriptor.dateInterval.start
+                    newEKEvent.endDate = descriptor.dateInterval.end
+                    do {
+                        try eventStore.save(newEKEvent, span: .thisEvent)
+                        
+                    } catch {
+                        let nserror = error as NSError
+                        print("Could not delete. \(nserror)")
+                    }
+                    print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+                }
+            }
+        }
+    }
+    
     @objc func removeAll() {
         if let date = dayView.dayHeaderView.state?.selectedDate {
             var oneDayComponent = DateComponents()
@@ -157,7 +204,6 @@ class CalendarViewController: DayViewController {
             }
         }
     }
-    
     
     // MARK: Step 6 -- Return Events from Core Data
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
@@ -207,7 +253,7 @@ class CalendarViewController: DayViewController {
             case 3:
                 newEKEvent.availability = .unavailable
             default:
-                break
+                newEKEvent.availability = .busy
             }
             newEKEvent.notes = defaultStub?.notes ?? ""
             newEKEvent.location = defaultStub?.location ?? ""
@@ -230,8 +276,8 @@ class CalendarViewController: DayViewController {
         print("tapped at: \(date)")
         // let eventsCD = Event.getAllEvents()
         // title = "Block Off: Count \(eventsCD.count)"
-      //  self.getStubs()
-       // self.getChecks()
+        //  self.getStubs()
+        // self.getChecks()
         reloadData()
     }
 }
