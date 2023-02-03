@@ -15,14 +15,10 @@ extension CalendarViewController {
         let closure = { (action: UIAction) in
             print("yo you pressed me")
         }
-        
+        let itemss = self.stubMenuItems
         let stubSelector = UIBarButtonItem()
-        stubSelector.menu = UIMenu(children: [
-            UIAction(title: "Block off", handler: closure),
-            UIAction(title: "Block off 2", handler: closure),
-            UIAction(title: "Block off 3", handler: closure)
-        ])
-        stubSelector.title = "Block off button"
+        stubSelector.menu = UIMenu(children: itemss)
+        stubSelector.image = UIImage(systemName: "ellipsis.circle")
         let stubs = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openStubVC))
         let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
         let buttonGroup = UIBarButtonItemGroup()
@@ -51,5 +47,4 @@ extension CalendarViewController {
         )
         toolbarItems = items
     }
-    
 }

@@ -17,7 +17,6 @@ class CalendarViewController: DayViewController {
     var defaultBlock = "Block Off"
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
-    // create buttonUnitArrays for Block All button
     var buttonUnitArrays: [[UnitViewModel]] = []
     var blockAllUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
@@ -28,6 +27,17 @@ class CalendarViewController: DayViewController {
         super.viewDidLoad()
         //   let dayCount = Day.getAllDays()
         //  title = "Block Off \(dayCount.count) Events: \(eventCount)"
+        let a = UINavigationBarAppearance()
+        a.titlePositionAdjustment = .init(
+           horizontal: -CGFloat.greatestFiniteMagnitude,
+           vertical: 0
+        )
+        a.backgroundColor = .systemBackground
+        a.shadowColor = .systemBackground
+        navigationItem.scrollEdgeAppearance = a
+        navigationItem.compactAppearance = a
+        navigationItem.standardAppearance = a
+        
         title = "Block Off"
         getStubs()
         getChecks()
@@ -138,6 +148,8 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func blockAll() {
+        // NEED TO ADD SOME KIND OF TIME DAMPNER SO PEOPLE DON"T CRASH APP BY PRESSING THIS A BUNCH OF TIMES
+        
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = getUnitsForBlockOff(date)
             createblockAllUnitArrays(units: units)

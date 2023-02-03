@@ -43,4 +43,11 @@ struct StubViewModel {
         return stub.isDefault
     }
     
+    var stubMenuTitle: String {
+        if self.isDefault == true {
+            return self.title + "    " + "★"
+        } else {
+            return self.title
+        }
+    }
 }
