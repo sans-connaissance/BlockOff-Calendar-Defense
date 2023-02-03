@@ -59,9 +59,7 @@ class CalendarViewController: DayViewController {
     
     func getStubs() {
         let fetchResults = Stub.getAllStubs()
-        DispatchQueue.main.async {
-            self.stubs = fetchResults.map(StubViewModel.init)
-        }
+        self.stubs = fetchResults.map(StubViewModel.init)
     }
     
     func getChecks() {
@@ -88,6 +86,7 @@ class CalendarViewController: DayViewController {
                 self.subscribeToNotifications()
                 self.getStubs()
                 self.getChecks()
+                self.createTabBars()
                 self.reloadData()
             }
         }
@@ -110,6 +109,7 @@ class CalendarViewController: DayViewController {
             child.removeFromParent()
             self.getStubs()
             self.getChecks()
+            self.createTabBars()
             self.reloadData()
         }
     }
@@ -124,6 +124,7 @@ class CalendarViewController: DayViewController {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
             self.getStubs()
             self.getChecks()
+            self.createTabBars()
             self.reloadData()
         }
     }
@@ -136,7 +137,9 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openStubVC() {
-        let profileView = StubUIView().onDisappear{ self.getStubs() }
+        let profileView = StubUIView().onDisappear{ self.getStubs()
+            self.createTabBars()
+        }
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(hostingController, animated: true)

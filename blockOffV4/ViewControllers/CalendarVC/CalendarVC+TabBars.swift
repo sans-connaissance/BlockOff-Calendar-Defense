@@ -7,22 +7,48 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 extension CalendarViewController {
     
     func createTabBars() {
         
         let closure = { (action: UIAction) in
-            print("yo you pressed me")
+            let stubs = Stub.getAllStubs()
+            for stub in stubs {
+                stub.isDefault = false
+                CoreDataManager.shared.saveContext()
+            }
+            let stringId = action.discoverabilityTitle
+            // Convert NSManagedObjectID to a string, via the uriRepresentation method.
+            guard let objectIDString = stringId else { return }
+            // Use the persistent store coordinator to transform the string back to an NSManagedObjectID.
+            if let objectIDURL = URL(string: objectIDString) {
+                let coordinator: NSPersistentStoreCoordinator = CoreDataManager.shared.managedContext.persistentStoreCoordinator!
+                let managedObjectID = coordinator.managedObjectID(forURIRepresentation: objectIDURL)!
+                let stub = Stub.getStubBy(id: managedObjectID)
+                if let stub = stub {
+                    stub.isDefault = true
+                    CoreDataManager.shared.saveContext()
+                }
+            }
+            self.getStubs()
         }
-        let itemss = self.stubMenuItems
-        let stubSelector = UIBarButtonItem()
-        stubSelector.menu = UIMenu(children: itemss)
-        stubSelector.image = UIImage(systemName: "ellipsis.circle")
+        
+        var actions: [UIAction] = []
+        for stub in self.stubs {
+            let action = UIAction(title: stub.stubMenuTitle, identifier: UIAction.Identifier("\(stub.title)"), discoverabilityTitle: stub.id.uriRepresentation().absoluteString, handler: closure)
+            actions.append(action)
+            
+        }
+        
+        let menu = UIMenu(title: "Select Default",  children: actions)
+        let stubMenuList = UIBarButtonItem(title: "", image: UIImage(systemName: "ellipsis.circle"), menu: menu)
+ 
         let stubs = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openStubVC))
         let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
         let buttonGroup = UIBarButtonItemGroup()
-        buttonGroup.barButtonItems = [stubSelector, stubs, profile]
+        buttonGroup.barButtonItems = [stubMenuList, stubs, profile]
         self.navigationController?.navigationBar.topItem?.pinnedTrailingGroup = buttonGroup
         self.navigationController?.navigationBar.tintColor = .systemRed.withAlphaComponent(0.8)
         
