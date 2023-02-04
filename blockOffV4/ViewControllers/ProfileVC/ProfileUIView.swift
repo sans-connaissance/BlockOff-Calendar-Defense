@@ -19,7 +19,7 @@ struct ProfileUIView: View {
             Section("Subscription") {
                 Text("Active")
             }
-            Section("Work Day") {
+            Section("Blockable Hours") {
                 VStack(alignment: .leading) {
                     DatePicker("Start time", selection: $vm.startTime, displayedComponents: .hourAndMinute)
                     DatePicker("End Time", selection: $vm.endTime, displayedComponents: .hourAndMinute)

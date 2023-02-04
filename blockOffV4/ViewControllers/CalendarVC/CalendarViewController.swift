@@ -38,7 +38,7 @@ class CalendarViewController: DayViewController {
         navigationItem.compactAppearance = a
         navigationItem.standardAppearance = a
         
-        title = "Block Off"
+        title = "Block Off:" // <---- add button or a text title here for the calendar?
         getStubs()
         getChecks()
         // MARK: Step 2 -- Get Permission to Calendar
