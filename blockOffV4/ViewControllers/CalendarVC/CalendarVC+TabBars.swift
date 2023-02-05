@@ -13,7 +13,7 @@ extension CalendarViewController {
     
     func createTabBars() {
         
-        let closure = { (action: UIAction) in
+        let selectStubActionHandler = { (action: UIAction) in
             let stubs = Stub.getAllStubs()
             for stub in stubs {
                 stub.isDefault = false
@@ -35,15 +35,15 @@ extension CalendarViewController {
             self.getStubs()
         }
         
-        var actions: [UIAction] = []
+        var stubMenuActions: [UIAction] = []
         for stub in self.stubs {
-            let action = UIAction(title: stub.stubMenuTitle, identifier: UIAction.Identifier("\(stub.title)"), discoverabilityTitle: stub.id.uriRepresentation().absoluteString, handler: closure)
-            actions.append(action)
+            let action = UIAction(title: stub.stubMenuTitle, identifier: UIAction.Identifier("\(stub.title)"), discoverabilityTitle: stub.id.uriRepresentation().absoluteString, handler: selectStubActionHandler)
+            stubMenuActions.append(action)
             
         }
         
-        let menu = UIMenu(title: "Select Default",  children: actions)
-        let stubMenuList = UIBarButtonItem(title: "", image: UIImage(systemName: "ellipsis.circle"), menu: menu)
+        let stubMenu = UIMenu(title: "Select Default Block",  children: stubMenuActions)
+        let stubMenuList = UIBarButtonItem(title: "", image: UIImage(systemName: "ellipsis.circle"), menu: stubMenu)
  
         let stubs = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openStubVC))
         let profile = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(openProfileVC))
@@ -54,6 +54,29 @@ extension CalendarViewController {
         
         self.navigationController?.isToolbarHidden = false
         self.navigationController?.toolbar.tintColor = .systemRed
+        
+        
+        let blockAllDefaultActionHandler = { (action: UIAction) in
+            self.blockAllWithDefault()
+        }
+        
+        let blockAllRandomPlusDefaultActionHandler = {(action: UIAction) in
+            self.blockAllWithRandomPlusDefault()
+        }
+        
+        let blockAllRandomMinusDefaultActionHandler = {(action: UIAction) in
+            self.blockAllWithRandomMinusDefault()
+        }
+    
+        let blockAllMenuActions: [UIAction] = [
+            UIAction(title: "Randomized Blocks - Default", identifier: UIAction.Identifier("Randomized Blocks (All)"), handler: blockAllRandomMinusDefaultActionHandler),
+            UIAction(title: "Randomized Blocks + Default", identifier: UIAction.Identifier("Randomized Blocks (Without Default)"), handler: blockAllRandomPlusDefaultActionHandler),
+            UIAction(title: "Default Block", identifier: UIAction.Identifier("Default Block"), handler: blockAllDefaultActionHandler)
+        ]
+        
+        let blockAllMenu = UIMenu(title: "Fill available time with:",  children: blockAllMenuActions)
+        let blockAllMenuList = UIBarButtonItem(title: "Block All", image: nil, menu: blockAllMenu)
+        
         var items = [UIBarButtonItem]()
         
         items.append(
@@ -63,7 +86,7 @@ extension CalendarViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
         items.append(
-            UIBarButtonItem(title: "Block All", image: nil, target: self, action: #selector(blockAll))
+            blockAllMenuList
         )
         items.append(
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

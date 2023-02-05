@@ -38,7 +38,7 @@ class CalendarViewController: DayViewController {
         navigationItem.compactAppearance = a
         navigationItem.standardAppearance = a
         
-        title = "Block Off:" // <---- add button or a text title here for the calendar?
+        title = "Block Off" // <---- add button or a text title here for the calendar?
         getStubs()
         getChecks()
         // MARK: Step 2 -- Get Permission to Calendar
@@ -150,7 +150,7 @@ class CalendarViewController: DayViewController {
         print("\(Date.now)")
     }
     
-    @objc func blockAll() {
+    @objc func blockAllWithDefault() {
         // NEED TO ADD SOME KIND OF TIME DAMPNER SO PEOPLE DON"T CRASH APP BY PRESSING THIS A BUNCH OF TIMES
         
         if let date = dayView.dayHeaderView.state?.selectedDate {
@@ -182,6 +182,101 @@ class CalendarViewController: DayViewController {
                     }
                     newEKEvent.notes = defaultStub?.notes ?? ""
                     newEKEvent.location = defaultStub?.location ?? ""
+                    newEKEvent.startDate = descriptor.dateInterval.start
+                    newEKEvent.endDate = descriptor.dateInterval.end
+                    do {
+                        try eventStore.save(newEKEvent, span: .thisEvent)
+                        
+                    } catch {
+                        let nserror = error as NSError
+                        print("Could not delete. \(nserror)")
+                    }
+                    print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+                }
+            }
+        }
+    }
+    
+    @objc func blockAllWithRandomPlusDefault() {
+        
+        if let date = dayView.dayHeaderView.state?.selectedDate {
+            let units = getUnitsForBlockOff(date)
+            createblockAllUnitArrays(units: units)
+            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            
+            for event in events {
+                if let descriptor = event as? CalendarKit.Event {
+                    let newEKEvent = EKEvent(eventStore: eventStore)
+                    let randomStub = stubs.randomElement()
+                    
+                    newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
+                    newEKEvent.title = randomStub?.title ?? "Didn't work"
+                    
+                    guard let availability = randomStub?.availability else { return }
+                    switch availability {
+                    case -1:
+                        newEKEvent.availability = .notSupported
+                    case 0:
+                        newEKEvent.availability = .busy
+                    case 1:
+                        newEKEvent.availability = .free
+                    case 2:
+                        newEKEvent.availability = .tentative
+                    case 3:
+                        newEKEvent.availability = .unavailable
+                    default:
+                        newEKEvent.availability = .busy
+                    }
+                    newEKEvent.notes = randomStub?.notes ?? ""
+                    newEKEvent.location = randomStub?.location ?? ""
+                    newEKEvent.startDate = descriptor.dateInterval.start
+                    newEKEvent.endDate = descriptor.dateInterval.end
+                    do {
+                        try eventStore.save(newEKEvent, span: .thisEvent)
+                        
+                    } catch {
+                        let nserror = error as NSError
+                        print("Could not delete. \(nserror)")
+                    }
+                    print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+                }
+            }
+        }
+    }
+    
+    @objc func blockAllWithRandomMinusDefault() {
+        
+        if let date = dayView.dayHeaderView.state?.selectedDate {
+            let units = getUnitsForBlockOff(date)
+            createblockAllUnitArrays(units: units)
+            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            
+            for event in events {
+                if let descriptor = event as? CalendarKit.Event {
+                    let newEKEvent = EKEvent(eventStore: eventStore)
+                    let stubsWithoutDefault = stubs.filter { $0.isDefault == false }
+                    let randomStub = stubsWithoutDefault.randomElement()
+                    
+                    newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
+                    newEKEvent.title = randomStub?.title ?? "Didn't work"
+                    
+                    guard let availability = randomStub?.availability else { return }
+                    switch availability {
+                    case -1:
+                        newEKEvent.availability = .notSupported
+                    case 0:
+                        newEKEvent.availability = .busy
+                    case 1:
+                        newEKEvent.availability = .free
+                    case 2:
+                        newEKEvent.availability = .tentative
+                    case 3:
+                        newEKEvent.availability = .unavailable
+                    default:
+                        newEKEvent.availability = .busy
+                    }
+                    newEKEvent.notes = randomStub?.notes ?? ""
+                    newEKEvent.location = randomStub?.location ?? ""
                     newEKEvent.startDate = descriptor.dateInterval.start
                     newEKEvent.endDate = descriptor.dateInterval.end
                     do {
