@@ -69,9 +69,9 @@ extension CalendarViewController {
         }
     
         let blockAllMenuActions: [UIAction] = [
-            UIAction(title: "Randomized Blocks - Default", identifier: UIAction.Identifier("Randomized Blocks (All)"), handler: blockAllRandomMinusDefaultActionHandler),
-            UIAction(title: "Randomized Blocks + Default", identifier: UIAction.Identifier("Randomized Blocks (Without Default)"), handler: blockAllRandomPlusDefaultActionHandler),
-            UIAction(title: "Default Block", identifier: UIAction.Identifier("Default Block"), handler: blockAllDefaultActionHandler)
+            UIAction(title: "Randomized without Default", identifier: UIAction.Identifier("Randomized Blocks (All)"), handler: blockAllRandomMinusDefaultActionHandler),
+            UIAction(title: "Randomized with Default", identifier: UIAction.Identifier("Randomized Blocks (Without Default)"), handler: blockAllRandomPlusDefaultActionHandler),
+            UIAction(title: "Default", identifier: UIAction.Identifier("Default Block"), handler: blockAllDefaultActionHandler)
         ]
         
         let blockAllMenu = UIMenu(title: "Fill available time with:",  children: blockAllMenuActions)

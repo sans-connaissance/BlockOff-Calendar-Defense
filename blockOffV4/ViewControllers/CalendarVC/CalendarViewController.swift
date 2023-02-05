@@ -19,6 +19,7 @@ class CalendarViewController: DayViewController {
     var checks: [CheckViewModel] = []
     var buttonUnitArrays: [[UnitViewModel]] = []
     var blockAllUnitArrays: [[UnitViewModel]] = []
+    var reducedUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
     
@@ -345,6 +346,7 @@ class CalendarViewController: DayViewController {
         }
         
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
+            
             let newEKEvent = EKEvent(eventStore: eventStore)
             let defaultStub = stubs.first(where: { $0.isDefault })
             newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
@@ -377,6 +379,13 @@ class CalendarViewController: DayViewController {
                 print("Could not delete. \(nserror)")
             }
             print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+        }
+    }
+    
+    override func dayViewDidLongPressEventView(_ eventView: EventView) {
+        if let descriptor = eventView.descriptor as? CalendarKit.Event {
+            let units = Unit.getUnitsBY(start: descriptor.dateInterval.start, end: descriptor.dateInterval.end).map(UnitViewModel.init)
+            self.reducedUnitArrays.append(units)
         }
     }
     

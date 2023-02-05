@@ -43,7 +43,7 @@ extension CalendarViewController {
         }
     }
     
-    func createblockAllUnitArrays(units: [UnitViewModel] ) {
+    func createBlockAllUnitArrays(units: [UnitViewModel] ) {
         var buttonUnits: [UnitViewModel] = []
         buttonUnits.removeAll()
         blockAllUnitArrays.removeAll()
