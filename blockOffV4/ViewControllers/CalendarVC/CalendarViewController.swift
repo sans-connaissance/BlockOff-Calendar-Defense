@@ -156,7 +156,7 @@ class CalendarViewController: DayViewController {
         
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = getUnitsForBlockOff(date)
-            createblockAllUnitArrays(units: units)
+            createBlockAllUnitArrays(units: units)
             let events = createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
@@ -202,7 +202,7 @@ class CalendarViewController: DayViewController {
         
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = getUnitsForBlockOff(date)
-            createblockAllUnitArrays(units: units)
+            createBlockAllUnitArrays(units: units)
             let events = createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
@@ -249,7 +249,7 @@ class CalendarViewController: DayViewController {
         
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = getUnitsForBlockOff(date)
-            createblockAllUnitArrays(units: units)
+            createBlockAllUnitArrays(units: units)
             let events = createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
@@ -383,6 +383,7 @@ class CalendarViewController: DayViewController {
     }
     
     override func dayViewDidLongPressEventView(_ eventView: EventView) {
+        
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             let units = Unit.getUnitsBY(start: descriptor.dateInterval.start, end: descriptor.dateInterval.end).map(UnitViewModel.init)
             self.reducedUnitArrays.append(units)
