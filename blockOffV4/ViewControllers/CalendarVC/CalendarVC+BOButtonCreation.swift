@@ -76,7 +76,11 @@ extension CalendarViewController {
                     endTime = unit.endDate
                 }
             }
-            ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+            let eventInterval = DateInterval(start: startTime, end: endTime)
+            let duration = eventInterval.duration
+            if duration > 100.0 {
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+            }
         }
         return ckEvents
     }
