@@ -384,9 +384,38 @@ class CalendarViewController: DayViewController {
     
     override func dayViewDidLongPressEventView(_ eventView: EventView) {
         
+        // Gray Blocks
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             let units = Unit.getUnitsBY(start: descriptor.dateInterval.start, end: descriptor.dateInterval.end).map(UnitViewModel.init)
-            self.reducedUnitArrays.append(units)
+            let subUnitView = SubUnitUIView().onDisappear { self.getStubs()
+                self.createTabBars()
+            }
+            let hostingController = UIHostingController(rootView: subUnitView)
+            hostingController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(hostingController, animated: true)
+        }
+        
+        if let ckEvent = eventView.descriptor as? EKWrapper {
+            let ekEvent = ckEvent.ekEvent
+
+            let eventIsBlock = Check.checkIfEventExists(ekID: ekEvent.eventIdentifier)
+            let stubIsBlock = Stub.isBlockOff(title: ekEvent.title)
+
+            if eventIsBlock || stubIsBlock {
+                let blockOffEventView = BlockOffEventUIView().onDisappear { self.getStubs()
+                    self.createTabBars()
+                }
+                let hostingController = UIHostingController(rootView: blockOffEventView)
+                hostingController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(hostingController, animated: true)
+            } else {
+                let realCalendarEventView = RealCalendarEventUIView().onDisappear { self.getStubs()
+                    self.createTabBars()
+                }
+                let hostingController = UIHostingController(rootView: realCalendarEventView)
+                hostingController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(hostingController, animated: true)
+            }
         }
     }
     
