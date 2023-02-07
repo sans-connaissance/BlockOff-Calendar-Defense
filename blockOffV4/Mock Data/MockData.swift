@@ -18,6 +18,19 @@ struct MockData {
     let eventStore = EKEventStore()
     var availableCalenders = [EKCalendar]()
     
+    func setCalendarEvent() -> EKEvent {
+        let newEKEvent = EKEvent(eventStore: eventStore)
+        
+        newEKEvent.startDate = Date.now
+        newEKEvent.endDate = Date(timeInterval: 3600, since: Date.now)
+        newEKEvent.title = "Weekly PDPP Check-in"
+        newEKEvent.availability = .busy
+        newEKEvent.location = "At the office"
+        newEKEvent.notes = "Hello here are a bunch of notes."
+        return newEKEvent
+
+    }
+    
 
     
     mutating func createCalendars() {

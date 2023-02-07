@@ -409,7 +409,7 @@ class CalendarViewController: DayViewController {
                 hostingController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(hostingController, animated: true)
             } else {
-                let realCalendarEventView = RealCalendarEventUIView().onDisappear { self.getStubs()
+                let realCalendarEventView = RealCalendarEventUIView(eventStore: self.eventStore, ekEvent: ekEvent).onDisappear { self.getStubs()
                     self.createTabBars()
                 }
                 let hostingController = UIHostingController(rootView: realCalendarEventView)
@@ -429,4 +429,5 @@ class CalendarViewController: DayViewController {
         // self.getChecks()
         reloadData()
     }
+    
 }
