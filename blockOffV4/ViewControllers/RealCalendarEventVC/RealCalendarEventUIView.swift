@@ -11,39 +11,56 @@ import EventKit
 struct RealCalendarEventUIView: View {
     let eventStore: EKEventStore
     let ekEvent: EKEvent
-    
+    // need to pass ekEvent into a wrapper or something in order to manage optionals??
     var body: some View {
         NavigationStack {
-            Form {
-                VStack {
-                    Text("Hey")
-                    
-                }
-                
-                Section("Time"){
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text(ekEvent.title)
+                        .font(.headline)
+                        .fontWeight(.heavy)
                     HStack {
-                        Text("Start Time:")
                         Text(ekEvent.startDate.description)
-                    }
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }.padding(.top)
                     HStack {
-                        Text("Start Time:")
                         Text(ekEvent.startDate.description)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        Spacer()
                     }
+                    CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
                     
-                }
+                }.padding([.leading, .trailing])
             }
-            .navigationTitle(ekEvent.title)
-            
         }
     }
+}
+
+struct CalendarItemRow: View {
+    let title: String
+    let item: String
     
-//    func wrapEvent(event: EKEvent) -> EventViewModel {
-//
-//        let evm = event.map(EventViewModel.init)
-//
-//        return
-//
-//    }
+    var body: some View {
+        VStack {
+            Divider()
+                .padding(.bottom, 4)
+            HStack(alignment:.bottom) {
+                Text(title)
+                    .font(.body)
+                Spacer()
+                Text(item)
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+            Divider()
+                .padding(.top, 0)
+        }
+    }
 }
 
 //THINGS TO MANAGE

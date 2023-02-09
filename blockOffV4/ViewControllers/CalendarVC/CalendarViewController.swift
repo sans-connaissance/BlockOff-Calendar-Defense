@@ -414,6 +414,7 @@ class CalendarViewController: DayViewController {
                 }
                 let hostingController = UIHostingController(rootView: realCalendarEventView)
                 hostingController.hidesBottomBarWhenPushed = true
+                hostingController.title = "Event Details"
                 self.navigationController?.pushViewController(hostingController, animated: true)
             }
         }

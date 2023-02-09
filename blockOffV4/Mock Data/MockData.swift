@@ -27,6 +27,9 @@ struct MockData {
         newEKEvent.availability = .busy
         newEKEvent.location = "At the office"
         newEKEvent.notes = "Hello here are a bunch of notes."
+        let calendar21 = EKCalendar(for: .event, eventStore: eventStore)
+        calendar21.title = "Calendar Title"
+        newEKEvent.calendar = calendar21
         return newEKEvent
 
     }
