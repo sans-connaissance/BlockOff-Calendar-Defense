@@ -33,13 +33,16 @@ struct RealCalendarEventUIView: View {
                             .foregroundColor(.gray)
                         Spacer()
                     }
-                    CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, isFirst: true)
-                    CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
-                    CalendarItemRow(title:"Show As", item: getStatus(ekEvent.availability.rawValue))
-                    CalendarItemRow(title:"Alert", item: ekEvent.alarms?.description ?? "none")
-                    CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
-                    CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
-                    ParticipantsListView(ekEvent: ekEvent)
+                    Group {
+                        CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, isFirst: true)
+                        CalendarItemRow(title:"Organizer", item: ekEvent.organizer?.name ?? "")
+                        CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
+                        CalendarItemRow(title:"Show As", item: getStatus(ekEvent.availability.rawValue))
+                        CalendarItemRow(title:"Alert", item: ekEvent.alarms?.description ?? "none")
+                        CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
+                        CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
+                        ParticipantsListView(ekEvent: ekEvent)
+                    }
                     
                 }.padding([.leading, .trailing])
             }
