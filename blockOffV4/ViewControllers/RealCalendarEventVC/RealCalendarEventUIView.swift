@@ -34,10 +34,10 @@ struct RealCalendarEventUIView: View {
                         Spacer()
                     }
                     Group {
-                        CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, isFirst: true)
+                        CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, showTopDivider: true)
                         CalendarItemRow(title:"Organizer", item: ekEvent.organizer?.name ?? "")
                         CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
-                        CalendarItemRow(title:"Show As", item: getStatus(ekEvent.availability.rawValue))
+                        CalendarItemRow(title:"Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
                         CalendarItemRow(title:"Alert", item: ekEvent.alarms?.description ?? "none")
                         CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
                         CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
@@ -47,11 +47,6 @@ struct RealCalendarEventUIView: View {
                 }.padding([.leading, .trailing])
             }
         }
-    }
-    
-    private func getStatus(_ status: Int) -> String {
-        let status = Availability(rawValue: status)
-        return status?.displayText ?? ""
     }
 }
 
@@ -79,14 +74,17 @@ struct ParticipantsListView: View {
     }
 }
 
+/// Refactor this item row so that it can be used in multiple locations, such as the StubUIView
 struct CalendarItemRow: View {
     let title: String
     let item: String
-    var isFirst: Bool = false
+    var showTopDivider: Bool = false
+    var showBottomDivider: Bool = true
+    var isStatus: Bool = false
     
     var body: some View {
         VStack {
-            if isFirst {
+            if showTopDivider {
                 Divider()
                     .padding(.bottom,2)
             }
@@ -94,13 +92,25 @@ struct CalendarItemRow: View {
                 Text(title)
                     .font(.body)
                 Spacer()
-                Text(item)
-                    .font(.body)
-                    .foregroundColor(.gray)
+                if !isStatus {
+                    Text(item)
+                        .font(.body)
+                        .foregroundColor(.gray)
+                } else {
+                    Text(getStatus(Int(item)!))
+                        .font(.body)
+                        .foregroundColor(.gray)
+                }
             }
-            Divider()
-                .padding(.top, 0)
+            if showBottomDivider {
+                Divider()
+                    .padding(.top, 0)
+            }
         }
+    }
+    private func getStatus(_ status: Int) -> String {
+        let status = Availability(rawValue: status)
+        return status?.displayText ?? ""
     }
 }
 

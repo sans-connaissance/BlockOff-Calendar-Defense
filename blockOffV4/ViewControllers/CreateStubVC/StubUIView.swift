@@ -21,37 +21,39 @@ struct StubUIView: View {
     }
     
     var body: some View {
-        Form {
-            Section {
-                ForEach(vm.stubs, id: \.id) { stub in
-                    StubRow(stub: stub, vm: vm)
-                }.onDelete(perform: deleteStub)
-            } header: {
-                HeaderWithButton(isPresented: $isPresented)
+            List {
+                Section {
+                    ForEach(vm.stubs, id: \.id) { stub in
+                        StubRow(stub: stub, vm: vm)
+                    }.onDelete(perform: deleteStub)
+                } header: {
+                    HeaderWithButton(isPresented: $isPresented)
+                }
             }
+            .listStyle(PlainListStyle())
+            .sheet(isPresented: $isPresented, onDismiss: {
+                vm.getAllStubs()
+            },  content: {
+                CreateStubUIView()
+            })
+            .embedInNavigationView()
+            
+            .onAppear(perform: {
+                vm.getAllStubs()
+            })
         }
-        .listStyle(PlainListStyle())
-        .sheet(isPresented: $isPresented, onDismiss: {
-            vm.getAllStubs()
-        },  content: {
-            CreateStubUIView()
-        })
-        .embedInNavigationView()
-        
-        .onAppear(perform: {
-            vm.getAllStubs()
-        })
-    }
 }
 
 struct StubRow: View {
     let stub: StubViewModel
     @StateObject var vm: StubListViewModel
-   
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
-                Text(stub.title).font(.headline)
+                Text(stub.title)
+                    .font(.headline)
+                    .fontWeight(.heavy)
                 Spacer()
                 Button {
                     vm.setDefault(stub: stub)
@@ -61,6 +63,8 @@ struct StubRow: View {
                         .opacity(0.8)
                 }
             }
+            CalendarItemRow(title: "Show As", item: String(stub.availability), showTopDivider: false, showBottomDivider: false, isStatus: true)
+            CalendarItemRow(title: "Location", item: stub.location, showTopDivider: false, showBottomDivider: false)
             Text(stub.location)
             AvailabilityRow(status: stub.availability)
             Text("Includes Notes:")
