@@ -21,27 +21,27 @@ struct StubUIView: View {
     }
     
     var body: some View {
-            List {
-                Section {
-                    ForEach(vm.stubs, id: \.id) { stub in
-                        StubRow(stub: stub, vm: vm)
-                    }.onDelete(perform: deleteStub)
-                } header: {
-                    HeaderWithButton(isPresented: $isPresented)
-                }
+        List {
+            Section {
+                ForEach(vm.stubs, id: \.id) { stub in
+                    StubRow(stub: stub, vm: vm)
+                }.onDelete(perform: deleteStub)
+            } header: {
+                HeaderWithButton(isPresented: $isPresented)
             }
-            .listStyle(PlainListStyle())
-            .sheet(isPresented: $isPresented, onDismiss: {
-                vm.getAllStubs()
-            },  content: {
-                CreateStubUIView()
-            })
-            .embedInNavigationView()
-            
-            .onAppear(perform: {
-                vm.getAllStubs()
-            })
         }
+        .listStyle(.inset)
+        .sheet(isPresented: $isPresented, onDismiss: {
+            vm.getAllStubs()
+        },  content: {
+            CreateStubUIView()
+        })
+        .embedInNavigationView()
+        
+        .onAppear(perform: {
+            vm.getAllStubs()
+        })
+    }
 }
 
 struct StubRow: View {
@@ -49,10 +49,10 @@ struct StubRow: View {
     @StateObject var vm: StubListViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(stub.title)
-                    .font(.headline)
+                    .font(.title2)
                     .fontWeight(.heavy)
                 Spacer()
                 Button {
@@ -62,24 +62,13 @@ struct StubRow: View {
                         .foregroundColor(.red)
                         .opacity(0.8)
                 }
+            }.padding(.bottom, 5)
+            if stub.location.count > 0 {
+                CalendarItemRow(title: "Location", item: stub.location, showTopDivider: false, showBottomDivider: false)
             }
             CalendarItemRow(title: "Show As", item: String(stub.availability), showTopDivider: false, showBottomDivider: false, isStatus: true)
-            CalendarItemRow(title: "Location", item: stub.location, showTopDivider: false, showBottomDivider: false)
-            Text(stub.location)
-            AvailabilityRow(status: stub.availability)
-            Text("Includes Notes:")
-            Spacer()
-            Text("Yes")
-        }
-    }
-    
-    struct AvailabilityRow: View {
-        let status: Int64
-        
-        var body: some View {
-            HStack {
-                Text("Availability:")
-                Text(Availability(rawValue: Int(status))?.displayText ?? "")
+            if stub.notes.count > 0 {
+                CalendarItemRow(title: "Notes", item: stub.notes, showTopDivider: false, showBottomDivider: false)
             }
         }
     }

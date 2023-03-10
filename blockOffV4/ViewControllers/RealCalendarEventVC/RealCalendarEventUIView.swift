@@ -88,7 +88,7 @@ struct CalendarItemRow: View {
                 Divider()
                     .padding(.bottom,2)
             }
-            HStack(alignment:.bottom) {
+            HStack(alignment:.top, spacing: 10) {
                 Text(title)
                     .font(.body)
                 Spacer()
@@ -96,6 +96,7 @@ struct CalendarItemRow: View {
                     Text(item)
                         .font(.body)
                         .foregroundColor(.gray)
+                        .lineLimit(1)
                 } else {
                     Text(getStatus(Int(item)!))
                         .font(.body)

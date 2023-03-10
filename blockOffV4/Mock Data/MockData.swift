@@ -26,7 +26,7 @@ struct MockData {
         newEKEvent.title = "Weekly PDPP Check-in"
         newEKEvent.availability = .busy
         newEKEvent.location = "At the office"
-        newEKEvent.notes = "Hello here are a bunch of notes."
+        newEKEvent.notes = "Hello here are a bunch of notes. now the notes are even longer, what is going to happen here, oh nooo!!!!"
         let calendar21 = EKCalendar(for: .event, eventStore: eventStore)
         calendar21.title = "Calendar Title"
         newEKEvent.calendar = calendar21

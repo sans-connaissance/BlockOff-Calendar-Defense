@@ -18,7 +18,7 @@ struct CreateStubUIView: View {
                 TextField("Location or Video Call", text: $vm.location)
             }
             Section("") {
-                Picker("Select Availability", selection: $vm.selectedAvailability) {
+                Picker("Show As", selection: $vm.selectedAvailability) {
                     ForEach(Availability.list, id: \.self) {
                         Text($0.displayText)
                     }
@@ -37,7 +37,7 @@ struct CreateStubUIView: View {
             }
             
         }
-        .navigationTitle("Create Block")
+        .navigationTitle("Create Block Off")
         .embedInNavigationView()
     }
 }
