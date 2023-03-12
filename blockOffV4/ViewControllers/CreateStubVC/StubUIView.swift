@@ -24,7 +24,11 @@ struct StubUIView: View {
         List {
             Section {
                 ForEach(vm.stubs, id: \.id) { stub in
-                    StubRow(stub: stub, vm: vm)
+                    Button {
+                        print("hi")
+                    } label: {
+                        StubRow(stub: stub, vm: vm)
+                    }
                 }.onDelete(perform: deleteStub)
             } header: {
                 HeaderWithButton(isPresented: $isPresented)
@@ -61,7 +65,7 @@ struct StubRow: View {
                     Image(systemName: stub.isDefault ? "star.fill" : "star")
                         .foregroundColor(.red)
                         .opacity(0.8)
-                }
+                }.buttonStyle(.plain)
             }.padding(.bottom, 5)
             if stub.location.count > 0 {
                 CalendarItemRow(title: "Location", item: stub.location, showTopDivider: false, showBottomDivider: false)
