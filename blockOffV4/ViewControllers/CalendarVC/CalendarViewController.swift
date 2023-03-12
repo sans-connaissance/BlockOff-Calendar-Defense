@@ -402,7 +402,7 @@ class CalendarViewController: DayViewController {
             let stubIsBlock = Stub.isBlockOff(title: ekEvent.title)
 
             if eventIsBlock || stubIsBlock {
-                let blockOffEventView = BlockOffEventUIView().onDisappear { self.getStubs()
+                let blockOffEventView = BlockOffEventUIView(eventStore: self.eventStore, ekEvent: ekEvent).onDisappear { self.getStubs()
                     self.createTabBars()
                 }
                 let hostingController = UIHostingController(rootView: blockOffEventView)

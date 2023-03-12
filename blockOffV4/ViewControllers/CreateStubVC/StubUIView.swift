@@ -10,7 +10,6 @@ import SwiftUI
 struct StubUIView: View {
     @StateObject private var vm = StubListViewModel()
     @State private var isPresented: Bool = false
-    @State private var isEditPresented: Bool = false
     @State private var stubViewModel: StubViewModel? = nil
     
     
@@ -28,7 +27,6 @@ struct StubUIView: View {
                 ForEach(vm.stubs, id: \.id) { stub in
                     Button {
                         stubViewModel = stub
-                        //isEditPresented.toggle()
                     } label: {
                         StubRow(stub: stub, vm: vm)
                     }

@@ -6,15 +6,53 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct BlockOffEventUIView: View {
+    let eventStore: EKEventStore
+    let ekEvent: EKEvent
+    // need to pass ekEvent into a wrapper or something in order to manage optionals??
     var body: some View {
-        Text("block off event")
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text(ekEvent.title)
+                        .font(.headline)
+                        .fontWeight(.heavy)
+                    HStack {
+                        Text(ekEvent.startDate.description)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }.padding(.top)
+                    HStack {
+                        Text(ekEvent.startDate.description)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                    Group {
+                        CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, showTopDivider: true)
+                        CalendarItemRow(title:"Organizer", item: ekEvent.organizer?.name ?? "")
+                        CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
+                        CalendarItemRow(title:"Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
+                        CalendarItemRow(title:"Alert", item: ekEvent.alarms?.description ?? "none")
+                        CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
+                        CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
+                        ParticipantsListView(ekEvent: ekEvent)
+                    }
+                    
+                }.padding([.leading, .trailing])
+            }
+        }
     }
 }
 
+
 struct BlockOffEventUIView_Previews: PreviewProvider {
     static var previews: some View {
-        BlockOffEventUIView()
+        BlockOffEventUIView(eventStore: MockData.shared.eventStore, ekEvent: MockData.shared.setCalendarEvent())
     }
 }

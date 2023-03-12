@@ -32,10 +32,20 @@ class EditStubViewModel: ObservableObject {
         self.availability = Availability(rawValue: Int(stub.availability))  ?? .notSupported
     }
     
-    func save() {
+    func save(stubID: NSManagedObjectID) {
         let manager = CoreDataManager.shared
-        let stub = Stub(context: manager.managedContext)
-        stub.title = title + "  "
+        guard let stub = Stub.getStubBy(id: stubID) else {return}
+        
+        // THE CHECK WORKS BUT IT"S POPPING THE LAST TWO FROM THE PUBLISHED VAR
+        var check = title
+        let last = check.removeLast()
+        let nextLast = check.removeLast()
+        let stringCheck = last.description + nextLast.description
+        if stringCheck == "  " {
+            stub.title = title
+        } else {
+            stub.title = title + "  "
+        }
         stub.text = text
         stub.availability = Int64(selectedAvailability.rawValue)
         stub.location = location

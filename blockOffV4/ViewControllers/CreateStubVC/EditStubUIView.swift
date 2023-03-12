@@ -32,7 +32,7 @@ struct EditStubUIView: View {
             HStack {
                 Spacer()
                 Button("Save") {
-                    vm.save()
+                    vm.save(stubID: stubID.id)
                     presentationMode.wrappedValue.dismiss()
                 }
                 Spacer()
