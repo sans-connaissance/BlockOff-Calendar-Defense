@@ -27,6 +27,8 @@ class EditStubViewModel: ObservableObject {
         self.isAllDay = stub.isAllDay
         self.location = stub.location ?? "didn't work"
         self.notes = stub.notes ?? "didn't work"
+        
+        // THIS IS BROKEN AND IS NOT WORKING CORRECTLY
         self.availability = Availability(rawValue: Int(stub.availability))  ?? .notSupported
     }
     

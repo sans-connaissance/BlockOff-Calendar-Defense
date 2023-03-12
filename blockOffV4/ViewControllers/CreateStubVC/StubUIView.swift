@@ -10,6 +10,8 @@ import SwiftUI
 struct StubUIView: View {
     @StateObject private var vm = StubListViewModel()
     @State private var isPresented: Bool = false
+    @State private var isEditPresented: Bool = false
+    @State private var stubViewModel: StubViewModel? = nil
     
     
     private func deleteStub(at indexSet: IndexSet) {
@@ -25,7 +27,8 @@ struct StubUIView: View {
             Section {
                 ForEach(vm.stubs, id: \.id) { stub in
                     Button {
-                        print("hi")
+                        stubViewModel = stub
+                        //isEditPresented.toggle()
                     } label: {
                         StubRow(stub: stub, vm: vm)
                     }
@@ -39,6 +42,11 @@ struct StubUIView: View {
             vm.getAllStubs()
         },  content: {
             CreateStubUIView()
+        })
+        .sheet(item: $stubViewModel, onDismiss: {
+            vm.getAllStubs()
+        },  content: { stub in
+            EditStubUIView(stubID: stub)
         })
         .embedInNavigationView()
         

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct StubViewModel {
+struct StubViewModel: Identifiable {
     let stub: Stub
     
     var id: NSManagedObjectID {
