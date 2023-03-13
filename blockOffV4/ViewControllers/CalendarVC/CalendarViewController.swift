@@ -387,9 +387,9 @@ class CalendarViewController: DayViewController {
         // Gray Blocks
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             let units = Unit.getUnitsBY(start: descriptor.dateInterval.start, end: descriptor.dateInterval.end).map(UnitViewModel.init)
-            let subUnitView = SubUnitUIView().onDisappear { self.getStubs()
+            let subUnitView = SubUnitUIView(eventStore: self.eventStore, units: units, stubs: stubs).onDisappear { self.getStubs()
                 self.createTabBars()
-            }
+            }.onAppear {self.createTabBars()}
             let hostingController = UIHostingController(rootView: subUnitView)
             hostingController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(hostingController, animated: true)

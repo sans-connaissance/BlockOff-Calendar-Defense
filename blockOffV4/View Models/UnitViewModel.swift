@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-struct UnitViewModel: Hashable {
+struct UnitViewModel: Hashable, Identifiable {
     let unit: Unit
 
     var id: NSManagedObjectID {
