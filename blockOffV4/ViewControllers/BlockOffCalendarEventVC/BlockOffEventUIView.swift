@@ -9,6 +9,7 @@ import SwiftUI
 import EventKit
 
 struct BlockOffEventUIView: View {
+    @State private var isPresented: Bool = false
     let eventStore: EKEventStore
     let ekEvent: EKEvent
     // need to pass ekEvent into a wrapper or something in order to manage optionals??
@@ -47,6 +48,19 @@ struct BlockOffEventUIView: View {
                 }.padding([.leading, .trailing])
             }
         }
+        // add editable EditStubUIView instead of CreateView
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Edit") {
+                    isPresented.toggle()
+                }
+            }
+        }
+        .sheet(isPresented: $isPresented, onDismiss: {
+            // vm.getAllStubs()
+        },  content: {
+            CreateStubUIView()
+        })
     }
 }
 
