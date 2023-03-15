@@ -87,7 +87,6 @@ class CalendarViewController: DayViewController {
                 self.subscribeToNotifications()
                 self.getStubs()
                 self.getChecks()
-                self.createTabBars()
                 self.reloadData()
             }
         }
@@ -110,7 +109,6 @@ class CalendarViewController: DayViewController {
             child.removeFromParent()
             self.getStubs()
             self.getChecks()
-            self.createTabBars()
             self.reloadData()
         }
     }
@@ -125,7 +123,6 @@ class CalendarViewController: DayViewController {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
             self.getStubs()
             self.getChecks()
-            self.createTabBars()
             self.reloadData()
         }
     }
@@ -139,7 +136,6 @@ class CalendarViewController: DayViewController {
     
     @objc func openStubVC() {
         let profileView = StubUIView().onDisappear{ self.getStubs()
-            self.createTabBars()
         }
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
@@ -388,7 +384,6 @@ class CalendarViewController: DayViewController {
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             let units = Unit.getUnitsBY(start: descriptor.dateInterval.start, end: descriptor.dateInterval.end).map(UnitViewModel.init)
             let subUnitView = SubUnitUIView(eventStore: self.eventStore, units: units, stubs: stubs).onDisappear { self.getStubs()
-                self.createTabBars()
             }.onAppear {self.createTabBars()}
             let hostingController = UIHostingController(rootView: subUnitView)
             hostingController.hidesBottomBarWhenPushed = true
@@ -430,5 +425,5 @@ class CalendarViewController: DayViewController {
         // self.getChecks()
         reloadData()
     }
-    
 }
+

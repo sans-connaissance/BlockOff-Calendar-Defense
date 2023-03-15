@@ -40,6 +40,8 @@
 		41DCCC852990A03100E12117 /* RealCalendarEventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DCCC842990A03100E12117 /* RealCalendarEventUIView.swift */; };
 		41E7C06129BD39F00094F536 /* EditStubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06029BD39F00094F536 /* EditStubViewModel.swift */; };
 		41E7C06329BD3C810094F536 /* EditStubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06229BD3C810094F536 /* EditStubUIView.swift */; };
+		41E7C06729C006FB0094F536 /* EditBlockOffEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06629C006FB0094F536 /* EditBlockOffEventViewModel.swift */; };
+		41E7C06929C0070D0094F536 /* EditBlockOffEventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06829C0070D0094F536 /* EditBlockOffEventUIView.swift */; };
 		41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F4B99B293B9CA0009A6FD2 /* CalendarKit */; };
 		41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */; };
 		41F4B9AA293BA327009A6FD2 /* Check+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */; };
@@ -91,6 +93,8 @@
 		41DCCC842990A03100E12117 /* RealCalendarEventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealCalendarEventUIView.swift; sourceTree = "<group>"; };
 		41E7C06029BD39F00094F536 /* EditStubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStubViewModel.swift; sourceTree = "<group>"; };
 		41E7C06229BD3C810094F536 /* EditStubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStubUIView.swift; sourceTree = "<group>"; };
+		41E7C06629C006FB0094F536 /* EditBlockOffEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlockOffEventViewModel.swift; sourceTree = "<group>"; };
+		41E7C06829C0070D0094F536 /* EditBlockOffEventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlockOffEventUIView.swift; sourceTree = "<group>"; };
 		41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockOffDataModel.xcdatamodel; sourceTree = "<group>"; };
 		41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				41DCCC8129909FEF00E12117 /* BlockOffEventUIView.swift */,
+				41E7C06629C006FB0094F536 /* EditBlockOffEventViewModel.swift */,
+				41E7C06829C0070D0094F536 /* EditBlockOffEventUIView.swift */,
 			);
 			path = BlockOffCalendarEventVC;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
 				41CAAB18298766020087EB74 /* CheckViewModel.swift in Sources */,
+				41E7C06929C0070D0094F536 /* EditBlockOffEventUIView.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,
 				41F4B9AB293BA327009A6FD2 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */,
@@ -404,6 +411,7 @@
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
+				41E7C06729C006FB0094F536 /* EditBlockOffEventViewModel.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
 				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,
