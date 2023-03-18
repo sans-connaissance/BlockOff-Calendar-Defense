@@ -41,4 +41,7 @@ extension UserDefaults {
     
     @UserDefault(key: "system_end_time", defaultValue: 21600.0)
     static var distanceFromEndOfDay: Double
+    
+    @UserDefault(key: "first_launch_date", defaultValue: Date())
+    static var firstLaunchDate: Date
 }
