@@ -44,4 +44,7 @@ extension UserDefaults {
     
     @UserDefault(key: "first_launch_date", defaultValue: Date())
     static var firstLaunchDate: Date
+    
+    @UserDefault(key: "last_day_in_core_data", defaultValue: Date())
+    static var lastDayInCoreData: Date
 }
