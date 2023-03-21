@@ -146,7 +146,9 @@ class CalendarViewController: DayViewController {
     }
     
     @objc func openStubVC() {
-        let profileView = StubUIView().onDisappear{ self.getStubs()
+        let profileView = StubUIView().onDisappear{
+            self.getStubs()
+            self.createTabBars()
         }
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
