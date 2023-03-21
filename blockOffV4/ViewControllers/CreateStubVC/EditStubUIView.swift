@@ -5,14 +5,14 @@
 //  Created by David Malicke on 3/11/23.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct EditStubUIView: View {
     @StateObject private var vm = EditStubViewModel()
     @Environment(\.presentationMode) var presentationMode
     var stubID: StubViewModel
-    
+
     var body: some View {
         Form {
             Section("") {
@@ -46,8 +46,9 @@ struct EditStubUIView: View {
     }
 }
 
-// struct EditStubUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditStubUIView()
-//    }
-// }
+struct EditStubUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        let stubs = Stub.getAllStubs()
+        EditStubUIView(stubID: StubViewModel(stub: stubs.first!))
+    }
+}

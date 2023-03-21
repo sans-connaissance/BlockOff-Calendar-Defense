@@ -11,8 +11,7 @@ struct StubUIView: View {
     @StateObject private var vm = StubListViewModel()
     @State private var isPresented: Bool = false
     @State private var stubViewModel: StubViewModel? = nil
-    
-    
+
     private func deleteStub(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let stub = vm.stubs[index]
@@ -20,7 +19,7 @@ struct StubUIView: View {
             vm.getAllStubs()
         }
     }
-    
+
     var body: some View {
         List {
             Section {
@@ -38,16 +37,16 @@ struct StubUIView: View {
         .listStyle(.inset)
         .sheet(isPresented: $isPresented, onDismiss: {
             vm.getAllStubs()
-        },  content: {
+        }, content: {
             CreateStubUIView()
         })
         .sheet(item: $stubViewModel, onDismiss: {
             vm.getAllStubs()
-        },  content: { stub in
+        }, content: { stub in
             EditStubUIView(stubID: stub)
         })
         .embedInNavigationView()
-        
+
         .onAppear(perform: {
             vm.getAllStubs()
         })
@@ -57,7 +56,7 @@ struct StubUIView: View {
 struct StubRow: View {
     let stub: StubViewModel
     @StateObject var vm: StubListViewModel
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
@@ -86,7 +85,7 @@ struct StubRow: View {
 
 struct HeaderWithButton: View {
     @Binding var isPresented: Bool
-    
+
     var body: some View {
         HStack {
             Text("Block Offs")

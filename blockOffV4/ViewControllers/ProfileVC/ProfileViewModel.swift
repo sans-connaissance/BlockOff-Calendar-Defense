@@ -5,12 +5,11 @@
 //  Created by David Malicke on 1/24/23.
 //
 
-import Foundation
 import CoreData
 import EventKit
+import Foundation
 
 class ProfileViewModel: ObservableObject {
-    
     @Published var editableCalendars: [CalendarViewModel] = []
     @Published var selectedCalendar: CalendarViewModel?
     @Published var startTime = Date()
@@ -19,7 +18,7 @@ class ProfileViewModel: ObservableObject {
         
     func getCalendars() {
         let calendars = CalendarManager.shared.availableCalenders
-        editableCalendars = calendars.filter({ $0.editable })
+        editableCalendars = calendars.filter { $0.editable }
     }
     
     func getDefaultCalendar(eventStore: EKEventStore) {

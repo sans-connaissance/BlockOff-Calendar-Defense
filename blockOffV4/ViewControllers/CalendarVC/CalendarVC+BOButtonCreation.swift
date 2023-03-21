@@ -5,14 +5,13 @@
 //  Created by David Malicke on 12/18/22.
 //
 
-import UIKit
+import CalendarKit
+import CoreData
 import EventKit
 import EventKitUI
-import CoreData
-import CalendarKit
+import UIKit
 
 extension CalendarViewController {
-    
     func getUnitsForBlockOff(_ date: Date) -> [UnitViewModel] {
         let startOfDate = date
         let startDate = date + UserDefaults.distanceFromStartOfDay
@@ -29,7 +28,7 @@ extension CalendarViewController {
         return units
     }
     
-    func createButtonUnitArrays(units: [UnitViewModel] ) {
+    func createButtonUnitArrays(units: [UnitViewModel]) {
         var buttonUnits: [UnitViewModel] = []
         buttonUnits.removeAll()
         buttonUnitArrays.removeAll()
@@ -43,7 +42,7 @@ extension CalendarViewController {
         }
     }
     
-    func createBlockAllUnitArrays(units: [UnitViewModel] ) {
+    func createBlockAllUnitArrays(units: [UnitViewModel]) {
         var buttonUnits: [UnitViewModel] = []
         buttonUnits.removeAll()
         blockAllUnitArrays.removeAll()
@@ -72,7 +71,7 @@ extension CalendarViewController {
                         startTime = unit.startDate
                     }
                 }
-                if firstStart == false && unit.events.count == 0 {
+                if firstStart == false, unit.events.count == 0 {
                     endTime = unit.endDate
                 }
             }

@@ -5,20 +5,20 @@
 //  Created by David Malicke on 1/13/23.
 //
 
+import EventKit
 import SwiftUI
 import UIKit
-import EventKit
 
 struct CalendarsUIView: View {
     @State private var selectedCalendar: CalendarViewModel?
-    var dismissAction: (() -> Void)
+    var dismissAction: () -> Void
     let calendars: [CalendarViewModel]
     let eventStore: EKEventStore
-    
+
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             Section("Select Calendar") {
-                let editableCalendars = calendars.filter({ $0.editable })
+                let editableCalendars = calendars.filter { $0.editable }
                 List(editableCalendars, id: \.self, selection: $selectedCalendar) { calendar in
                     HStack {
                         Text(calendar.title)
@@ -48,11 +48,9 @@ struct CalendarsUIView: View {
     }
 }
 
-
-
 struct CalendarsUIView_Previews: PreviewProvider {
     static var previews: some View {
-        let dismissAction: (() -> Void) = {   }
+        let dismissAction: (() -> Void) = {}
         let calendars = MockData.shared.availableCalenders.map(CalendarViewModel.init)
         let eventStore = MockData.shared.eventStore
         CalendarsUIView(dismissAction: dismissAction, calendars: calendars, eventStore: eventStore)

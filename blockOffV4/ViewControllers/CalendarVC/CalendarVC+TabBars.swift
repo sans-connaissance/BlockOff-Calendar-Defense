@@ -5,14 +5,12 @@
 //  Created by David Malicke on 1/14/23.
 //
 
+import CoreData
 import Foundation
 import UIKit
-import CoreData
 
 extension CalendarViewController {
-    
     func createTabBars() {
-        
         let selectStubActionHandler = { (action: UIAction) in
             let stubs = Stub.getAllStubs()
             for stub in stubs {
@@ -39,10 +37,9 @@ extension CalendarViewController {
         for stub in self.stubs {
             let action = UIAction(title: stub.stubMenuTitle, identifier: UIAction.Identifier("\(stub.title)"), discoverabilityTitle: stub.id.uriRepresentation().absoluteString, handler: selectStubActionHandler)
             stubMenuActions.append(action)
-            
         }
         
-        let stubMenu = UIMenu(title: "Select Default Block",  children: stubMenuActions)
+        let stubMenu = UIMenu(title: "Select Default Block", children: stubMenuActions)
         let stubMenuList = UIBarButtonItem(title: "", image: UIImage(systemName: "ellipsis.circle"), menu: stubMenu)
  
         let stubs = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openStubVC))
@@ -55,16 +52,15 @@ extension CalendarViewController {
         self.navigationController?.isToolbarHidden = false
         self.navigationController?.toolbar.tintColor = .systemRed
         
-        
-        let blockAllDefaultActionHandler = { (action: UIAction) in
+        let blockAllDefaultActionHandler = { (_: UIAction) in
             self.blockAllWithDefault()
         }
         
-        let blockAllRandomPlusDefaultActionHandler = {(action: UIAction) in
+        let blockAllRandomPlusDefaultActionHandler = { (_: UIAction) in
             self.blockAllWithRandomPlusDefault()
         }
         
-        let blockAllRandomMinusDefaultActionHandler = {(action: UIAction) in
+        let blockAllRandomMinusDefaultActionHandler = { (_: UIAction) in
             self.blockAllWithRandomMinusDefault()
         }
     
@@ -74,7 +70,7 @@ extension CalendarViewController {
             UIAction(title: "Default", identifier: UIAction.Identifier("Default Block"), handler: blockAllDefaultActionHandler)
         ]
         
-        let blockAllMenu = UIMenu(title: "Fill available time with:",  children: blockAllMenuActions)
+        let blockAllMenu = UIMenu(title: "Fill available time with:", children: blockAllMenuActions)
         let blockAllMenuList = UIBarButtonItem(title: "Block All", image: nil, menu: blockAllMenu)
         
         var items = [UIBarButtonItem]()

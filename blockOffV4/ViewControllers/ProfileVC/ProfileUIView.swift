@@ -5,15 +5,14 @@
 //  Created by David Malicke on 1/14/23.
 //
 
+import EventKit
 import SwiftUI
 import UIKit
-import EventKit
 
 struct ProfileUIView: View {
-    
     @StateObject private var vm = ProfileViewModel()
     let eventStore: EKEventStore
-    
+
     var body: some View {
         Form {
             Section("Subscription") {
@@ -23,7 +22,6 @@ struct ProfileUIView: View {
                 VStack(alignment: .leading) {
                     DatePicker("Start time", selection: $vm.startTime, displayedComponents: .hourAndMinute)
                     DatePicker("End Time", selection: $vm.endTime, displayedComponents: .hourAndMinute)
-                    
                 }
             }
             Section("Calendars") {

@@ -5,11 +5,10 @@
 //  Created by David Malicke on 3/11/23.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class EditStubViewModel: ObservableObject {
-    
     @Published var title: String = ""
     @Published var text: String = ""
     @Published var isAllDay: Bool = false
@@ -21,20 +20,20 @@ class EditStubViewModel: ObservableObject {
 //    @Published var isDefault: Bool = false
     
     func loadStub(stubID: NSManagedObjectID) {
-        guard let stub = Stub.getStubBy(id: stubID) else {return}
-        self.title = stub.title ?? "didn't work"
-        self.text = stub.text ?? "didn't work"
-        self.isAllDay = stub.isAllDay
-        self.location = stub.location ?? "didn't work"
-        self.notes = stub.notes ?? "didn't work"
+        guard let stub = Stub.getStubBy(id: stubID) else { return }
+        title = stub.title ?? "didn't work"
+        text = stub.text ?? "didn't work"
+        isAllDay = stub.isAllDay
+        location = stub.location ?? "didn't work"
+        notes = stub.notes ?? "didn't work"
         
         // THIS IS BROKEN AND IS NOT WORKING CORRECTLY
-        self.availability = Availability(rawValue: Int(stub.availability))  ?? .notSupported
+        availability = Availability(rawValue: Int(stub.availability)) ?? .notSupported
     }
     
     func save(stubID: NSManagedObjectID) {
         let manager = CoreDataManager.shared
-        guard let stub = Stub.getStubBy(id: stubID) else {return}
+        guard let stub = Stub.getStubBy(id: stubID) else { return }
         
         // THE CHECK WORKS BUT IT"S POPPING THE LAST TWO FROM THE PUBLISHED VAR
         var check = title
@@ -50,7 +49,7 @@ class EditStubViewModel: ObservableObject {
         stub.availability = Int64(selectedAvailability.rawValue)
         stub.location = location
         stub.notes = notes
-       // stub.isDefault = isDefault
+        // stub.isDefault = isDefault
         manager.saveContext()
     }
 }

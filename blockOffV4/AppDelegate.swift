@@ -9,19 +9,18 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
-    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //MARK: Step 1 -- Check to see if Day objects exist
+        [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        // MARK: Step 1 -- Check to see if Day objects exist
+
         /// check to see if any Day objects exist
         let hasLaunchedBefore = Day.checkIfFirstLaunch()
         /// if not, create days and associated units.
         if !hasLaunchedBefore {
             createDaysAndUnits()
         }
-        
+
         func createDaysAndUnits() {
             let days = Day.createDays(numberOfDays: 65, date: CalendarManager.shared.calendar.startOfDay(for: Date()))
 
@@ -53,4 +52,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
-

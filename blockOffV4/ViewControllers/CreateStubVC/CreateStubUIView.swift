@@ -10,7 +10,7 @@ import SwiftUI
 struct CreateStubUIView: View {
     @StateObject private var vm = AddStubViewModel()
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         Form {
             Section("") {
@@ -35,7 +35,6 @@ struct CreateStubUIView: View {
                 }
                 Spacer()
             }
-            
         }
         .navigationTitle("Create Block Off")
         .embedInNavigationView()

@@ -5,11 +5,10 @@
 //  Created by David Malicke on 1/16/23.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class StubListViewModel: ObservableObject {
-    
     @Published var stubs = [StubViewModel]()
     
     func deleteStub(stub: StubViewModel) {
