@@ -18,7 +18,7 @@ struct UnitViewModel: Hashable, Identifiable {
     var unitDate: String {
         return dayFormatter.string(from: unit.start ?? Date.distantPast)
     }
-    
+
     var start: String {
         return unitFormatter.string(from: unit.start ?? Date.distantPast)
     }
@@ -39,4 +39,3 @@ struct UnitViewModel: Hashable, Identifiable {
         return unit.events?.allObjects as? [Event] ?? []
     }
 }
-

@@ -5,8 +5,8 @@
 //  Created by David Malicke on 2/5/23.
 //
 
-import SwiftUI
 import EventKit
+import SwiftUI
 
 struct RealCalendarEventUIView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -36,16 +36,16 @@ struct RealCalendarEventUIView: View {
                             Spacer()
                         }
                         Group {
-                            CalendarItemRow(title:"All-day", item: ekEvent.isAllDay.description, showTopDivider: true)
-                            CalendarItemRow(title:"Organizer", item: ekEvent.organizer?.name ?? "")
-                            CalendarItemRow(title:"Calendar", item: ekEvent.calendar.title)
-                            CalendarItemRow(title:"Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
-                            CalendarItemRow(title:"Alert", item: ekEvent.alarms?.description ?? "none")
+                            CalendarItemRow(title: "All-day", item: ekEvent.isAllDay.description, showTopDivider: true)
+                            CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "")
+                            CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
+                            CalendarItemRow(title: "Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
+                            CalendarItemRow(title: "Alert", item: ekEvent.alarms?.description ?? "none")
                             CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
                             CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
                             ParticipantsListView(ekEvent: ekEvent)
                         }
-                        
+
                     }.padding([.leading, .trailing])
                 }
                 Button {
@@ -66,9 +66,8 @@ struct RealCalendarEventUIView: View {
 
 struct ParticipantsListView: View {
     let ekEvent: EKEvent
-    
+
     var body: some View {
-     
         VStack(alignment: .leading) {
             Text("Participants")
                 .font(.body)
@@ -95,14 +94,14 @@ struct CalendarItemRow: View {
     var showTopDivider: Bool = false
     var showBottomDivider: Bool = true
     var isStatus: Bool = false
-    
+
     var body: some View {
         VStack {
             if showTopDivider {
                 Divider()
-                    .padding(.bottom,2)
+                    .padding(.bottom, 2)
             }
-            HStack(alignment:.top, spacing: 10) {
+            HStack(alignment: .top, spacing: 10) {
                 Text(title)
                     .font(.body)
                 Spacer()
@@ -123,16 +122,17 @@ struct CalendarItemRow: View {
             }
         }
     }
+
     private func getStatus(_ status: Int) -> String {
         let status = Availability(rawValue: status)
         return status?.displayText ?? ""
     }
 }
 
-//THINGS TO MANAGE
-//ekEvent.attendees: []
-//ekEvent.status = .confirmed
-//ekEvent.organizer
+// THINGS TO MANAGE
+// ekEvent.attendees: []
+// ekEvent.status = .confirmed
+// ekEvent.organizer
 
 struct RealCalendarEventUIView_Previews: PreviewProvider {
     static var previews: some View {

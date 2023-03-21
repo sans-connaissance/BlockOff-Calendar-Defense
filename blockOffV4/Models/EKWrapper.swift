@@ -101,7 +101,7 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
             updateColors()
         }
     }
-    // ADD NEW STUB LOCATION, AVAILABILITY, NOTES
+ 
     public private(set) var blockOff: Bool
     public private(set) var ekEvent: EKEvent
     public init(eventKitEvent: EKEvent, isBlockOff: Bool = false) {

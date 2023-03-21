@@ -11,9 +11,7 @@ import Foundation
 class CoreDataManager {
     private let modelName: String
     
-    lazy var managedContext: NSManagedObjectContext = {
-        return self.storeContainer.viewContext
-    }()
+    lazy var managedContext: NSManagedObjectContext = self.storeContainer.viewContext
     
     static var shared = CoreDataManager(modelName: "BlockOffDataModel")
     
@@ -98,7 +96,7 @@ class CoreDataManager {
         
         for ekEvent in uniqueEvents {
             eventExists = Event.checkIfEventExists(ekID: ekEvent.id)
-            if !eventExists && ekEvent.isAllDay == false {
+            if !eventExists, ekEvent.isAllDay == false {
                 let eventCD = Event(context: context)
                 eventCD.ekID = ekEvent.id
                 eventCD.text = ekEvent.text
@@ -128,7 +126,7 @@ class CoreDataManager {
             }
             if eventExists {
                 let eventCD: [Event] = Event.byEKID(ekID: ekEvent.id)
-                if eventCD.count == 1 && ekEvent.isAllDay == false  {
+                if eventCD.count == 1, ekEvent.isAllDay == false {
                     if let eventCD = eventCD.first {
                         eventCD.ekID = ekEvent.id
                         eventCD.text = ekEvent.text
@@ -195,7 +193,6 @@ class CoreDataManager {
         }
     }
     
-    
     func deleteStub(_ stub: Stub) {
         managedContext.delete(stub)
         
@@ -205,11 +202,9 @@ class CoreDataManager {
             managedContext.rollback()
             print("Failed to delete movie \(error)")
         }
-        
     }
     
-    
-    func saveContext () {
+    func saveContext() {
         guard managedContext.hasChanges else { return }
         
         do {
@@ -219,4 +214,3 @@ class CoreDataManager {
         }
     }
 }
-

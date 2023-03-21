@@ -12,8 +12,6 @@ class BOTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      //  UINavigationBar.appearance().tintColor = .systemPurple
-        //tabBar.tintColor = .systemPurple
         tabBar.backgroundColor = .systemBackground
         tabBar.isTranslucent = true
         tabBar.unselectedItemTintColor = .lightGray

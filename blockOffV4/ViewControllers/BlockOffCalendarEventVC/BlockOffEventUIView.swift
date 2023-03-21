@@ -5,8 +5,8 @@
 //  Created by David Malicke on 2/5/23.
 //
 
-import SwiftUI
 import EventKit
+import SwiftUI
 
 struct BlockOffEventUIView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -15,8 +15,6 @@ struct BlockOffEventUIView: View {
     let eventStore: EKEventStore
     let ekEvent: EKEvent
 
-    // USE A VIEW MODEL TO LOAD THE  EKEVENT SO THAT IT CAN BE UPDATED BY THE EDIT VIEW
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -40,19 +38,16 @@ struct BlockOffEventUIView: View {
                             Spacer()
                         }
                         Group {
-                            CalendarItemRow(title:"All-day", item: vm.isAllDay.description, showTopDivider: true)
-                            // CalendarItemRow(title:"Organizer", item: vm.organizer?.name)
-                            //   CalendarItemRow(title:"Calendar", item: vm.calendar.title)
-                            CalendarItemRow(title:"Show As", item: String(vm.availability.rawValue), isStatus: true)
-                            //   CalendarItemRow(title:"Alert", item: vm.alarms?.description)
+                            CalendarItemRow(title: "All-day", item: vm.isAllDay.description, showTopDivider: true)
+                            CalendarItemRow(title: "Show As", item: String(vm.availability.rawValue), isStatus: true)
                             CalendarItemRow(title: "Location", item: vm.location)
                             CalendarItemRow(title: "Notes", item: vm.notes)
                             ParticipantsListView(ekEvent: ekEvent)
                         }
-                        
+
                     }.padding([.leading, .trailing])
                 }
-                
+
                 Button {
                     do {
                         try eventStore.remove(ekEvent, span: .thisEvent)
@@ -68,9 +63,7 @@ struct BlockOffEventUIView: View {
             .onAppear {
                 vm.load(ekEvent: ekEvent)
             }
-            .sheet(isPresented: $isPresented, onDismiss: {
-                // vm.getAllStubs()
-            },  content: {
+            .sheet(isPresented: $isPresented, onDismiss: {}, content: {
                 EditBlockOffEventUIView(vm: vm, ekEvent: ekEvent, eventStore: eventStore)
             })
         }
@@ -84,9 +77,8 @@ struct BlockOffEventUIView: View {
     }
 }
 
-
-//struct BlockOffEventUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BlockOffEventUIView(eventStore: MockData.shared.eventStore, ekEvent: MockData.shared.setCalendarEvent())
-//    }
-//}
+struct BlockOffEventUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        BlockOffEventUIView(eventStore: MockData.shared.eventStore, ekEvent: MockData.shared.setCalendarEvent())
+    }
+}

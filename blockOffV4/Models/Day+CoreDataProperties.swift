@@ -6,72 +6,64 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension Day {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Day> {
+public extension Day {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Day> {
         return NSFetchRequest<Day>(entityName: "Day")
     }
 
-    @NSManaged public var end: Date?
-    @NSManaged public var start: Date?
-    @NSManaged public var events: NSSet?
-    @NSManaged public var units: NSSet?
-
+    @NSManaged var end: Date?
+    @NSManaged var start: Date?
+    @NSManaged var events: NSSet?
+    @NSManaged var units: NSSet?
 }
 
 // MARK: Generated accessors for events
-extension Day {
 
+public extension Day {
     @objc(addEventsObject:)
-    @NSManaged public func addToEvents(_ value: Event)
+    @NSManaged func addToEvents(_ value: Event)
 
     @objc(removeEventsObject:)
-    @NSManaged public func removeFromEvents(_ value: Event)
+    @NSManaged func removeFromEvents(_ value: Event)
 
     @objc(addEvents:)
-    @NSManaged public func addToEvents(_ values: NSSet)
+    @NSManaged func addToEvents(_ values: NSSet)
 
     @objc(removeEvents:)
-    @NSManaged public func removeFromEvents(_ values: NSSet)
-
+    @NSManaged func removeFromEvents(_ values: NSSet)
 }
 
 // MARK: Generated accessors for units
-extension Day {
 
+public extension Day {
     @objc(addUnitsObject:)
-    @NSManaged public func addToUnits(_ value: Unit)
+    @NSManaged func addToUnits(_ value: Unit)
 
     @objc(removeUnitsObject:)
-    @NSManaged public func removeFromUnits(_ value: Unit)
+    @NSManaged func removeFromUnits(_ value: Unit)
 
     @objc(addUnits:)
-    @NSManaged public func addToUnits(_ values: NSSet)
+    @NSManaged func addToUnits(_ values: NSSet)
 
     @objc(removeUnits:)
-    @NSManaged public func removeFromUnits(_ values: NSSet)
-
+    @NSManaged func removeFromUnits(_ values: NSSet)
 }
 
-extension Day : Identifiable {
-    
+extension Day: Identifiable {
     static func getAllDays() -> [Day] {
-        
         var fetchResults: [Day] = []
-        do{
+        do {
             fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Day]
-            
-        }catch let error as NSError {
+
+        } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return fetchResults
     }
-    
-    
+
     /// Checks to see if any Day objects exist in database in order to determine if this is the first time the app has launched or not.
     static func checkIfFirstLaunch() -> Bool {
         let request: NSFetchRequest<Day> = Day.fetchRequest()
@@ -83,52 +75,46 @@ extension Day : Identifiable {
         }
         return count != 0
     }
-    
+
     /// Creates a specified number of  DateIntervals for the creation of Day Objects to be saved in Core Data.
     static func createDays(numberOfDays: Int, date: Date) -> [DateInterval] {
         var dayIntervals: [DateInterval] = []
         let firstDay = date
         let unit = 86400.0
-        
+
         for day in 0 ... numberOfDays {
             let dayInterval = DateInterval(start: firstDay + (Double(day) * unit), end: firstDay + (Double(day + 1) * unit))
             dayIntervals.append(dayInterval)
         }
-        
+
         return dayIntervals
     }
-    
+
     static func byDate(_ date: Date) -> Day? {
-        
         let start = CalendarManager.shared.calendar.startOfDay(for: date)
         let end = start + 86400.0
-        
-        
+
         let request: NSFetchRequest<Day> = Day.fetchRequest()
-       // let start = date.startDate
-       // let end = date.endDate
-        
+
         let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
         request.predicate = predicate
-        
+
         do {
             return try CoreDataManager.shared.managedContext.fetch(request).first
         } catch {
             return nil
         }
     }
-    
+
     static func dateExists(_ date: Date) -> Bool {
-        
         let start = CalendarManager.shared.calendar.startOfDay(for: date)
         let end = start + 86400.0
-        
-        
+
         let request: NSFetchRequest<Day> = Day.fetchRequest()
 
         let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
         request.predicate = predicate
-        
+
         do {
             let search = try CoreDataManager.shared.managedContext.fetch(request).count
             if search >= 1 {
@@ -141,4 +127,3 @@ extension Day : Identifiable {
         }
     }
 }
-

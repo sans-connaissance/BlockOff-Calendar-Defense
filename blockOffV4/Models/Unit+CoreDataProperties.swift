@@ -6,55 +6,50 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension Unit {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Unit> {
+public extension Unit {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Unit> {
         return NSFetchRequest<Unit>(entityName: "Unit")
     }
 
-    @NSManaged public var end: Date?
-    @NSManaged public var start: Date?
-    @NSManaged public var day: Day?
-    @NSManaged public var events: NSSet?
-
+    @NSManaged var end: Date?
+    @NSManaged var start: Date?
+    @NSManaged var day: Day?
+    @NSManaged var events: NSSet?
 }
 
 // MARK: Generated accessors for events
-extension Unit {
 
+public extension Unit {
     @objc(addEventsObject:)
-    @NSManaged public func addToEvents(_ value: Event)
+    @NSManaged func addToEvents(_ value: Event)
 
     @objc(removeEventsObject:)
-    @NSManaged public func removeFromEvents(_ value: Event)
+    @NSManaged func removeFromEvents(_ value: Event)
 
     @objc(addEvents:)
-    @NSManaged public func addToEvents(_ values: NSSet)
+    @NSManaged func addToEvents(_ values: NSSet)
 
     @objc(removeEvents:)
-    @NSManaged public func removeFromEvents(_ values: NSSet)
-
+    @NSManaged func removeFromEvents(_ values: NSSet)
 }
 
-extension Unit : Identifiable {
-    
-    ///Returns an array of 96 fifteen minute date intervals to be saved as unit objects for a day object.
+extension Unit: Identifiable {
+    /// Returns an array of 96 fifteen minute date intervals to be saved as unit objects for a day object.
     static func createUnitIntervalsFor(day: Date) -> [DateInterval] {
         var unitIntervals: [DateInterval] = []
         let startOfDay = day
-        ///unit = 15 minutes
+        /// unit = 15 minutes
         let unit = 900.0
-        for u in 0...95 {
+        for u in 0 ... 95 {
             let unitInterval = DateInterval(start: startOfDay + (Double(u) * unit), end: startOfDay + (Double(u + 1) * unit))
             unitIntervals.append(unitInterval)
         }
         return unitIntervals
     }
-    
+
     static func getUnitsBY(start: Date, end: Date) -> [Unit] {
         let unit = 1.0
         let startPlus1 = start + unit

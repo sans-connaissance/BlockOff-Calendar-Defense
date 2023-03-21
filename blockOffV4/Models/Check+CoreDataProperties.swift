@@ -6,30 +6,25 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension Check {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Check> {
+public extension Check {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Check> {
         return NSFetchRequest<Check>(entityName: "Check")
     }
 
-    @NSManaged public var ekID: String?
-    @NSManaged public var title: String?
-
+    @NSManaged var ekID: String?
+    @NSManaged var title: String?
 }
 
-extension Check : Identifiable {
-    
+extension Check: Identifiable {
     static func getAllChecks() -> [Check] {
-        
         var fetchResults: [Check] = []
-        
+
         do {
             fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Check]
-            
+
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -53,12 +48,12 @@ extension Check : Identifiable {
             return false
         }
     }
-    
+
     static func checkIfEventExists(ekID: String) -> Bool {
         let request: NSFetchRequest<Check> = Check.fetchRequest()
         request.fetchLimit = 1
         request.predicate = NSPredicate(format: "ekID == %@", ekID)
-        
+
         do {
             let count = try CoreDataManager.shared.managedContext.count(for: request)
             if count > 0 {
@@ -71,5 +66,4 @@ extension Check : Identifiable {
             return false
         }
     }
-    
 }

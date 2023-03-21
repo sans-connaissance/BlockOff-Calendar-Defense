@@ -55,6 +55,7 @@ struct MockData {
         } catch let error as NSError {
             print("failed to Create calendar with error : \(error)")
         }
+        
         availableCalenders.append(calendar1)
         availableCalenders.append(calendar2)
         availableCalenders.append(calendar3)

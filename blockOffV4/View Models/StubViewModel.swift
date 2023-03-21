@@ -5,8 +5,8 @@
 //  Created by David Malicke on 1/16/23.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 struct StubViewModel: Identifiable {
     let stub: Stub
@@ -44,10 +44,10 @@ struct StubViewModel: Identifiable {
     }
     
     var stubMenuTitle: String {
-        if self.isDefault == true {
-            return self.title + "    " + "★"
+        if isDefault == true {
+            return title + "    " + "★"
         } else {
-            return self.title
+            return title
         }
     }
 }

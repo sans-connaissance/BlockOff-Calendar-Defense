@@ -5,12 +5,11 @@
 //  Created by David Malicke on 3/13/23.
 //
 
-import Foundation
 import CoreData
 import EventKit
+import Foundation
 
 class EditBlockOffEventViewModel: ObservableObject {
-    
     @Published var title: String = ""
     @Published var text: String = ""
     @Published var isAllDay: Bool = false
@@ -30,7 +29,7 @@ class EditBlockOffEventViewModel: ObservableObject {
         self.notes = ekEvent.notes ?? "didn't work"
         
         // THIS IS BROKEN AND IS NOT WORKING CORRECTLY
-        self.availability = Availability(rawValue:ekEvent.availability.rawValue)  ?? .notSupported
+        self.availability = Availability(rawValue: ekEvent.availability.rawValue) ?? .notSupported
         self.startDate = ekEvent.startDate
         self.endDate = ekEvent.endDate
     }

@@ -20,11 +20,11 @@ struct EventViewModel: Hashable {
     }
     
     var start: String {
-        return unitFormatter.string(from:event.start ?? Date.distantPast)
+        return unitFormatter.string(from: event.start ?? Date.distantPast)
     }
     
     var end: String {
-        return unitFormatter.string(from:event.end ?? Date.distantPast)
+        return unitFormatter.string(from: event.end ?? Date.distantPast)
     }
     
     var startDate: Date {
@@ -49,6 +49,5 @@ struct EventViewModel: Hashable {
     
     var units: [Unit] {
         return event.units?.allObjects as? [Unit] ?? []
-       // return unit.events?.allObjects as? [Event] ?? []
     }
 }

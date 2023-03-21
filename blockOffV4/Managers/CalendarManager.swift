@@ -4,15 +4,14 @@
 //
 //  Created by David Malicke on 12/3/22.
 //
-import Foundation
 import EventKit
+import Foundation
 
 class CalendarManager {
     static let shared = CalendarManager()
     var calendar = Calendar.autoupdatingCurrent
     var availableCalenders: [CalendarViewModel] = []
 }
-
 
 @propertyWrapper
 struct UserDefault<Value> {
@@ -31,20 +30,19 @@ struct UserDefault<Value> {
 }
 
 extension UserDefaults {
-    
     @UserDefault(key: "primary_calendar", defaultValue: "")
     static var primaryCalendar: String
-    
-    //900.0 = 15 min
+
+    // 900.0 = 15 min
     @UserDefault(key: "system_start_time", defaultValue: 28800.0)
     static var distanceFromStartOfDay: Double
-    
+
     @UserDefault(key: "system_end_time", defaultValue: 21600.0)
     static var distanceFromEndOfDay: Double
-    
+
     @UserDefault(key: "first_launch_date", defaultValue: Date())
     static var firstLaunchDate: Date
-    
+
     @UserDefault(key: "last_day_in_core_data", defaultValue: Date())
     static var lastDayInCoreData: Date
 }

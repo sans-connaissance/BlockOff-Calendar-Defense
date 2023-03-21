@@ -6,46 +6,40 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension Stub {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Stub> {
+public extension Stub {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Stub> {
         return NSFetchRequest<Stub>(entityName: "Stub")
     }
 
-    @NSManaged public var availability: Int64
-    @NSManaged public var end: Date?
-    @NSManaged public var index: Int64
-    @NSManaged public var isAllDay: Bool
-    @NSManaged public var location: String?
-    @NSManaged public var notes: String?
-    @NSManaged public var start: Date?
-    @NSManaged public var text: String?
-    @NSManaged public var title: String?
-    @NSManaged public var isDefault: Bool
-
+    @NSManaged var availability: Int64
+    @NSManaged var end: Date?
+    @NSManaged var index: Int64
+    @NSManaged var isAllDay: Bool
+    @NSManaged var location: String?
+    @NSManaged var notes: String?
+    @NSManaged var start: Date?
+    @NSManaged var text: String?
+    @NSManaged var title: String?
+    @NSManaged var isDefault: Bool
 }
 
-extension Stub : Identifiable {
-    
+extension Stub: Identifiable {
     static func getAllStubs() -> [Stub] {
-        
         var fetchResults: [Stub] = []
-        
-        do{
+
+        do {
             fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Stub]
-            
-        }catch let error as NSError {
+
+        } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return fetchResults
     }
-    
+
     static func getStubBy(id: NSManagedObjectID) -> Stub? {
-        
         do {
             return try CoreDataManager.shared.managedContext.existingObject(with: id) as? Stub
         } catch {
@@ -53,7 +47,7 @@ extension Stub : Identifiable {
             return nil
         }
     }
-    
+
     static func isBlockOff(title: String) -> Bool {
         let request: NSFetchRequest<Stub> = Stub.fetchRequest()
         request.fetchLimit = 1
@@ -71,5 +65,4 @@ extension Stub : Identifiable {
             return false
         }
     }
-    
 }

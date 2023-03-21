@@ -16,11 +16,11 @@ struct DayViewModel: Hashable {
     }
     
     var start: String {
-        return dayFormatter.string(from:day.start ?? Date.distantPast)
+        return dayFormatter.string(from: day.start ?? Date.distantPast)
     }
     
     var end: String {
-        return dayFormatter.string(from:day.end ?? Date.distantPast)
+        return dayFormatter.string(from: day.end ?? Date.distantPast)
     }
     
     var startDate: Date {
@@ -39,4 +39,3 @@ struct DayViewModel: Hashable {
         return day.units?.allObjects as? [Unit] ?? []
     }
 }
-

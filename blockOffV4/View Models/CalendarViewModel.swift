@@ -5,8 +5,8 @@
 //  Created by David Malicke on 1/14/23.
 //
 
-import Foundation
 import EventKit
+import Foundation
 
 struct CalendarViewModel: Hashable {
     let calendar: EKCalendar
@@ -34,5 +34,4 @@ struct CalendarViewModel: Hashable {
     var editable: Bool {
         return calendar.allowsContentModifications
     }
-    
 }

@@ -5,15 +5,15 @@
 //  Created by David Malicke on 3/13/23.
 //
 
-import SwiftUI
 import EventKit
+import SwiftUI
 
 struct EditBlockOffEventUIView: View {
     @ObservedObject var vm: EditBlockOffEventViewModel
     @Environment(\.presentationMode) var presentationMode
     var ekEvent: EKEvent
     var eventStore: EKEventStore
-    
+
     var body: some View {
         Form {
             Section("") {
@@ -47,8 +47,8 @@ struct EditBlockOffEventUIView: View {
     }
 }
 
-//struct EditBlockOffEventUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditBlockOffEventUIView()
-//    }
-//}
+struct EditBlockOffEventUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditBlockOffEventUIView(vm: EditBlockOffEventViewModel(), ekEvent: MockData.shared.setCalendarEvent(), eventStore: MockData.shared.eventStore)
+    }
+}

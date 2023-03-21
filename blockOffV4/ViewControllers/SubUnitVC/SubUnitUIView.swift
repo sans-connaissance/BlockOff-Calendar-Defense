@@ -61,8 +61,14 @@ struct SubUnitUIView: View {
     }
 }
 
-//struct SubUnitUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SubUnitUIView()
-//    }
-//}
+struct SubUnitUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        let start = CalendarManager.shared.calendar.startOfDay(for: Date.now)
+        let end = start + 86400.0
+        let units = Unit.getUnitsBY(start: start, end: end)
+        let unitVMs = units.map(UnitViewModel.init)
+        let stubs = Stub.getAllStubs()
+        let stubVMs = stubs.map(StubViewModel.init)
+        SubUnitUIView(eventStore: MockData.shared.eventStore, units: unitVMs, stubs: stubVMs)
+    }
+}
