@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         func createDaysAndUnits() {
-            let days = Day.createDays(numberOfDays: 10, date: CalendarManager.shared.calendar.startOfDay(for: Date()))
+            let days = Day.createDays(numberOfDays: 65, date: CalendarManager.shared.calendar.startOfDay(for: Date()))
 
             for day in days {
                 let units = Unit.createUnitIntervalsFor(day: day.start)
@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             UserDefaults.firstLaunchDate = CalendarManager.shared.calendar.startOfDay(for: Date())
             var dayComponents = DateComponents()
-            dayComponents.day = 10
+            dayComponents.day = 65
             let lastDay = CalendarManager.shared.calendar.date(byAdding: dayComponents, to: UserDefaults.firstLaunchDate)!
-            UserDefaults.lastDayInCoreData = lastDay
+            UserDefaults.lastDayInCoreData = CalendarManager.shared.calendar.startOfDay(for: lastDay)
             CoreDataManager.shared.saveDays(days)
         }
         return true

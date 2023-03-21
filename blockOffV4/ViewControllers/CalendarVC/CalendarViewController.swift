@@ -22,6 +22,17 @@ class CalendarViewController: DayViewController {
     var reducedUnitArrays: [[UnitViewModel]] = []
     var eventStore = EKEventStore()
     var eventCount = 0
+    var currentSelectedDate: Date? {
+        willSet {
+            if newValue == currentSelectedDate {
+                print("not gonna do it")
+            } else {
+                if let date = newValue {
+                    createMoreDays(currentDate: date)
+                }
+            }
+        }
+    }
     
     // OVERRIDES
     override func viewDidLoad() {
@@ -316,29 +327,30 @@ class CalendarViewController: DayViewController {
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         let events = Event.all()
         eventCount = events.count
-        createMoreDays(currentDate: date)
+        currentSelectedDate = dayView.dayHeaderView.state?.selectedDate
         return getCalendarEvents(date)
     }
     
     private func createMoreDays(currentDate: Date) {
         let distanceFromTheEndOfDays = currentDate.distance(to: UserDefaults.lastDayInCoreData)
         // Distance is 7 days
-        if distanceFromTheEndOfDays < 432000 {
+        if distanceFromTheEndOfDays < 604800 {
             createSpinnerView()
-            print("Creating the days")
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 var dayComponent = DateComponents()
                 dayComponent.day = 1
                 let date = CalendarManager.shared.calendar.date(byAdding: dayComponent, to: UserDefaults.lastDayInCoreData)!
-                let days = Day.createDays(numberOfDays: 35, date: date)
+                let days = Day.createDays(numberOfDays: 65, date: date)
 
                 for day in days {
-                    let units = Unit.createUnitIntervalsFor(day: day.start)
-                    CoreDataManager.shared.saveUnits(units)
+                    if !Day.dateExists(day.start) {
+                        let units = Unit.createUnitIntervalsFor(day: day.start)
+                        CoreDataManager.shared.saveUnits(units)
+                    }
                 }
                 var dayComponents = DateComponents()
-                dayComponents.day = 35
+                dayComponents.day = 65
                 let lastDay = CalendarManager.shared.calendar.date(byAdding: dayComponents, to: UserDefaults.lastDayInCoreData)!
                 UserDefaults.lastDayInCoreData = lastDay
                 CoreDataManager.shared.saveDays(days)
@@ -346,7 +358,6 @@ class CalendarViewController: DayViewController {
         } else {
             print("not there yet")
         }
-            
     }
     
     //MARK: Overrides

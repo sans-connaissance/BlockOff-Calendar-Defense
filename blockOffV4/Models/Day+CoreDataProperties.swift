@@ -117,5 +117,28 @@ extension Day : Identifiable {
             return nil
         }
     }
+    
+    static func dateExists(_ date: Date) -> Bool {
+        
+        let start = CalendarManager.shared.calendar.startOfDay(for: date)
+        let end = start + 86400.0
+        
+        
+        let request: NSFetchRequest<Day> = Day.fetchRequest()
+
+        let predicate = NSPredicate(format: "start == %@ AND end == %@", start as NSDate, end as NSDate)
+        request.predicate = predicate
+        
+        do {
+            let search = try CoreDataManager.shared.managedContext.fetch(request).count
+            if search >= 1 {
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            return false
+        }
+    }
 }
 
