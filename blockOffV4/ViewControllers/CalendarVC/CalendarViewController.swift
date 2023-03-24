@@ -118,6 +118,13 @@ class CalendarViewController: DayViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
     }
     
+    func openOnboarding() {
+        let onboardingView = OnboardingView()
+        let hostingController = UIHostingController(rootView: onboardingView)
+        hostingController.modalPresentationStyle = .fullScreen
+        self.present(hostingController, animated: true, completion: nil)
+    }
+    
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)

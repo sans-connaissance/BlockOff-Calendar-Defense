@@ -43,6 +43,7 @@
 		41E7C06729C006FB0094F536 /* EditBlockOffEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06629C006FB0094F536 /* EditBlockOffEventViewModel.swift */; };
 		41E7C06929C0070D0094F536 /* EditBlockOffEventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06829C0070D0094F536 /* EditBlockOffEventUIView.swift */; };
 		41E7C06B29CA71410094F536 /* CalendarVC+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06A29CA71410094F536 /* CalendarVC+NavigationBar.swift */; };
+		41E7C06E29CD34220094F536 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7C06D29CD34220094F536 /* OnboardingView.swift */; };
 		41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F4B99B293B9CA0009A6FD2 /* CalendarKit */; };
 		41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B99D293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld */; };
 		41F4B9AA293BA327009A6FD2 /* Check+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */; };
@@ -97,6 +98,7 @@
 		41E7C06629C006FB0094F536 /* EditBlockOffEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlockOffEventViewModel.swift; sourceTree = "<group>"; };
 		41E7C06829C0070D0094F536 /* EditBlockOffEventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlockOffEventUIView.swift; sourceTree = "<group>"; };
 		41E7C06A29CA71410094F536 /* CalendarVC+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+NavigationBar.swift"; sourceTree = "<group>"; };
+		41E7C06D29CD34220094F536 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		41F4B99E293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockOffDataModel.xcdatamodel; sourceTree = "<group>"; };
 		41F4B9A2293BA327009A6FD2 /* Check+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataClass.swift"; sourceTree = "<group>"; };
 		41F4B9A3293BA327009A6FD2 /* Check+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				41C337CA29494CEA008F7FF2 /* View Models */,
 				41F4B9B1293BA36F009A6FD2 /* Managers */,
 				41D24D0E2972F56600AD78F5 /* ViewControllers */,
+				41E7C06C29CD33D50094F536 /* Onboarding Views */,
 				41CD6D53293B99DD009012DF /* AppDelegate.swift */,
 				41CD6D55293B99DD009012DF /* SceneDelegate.swift */,
 				41CD6D5C293B99DE009012DF /* Assets.xcassets */,
@@ -220,7 +223,6 @@
 				41A540B92975BB44005CE9CC /* CreateStubVC */,
 				41D24D0F2972F58F00AD78F5 /* ProfileVC */,
 				41D24D0729712E2100AD78F5 /* CalendarsVC */,
-				41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -268,6 +270,14 @@
 			path = BlockOffCalendarEventVC;
 			sourceTree = "<group>";
 		};
+		41E7C06C29CD33D50094F536 /* Onboarding Views */ = {
+			isa = PBXGroup;
+			children = (
+				41E7C06D29CD34220094F536 /* OnboardingView.swift */,
+			);
+			path = "Onboarding Views";
+			sourceTree = "<group>";
+		};
 		41F4B9B0293BA32C009A6FD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				41F4B9B5293BA401009A6FD2 /* Helpers.swift */,
+				41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -428,6 +439,7 @@
 				41E7C06B29CA71410094F536 /* CalendarVC+NavigationBar.swift in Sources */,
 				41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */,
 				41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */,
+				41E7C06E29CD34220094F536 /* OnboardingView.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,
 				41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */,
