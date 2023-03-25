@@ -12,6 +12,7 @@
 		410AB74D2985773F001C7319 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */; };
 		410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */; };
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
+		4198A2E629CFA3110082A960 /* OnboardingSelectCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
 		41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AD2975ACCC005CE9CC /* View+Extensions.swift */; };
@@ -65,6 +66,7 @@
 		410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
+		4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSelectCalendar.swift; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		41A540AD2975ACCC005CE9CC /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				41E7C06D29CD34220094F536 /* OnboardingView.swift */,
+				4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				41F4B9AC293BA327009A6FD2 /* Unit+CoreDataClass.swift in Sources */,
 				41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */,
 				41A540B62975AECF005CE9CC /* StubListViewModel.swift in Sources */,
+				4198A2E629CFA3110082A960 /* OnboardingSelectCalendar.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41E7C06729C006FB0094F536 /* EditBlockOffEventViewModel.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,

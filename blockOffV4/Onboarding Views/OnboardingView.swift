@@ -6,19 +6,17 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct OnboardingView: View {
     var dismissAction: (() -> Void)
+    let eventStore: EKEventStore
     
     var body: some View {
         TabView {
             WelcomeScreen()
             
-            PageView(title: "Welcome to Block Off",
-                     subTitle: "Block Off is your calendar defense system",
-                     image: nil,
-                     instructions: "Block Off can connect to any of your iCal calendars, and uses advanced technology in order to protect your unscheduled time.",
-                     subInstructions: "One touch calendaring is used to quickly add blocks to your calendars", dismissAction: dismissAction)
+            OnboardingSelectCalendar(eventStore: eventStore)
             
             PageView(title: "Welcome to Block Off",
                      subTitle: "Block Off is your calendar defense system",
@@ -40,20 +38,31 @@ struct WelcomeScreen: View {
             Image("blockoff-symbol")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-               // .foregroundColor(.black)
+                .frame(width: 200)
                 .padding()
-            Text("Welcome to Block Off!")
+            Text("Welcome to Block Off")
                 .font(.title)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
+                .padding([.trailing, .leading])
             Text("Advanced Calendar Defense System")
                 .font(.title2)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
-            Text("Use Block Off's one tap calendaring to quickly fill-in available time on your calendar")
+                .padding([.trailing, .leading])
+            Text("Use Block Off's one tap calendaring to quickly block off available time on your calendar")
                 .font(.body)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
+                .padding()
+            HStack {
+                Text("Swipe to get started")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .padding([.trailing, .leading])
+                Image(systemName: "arrowshape.right.fill")
+            }
         }
     }
 }
@@ -154,6 +163,6 @@ struct CalendarShield: View {
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         let dismissAction: (() -> Void) = {}
-        OnboardingView(dismissAction: dismissAction)
+        OnboardingView(dismissAction: dismissAction, eventStore: MockData.shared.eventStore)
     }
 }
