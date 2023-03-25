@@ -12,11 +12,7 @@ struct OnboardingView: View {
     
     var body: some View {
         TabView {
-            PageView(title: "Welcome to Block Off",
-                     subTitle: "Block Off is your calendar defense system",
-                     image: "bell",
-                     instructions: "Block Off can connect to any of your iCal calendars, and uses advanced technology in order to protect your unscheduled time.",
-                     subInstructions: "One touch calendaring is used to quickly add blocks to your calendars", dismissAction: dismissAction)
+            WelcomeScreen()
             
             PageView(title: "Welcome to Block Off",
                      subTitle: "Block Off is your calendar defense system",
@@ -34,6 +30,31 @@ struct OnboardingView: View {
             
         }
         .tabViewStyle(PageTabViewStyle())
+    }
+}
+
+struct WelcomeScreen: View {
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Image("blockoff-symbol")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+               // .foregroundColor(.black)
+                .padding()
+            Text("Welcome to Block Off!")
+                .font(.title)
+                .fontWeight(.heavy)
+                .multilineTextAlignment(.center)
+            Text("Advanced Calendar Defense System")
+                .font(.title2)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+            Text("Use Block Off's one tap calendaring to quickly fill-in available time on your calendar")
+                .font(.body)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+        }
     }
 }
 
@@ -92,6 +113,41 @@ struct PageView: View {
             }
         }
         .padding()
+    }
+}
+
+
+struct CalendarShield: View {
+    var body: some View {
+        VStack(alignment: .center) {
+            ZStack {
+                Image(systemName: "calendar.badge.exclamationmark")
+                    .symbolRenderingMode(.palette)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            Circle()
+                                .padding(.top, 150)
+                                .frame(width: 125, height: 400)
+                            Image(systemName: "lock.shield")
+                                .resizable()
+                                .frame(width: 125, height: 145)
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(Color(UIColor.systemBackground))
+                                .padding()
+                                .padding(.top, 175)
+                                .padding(.trailing, 20)
+                        }
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
