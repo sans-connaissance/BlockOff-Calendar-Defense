@@ -45,4 +45,7 @@ extension UserDefaults {
 
     @UserDefault(key: "last_day_in_core_data", defaultValue: Date())
     static var lastDayInCoreData: Date
+    
+    @UserDefault(key: "display_onboarding", defaultValue: true)
+    static var displayOnboarding: Bool
 }

@@ -34,6 +34,9 @@ class CalendarViewController: DayViewController {
     // OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.displayOnboarding {
+            openOnboarding()
+        }
         title = "Block Off" // <---- add button or a text title here for the calendar?
         createNavBar()
         getStubs()
@@ -119,8 +122,9 @@ class CalendarViewController: DayViewController {
     }
     
     func openOnboarding() {
-        let onboardingView = OnboardingView()
+        let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)})
         let hostingController = UIHostingController(rootView: onboardingView)
+        hostingController.hidesBottomBarWhenPushed = true
         hostingController.modalPresentationStyle = .fullScreen
         self.present(hostingController, animated: true, completion: nil)
     }
