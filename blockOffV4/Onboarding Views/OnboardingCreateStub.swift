@@ -13,7 +13,7 @@ struct OnboardingCreateStub: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Text("Create Your Default Block")
+                Text("Create Default Block")
                     .font(.title)
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct OnboardingCreateStub: View {
             }
             VStack(alignment: .center) {
                 HStack {
-                    Text("A Block will appear on your calendar as an event, and will contain the information included above. Create additional Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
+                    Text("A Block will appear on your calendar as an event, and will contain the information included above. Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
                         .font(.body)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)

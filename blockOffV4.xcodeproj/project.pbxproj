@@ -15,6 +15,7 @@
 		4198A2E629CFA3110082A960 /* OnboardingSelectCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */; };
 		4198A2E829CFAB0F0082A960 /* OnBoardingSelectTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E729CFAB0F0082A960 /* OnBoardingSelectTimes.swift */; };
 		4198A2EA29CFC5000082A960 /* OnboardingCreateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */; };
+		4198A2EC29CFCB1F0082A960 /* OnboardingTapDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
 		41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AD2975ACCC005CE9CC /* View+Extensions.swift */; };
@@ -71,6 +72,7 @@
 		4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSelectCalendar.swift; sourceTree = "<group>"; };
 		4198A2E729CFAB0F0082A960 /* OnBoardingSelectTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSelectTimes.swift; sourceTree = "<group>"; };
 		4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateStub.swift; sourceTree = "<group>"; };
+		4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTapDemo.swift; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		41A540AD2975ACCC005CE9CC /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */,
 				4198A2E729CFAB0F0082A960 /* OnBoardingSelectTimes.swift */,
 				4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */,
+				4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				410AB74929857598001C7319 /* Stub+CoreDataClass.swift in Sources */,
 				410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */,
 				41F4B9AD293BA327009A6FD2 /* Unit+CoreDataProperties.swift in Sources */,
+				4198A2EC29CFCB1F0082A960 /* OnboardingTapDemo.swift in Sources */,
 				41CAAB18298766020087EB74 /* CheckViewModel.swift in Sources */,
 				41E7C06929C0070D0094F536 /* EditBlockOffEventUIView.swift in Sources */,
 				41CD6D58293B99DD009012DF /* CalendarViewController.swift in Sources */,

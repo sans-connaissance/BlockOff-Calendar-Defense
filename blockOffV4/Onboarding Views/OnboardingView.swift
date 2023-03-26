@@ -20,13 +20,15 @@ struct OnboardingView: View {
             
             OnboardingCreateStub()
             
+            OnboardingTapDemo()
+            
            // OnBoardingSelectTimes(eventStore: eventStore)
             
-            PageView(title: "Welcome to Block Off",
-                     subTitle: "Block Off is your calendar defense system",
+            PageView(title: "SubScribe!!",
+                     subTitle: "",
                      image: nil,
-                     instructions: "Block Off can connect to any of your iCal calendars, and uses advanced technology in order to protect your unscheduled time.",
-                     subInstructions: "One touch calendaring is used to quickly add blocks to your calendars",
+                     instructions: "$4.99 per year to defend your calendar",
+                     subInstructions: "Will have instant access to all updates and new features.",
                      showButton: true, dismissAction: dismissAction)
             
             
