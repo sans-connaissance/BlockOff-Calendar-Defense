@@ -89,6 +89,7 @@ class CalendarViewController: DayViewController {
                     self.subscribeToNotifications()
                     self.getStubs()
                     self.getChecks()
+                    self.createTabBars()
                     self.reloadData()
                     if UserDefaults.displayOnboarding {
                         self.openOnboarding()
