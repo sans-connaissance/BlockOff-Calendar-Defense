@@ -48,4 +48,7 @@ extension UserDefaults {
     
     @UserDefault(key: "display_onboarding", defaultValue: true)
     static var displayOnboarding: Bool
+    
+    @UserDefault(key: "has_calendar_access", defaultValue: true)
+    static var hasCalendarAccess: Bool
 }

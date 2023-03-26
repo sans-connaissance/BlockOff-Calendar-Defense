@@ -31,6 +31,7 @@ extension CalendarViewController {
                 }
             }
             self.getStubs()
+            self.createTabBars()
         }
         
         var stubMenuActions: [UIAction] = []

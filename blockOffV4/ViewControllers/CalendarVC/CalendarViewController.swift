@@ -12,6 +12,7 @@ import EventKitUI
 import SwiftUI
 import UIKit
 
+
 class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var stubs: [StubViewModel] = []
@@ -38,27 +39,23 @@ class CalendarViewController: DayViewController {
         createNavBar()
         getStubs()
         getChecks()
-
+        
         // MARK: Step 2 -- Get Permission to Calendar
-
+        
         requestCalendarAppPermission()
         
         // MARK: Step 3 -- Subscribe to calendar notifications
-
+        
         subscribeToNotifications()
         
         // MARK: Tabbars and CalendarStyling
-
+        
         createTabBars()
         var style = CalendarStyle()
         style.timeline.eventsWillOverlap = false
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
-        
-        if UserDefaults.displayOnboarding {
-            openOnboarding()
-        }
     }
     
     func getStubs() {
@@ -74,23 +71,40 @@ class CalendarViewController: DayViewController {
     }
     
     // MARK: Step 2 -- Get Permission to Calendar Code
-
+    
     func requestCalendarAppPermission() {
-        eventStore.requestAccess(to: .event) { [weak self] _, _ in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.initializeStore()
-                CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
-                
-                if UserDefaults.primaryCalendar == "" {
-                    if let id = self.eventStore.defaultCalendarForNewEvents?.calendarIdentifier {
-                        UserDefaults.primaryCalendar = id
+        eventStore.requestAccess(to: .event) { [weak self] success, _ in
+            switch success {
+            case true:
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    self.initializeStore()
+                    CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
+                    
+                    if UserDefaults.primaryCalendar == "" {
+                        if let id = self.eventStore.defaultCalendarForNewEvents?.calendarIdentifier {
+                            UserDefaults.primaryCalendar = id
+                        }
+                    }
+                    self.subscribeToNotifications()
+                    self.getStubs()
+                    self.getChecks()
+                    self.reloadData()
+                    if UserDefaults.displayOnboarding {
+                        self.openOnboarding()
                     }
                 }
-                self.subscribeToNotifications()
-                self.getStubs()
-                self.getChecks()
-                self.reloadData()
+            case false:
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    let onboardingView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)}).onDisappear {
+                        self.requestCalendarAppPermission()
+                    }
+                    let hostingController = UIHostingController(rootView: onboardingView)
+                    hostingController.hidesBottomBarWhenPushed = true
+                    hostingController.modalPresentationStyle = .fullScreen
+                    self.present(hostingController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -117,17 +131,29 @@ class CalendarViewController: DayViewController {
     }
     
     // MARK: Step 3 -- Subscribe to calendar notifications Code
-
+    
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
     }
     
     func openOnboarding() {
-        let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear { self.createSpinnerView() }
-        // ON DISAPPEAR ADD GET STUBS AND SUCH
+        
+        let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear {
+            self.createSpinnerView()
+            self.getStubs()
+            self.createTabBars()
+        }
         let hostingController = UIHostingController(rootView: onboardingView)
         hostingController.hidesBottomBarWhenPushed = true
         hostingController.modalPresentationStyle = .fullScreen
+        self.present(hostingController, animated: true, completion: nil)
+    }
+    
+    func openRequestCalendarPermission() {
+        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
+        let hostingController = UIHostingController(rootView: requestPermissionView)
+        hostingController.hidesBottomBarWhenPushed = true
+        hostingController.modalPresentationStyle = .popover
         self.present(hostingController, animated: true, completion: nil)
     }
     
@@ -324,7 +350,7 @@ class CalendarViewController: DayViewController {
     }
     
     // MARK: Step 6 -- Return Events from Core Data
-
+    
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         currentSelectedDate = dayView.dayHeaderView.state?.selectedDate
         return getCalendarEvents(date)
@@ -335,13 +361,13 @@ class CalendarViewController: DayViewController {
         // Distance is 7 days
         if distanceFromTheEndOfDays < 604800 {
             createSpinnerView()
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 var dayComponent = DateComponents()
                 dayComponent.day = 1
                 let date = CalendarManager.shared.calendar.date(byAdding: dayComponent, to: UserDefaults.lastDayInCoreData)!
                 let days = Day.createDays(numberOfDays: 65, date: date)
-
+                
                 for day in days {
                     if !Day.dateExists(day.start) {
                         let units = Unit.createUnitIntervalsFor(day: day.start)
@@ -360,7 +386,7 @@ class CalendarViewController: DayViewController {
     }
     
     // MARK: Overrides
-
+    
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
@@ -430,10 +456,10 @@ class CalendarViewController: DayViewController {
         
         if let ckEvent = eventView.descriptor as? EKWrapper {
             let ekEvent = ckEvent.ekEvent
-
+            
             let eventIsBlock = Check.checkIfEventExists(ekID: ekEvent.eventIdentifier)
             let stubIsBlock = Stub.isBlockOff(title: ekEvent.title)
-
+            
             if eventIsBlock || stubIsBlock {
                 let blockOffEventView = BlockOffEventUIView(eventStore: eventStore, ekEvent: ekEvent).onDisappear { self.getStubs()
                     self.createTabBars()
