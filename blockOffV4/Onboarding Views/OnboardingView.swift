@@ -18,6 +18,10 @@ struct OnboardingView: View {
             
             OnboardingSelectCalendar(eventStore: eventStore)
             
+            OnboardingCreateStub()
+            
+           // OnBoardingSelectTimes(eventStore: eventStore)
+            
             PageView(title: "Welcome to Block Off",
                      subTitle: "Block Off is your calendar defense system",
                      image: nil,

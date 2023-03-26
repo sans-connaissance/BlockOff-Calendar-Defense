@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
 import EventKit
-import Foundation
 
 struct OnboardingSelectCalendar: View {
     @StateObject private var vm = OnboardingSelectCalendarViewModel()
@@ -20,7 +18,7 @@ struct OnboardingSelectCalendar: View {
                     Text($0.title).tag($0 as CalendarViewModel?)
                 }
             }
-            .pickerStyle(.wheel)
+            .pickerStyle(.inline)
             .onChange(of: vm.selectedCalendar, perform: { _ in
                 vm.setSelectedCalendarAsDefault()
             })
@@ -33,7 +31,7 @@ struct OnboardingSelectCalendar: View {
                 .padding([.trailing, .leading])
                 .padding(.top, -40)
             HStack {
-                Text("Block Off can defend any calendar available in your iCal App. You can change calendars at anytime by tapping:  \(Image(systemName: "person.circle"))")
+                Text("Block Off can defend any calendar available in your iCal App. You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)

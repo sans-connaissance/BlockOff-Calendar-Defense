@@ -123,7 +123,7 @@ class CalendarViewController: DayViewController {
     }
     
     func openOnboarding() {
-        let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore)
+        let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear { self.createSpinnerView() }
         // ON DISAPPEAR ADD GET STUBS AND SUCH
         let hostingController = UIHostingController(rootView: onboardingView)
         hostingController.hidesBottomBarWhenPushed = true
