@@ -17,6 +17,16 @@
 		4198A2EA29CFC5000082A960 /* OnboardingCreateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */; };
 		4198A2EC29CFCB1F0082A960 /* OnboardingTapDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */; };
 		4198A2EE29CFE4AD0082A960 /* OnboardingRequestPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2ED29CFE4AD0082A960 /* OnboardingRequestPermission.swift */; };
+		4198A2F629D0E5010082A960 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4198A2F529D0E5000082A960 /* WidgetKit.framework */; };
+		4198A2F829D0E5010082A960 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4198A2F729D0E5010082A960 /* SwiftUI.framework */; };
+		4198A2FB29D0E5010082A960 /* Block_Off_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2FA29D0E5010082A960 /* Block_Off_WidgetBundle.swift */; };
+		4198A2FD29D0E5010082A960 /* Block_Off_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2FC29D0E5010082A960 /* Block_Off_Widget.swift */; };
+		4198A2FF29D0E5030082A960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4198A2FE29D0E5030082A960 /* Assets.xcassets */; };
+		4198A30329D0E5030082A960 /* Block Off WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4198A2F329D0E5000082A960 /* Block Off WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4198A30A29D1E8A90082A960 /* HelloWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30929D1E8A90082A960 /* HelloWidgetEntry.swift */; };
+		4198A30C29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30B29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift */; };
+		4198A30E29D1E8DA0082A960 /* HelloWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30D29D1E8DA0082A960 /* HelloWidgetView.swift */; };
+		4198A31029D1E8EF0082A960 /* HelloWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30F29D1E8EF0082A960 /* HelloWidget.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
 		41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AD2975ACCC005CE9CC /* View+Extensions.swift */; };
@@ -64,6 +74,30 @@
 		41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4198A30129D0E5030082A960 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41CD6D48293B99DD009012DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4198A2F229D0E5000082A960;
+			remoteInfo = "Block Off WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4198A30729D0E5030082A960 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4198A30329D0E5030082A960 /* Block Off WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		410AB74729857598001C7319 /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
 		410AB74829857598001C7319 /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -75,6 +109,17 @@
 		4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateStub.swift; sourceTree = "<group>"; };
 		4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTapDemo.swift; sourceTree = "<group>"; };
 		4198A2ED29CFE4AD0082A960 /* OnboardingRequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRequestPermission.swift; sourceTree = "<group>"; };
+		4198A2F329D0E5000082A960 /* Block Off WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Block Off WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4198A2F529D0E5000082A960 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4198A2F729D0E5010082A960 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4198A2FA29D0E5010082A960 /* Block_Off_WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_Off_WidgetBundle.swift; sourceTree = "<group>"; };
+		4198A2FC29D0E5010082A960 /* Block_Off_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_Off_Widget.swift; sourceTree = "<group>"; };
+		4198A2FE29D0E5030082A960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4198A30029D0E5030082A960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4198A30929D1E8A90082A960 /* HelloWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWidgetEntry.swift; sourceTree = "<group>"; };
+		4198A30B29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWidgetTimelineProvider.swift; sourceTree = "<group>"; };
+		4198A30D29D1E8DA0082A960 /* HelloWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWidgetView.swift; sourceTree = "<group>"; };
+		4198A30F29D1E8EF0082A960 /* HelloWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWidget.swift; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		41A540AD2975ACCC005CE9CC /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -124,6 +169,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4198A2F029D0E5000082A960 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4198A2F829D0E5010082A960 /* SwiftUI.framework in Frameworks */,
+				4198A2F629D0E5010082A960 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		41CD6D4D293B99DD009012DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +189,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4198A2F429D0E5000082A960 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4198A2F529D0E5000082A960 /* WidgetKit.framework */,
+				4198A2F729D0E5010082A960 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4198A2F929D0E5010082A960 /* Block Off Widget */ = {
+			isa = PBXGroup;
+			children = (
+				4198A2FA29D0E5010082A960 /* Block_Off_WidgetBundle.swift */,
+				4198A31129D1EA480082A960 /* HelloWidgetTest */,
+				4198A30829D1E8300082A960 /* UnscheduledTimeWidget */,
+				4198A2FC29D0E5010082A960 /* Block_Off_Widget.swift */,
+				4198A2FE29D0E5030082A960 /* Assets.xcassets */,
+				4198A30029D0E5030082A960 /* Info.plist */,
+			);
+			path = "Block Off Widget";
+			sourceTree = "<group>";
+		};
+		4198A30829D1E8300082A960 /* UnscheduledTimeWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UnscheduledTimeWidget;
+			sourceTree = "<group>";
+		};
+		4198A31129D1EA480082A960 /* HelloWidgetTest */ = {
+			isa = PBXGroup;
+			children = (
+				4198A30929D1E8A90082A960 /* HelloWidgetEntry.swift */,
+				4198A30B29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift */,
+				4198A30D29D1E8DA0082A960 /* HelloWidgetView.swift */,
+				4198A30F29D1E8EF0082A960 /* HelloWidget.swift */,
+			);
+			path = HelloWidgetTest;
+			sourceTree = "<group>";
+		};
 		41A540AC2975ACB9005CE9CC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				41CD6D52293B99DD009012DF /* blockOffV4 */,
+				4198A2F929D0E5010082A960 /* Block Off Widget */,
+				4198A2F429D0E5000082A960 /* Frameworks */,
 				41CD6D51293B99DD009012DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -189,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				41CD6D50293B99DD009012DF /* blockOffV4.app */,
+				4198A2F329D0E5000082A960 /* Block Off WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +441,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4198A2F229D0E5000082A960 /* Block Off WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4198A30429D0E5030082A960 /* Build configuration list for PBXNativeTarget "Block Off WidgetExtension" */;
+			buildPhases = (
+				4198A2EF29D0E5000082A960 /* Sources */,
+				4198A2F029D0E5000082A960 /* Frameworks */,
+				4198A2F129D0E5000082A960 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Block Off WidgetExtension";
+			productName = "Block Off WidgetExtension";
+			productReference = 4198A2F329D0E5000082A960 /* Block Off WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		41CD6D4F293B99DD009012DF /* blockOffV4 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41CD6D64293B99DE009012DF /* Build configuration list for PBXNativeTarget "blockOffV4" */;
@@ -351,10 +465,12 @@
 				41CD6D4C293B99DD009012DF /* Sources */,
 				41CD6D4D293B99DD009012DF /* Frameworks */,
 				41CD6D4E293B99DD009012DF /* Resources */,
+				4198A30729D0E5030082A960 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4198A30229D0E5030082A960 /* PBXTargetDependency */,
 			);
 			name = blockOffV4;
 			packageProductDependencies = (
@@ -371,9 +487,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					4198A2F229D0E5000082A960 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					41CD6D4F293B99DD009012DF = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -396,11 +515,20 @@
 			projectRoot = "";
 			targets = (
 				41CD6D4F293B99DD009012DF /* blockOffV4 */,
+				4198A2F229D0E5000082A960 /* Block Off WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4198A2F129D0E5000082A960 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4198A2FF29D0E5030082A960 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		41CD6D4E293B99DD009012DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,6 +541,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4198A2EF29D0E5000082A960 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4198A30A29D1E8A90082A960 /* HelloWidgetEntry.swift in Sources */,
+				4198A30E29D1E8DA0082A960 /* HelloWidgetView.swift in Sources */,
+				4198A2FB29D0E5010082A960 /* Block_Off_WidgetBundle.swift in Sources */,
+				4198A30C29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift in Sources */,
+				4198A31029D1E8EF0082A960 /* HelloWidget.swift in Sources */,
+				4198A2FD29D0E5010082A960 /* Block_Off_Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		41CD6D4C293B99DD009012DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +615,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4198A30229D0E5030082A960 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4198A2F229D0E5000082A960 /* Block Off WidgetExtension */;
+			targetProxy = 4198A30129D0E5030082A960 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		41CD6D5E293B99DE009012DF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -486,6 +635,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4198A30529D0E5030082A960 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 947MDTH7AR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Block Off Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Block Off Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FrankfurtIndustries.blockOffV4.Block-Off-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4198A30629D0E5030082A960 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 947MDTH7AR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Block Off Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Block Off Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FrankfurtIndustries.blockOffV4.Block-Off-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		41CD6D62293B99DE009012DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -603,6 +808,7 @@
 		41CD6D65293B99DE009012DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +837,7 @@
 		41CD6D66293B99DE009012DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -659,6 +866,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4198A30429D0E5030082A960 /* Build configuration list for PBXNativeTarget "Block Off WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4198A30529D0E5030082A960 /* Debug */,
+				4198A30629D0E5030082A960 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		41CD6D4B293B99DD009012DF /* Build configuration list for PBXProject "blockOffV4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
