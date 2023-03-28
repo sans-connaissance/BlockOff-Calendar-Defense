@@ -9,9 +9,11 @@ import SwiftUI
 import WidgetKit
 
 struct HelloWidgetView: View {
+    let count: Int
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Hello")
+            Text("Event: \(count)")
             Text("Block Off!")
                 .bold()
                 .foregroundColor(.orange)
@@ -23,7 +25,7 @@ struct HelloWidgetView: View {
 
 struct HelloWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        HelloWidgetView()
+        HelloWidgetView(count: 69420)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

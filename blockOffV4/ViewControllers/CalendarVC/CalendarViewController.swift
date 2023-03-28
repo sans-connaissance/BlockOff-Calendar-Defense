@@ -11,6 +11,7 @@ import EventKit
 import EventKitUI
 import SwiftUI
 import UIKit
+import WidgetKit
 
 
 class CalendarViewController: DayViewController {
@@ -164,6 +165,12 @@ class CalendarViewController: DayViewController {
             self.getStubs()
             self.getChecks()
             self.reloadData()
+            let dailyEvents = Event.byDate(Date())
+            let blockOffs = dailyEvents.map { $0.isBlockedOff }
+            let defaults = UserDefaults(suiteName: SharedDefaults.group)
+            defaults?.set(dailyEvents.count, forKey: SharedDefaults.dailyEventCount)
+            defaults?.synchronize()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     

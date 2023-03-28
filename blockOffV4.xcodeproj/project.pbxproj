@@ -27,6 +27,8 @@
 		4198A30C29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30B29D1E8C30082A960 /* HelloWidgetTimelineProvider.swift */; };
 		4198A30E29D1E8DA0082A960 /* HelloWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30D29D1E8DA0082A960 /* HelloWidgetView.swift */; };
 		4198A31029D1E8EF0082A960 /* HelloWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A30F29D1E8EF0082A960 /* HelloWidget.swift */; };
+		4198A32B29D3632D0082A960 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A32A29D3632D0082A960 /* SharedDefaults.swift */; };
+		4198A32C29D3632D0082A960 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A32A29D3632D0082A960 /* SharedDefaults.swift */; };
 		41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A42973928D005CE9CC /* CalendarViewModel.swift */; };
 		41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */; };
 		41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540AD2975ACCC005CE9CC /* View+Extensions.swift */; };
@@ -122,6 +124,7 @@
 		4198A30F29D1E8EF0082A960 /* HelloWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWidget.swift; sourceTree = "<group>"; };
 		4198A32129D3511F0082A960 /* blockOffV4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blockOffV4.entitlements; sourceTree = "<group>"; };
 		4198A32229D351990082A960 /* Block Off WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Block Off WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		4198A32A29D3632D0082A960 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		41A540A42973928D005CE9CC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		41A540A62974EDB8005CE9CC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		41A540AD2975ACCC005CE9CC /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -417,6 +420,7 @@
 			children = (
 				41F4B9B2293BA3A2009A6FD2 /* CoreDataManager.swift */,
 				41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */,
+				4198A32A29D3632D0082A960 /* SharedDefaults.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -549,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4198A32C29D3632D0082A960 /* SharedDefaults.swift in Sources */,
 				4198A30A29D1E8A90082A960 /* HelloWidgetEntry.swift in Sources */,
 				4198A30E29D1E8DA0082A960 /* HelloWidgetView.swift in Sources */,
 				4198A2FB29D0E5010082A960 /* Block_Off_WidgetBundle.swift in Sources */,
@@ -567,6 +572,7 @@
 				4198A2EA29CFC5000082A960 /* OnboardingCreateStub.swift in Sources */,
 				41D24D112972F5BE00AD78F5 /* ProfileUIView.swift in Sources */,
 				41F4B9B6293BA401009A6FD2 /* Helpers.swift in Sources */,
+				4198A32B29D3632D0082A960 /* SharedDefaults.swift in Sources */,
 				410AB74929857598001C7319 /* Stub+CoreDataClass.swift in Sources */,
 				410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */,
 				4198A2EE29CFE4AD0082A960 /* OnboardingRequestPermission.swift in Sources */,

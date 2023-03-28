@@ -13,8 +13,8 @@ struct HelloWidget: Widget {
     let kind = "HelloWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: HelloWidgetTimelineProvider()) { _ in
-            HelloWidgetView()
+        StaticConfiguration(kind: kind, provider: HelloWidgetTimelineProvider()) { entry in
+            HelloWidgetView(count: entry.reminderCount)
         }
         .supportedFamilies([.systemSmall])
     }
