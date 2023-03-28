@@ -9,5 +9,6 @@ import WidgetKit
 
 struct HelloWidgetEntry: TimelineEntry {
     let date = Date()
-    let reminderCount: Int
+    let blockOffUnitCount: Int
+    let realEventUnitCount: Int
 }

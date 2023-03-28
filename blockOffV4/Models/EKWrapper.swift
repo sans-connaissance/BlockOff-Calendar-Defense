@@ -91,6 +91,16 @@ public final class EKWrapper: EventDescriptor, Identifiable, Hashable, Equatable
         }
     }
     
+    public var isBlockOff: Bool {
+        get {
+            if blockOff {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
     public var backgroundColor = SystemColors.systemBlue.withAlphaComponent(0.3)
     public var textColor = SystemColors.label
     

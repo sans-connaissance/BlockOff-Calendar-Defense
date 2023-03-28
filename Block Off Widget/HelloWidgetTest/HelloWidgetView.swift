@@ -9,11 +9,14 @@ import SwiftUI
 import WidgetKit
 
 struct HelloWidgetView: View {
-    let count: Int
+    let blockOffUnitCount: Int
+    let realEventUnitCount: Int
+    
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Event: \(count)")
+            Text("Block Off Count: \(blockOffUnitCount)")
+            Text("Real Event Count: \(realEventUnitCount)")
             Text("Block Off!")
                 .bold()
                 .foregroundColor(.orange)
@@ -25,7 +28,7 @@ struct HelloWidgetView: View {
 
 struct HelloWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        HelloWidgetView(count: 69420)
+        HelloWidgetView(blockOffUnitCount: 69420, realEventUnitCount: 69420)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

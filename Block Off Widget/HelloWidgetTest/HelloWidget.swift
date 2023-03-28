@@ -14,7 +14,7 @@ struct HelloWidget: Widget {
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: HelloWidgetTimelineProvider()) { entry in
-            HelloWidgetView(count: entry.reminderCount)
+            HelloWidgetView(blockOffUnitCount: entry.blockOffUnitCount, realEventUnitCount: entry.realEventUnitCount)
         }
         .supportedFamilies([.systemSmall])
     }

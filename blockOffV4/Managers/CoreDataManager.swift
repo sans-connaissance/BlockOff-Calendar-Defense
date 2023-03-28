@@ -92,7 +92,6 @@ class CoreDataManager {
         let context = CoreDataManager.shared.managedContext
         let uniqueEvents = Array(Set(ekEvents))
         var eventExists = true
-        var isBlocked = false
         
         for ekEvent in uniqueEvents {
             eventExists = Event.checkIfEventExists(ekID: ekEvent.id)
@@ -105,17 +104,12 @@ class CoreDataManager {
                 eventCD.end = ekEvent.dateInterval.end
                 eventCD.location = ekEvent.location
                 eventCD.notes = ekEvent.notes
+                eventCD.isBlockedOff = ekEvent.isBlockOff
                 eventCD.availability = Int64(ekEvent.availability.rawValue)
                 
                 let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
                 let setUnits = NSSet(array: units)
                 eventCD.units = setUnits
-                
-                isBlocked = Check.isBlockedOff(title: ekEvent.text)
-                
-                if isBlocked {
-                    eventCD.isBlockedOff = true
-                }
                 
                 do {
                     try context.save()
@@ -135,17 +129,12 @@ class CoreDataManager {
                         eventCD.end = ekEvent.dateInterval.end
                         eventCD.location = ekEvent.location
                         eventCD.notes = ekEvent.notes
+                        eventCD.isBlockedOff = ekEvent.isBlockOff
                         eventCD.availability = Int64(ekEvent.availability.rawValue)
                         
                         let units = Unit.getUnitsBY(start: ekEvent.dateInterval.start, end: ekEvent.dateInterval.end)
                         let setUnits = NSSet(array: units)
                         eventCD.units = setUnits
-                        
-                        isBlocked = Check.isBlockedOff(title: ekEvent.text)
-                        
-                        if isBlocked {
-                            eventCD.isBlockedOff = true
-                        }
                         
                         do {
                             try context.save()
