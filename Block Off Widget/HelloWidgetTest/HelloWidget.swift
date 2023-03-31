@@ -14,7 +14,7 @@ struct HelloWidget: Widget {
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: HelloWidgetTimelineProvider()) { entry in
-            HelloWidgetView(blockOffUnitCount: entry.blockOffUnitCount, realEventUnitCount: entry.realEventUnitCount)
+            HelloWidgetView(blockOffUnitCount: entry.blockOffUnitCount, realEventUnitCount: entry.realEventUnitCount, timeStamp: entry.date)
         }
         .supportedFamilies([.systemSmall])
     }

@@ -11,6 +11,7 @@ import WidgetKit
 struct HelloWidgetView: View {
     let blockOffUnitCount: Int
     let realEventUnitCount: Int
+    let timeStamp: Date
     
     
     var body: some View {
@@ -20,7 +21,9 @@ struct HelloWidgetView: View {
             Text("Block Off!")
                 .bold()
                 .foregroundColor(.orange)
-                .font(.title)
+                .font(.footnote)
+            Text("\(timeStamp)")
+                .font(.footnote)
         }
         .font(.title3)
     }
@@ -28,7 +31,7 @@ struct HelloWidgetView: View {
 
 struct HelloWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        HelloWidgetView(blockOffUnitCount: 69420, realEventUnitCount: 69420)
+        HelloWidgetView(blockOffUnitCount: 69420, realEventUnitCount: 69420, timeStamp: Date())
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

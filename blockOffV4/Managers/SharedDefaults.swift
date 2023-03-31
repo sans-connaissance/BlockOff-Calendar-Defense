@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreData
+import WidgetKit
 
 struct SharedDefaults {
     static var group = "group.frankfurtindustries.blockoffv4"
@@ -13,5 +15,7 @@ struct SharedDefaults {
     static var dailyBlockOffUnitCount = "daily_blockoff_unit_count"
     static var dailyRealEventUnitCount = "daily_real_event_unit_count"
     static var dailyUnscheduledUnitCount = "daily_unscheduled_unit_count"
+    static var widgetIsStale = "widget_is_stale"
     
+
 }
