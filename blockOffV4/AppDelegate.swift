@@ -77,7 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func refresh() {
-        Event.updateWidget(date: .now)
+        let startDate = CalendarManager.shared.calendar.startOfDay(for: Date())
+        _ = CalendarManager.shared.getCalendarEvents(startDate)
+        Event.updateWidget(date: Date())
       print("refresh occurred")
     }
 }

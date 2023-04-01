@@ -144,7 +144,9 @@ extension Event: Identifiable {
         
         let defaults = UserDefaults(suiteName: SharedDefaults.group)
         defaults?.set(blockOffUnitCount, forKey: SharedDefaults.dailyBlockOffUnitCount)
+        print("blockOffUnits: \(blockOffUnitCount)")
         defaults?.set(realEventUnitCount, forKey: SharedDefaults.dailyRealEventUnitCount)
+        print("realEventUnits: \(realEventUnitCount)")
         defaults?.synchronize()
         WidgetCenter.shared.reloadAllTimelines()
     }

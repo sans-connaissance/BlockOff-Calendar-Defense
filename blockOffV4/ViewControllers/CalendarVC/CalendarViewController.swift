@@ -18,10 +18,10 @@ class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
-    var buttonUnitArrays: [[UnitViewModel]] = []
-    var blockAllUnitArrays: [[UnitViewModel]] = []
-    var reducedUnitArrays: [[UnitViewModel]] = []
-    var eventStore = EKEventStore()
+    var buttonUnitArrays = CalendarManager.shared.buttonUnitArrays
+    var blockAllUnitArrays = CalendarManager.shared.blockAllUnitArrays
+    var reducedUnitArrays = CalendarManager.shared.reducedUnitArrays
+    var eventStore = CalendarManager.shared.eventStore
     var currentSelectedDate: Date? {
         willSet {
             if newValue == currentSelectedDate {
@@ -79,7 +79,7 @@ class CalendarViewController: DayViewController {
             case true:
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    self.initializeStore()
+                //    self.initializeStore()
                     CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
                     
                     if UserDefaults.primaryCalendar == "" {
@@ -112,7 +112,7 @@ class CalendarViewController: DayViewController {
     }
     
     func initializeStore() {
-        eventStore = EKEventStore()
+        CalendarManager.shared.eventStore = EKEventStore()
     }
     
     func createSpinnerView() {
@@ -193,9 +193,9 @@ class CalendarViewController: DayViewController {
     
     @objc func blockAllWithDefault() {
         if let date = dayView.dayHeaderView.state?.selectedDate {
-            let units = getUnitsForBlockOff(date)
-            createBlockAllUnitArrays(units: units)
-            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            let units = CalendarManager.shared.getUnitsForBlockOff(date)
+            CalendarManager.shared.createBlockAllUnitArrays(units: units)
+            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
@@ -238,9 +238,9 @@ class CalendarViewController: DayViewController {
     
     @objc func blockAllWithRandomPlusDefault() {
         if let date = dayView.dayHeaderView.state?.selectedDate {
-            let units = getUnitsForBlockOff(date)
-            createBlockAllUnitArrays(units: units)
-            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            let units = CalendarManager.shared.getUnitsForBlockOff(date)
+            CalendarManager.shared.createBlockAllUnitArrays(units: units)
+            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
@@ -284,9 +284,9 @@ class CalendarViewController: DayViewController {
     
     @objc func blockAllWithRandomMinusDefault() {
         if let date = dayView.dayHeaderView.state?.selectedDate {
-            let units = getUnitsForBlockOff(date)
-            createBlockAllUnitArrays(units: units)
-            let events = createBlockOffEvents(from: blockAllUnitArrays)
+            let units = CalendarManager.shared.getUnitsForBlockOff(date)
+            CalendarManager.shared.createBlockAllUnitArrays(units: units)
+            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
@@ -334,7 +334,7 @@ class CalendarViewController: DayViewController {
             var oneDayComponent = DateComponents()
             oneDayComponent.day = 1
             let endDate = calendar.date(byAdding: oneDayComponent, to: date)!
-            let predicate = eventStore.predicateForEvents(withStart: date, end: endDate, calendars: viewableCalendar())
+            let predicate = eventStore.predicateForEvents(withStart: date, end: endDate, calendars: CalendarManager.shared.viewableCalendar())
             let eventKitEvents = eventStore.events(matching: predicate)
             
             for event in eventKitEvents {
@@ -356,7 +356,7 @@ class CalendarViewController: DayViewController {
     
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         currentSelectedDate = dayView.dayHeaderView.state?.selectedDate
-        return getCalendarEvents(date)
+        return CalendarManager.shared.getCalendarEvents(date)
     }
     
     private func createMoreDays(currentDate: Date) {
