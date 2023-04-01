@@ -23,14 +23,16 @@ struct HelloWidgetTimelineProvider: TimelineProvider {
         
         var entries = [HelloWidgetEntry]()
         let currentDate = Date()
+        let entry = HelloWidgetEntry(date: currentDate, blockOffUnitCount: getBlockOffUnits(), realEventUnitCount: getRealUnits())
+        entries.append(entry)
         
-        for dayOffset in 0...6 {
-            let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
-            let entry = HelloWidgetEntry(date: entryDate, blockOffUnitCount: getBlockOffUnits(), realEventUnitCount: getRealUnits())
-            entries.append(entry)
-        }
+//        for dayOffset in 0...6 {
+//            let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
+//            let entry = HelloWidgetEntry(date: entryDate, blockOffUnitCount: getBlockOffUnits(), realEventUnitCount: getRealUnits())
+//            entries.append(entry)
+//        }
         
-        let timeline = Timeline(entries: entries, policy: .after(.now.advanced(by: 900.0)))
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         
         let defaults = UserDefaults(suiteName: SharedDefaults.group)
         defaults?.set(true, forKey: SharedDefaults.widgetIsStale)
