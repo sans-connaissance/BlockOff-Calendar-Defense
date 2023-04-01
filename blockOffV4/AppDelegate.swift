@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import BackgroundTasks
+import CoreData
+import WidgetKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.lastDayInCoreData = CalendarManager.shared.calendar.startOfDay(for: lastDay)
             CoreDataManager.shared.saveDays(days)
         }
+        
+        
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: SharedDefaults.backgroundTaskIdentifier, using: nil) { task in
+            self.refresh() // 1
+            task.setTaskCompleted(success: true) // 2
+            self.scheduleAppRefresh() // 3
+        }
+
+        scheduleAppRefresh()
+        
         return true
     }
 
@@ -50,5 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func scheduleAppRefresh() {
+      let request = BGAppRefreshTaskRequest(identifier: SharedDefaults.backgroundTaskIdentifier)
+      request.earliestBeginDate = Date(timeIntervalSinceNow: 0)
+      do {
+        try BGTaskScheduler.shared.submit(request)
+        print("background refresh scheduled")
+      } catch {
+        print("Couldn't schedule app refresh \(error.localizedDescription)")
+      }
+    }
+    
+    func refresh() {
+        Event.updateWidget(date: .now)
+      print("refresh occurred")
     }
 }

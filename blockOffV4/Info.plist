@@ -19,5 +19,13 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.FrankfurtIndustries.blockOffV4.task.refresh</string>
+	</array>
 </dict>
 </plist>

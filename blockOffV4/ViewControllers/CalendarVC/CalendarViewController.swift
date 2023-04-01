@@ -165,36 +165,9 @@ class CalendarViewController: DayViewController {
             self.getStubs()
             self.getChecks()
             self.reloadData()
-            self.updateWidget(date: .now)
         }
     }
     
-    func updateWidget(date: Date) {
-        let dailyEvents = Event.byDate(Date())
-        let blockOffs = dailyEvents.filter { $0.isBlockedOff }
-        let realEvents = dailyEvents.filter { $0.isBlockedOff == false }
-        
-        var blockOffUnitCount: Int = 0
-        var realEventUnitCount: Int = 0
-        for blockOff in blockOffs {
-            if let numberofUnits = blockOff.units?.count {
-                blockOffUnitCount = blockOffUnitCount + numberofUnits
-            }
-        }
-        
-        for realEvent in realEvents {
-            if let numberofUnits = realEvent.units?.count {
-                realEventUnitCount = realEventUnitCount + numberofUnits
-            }
-        }
-        
-        let defaults = UserDefaults(suiteName: SharedDefaults.group)
-        defaults?.set(blockOffUnitCount, forKey: SharedDefaults.dailyBlockOffUnitCount)
-        defaults?.set(realEventUnitCount, forKey: SharedDefaults.dailyRealEventUnitCount)
-        defaults?.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-
     
     @objc func openProfileVC() {
         let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView() }

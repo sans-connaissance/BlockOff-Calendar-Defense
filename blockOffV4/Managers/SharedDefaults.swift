@@ -16,6 +16,6 @@ struct SharedDefaults {
     static var dailyRealEventUnitCount = "daily_real_event_unit_count"
     static var dailyUnscheduledUnitCount = "daily_unscheduled_unit_count"
     static var widgetIsStale = "widget_is_stale"
+    static var backgroundTaskIdentifier = "com.FrankfurtIndustries.blockOffV4.task.refresh"
     
-
 }
