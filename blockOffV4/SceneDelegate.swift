@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
 
         Event.updateWidget(date: Date())
-        print("Did enter background")
+    
     }
 }
 
