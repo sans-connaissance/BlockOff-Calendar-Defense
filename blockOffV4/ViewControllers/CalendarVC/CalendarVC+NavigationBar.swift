@@ -21,5 +21,6 @@ extension CalendarViewController {
         navigationItem.scrollEdgeAppearance = a
         navigationItem.compactAppearance = a
         navigationItem.standardAppearance = a
+        
     }
 }

@@ -167,7 +167,11 @@ class CalendarViewController: DayViewController {
     
     
     @objc func openProfileVC() {
-        let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView() }
+        let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView()
+            self.getStubs()
+            self.createTabBars()
+            
+        }
         let hostingController = UIHostingController(rootView: profileView)
         hostingController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(hostingController, animated: true)
