@@ -15,6 +15,7 @@
 		4164EAB729DA5EF200F09EB4 /* Check+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164EAB329DA5EF200F09EB4 /* Check+CoreDataClass.swift */; };
 		4164EAB829DA5EF200F09EB4 /* Check+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164EAB429DA5EF200F09EB4 /* Check+CoreDataProperties.swift */; };
 		4164EB0B29DBA93900F09EB4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4164EAB929DA679100F09EB4 /* CloudKit.framework */; };
+		4164EB0D29DC648E00F09EB4 /* CalendarVC+BlockAlls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164EB0C29DC648E00F09EB4 /* CalendarVC+BlockAlls.swift */; };
 		4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */; };
 		4198A2E629CFA3110082A960 /* OnboardingSelectCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */; };
 		4198A2E829CFAB0F0082A960 /* OnBoardingSelectTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198A2E729CFAB0F0082A960 /* OnBoardingSelectTimes.swift */; };
@@ -89,6 +90,7 @@
 		4164EAB329DA5EF200F09EB4 /* Check+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4164EAB429DA5EF200F09EB4 /* Check+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4164EAB929DA679100F09EB4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		4164EB0C29DC648E00F09EB4 /* CalendarVC+BlockAlls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BlockAlls.swift"; sourceTree = "<group>"; };
 		4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+BOButtonCreation.swift"; sourceTree = "<group>"; };
 		4198A2E529CFA3110082A960 /* OnboardingSelectCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSelectCalendar.swift; sourceTree = "<group>"; };
 		4198A2E729CFAB0F0082A960 /* OnBoardingSelectTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSelectTimes.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				4194028A294F6005007F6624 /* CalendarVC+BOButtonCreation.swift */,
 				41D24D1529733A9200AD78F5 /* CalendarVC+TabBars.swift */,
 				41E7C06A29CA71410094F536 /* CalendarVC+NavigationBar.swift */,
+				4164EB0C29DC648E00F09EB4 /* CalendarVC+BlockAlls.swift */,
 			);
 			path = CalendarVC;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				4198A2E829CFAB0F0082A960 /* OnBoardingSelectTimes.swift in Sources */,
 				4164EAAF29DA5D8A00F09EB4 /* StubCheckDataModel.xcdatamodeld in Sources */,
 				41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */,
+				4164EB0D29DC648E00F09EB4 /* CalendarVC+BlockAlls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
