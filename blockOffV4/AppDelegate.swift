@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.lastDayInCoreData = CalendarManager.shared.calendar.startOfDay(for: lastDay)
             CoreDataManager.shared.saveDays(days)
         }
-        
         return true
     }
 

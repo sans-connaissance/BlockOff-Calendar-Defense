@@ -54,11 +54,19 @@ class CalendarViewController: DayViewController {
         style.timeline.eventGap = 2.0
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
+        
+        // check to see if launch from reopen
+        // must be signed into iCloud
+        // if stubs is empty throw up spinning wheel
+
     }
     
     func getStubs() {
         let fetchResults = Stub.getAllStubs()
         stubs = fetchResults.map(StubViewModel.init)
+        if stubs.count == 0 {
+            createSpinnerView(withDelay: 4)
+        }
     }
     
     func getChecks() {
@@ -112,19 +120,20 @@ class CalendarViewController: DayViewController {
         CalendarManager.shared.eventStore = EKEventStore()
     }
     
-    func createSpinnerView() {
+    func createSpinnerView(withDelay: Double) {
         let child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
         view.addSubview(child.view)
         child.didMove(toParent: self)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + withDelay) {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
             self.getStubs()
             self.getChecks()
+            self.createTabBars()
             self.reloadData()
         }
     }
@@ -138,7 +147,7 @@ class CalendarViewController: DayViewController {
     func openOnboarding() {
         
         let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear {
-            self.createSpinnerView()
+            self.createSpinnerView(withDelay: 1)
             self.getStubs()
             self.createTabBars()
         }
@@ -167,7 +176,7 @@ class CalendarViewController: DayViewController {
     
     
     @objc func openProfileVC() {
-        let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView()
+        let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView(withDelay: 1)
             self.getStubs()
             self.createTabBars()
             
@@ -205,7 +214,7 @@ class CalendarViewController: DayViewController {
         let distanceFromTheEndOfDays = currentDate.distance(to: UserDefaults.lastDayInCoreData)
         // Distance is 7 days
         if distanceFromTheEndOfDays < 604800 {
-            createSpinnerView()
+            createSpinnerView(withDelay: 1)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 var dayComponent = DateComponents()
