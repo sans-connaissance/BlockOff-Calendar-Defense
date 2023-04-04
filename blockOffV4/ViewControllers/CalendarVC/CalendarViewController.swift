@@ -31,6 +31,11 @@ class CalendarViewController: DayViewController {
     }
     
     // OVERRIDES
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Block Off" // <---- add button or a text title here for the calendar?
@@ -157,13 +162,21 @@ class CalendarViewController: DayViewController {
         self.present(hostingController, animated: true, completion: nil)
     }
     
-    func openRequestCalendarPermission() {
-        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
-        let hostingController = UIHostingController(rootView: requestPermissionView)
-        hostingController.hidesBottomBarWhenPushed = true
-        hostingController.modalPresentationStyle = .popover
-        self.present(hostingController, animated: true, completion: nil)
-    }
+//    func openRequestCalendarPermission() {
+//        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
+//        let hostingController = UIHostingController(rootView: requestPermissionView)
+//        hostingController.hidesBottomBarWhenPushed = true
+//        hostingController.modalPresentationStyle = .popover
+//        self.present(hostingController, animated: true, completion: nil)
+//    }
+//
+//    func openiCloudSignIn() {
+//        let requestPermissionView = OnboardingiCloudSignIn(dismissAction: {self.dismiss(animated: true)})
+//        let hostingController = UIHostingController(rootView: requestPermissionView)
+//        hostingController.hidesBottomBarWhenPushed = true
+//        hostingController.modalPresentationStyle = .popover
+//        self.present(hostingController, animated: true, completion: nil)
+//    }
     
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
