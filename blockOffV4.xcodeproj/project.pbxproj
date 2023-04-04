@@ -95,7 +95,6 @@
 		4198A2E929CFC5000082A960 /* OnboardingCreateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateStub.swift; sourceTree = "<group>"; };
 		4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTapDemo.swift; sourceTree = "<group>"; };
 		4198A2ED29CFE4AD0082A960 /* OnboardingRequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRequestPermission.swift; sourceTree = "<group>"; };
-		4198A2F529D0E5000082A960 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4198A2F729D0E5010082A960 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4198A32129D3511F0082A960 /* blockOffV4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blockOffV4.entitlements; sourceTree = "<group>"; };
 		4198A32A29D3632D0082A960 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
@@ -173,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				4164EAB929DA679100F09EB4 /* CloudKit.framework */,
-				4198A2F529D0E5000082A960 /* WidgetKit.framework */,
 				4198A2F729D0E5010082A960 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
