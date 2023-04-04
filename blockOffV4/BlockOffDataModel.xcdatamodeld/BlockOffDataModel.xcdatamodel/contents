@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22A400" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Check" representedClassName="Check" syncable="YES">
-        <attribute name="ekID" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-    </entity>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName="Day" syncable="YES">
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -23,18 +19,6 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="events" inverseEntity="Day"/>
         <relationship name="units" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Unit" inverseName="events" inverseEntity="Unit"/>
-    </entity>
-    <entity name="Stub" representedClassName="Stub" syncable="YES">
-        <attribute name="availability" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isAllDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isDefault" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="location" optional="YES" attributeType="String"/>
-        <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="text" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Unit" representedClassName="Unit" syncable="YES">
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

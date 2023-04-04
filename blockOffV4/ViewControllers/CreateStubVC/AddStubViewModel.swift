@@ -19,8 +19,8 @@ class AddStubViewModel: ObservableObject {
     @Published var isDefault: Bool = false
     
     func save() {
-        let manager = CoreDataManager.shared
-        let stub = Stub(context: manager.managedContext)
+        let manager = CloudDataManager.shared
+        let stub = Stub(context: manager.viewContext)
         stub.title = title + "  "
         stub.text = text
         stub.availability = Int64(selectedAvailability.rawValue)

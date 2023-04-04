@@ -32,7 +32,7 @@ class EditStubViewModel: ObservableObject {
     }
     
     func save(stubID: NSManagedObjectID) {
-        let manager = CoreDataManager.shared
+        let manager = CloudDataManager.shared
         guard let stub = Stub.getStubBy(id: stubID) else { return }
         
         // THE CHECK WORKS BUT IT"S POPPING THE LAST TWO FROM THE PUBLISHED VAR

@@ -2,12 +2,13 @@
 //  Check+CoreDataProperties.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 12/3/22.
+//  Created by David Malicke on 4/2/23.
 //
 //
 
-import CoreData
 import Foundation
+import CoreData
+
 
 public extension Check {
     @nonobjc class func fetchRequest() -> NSFetchRequest<Check> {
@@ -23,7 +24,7 @@ extension Check: Identifiable {
         var fetchResults: [Check] = []
 
         do {
-            fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Check]
+            fetchResults = try CloudDataManager.shared.viewContext.fetch(fetchRequest()) as [Check]
 
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -37,7 +38,7 @@ extension Check: Identifiable {
         request.predicate = NSPredicate(format: "title == %@", title)
 
         do {
-            let count = try CoreDataManager.shared.managedContext.count(for: request)
+            let count = try CloudDataManager.shared.viewContext.count(for: request)
             if count > 0 {
                 return true
             } else {
@@ -55,7 +56,7 @@ extension Check: Identifiable {
         request.predicate = NSPredicate(format: "ekID == %@", ekID)
 
         do {
-            let count = try CoreDataManager.shared.managedContext.count(for: request)
+            let count = try CloudDataManager.shared.viewContext.count(for: request)
             if count > 0 {
                 return true
             } else {

@@ -14,7 +14,7 @@ class StubListViewModel: ObservableObject {
     func deleteStub(stub: StubViewModel) {
         let stub = Stub.getStubBy(id: stub.id)
         if let stub = stub {
-            CoreDataManager.shared.deleteStub(stub)
+            CloudDataManager.shared.deleteStub(stub)
         }
     }
     
@@ -22,13 +22,13 @@ class StubListViewModel: ObservableObject {
         let stubs = Stub.getAllStubs()
         for stub in stubs {
             stub.isDefault = false
-            CoreDataManager.shared.saveContext()
+            CloudDataManager.shared.saveContext()
         }
         
         let stub = Stub.getStubBy(id: stub.id)
         if let stub = stub {
             stub.isDefault = true
-            CoreDataManager.shared.saveContext()
+            CloudDataManager.shared.saveContext()
         }
         
         getAllStubs()

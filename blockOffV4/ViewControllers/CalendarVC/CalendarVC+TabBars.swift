@@ -15,19 +15,19 @@ extension CalendarViewController {
             let stubs = Stub.getAllStubs()
             for stub in stubs {
                 stub.isDefault = false
-                CoreDataManager.shared.saveContext()
+                CloudDataManager.shared.saveContext()
             }
             let stringId = action.discoverabilityTitle
             // Convert NSManagedObjectID to a string, via the uriRepresentation method.
             guard let objectIDString = stringId else { return }
             // Use the persistent store coordinator to transform the string back to an NSManagedObjectID.
             if let objectIDURL = URL(string: objectIDString) {
-                let coordinator: NSPersistentStoreCoordinator = CoreDataManager.shared.managedContext.persistentStoreCoordinator!
+                let coordinator: NSPersistentStoreCoordinator = CloudDataManager.shared.viewContext.persistentStoreCoordinator!
                 let managedObjectID = coordinator.managedObjectID(forURIRepresentation: objectIDURL)!
                 let stub = Stub.getStubBy(id: managedObjectID)
                 if let stub = stub {
                     stub.isDefault = true
-                    CoreDataManager.shared.saveContext()
+                    CloudDataManager.shared.saveContext()
                 }
             }
             self.getStubs()

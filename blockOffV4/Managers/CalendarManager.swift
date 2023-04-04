@@ -13,6 +13,7 @@ import UIKit
 class CalendarManager {
     static let shared = CalendarManager()
     lazy var coreDataStack = CoreDataManager.shared
+    lazy var cloudDataStack = CloudDataManager.shared
     var calendar = Calendar.autoupdatingCurrent
     var availableCalenders: [CalendarViewModel] = []
     var buttonUnitArrays: [[UnitViewModel]] = []
@@ -37,7 +38,7 @@ class CalendarManager {
             let eventIsBlock = Check.checkIfEventExists(ekID: event.eventIdentifier)
             let stubIsBlock = Stub.isBlockOff(title: event.title)
             if !eventIsBlock && stubIsBlock {
-                let newCheck = Check(context: coreDataStack.managedContext)
+                let newCheck = Check(context: cloudDataStack.viewContext)
                 newCheck.title = event.title
                 newCheck.ekID = event.eventIdentifier
                 coreDataStack.saveContext()

@@ -2,7 +2,7 @@
 //  Stub+CoreDataProperties.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 1/28/23.
+//  Created by David Malicke on 4/2/23.
 //
 //
 
@@ -31,7 +31,7 @@ extension Stub: Identifiable {
         var fetchResults: [Stub] = []
 
         do {
-            fetchResults = try CoreDataManager.shared.managedContext.fetch(fetchRequest()) as [Stub]
+            fetchResults = try CloudDataManager.shared.viewContext.fetch(fetchRequest()) as [Stub]
 
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -41,7 +41,7 @@ extension Stub: Identifiable {
 
     static func getStubBy(id: NSManagedObjectID) -> Stub? {
         do {
-            return try CoreDataManager.shared.managedContext.existingObject(with: id) as? Stub
+            return try CloudDataManager.shared.viewContext.existingObject(with: id) as? Stub
         } catch {
             print(error)
             return nil
@@ -54,7 +54,7 @@ extension Stub: Identifiable {
         request.predicate = NSPredicate(format: "title == %@", title)
 
         do {
-            let count = try CoreDataManager.shared.managedContext.count(for: request)
+            let count = try CloudDataManager.shared.viewContext.count(for: request)
             if count > 0 {
                 return true
             } else {
@@ -66,3 +66,4 @@ extension Stub: Identifiable {
         }
     }
 }
+
