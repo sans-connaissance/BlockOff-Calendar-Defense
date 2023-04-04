@@ -18,9 +18,6 @@ class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
-    var buttonUnitArrays = CalendarManager.shared.buttonUnitArrays
-    var blockAllUnitArrays = CalendarManager.shared.blockAllUnitArrays
-    var reducedUnitArrays = CalendarManager.shared.reducedUnitArrays
     var eventStore = CalendarManager.shared.eventStore
     var currentSelectedDate: Date? {
         willSet {
@@ -194,8 +191,10 @@ class CalendarViewController: DayViewController {
     @objc func blockAllWithDefault() {
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = CalendarManager.shared.getUnitsForBlockOff(date)
+            print("here are the units; \(units.count)")
             CalendarManager.shared.createBlockAllUnitArrays(units: units)
-            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
+            let events = CalendarManager.shared.createBlockOffEvents(from: CalendarManager.shared.blockAllUnitArrays)
+            print("here are the events; \(events.count)")
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
@@ -240,7 +239,7 @@ class CalendarViewController: DayViewController {
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = CalendarManager.shared.getUnitsForBlockOff(date)
             CalendarManager.shared.createBlockAllUnitArrays(units: units)
-            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
+            let events = CalendarManager.shared.createBlockOffEvents(from: CalendarManager.shared.blockAllUnitArrays)
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
@@ -286,7 +285,7 @@ class CalendarViewController: DayViewController {
         if let date = dayView.dayHeaderView.state?.selectedDate {
             let units = CalendarManager.shared.getUnitsForBlockOff(date)
             CalendarManager.shared.createBlockAllUnitArrays(units: units)
-            let events = CalendarManager.shared.createBlockOffEvents(from: blockAllUnitArrays)
+            let events = CalendarManager.shared.createBlockOffEvents(from: CalendarManager.shared.blockAllUnitArrays)
             
             for event in events {
                 if let descriptor = event as? CalendarKit.Event {
