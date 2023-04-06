@@ -229,4 +229,7 @@ extension UserDefaults {
     
     @UserDefault(key: "has_calendar_access", defaultValue: true)
     static var hasCalendarAccess: Bool
+    
+    @UserDefault(key: "has_icloud_access", defaultValue: false)
+    static var hasIcloudAccess: Bool
 }

@@ -63,14 +63,23 @@ class CalendarViewController: DayViewController {
         // check to see if launch from reopen
         // must be signed into iCloud
         // if stubs is empty throw up spinning wheel
-
+        
+        if UserDefaults.hasIcloudAccess {
+            CloudDataManager.shared.loadSyncContainer()
+        } else {
+            CloudDataManager.shared.loadLocalContainer()
+        }
     }
+    
     
     func getStubs() {
         let fetchResults = Stub.getAllStubs()
         stubs = fetchResults.map(StubViewModel.init)
-        if stubs.count == 0 {
-            createSpinnerView(withDelay: 4)
+        
+        if UserDefaults.hasIcloudAccess {
+            if stubs.count == 0 {
+                createSpinnerView(withDelay: 1)
+            }
         }
     }
     
@@ -147,6 +156,27 @@ class CalendarViewController: DayViewController {
     
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(checkiCloud(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func checkiCloud(_ notification: Notification) {
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+            if UserDefaults.hasIcloudAccess {
+                CloudDataManager.shared.loadSyncContainer()
+            } else {
+                CloudDataManager.shared.loadLocalContainer()
+            }
+        }
     }
     
     func openOnboarding() {

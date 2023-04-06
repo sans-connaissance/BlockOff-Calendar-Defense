@@ -7,25 +7,141 @@
 
 import CoreData
 import Foundation
+import CloudKit
 
+
+//class CloudDataManager {
+//    let persistentContainer: NSPersistentContainer
+//    static let shared = CloudDataManager()
+//
+//    var viewContext: NSManagedObjectContext {
+//        return persistentContainer.viewContext
+//    }
+//    private init() {
+//        persistentContainer = NSPersistentCloudKitContainer(name: "StubCheckDataModel")
+//        persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+//        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+//        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+//        persistentContainer.loadPersistentStores { (description, error) in
+//            if let error = error {
+//                fatalError("Unable to initialize Core Data \(error)")
+//            }
+//        }
+//    }
+//
+//    func deleteStub(_ stub: Stub) {
+//        viewContext.delete(stub)
+//
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            viewContext.rollback()
+//            print("Failed to delete movie \(error)")
+//        }
+//    }
+//
+//    func saveContext() {
+//        guard viewContext.hasChanges else { return }
+//
+//        do {
+//            try viewContext.save()
+//        } catch let error as NSError {
+//            print("Unresolved error \(error), \(error.userInfo)")
+//        }
+//    }
+//}
 
 class CloudDataManager {
-    let persistentContainer: NSPersistentContainer
-    static let shared = CloudDataManager()
+    private let modelName: String
     
-    var viewContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
+    lazy var viewContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    
+    static var shared = CloudDataManager(modelName: "StubCheckDataModel")
+    
+    init(modelName: String) {
+        self.modelName = modelName
     }
-    private init() {
-        persistentContainer = NSPersistentCloudKitContainer(name: "StubCheckDataModel")
-        persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-        persistentContainer.loadPersistentStores { (description, error) in
-            if let error = error {
-                fatalError("Unable to initialize Core Data \(error)")
-            }
+    
+    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+        
+        let container = NSPersistentCloudKitContainer(name: self.modelName)
+        
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("###\(#function): Failed to retrieve a persistent store description.")
         }
+        
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
+        description.setOption(true as NSNumber,
+                              forKey: remoteChangeKey)
+        
+        
+        // Set this to nil then it won't sync to iCloud
+        // the default value is a container with the same identifier of the app
+        description.cloudKitContainerOptions = nil
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        return container
+    }()
+    
+    func loadSyncContainer() {
+        let container = NSPersistentCloudKitContainer(name: self.modelName)
+        
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("###\(#function): Failed to retrieve a persistent store description.")
+        }
+        
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
+        description.setOption(true as NSNumber,
+                              forKey: remoteChangeKey)
+        
+        // leave the default cloudKitContainerOptions value as it is, then it will sync automatically
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        self.persistentContainer = container
+    }
+    
+    func loadLocalContainer() {
+        let container = NSPersistentCloudKitContainer(name: self.modelName)
+        
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("###\(#function): Failed to retrieve a persistent store description.")
+        }
+        
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
+        description.setOption(true as NSNumber,
+                              forKey: remoteChangeKey)
+        
+        description.cloudKitContainerOptions = nil
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        self.persistentContainer = container
     }
     
     func deleteStub(_ stub: Stub) {
@@ -48,9 +164,17 @@ class CloudDataManager {
             print("Unresolved error \(error), \(error.userInfo)")
         }
     }
+    
+    func checkIcloudStatus() {
+        CKContainer.default().accountStatus { (accountStatus, error) in
+            if case .available = accountStatus {
+                UserDefaults.hasIcloudAccess = true
+            } else {
+                UserDefaults.hasIcloudAccess = false
+            }
+        }
+    }
 }
-
-
 
 class CoreDataManager {
     private let modelName: String
