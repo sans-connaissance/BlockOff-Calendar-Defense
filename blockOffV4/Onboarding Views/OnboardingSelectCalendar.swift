@@ -13,6 +13,13 @@ struct OnboardingSelectCalendar: View {
     let eventStore: EKEventStore
     var body: some View {
         VStack(alignment: .center) {
+            
+            Text("Select Calendar")
+                .font(.title)
+                .fontWeight(.heavy)
+                .multilineTextAlignment(.center)
+                .padding([.trailing, .leading])
+            
             Picker("Select a calendar", selection: $vm.selectedCalendar) {
                 ForEach(vm.editableCalendars, id: \.self) {
                     Text($0.title).tag($0 as CalendarViewModel?)
@@ -24,14 +31,9 @@ struct OnboardingSelectCalendar: View {
             })
             .id(vm.uuid)
             
-            Text("Select Calendar to Defend")
-                .font(.title)
-                .fontWeight(.heavy)
-                .multilineTextAlignment(.center)
-                .padding([.trailing, .leading])
-                .padding(.top, -40)
+
             HStack {
-                Text("Block Off can defend any calendar available in your iCal App. You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
+                Text("Defend any calendar available in your iCal App. You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)

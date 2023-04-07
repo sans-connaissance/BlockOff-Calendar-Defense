@@ -98,7 +98,7 @@ class CalendarViewController: DayViewController {
             case true:
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                //    self.initializeStore()
+                    //    self.initializeStore()
                     CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
                     
                     if UserDefaults.primaryCalendar == "" {
@@ -118,13 +118,20 @@ class CalendarViewController: DayViewController {
             case false:
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    let onboardingView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)}).onDisappear {
-                        self.requestCalendarAppPermission()
+                    if !UserDefaults.hasViewedCalendarPermissionMessage {
+                        let onboardingView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: false)}).onDisappear {
+                         //   self.requestCalendarAppPermission()
+                        }
+                        let hostingController = UIHostingController(rootView: onboardingView)
+                        hostingController.hidesBottomBarWhenPushed = true
+                        hostingController.modalPresentationStyle = .fullScreen
+                        self.present(hostingController, animated: true, completion: nil)
+                        
+                    } else {
+                        if UserDefaults.displayOnboarding {
+                            self.openOnboarding()
+                        }
                     }
-                    let hostingController = UIHostingController(rootView: onboardingView)
-                    hostingController.hidesBottomBarWhenPushed = true
-                    hostingController.modalPresentationStyle = .fullScreen
-                    self.present(hostingController, animated: true, completion: nil)
                 }
             }
         }
@@ -194,21 +201,21 @@ class CalendarViewController: DayViewController {
         self.present(hostingController, animated: true, completion: nil)
     }
     
-//    func openRequestCalendarPermission() {
-//        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
-//        let hostingController = UIHostingController(rootView: requestPermissionView)
-//        hostingController.hidesBottomBarWhenPushed = true
-//        hostingController.modalPresentationStyle = .popover
-//        self.present(hostingController, animated: true, completion: nil)
-//    }
-//
-//    func openiCloudSignIn() {
-//        let requestPermissionView = OnboardingiCloudSignIn(dismissAction: {self.dismiss(animated: true)})
-//        let hostingController = UIHostingController(rootView: requestPermissionView)
-//        hostingController.hidesBottomBarWhenPushed = true
-//        hostingController.modalPresentationStyle = .popover
-//        self.present(hostingController, animated: true, completion: nil)
-//    }
+    //    func openRequestCalendarPermission() {
+    //        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
+    //        let hostingController = UIHostingController(rootView: requestPermissionView)
+    //        hostingController.hidesBottomBarWhenPushed = true
+    //        hostingController.modalPresentationStyle = .popover
+    //        self.present(hostingController, animated: true, completion: nil)
+    //    }
+    //
+    //    func openiCloudSignIn() {
+    //        let requestPermissionView = OnboardingiCloudSignIn(dismissAction: {self.dismiss(animated: true)})
+    //        let hostingController = UIHostingController(rootView: requestPermissionView)
+    //        hostingController.hidesBottomBarWhenPushed = true
+    //        hostingController.modalPresentationStyle = .popover
+    //        self.present(hostingController, animated: true, completion: nil)
+    //    }
     
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {

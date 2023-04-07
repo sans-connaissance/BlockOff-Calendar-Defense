@@ -7,30 +7,33 @@
 
 import SwiftUI
 
-struct WelcomeScreen: View {
+struct OnboardingWelcome: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Image("blockoff-symbol")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 200)
-                .padding()
             Text("Welcome to Block Off")
                 .font(.title)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
                 .padding([.trailing, .leading])
+                .padding(.bottom)
+            Image("blockoff-symbol")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
+                .padding()
             Text("Advanced Calendar Defense System")
                 .font(.title2)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
                 .padding([.trailing, .leading])
-            Text("Use Block Off's one tap calendaring to quickly block off available time on your calendar")
+            Text("Use Block Off's one tap calendaring to defend available time on your calendar")
                 .font(.body)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
-                .padding()
+                .padding([.trailing, .leading])
+                .padding(.top, 5)
+                .padding(.bottom, 5)
             HStack {
                 Text("Swipe to get started")
                     .font(.body)
@@ -40,5 +43,11 @@ struct WelcomeScreen: View {
                 Image(systemName: "arrowshape.right.fill")
             }
         }
+    }
+}
+
+struct OnboardingWelcome_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingWelcome()
     }
 }

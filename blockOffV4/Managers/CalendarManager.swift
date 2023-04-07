@@ -232,4 +232,7 @@ extension UserDefaults {
     
     @UserDefault(key: "has_icloud_access", defaultValue: false)
     static var hasIcloudAccess: Bool
+    
+    @UserDefault(key: "has_viewed_calendar_permission_message", defaultValue: false)
+    static var hasViewedCalendarPermissionMessage: Bool
 }

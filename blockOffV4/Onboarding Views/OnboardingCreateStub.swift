@@ -13,7 +13,7 @@ struct OnboardingCreateStub: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Text("Create Default Block")
+                Text("Create a Block")
                     .font(.title)
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.center)
@@ -35,6 +35,7 @@ struct OnboardingCreateStub: View {
                     TextField("Add Notes", text: $vm.notes)
                 }
             }
+            .frame(maxHeight: 200)
             .onDisappear{
                 vm.save()
             }
@@ -45,6 +46,7 @@ struct OnboardingCreateStub: View {
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
                         .padding()
+                        .padding(.top)
                     
                 }
                 HStack {
@@ -64,8 +66,8 @@ class OnboardingCreateStubViewModel: ObservableObject {
     var title: String = "Block Off"
     var text: String = ""
     var isAllDay: Bool = false
-    var location: String = "At the office"
-    var notes: String = "Please ask before scheduling"
+    var location: String = ""
+    var notes: String = ""
     
     @Published var availability: Availability = .busy
     @Published var selectedAvailability: Availability = .busy

@@ -13,33 +13,43 @@ struct OnboardingSubscribe: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("SubScribe!!")
-                .font(.headline)
+            Text("Subscribe and Defend")
+                .font(.title)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
-            Text("subTitle")
-                .font(.subheadline)
+                .padding([.trailing, .leading])
+            Image("blockoff-symbol")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
+                .padding()
+            Text("The first two weeks are free. After the trial period, continue denfending your calendar, and support the development of Block Off for $4.99 per year. ")
+                .font(.body)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
-            Text("$4.99 per year to defend your calendar")
-                .font(.body)
-                .multilineTextAlignment(.center)
-            Text("Will have instant access to all updates and new features.")
-                .font(.footnote)
-                .multilineTextAlignment(.center)
+                .padding()
             Button {
                 print("finished!")
                 UserDefaults.displayOnboarding = false
                 dismissAction()
             } label: {
-                Text("Launch Block-Off")
+                Text("Launch Block Off")
+                    
             }
             .bold()
             .foregroundColor(.white)
             .frame(width: 200, height: 50)
             .background(Color.red)
             .cornerRadius(6)
+            .padding()
         }
-        .padding()
+        //.padding()
+    }
+}
+
+struct OnboardingSubscribe_Previews: PreviewProvider {
+    static var previews: some View {
+        let dismissAction: (() -> Void) = {}
+        OnboardingSubscribe(dismissAction: dismissAction)
     }
 }

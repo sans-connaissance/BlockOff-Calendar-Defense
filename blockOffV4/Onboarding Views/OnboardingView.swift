@@ -14,7 +14,7 @@ struct OnboardingView: View {
     
     var body: some View {
         TabView {
-            WelcomeScreen()
+            OnboardingWelcome()
             
             OnboardingSelectCalendar(eventStore: eventStore)
             
