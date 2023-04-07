@@ -32,6 +32,8 @@
 		41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540B72975B82D005CE9CC /* AddStubViewModel.swift */; };
 		41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */; };
 		41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BC2975BC72005CE9CC /* StubUIView.swift */; };
+		41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */; };
+		41B807F929DF9B7E005DEAB7 /* OnboardingSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -110,6 +112,8 @@
 		41A540B72975B82D005CE9CC /* AddStubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStubViewModel.swift; sourceTree = "<group>"; };
 		41A540BA2975BBDF005CE9CC /* CreateStubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStubUIView.swift; sourceTree = "<group>"; };
 		41A540BC2975BC72005CE9CC /* StubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUIView.swift; sourceTree = "<group>"; };
+		41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome.swift; sourceTree = "<group>"; };
+		41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubscribe.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 				4198A2EB29CFCB1F0082A960 /* OnboardingTapDemo.swift */,
 				4198A2ED29CFE4AD0082A960 /* OnboardingRequestPermission.swift */,
 				4164EB0E29DCAE2600F09EB4 /* OnboardingiCloudSignIn.swift */,
+				41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */,
+				41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				4194028B294F6005007F6624 /* CalendarVC+BOButtonCreation.swift in Sources */,
 				41C337D029494DDC008F7FF2 /* UnitViewModel.swift in Sources */,
 				41E7C06329BD3C810094F536 /* EditStubUIView.swift in Sources */,
+				41B807F929DF9B7E005DEAB7 /* OnboardingSubscribe.swift in Sources */,
 				41F4B9AE293BA327009A6FD2 /* Day+CoreDataClass.swift in Sources */,
 				4164EAB529DA5EF200F09EB4 /* Stub+CoreDataClass.swift in Sources */,
 				41A540A72974EDB8005CE9CC /* SpinnerViewController.swift in Sources */,
@@ -507,6 +514,7 @@
 				41DCCC7E29909BA900E12117 /* SubUnitUIView.swift in Sources */,
 				41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */,
 				41DCCC852990A03100E12117 /* RealCalendarEventUIView.swift in Sources */,
+				41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */,
 				41E7C06B29CA71410094F536 /* CalendarVC+NavigationBar.swift in Sources */,
 				41A540BB2975BBDF005CE9CC /* CreateStubUIView.swift in Sources */,
 				4164EB0F29DCAE2600F09EB4 /* OnboardingiCloudSignIn.swift in Sources */,

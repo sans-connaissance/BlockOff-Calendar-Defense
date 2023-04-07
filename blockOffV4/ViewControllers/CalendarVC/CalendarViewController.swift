@@ -160,6 +160,8 @@ class CalendarViewController: DayViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(checkiCloud(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
+    // SET CALENDAR WHEN SOMEONE SIGNS IN AND OUT
+    
     @objc func checkiCloud(_ notification: Notification) {
         let child = SpinnerViewController()
         addChild(child)
