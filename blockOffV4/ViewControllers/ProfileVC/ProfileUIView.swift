@@ -25,15 +25,32 @@ struct ProfileUIView: View {
                 }
             }
             Section("Calendars") {
-                Picker("Select a calendar", selection: $vm.selectedCalendar) {
-                    ForEach(vm.editableCalendars, id: \.self) {
-                        Text($0.title).tag($0 as CalendarViewModel?)
+                VStack {
+                    Picker("Select a calendar", selection: $vm.selectedCalendar) {
+                        ForEach(vm.editableCalendars, id: \.self) {
+                            Text($0.title).tag($0 as CalendarViewModel?)
+                        }
+                    }
+                    .onChange(of: vm.selectedCalendar, perform: { _ in
+                        vm.setSelectedCalendarAsDefault()
+                    })
+                    .id(vm.uuid)
+                    if vm.editableCalendars.count == 0 {
+                        Text("Tap to turn on calendar access")
+                        Button {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        } label: {
+                            Text("App Permissions")
+                                
+                        }
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 200, height: 50)
+                        .background(Color.red)
+                        .cornerRadius(6)
+                        .padding()
                     }
                 }
-                .onChange(of: vm.selectedCalendar, perform: { _ in
-                    vm.setSelectedCalendarAsDefault()
-                })
-                .id(vm.uuid)
             }
         }
         .onAppear {
