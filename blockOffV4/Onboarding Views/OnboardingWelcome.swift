@@ -30,10 +30,10 @@ struct OnboardingWelcome: View {
             Text("Use Block Off's one tap calendaring to defend available time on your calendar")
                 .font(.body)
                 .fontWeight(.medium)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .padding([.trailing, .leading])
                 .padding(.top, 5)
-                .padding(.bottom, 5)
+                .padding(.bottom, 20)
             HStack {
                 Text("Swipe to get started")
                     .font(.body)

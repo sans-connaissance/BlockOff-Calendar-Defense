@@ -26,7 +26,7 @@ struct OnboardingSubscribe: View {
             Text("The first two weeks are free. After the trial period, continue denfending your calendar, and support the development of Block Off for $4.99 per year. ")
                 .font(.body)
                 .fontWeight(.medium)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .padding()
             Button {
                 print("finished!")

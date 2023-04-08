@@ -13,12 +13,12 @@ struct OnboardingSelectCalendar: View {
     let eventStore: EKEventStore
     var body: some View {
         VStack(alignment: .center) {
-            
             Text("Select Calendar")
                 .font(.title)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
-                .padding([.trailing, .leading])
+                .padding([.trailing, .leading,])
+                .padding(.bottom, 35)
             
             Picker("Select a calendar", selection: $vm.selectedCalendar) {
                 ForEach(vm.editableCalendars, id: \.self) {
@@ -30,24 +30,28 @@ struct OnboardingSelectCalendar: View {
                 vm.setSelectedCalendarAsDefault()
             })
             .id(vm.uuid)
-            
-
-            HStack {
-                Text("Defend any calendar available in your iCal App. You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Defend any calendar available in your iCal App.")
                     .font(.body)
                     .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                    .multilineTextAlignment(.leading)
+                    .padding([.leading,.trailing])
+                Text("You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.leading,.trailing])
                 
             }
-            HStack {
-                Text("Continue")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .padding([.trailing, .leading])
-                Image(systemName: "arrowshape.right.fill")
-            }
+ 
+//            HStack {
+//                Text("Continue")
+//                    .font(.body)
+//                    .fontWeight(.medium)
+//                    .multilineTextAlignment(.center)
+//                    .padding([.trailing, .leading])
+//                Image(systemName: "arrowshape.right.fill")
+//            }
         }
         .onAppear {
             vm.createUUID()

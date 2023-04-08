@@ -18,7 +18,7 @@ struct OnboardingCreateStub: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.center)
                     .padding([.trailing, .leading])
-            }.padding(.top, 100)
+            }.padding(.top, 80)
             Form {
                 Section("Enter Title and Location") {
                     TextField("Enter title", text: $vm.title)
@@ -39,24 +39,31 @@ struct OnboardingCreateStub: View {
             .onDisappear{
                 vm.save()
             }
-            VStack(alignment: .center) {
-                HStack {
-                    Text("A Block will appear on your calendar as an event, and will contain the information included above. Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
+            VStack(alignment: .leading, spacing: 0) {
+                    Text("A Block will appear on your calendar as an event, and will contain the provided information.")
                         .font(.body)
                         .fontWeight(.medium)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .padding(.top)
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 25)
+                        .padding([.leading, .trailing])
+
+                HStack {
+                    Text("Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.leading, .trailing])
                     
-                }
-                HStack {
-                    Text("Continue")
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.center)
-                        .padding([.trailing, .leading])
-                    Image(systemName: "arrowshape.right.fill")
-                }
+                }.padding(.top)
+                
+//                HStack {
+//                    Text("Continue")
+//                        .font(.body)
+//                        .fontWeight(.medium)
+//                        .multilineTextAlignment(.center)
+//                        .padding([.trailing, .leading])
+//                    Image(systemName: "arrowshape.right.fill")
+//                }
             }.padding(.bottom, 100)
         }
     }
@@ -79,22 +86,22 @@ class OnboardingCreateStubViewModel: ObservableObject {
         let stubs = Stub.getAllStubs()
         for stub in stubs {
             stub.isDefault = false
-            manager.saveContext()
+            //   manager.saveContext()
         }
         
-        
-        let stub = Stub(context: manager.viewContext)
-        stub.title = title + "  "
-        stub.text = text
-        stub.availability = Int64(selectedAvailability.rawValue)
-        stub.location = location
-        stub.notes = notes
-        stub.isDefault = isDefault
-        manager.saveContext()
+        if stubs.contains(where: { $0.title == title + "  "}) {
+            print("there's a match")
+        } else {
+            let stub = Stub(context: manager.viewContext)
+            stub.title = title + "  "
+            stub.text = text
+            stub.availability = Int64(selectedAvailability.rawValue)
+            stub.location = location
+            stub.notes = notes
+            stub.isDefault = isDefault
+            manager.saveContext()
+        }
     }
-    
-    
-    
 }
 
 struct OnboardingCreateStub_Previews: PreviewProvider {

@@ -15,11 +15,13 @@ struct OnboardingTapDemo: View {
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
                 .padding([.trailing, .leading])
+                .padding(.bottom)
             Image("screenshot")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight:150)
                 .padding([.trailing, .leading, .bottom])
+                .padding(.bottom)
                // .padding()
             VStack(alignment: .leading, spacing: 10) {
                 Text("Gray: Available to block off. One tap adds the default block to your calendar")
@@ -38,13 +40,13 @@ struct OnboardingTapDemo: View {
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
             }
-            HStack {
-                Text("Continue")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                Image(systemName: "arrowshape.right.fill")
-            }.padding([.trailing, .leading, .top])
+//            HStack {
+//                Text("Continue")
+//                    .font(.body)
+//                    .fontWeight(.medium)
+//                    .multilineTextAlignment(.center)
+//                Image(systemName: "arrowshape.right.fill")
+//            }.padding([.trailing, .leading, .top])
         }
     }
 }
