@@ -38,7 +38,7 @@ class CalendarViewController: DayViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Block Off" // <---- add button or a text title here for the calendar?
+        title = "Block Off"
         createNavBar()
         getStubs()
         getChecks()
@@ -77,6 +77,14 @@ class CalendarViewController: DayViewController {
             if stubs.count == 0 {
                 createSpinnerView(withDelay: 1)
             }
+        }
+        
+        getCalendarTitle()
+    }
+    
+    func getCalendarTitle() {
+        if let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) {
+            title = "Block Off: \(calendar.title)"
         }
     }
     
