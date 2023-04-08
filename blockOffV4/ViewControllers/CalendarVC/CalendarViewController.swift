@@ -60,9 +60,6 @@ class CalendarViewController: DayViewController {
         dayView.updateStyle(style)
         dayView.autoScrollToFirstEvent = true
         
-        // check to see if launch from reopen
-        // must be signed into iCloud
-        // if stubs is empty throw up spinning wheel
         
         if UserDefaults.hasIcloudAccess {
             CloudDataManager.shared.loadSyncContainer()
@@ -120,7 +117,7 @@ class CalendarViewController: DayViewController {
                     guard let self = self else { return }
                     if !UserDefaults.hasViewedCalendarPermissionMessage {
                         let onboardingView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: false)}).onDisappear {
-                         //   self.requestCalendarAppPermission()
+                            //   self.requestCalendarAppPermission()
                         }
                         let hostingController = UIHostingController(rootView: onboardingView)
                         hostingController.hidesBottomBarWhenPushed = true
@@ -156,6 +153,10 @@ class CalendarViewController: DayViewController {
             self.getChecks()
             self.createTabBars()
             self.reloadData()
+            
+            if !UserDefaults.hasIcloudAccess {
+                self.presentICloudAlert()
+            }
         }
     }
     
@@ -184,8 +185,27 @@ class CalendarViewController: DayViewController {
                 CloudDataManager.shared.loadSyncContainer()
             } else {
                 CloudDataManager.shared.loadLocalContainer()
+                self.presentICloudAlert()
             }
         }
+    }
+    
+    func presentICloudAlert() {
+        
+        let alert = UIAlertController(title: "No iCloud Account", message: "Block Off works best when you are signed into iCloud", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            @unknown default:
+                fatalError()
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func openOnboarding() {
@@ -306,7 +326,7 @@ class CalendarViewController: DayViewController {
                     
                 } catch {
                     let nserror = error as NSError
-                    print("Could not delete. \(nserror)")
+                  //  print("Could not delete this one 2. \(nserror)")
                 }
             } else {
                 print("red event")
@@ -343,7 +363,21 @@ class CalendarViewController: DayViewController {
                 
             } catch {
                 let nserror = error as NSError
-                print("Could not delete. \(nserror)")
+                print("Could not delete this one 1. \(nserror)")
+                let alert = UIAlertController(title: "No Calendar", message: "Select a Calendar in your account", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    switch action.style{
+                    case .default:
+                        print("default")
+                    case .cancel:
+                        print("cancel")
+                    case .destructive:
+                        print("destructive")
+                    @unknown default:
+                        fatalError()
+                    }
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
         }
