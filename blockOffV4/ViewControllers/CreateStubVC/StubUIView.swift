@@ -21,35 +21,35 @@ struct StubUIView: View {
     }
 
     var body: some View {
-        List {
-            Section {
-                ForEach(vm.stubs, id: \.id) { stub in
-                    Button {
-                        stubViewModel = stub
-                    } label: {
-                        StubRow(stub: stub, vm: vm)
-                    }
-                }.onDelete(perform: deleteStub)
-            } header: {
-                HeaderWithButton(isPresented: $isPresented)
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(vm.stubs, id: \.id) { stub in
+                        Button {
+                            stubViewModel = stub
+                        } label: {
+                            StubRow(stub: stub, vm: vm)
+                        }
+                    }.onDelete(perform: deleteStub)
+                } header: {
+                    HeaderWithButton(isPresented: $isPresented)
+                }
             }
+            .listStyle(.inset)
+            .sheet(isPresented: $isPresented, onDismiss: {
+                vm.getAllStubs()
+            }, content: {
+                CreateStubUIView()
+            })
+            .sheet(item: $stubViewModel, onDismiss: {
+                vm.getAllStubs()
+            }, content: { stub in
+                EditStubUIView(stubID: stub)
+            })
+            .onAppear(perform: {
+                vm.getAllStubs()
+            })
         }
-        .listStyle(.inset)
-        .sheet(isPresented: $isPresented, onDismiss: {
-            vm.getAllStubs()
-        }, content: {
-            CreateStubUIView()
-        })
-        .sheet(item: $stubViewModel, onDismiss: {
-            vm.getAllStubs()
-        }, content: { stub in
-            EditStubUIView(stubID: stub)
-        })
-        .embedInNavigationView()
-
-        .onAppear(perform: {
-            vm.getAllStubs()
-        })
     }
 }
 
