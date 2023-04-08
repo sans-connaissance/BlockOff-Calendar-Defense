@@ -334,7 +334,7 @@ class CalendarViewController: DayViewController {
                     
                 } catch {
                     let nserror = error as NSError
-                  //  print("Could not delete this one 2. \(nserror)")
+                    print("Could not delete this one 2. \(nserror)")
                 }
             } else {
                 print("red event")

@@ -75,6 +75,14 @@ class OnboardingCreateStubViewModel: ObservableObject {
     
     func save() {
         let manager = CloudDataManager.shared
+        
+        let stubs = Stub.getAllStubs()
+        for stub in stubs {
+            stub.isDefault = false
+            manager.saveContext()
+        }
+        
+        
         let stub = Stub(context: manager.viewContext)
         stub.title = title + "  "
         stub.text = text
@@ -84,6 +92,8 @@ class OnboardingCreateStubViewModel: ObservableObject {
         stub.isDefault = isDefault
         manager.saveContext()
     }
+    
+    
     
 }
 
