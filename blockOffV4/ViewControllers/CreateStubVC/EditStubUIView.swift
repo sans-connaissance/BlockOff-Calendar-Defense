@@ -42,6 +42,16 @@ struct EditStubUIView: View {
             vm.loadStub(stubID: stubID.id)
         }
         .navigationTitle("Edit Block Off")
+        .toolbar(.automatic, for: .navigationBar)
+        .toolbar {
+            Button {
+                self.presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "x.circle")
+                    .foregroundColor(.secondary)
+            }
+
+        }
         .embedInNavigationView()
     }
 }

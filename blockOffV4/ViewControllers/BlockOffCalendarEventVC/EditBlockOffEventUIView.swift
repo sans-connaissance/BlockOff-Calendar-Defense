@@ -43,6 +43,16 @@ struct EditBlockOffEventUIView: View {
             vm.load(ekEvent: ekEvent)
         }
         .navigationTitle("Edit Block Off Event")
+        .toolbar(.automatic, for: .navigationBar)
+        .toolbar {
+            Button {
+                self.presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "x.circle")
+                    .foregroundColor(.secondary)
+            }
+
+        }
         .embedInNavigationView()
     }
 }

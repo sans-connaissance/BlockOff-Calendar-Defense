@@ -37,6 +37,16 @@ struct CreateStubUIView: View {
             }
         }
         .navigationTitle("Create Block Off")
+        .toolbar(.automatic, for: .navigationBar)
+        .toolbar {
+            Button {
+                self.presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "x.circle")
+                    .foregroundColor(.secondary)
+            }
+
+        }
         .embedInNavigationView()
     }
 }
