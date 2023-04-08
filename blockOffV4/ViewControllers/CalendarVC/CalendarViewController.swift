@@ -78,13 +78,25 @@ class CalendarViewController: DayViewController {
                 createSpinnerView(withDelay: 1)
             }
         }
-        
+        setDefaultIfNeeded(stubs: stubs)
         getCalendarTitle()
     }
     
     func getCalendarTitle() {
         if let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) {
             title = "Block Off: \(calendar.title)"
+        }
+    }
+    
+    func setDefaultIfNeeded(stubs: [StubViewModel]) {
+        if let defaultStub = stubs.first(where: { $0.isDefault == true }) {
+         print("there is a default\(defaultStub)")
+        } else {
+            let manager = CloudDataManager.shared
+            guard let stubId = self.stubs.first?.id else { return }
+            guard let stub = Stub.getStubBy(id: stubId) else { return }
+            stub.isDefault = true
+            manager.saveContext()
         }
     }
     

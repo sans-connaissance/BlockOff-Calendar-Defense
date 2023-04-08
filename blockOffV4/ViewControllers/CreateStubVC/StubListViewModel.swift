@@ -38,6 +38,16 @@ class StubListViewModel: ObservableObject {
         let fetchResults = Stub.getAllStubs()
         DispatchQueue.main.async {
             self.stubs = fetchResults.map(StubViewModel.init)
+            
+            if let defaultStub = self.stubs.first(where: { $0.isDefault == true }) {
+             print("there is a default")
+            } else {
+                let manager = CloudDataManager.shared
+                guard let stubId = self.stubs.first?.id else { return }
+                guard let stub = Stub.getStubBy(id: stubId) else { return }
+                stub.isDefault = true
+                manager.saveContext()
+            }
         }
     }
 }
