@@ -179,6 +179,10 @@ class CalendarViewController: DayViewController {
     // SET CALENDAR WHEN SOMEONE SIGNS IN AND OUT
     
     @objc func checkiCloud(_ notification: Notification) {
+        if UserDefaults.displayOnboarding {
+            self.openOnboarding()
+        }
+        
         let child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
