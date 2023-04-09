@@ -25,11 +25,10 @@ class EditBlockOffEventViewModel: ObservableObject {
     func load(ekEvent: EKEvent) {
         self.title = ekEvent.title ?? "didn't work"
         self.isAllDay = ekEvent.isAllDay
-        self.location = ekEvent.location ?? "didn't work"
-        self.notes = ekEvent.notes ?? "didn't work"
+        self.location = ekEvent.location ?? "none"
+        self.notes = ekEvent.notes ?? "none"
         
-        // THIS IS BROKEN AND IS NOT WORKING CORRECTLY
-        self.availability = Availability(rawValue: ekEvent.availability.rawValue) ?? .notSupported
+        self.selectedAvailability = Availability(rawValue: ekEvent.availability.rawValue) ?? .notSupported
         self.startDate = ekEvent.startDate
         self.endDate = ekEvent.endDate
     }
@@ -37,7 +36,7 @@ class EditBlockOffEventViewModel: ObservableObject {
     func save(ekEvent: EKEvent, eventStore: EKEventStore) {
         ekEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
         ekEvent.title = self.title
-        ekEvent.availability = EKEventAvailability(rawValue: self.availability.rawValue) ?? .notSupported
+        ekEvent.availability = EKEventAvailability(rawValue: self.selectedAvailability.rawValue) ?? .notSupported
         ekEvent.notes = self.notes
         ekEvent.location = self.location
         ekEvent.startDate = self.startDate

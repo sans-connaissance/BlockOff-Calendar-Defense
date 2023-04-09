@@ -39,7 +39,7 @@ struct RealCalendarEventUIView: View {
                         Group {
                             CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "", showTopDivider: true)
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
-                            CalendarItemRow(title: "Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
+                            CalendarItemRow(title: "Show As", item: getStatus(ekEvent.availability.rawValue), isStatus: true)
                             CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
                             CalendarItemRowNotes(notes: ekEvent.notes ?? "none")
                             ParticipantsListView(ekEvent: ekEvent)
@@ -61,6 +61,10 @@ struct RealCalendarEventUIView: View {
             }
         }
     }
+        private func getStatus(_ status: Int) -> String {
+            let status = Availability(rawValue: status)
+            return status?.displayText ?? ""
+        }
 }
 
 struct ParticipantsListView: View {
@@ -125,27 +129,18 @@ struct CalendarItemRow: View {
                 Text(title)
                     .font(.body)
                 Spacer()
-                if !isStatus {
+
                     Text(item)
                         .font(.body)
                         .foregroundColor(.gray)
                         .lineLimit(1)
-                } else {
-                    Text(getStatus(Int(item)!))
-                        .font(.body)
-                        .foregroundColor(.gray)
-                }
+
             }
             if showBottomDivider {
                 Divider()
                     .padding(.top, 0)
             }
         }
-    }
-
-    private func getStatus(_ status: Int) -> String {
-        let status = Availability(rawValue: status)
-        return status?.displayText ?? ""
     }
 }
 

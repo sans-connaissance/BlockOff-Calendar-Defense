@@ -41,7 +41,7 @@ struct BlockOffEventUIView: View {
                         Group {
                             CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "", showTopDivider: true)
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
-                            CalendarItemRow(title: "Show As", item: String(vm.availability.rawValue), isStatus: true)
+                            CalendarItemRow(title: "Show As", item: vm.selectedAvailability.displayText, isStatus: true)
                             CalendarItemRow(title: "Location", item: vm.location)
                             CalendarItemRowNotes(notes: vm.notes)
                             // ParticipantsListView(ekEvent: ekEvent)

@@ -16,7 +16,7 @@ struct EditBlockOffEventUIView: View {
 
     var body: some View {
         Form {
-            Section("") {
+            Section("from \(displayHour(date:ekEvent.startDate)) to \(displayHour(date:ekEvent.endDate))") {
                 TextField("Enter title", text: $vm.title)
                 TextField("Location or Video Call", text: $vm.location)
             }
