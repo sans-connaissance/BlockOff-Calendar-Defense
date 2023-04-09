@@ -34,7 +34,7 @@ class EditStubViewModel: ObservableObject {
         let manager = CloudDataManager.shared
         guard let stub = Stub.getStubBy(id: stubID) else { return }
         
-        // THE CHECK WORKS BUT IT"S POPPING THE LAST TWO FROM THE PUBLISHED VAR
+        // managing title spacing
         var check = title
         let last = check.removeLast()
         let nextLast = check.removeLast()
