@@ -39,7 +39,8 @@ struct BlockOffEventUIView: View {
                             Spacer()
                         }
                         Group {
-                            CalendarItemRow(title: "All-day", item: vm.isAllDay.description, showTopDivider: true)
+                            CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "", showTopDivider: true)
+                            CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
                             CalendarItemRow(title: "Show As", item: String(vm.availability.rawValue), isStatus: true)
                             CalendarItemRow(title: "Location", item: vm.location)
                             CalendarItemRow(title: "Notes", item: vm.notes)

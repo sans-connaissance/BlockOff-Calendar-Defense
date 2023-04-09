@@ -37,11 +37,9 @@ struct RealCalendarEventUIView: View {
                             Spacer()
                         }
                         Group {
-                            CalendarItemRow(title: "All-day", item: ekEvent.isAllDay.description, showTopDivider: true)
-                            CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "")
+                            CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "", showTopDivider: true)
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
                             CalendarItemRow(title: "Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
-                            CalendarItemRow(title: "Alert", item: ekEvent.alarms?.description ?? "none")
                             CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
                             CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
                             ParticipantsListView(ekEvent: ekEvent)
