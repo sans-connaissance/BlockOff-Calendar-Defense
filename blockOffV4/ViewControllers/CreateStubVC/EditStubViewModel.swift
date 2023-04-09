@@ -27,8 +27,7 @@ class EditStubViewModel: ObservableObject {
         location = stub.location ?? "didn't work"
         notes = stub.notes ?? "didn't work"
         
-        // THIS IS BROKEN AND IS NOT WORKING CORRECTLY
-        availability = Availability(rawValue: Int(stub.availability)) ?? .notSupported
+        selectedAvailability = Availability(rawValue: Int(stub.availability)) ?? .notSupported
     }
     
     func save(stubID: NSManagedObjectID) {

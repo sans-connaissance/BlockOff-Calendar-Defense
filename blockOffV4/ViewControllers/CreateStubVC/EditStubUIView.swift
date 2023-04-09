@@ -41,7 +41,7 @@ struct EditStubUIView: View {
         .onAppear {
             vm.loadStub(stubID: stubID.id)
         }
-        .navigationTitle("Edit Block Off")
+        .navigationTitle("Edit")
         .toolbar(.automatic, for: .navigationBar)
         .toolbar {
             Button {

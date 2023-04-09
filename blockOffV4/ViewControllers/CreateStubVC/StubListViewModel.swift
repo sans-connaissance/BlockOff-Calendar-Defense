@@ -30,7 +30,6 @@ class StubListViewModel: ObservableObject {
             stub.isDefault = true
             CloudDataManager.shared.saveContext()
         }
-        
         getAllStubs()
     }
     

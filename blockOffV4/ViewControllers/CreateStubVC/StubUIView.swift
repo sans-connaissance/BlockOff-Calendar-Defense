@@ -75,11 +75,15 @@ struct StubRow: View {
             if stub.location.count > 0 {
                 CalendarItemRow(title: "Location", item: stub.location, showTopDivider: false, showBottomDivider: false)
             }
-            CalendarItemRow(title: "Show As", item: String(stub.availability), showTopDivider: false, showBottomDivider: false, isStatus: true)
+            CalendarItemRow(title: "Show As", item: getStatus(Int(stub.availability)), showTopDivider: false, showBottomDivider: false, isStatus: true)
             if stub.notes.count > 0 {
                 CalendarItemRow(title: "Notes", item: stub.notes, showTopDivider: false, showBottomDivider: false)
             }
         }
+    }
+    private func getStatus(_ status: Int) -> String {
+        let status = Availability(rawValue: status)
+        return status?.displayText ?? ""
     }
 }
 
