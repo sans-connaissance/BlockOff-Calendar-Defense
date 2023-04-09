@@ -41,7 +41,7 @@ struct RealCalendarEventUIView: View {
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
                             CalendarItemRow(title: "Show As", item: String(ekEvent.availability.rawValue), isStatus: true)
                             CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
-                            CalendarItemRow(title: "Notes", item: ekEvent.notes ?? "none")
+                            CalendarItemRowNotes(notes: ekEvent.notes ?? "none")
                             ParticipantsListView(ekEvent: ekEvent)
                         }
 
@@ -79,6 +79,27 @@ struct ParticipantsListView: View {
                             .foregroundColor(.gray)
                     }
                 }
+            }
+            Divider()
+                .padding(.top, 0)
+        }
+    }
+}
+
+struct CalendarItemRowNotes: View {
+    var title = "Notes"
+    var notes: String
+    var body: some View {
+        VStack {
+            HStack(alignment: .top, spacing: 10) {
+                Text(title)
+                    .font(.body)
+                Spacer()
+                Text(notes)
+                    .font(.body)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.trailing)
+                
             }
             Divider()
                 .padding(.top, 0)

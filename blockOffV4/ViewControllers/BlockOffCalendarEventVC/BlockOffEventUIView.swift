@@ -43,8 +43,8 @@ struct BlockOffEventUIView: View {
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
                             CalendarItemRow(title: "Show As", item: String(vm.availability.rawValue), isStatus: true)
                             CalendarItemRow(title: "Location", item: vm.location)
-                            CalendarItemRow(title: "Notes", item: vm.notes)
-                            ParticipantsListView(ekEvent: ekEvent)
+                            CalendarItemRowNotes(notes: vm.notes)
+                            // ParticipantsListView(ekEvent: ekEvent)
                         }
 
                     }.padding([.leading, .trailing])
