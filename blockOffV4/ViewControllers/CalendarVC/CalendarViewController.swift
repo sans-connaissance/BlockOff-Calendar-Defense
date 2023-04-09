@@ -194,7 +194,6 @@ class CalendarViewController: DayViewController {
         if UserDefaults.displayOnboarding {
             self.openOnboarding()
         }
-        
         let child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
@@ -245,22 +244,6 @@ class CalendarViewController: DayViewController {
         self.present(hostingController, animated: true, completion: nil)
     }
     
-    //    func openRequestCalendarPermission() {
-    //        let requestPermissionView = OnboardingRequestPermission(dismissAction: {self.dismiss(animated: true)})
-    //        let hostingController = UIHostingController(rootView: requestPermissionView)
-    //        hostingController.hidesBottomBarWhenPushed = true
-    //        hostingController.modalPresentationStyle = .popover
-    //        self.present(hostingController, animated: true, completion: nil)
-    //    }
-    //
-    //    func openiCloudSignIn() {
-    //        let requestPermissionView = OnboardingiCloudSignIn(dismissAction: {self.dismiss(animated: true)})
-    //        let hostingController = UIHostingController(rootView: requestPermissionView)
-    //        hostingController.hidesBottomBarWhenPushed = true
-    //        hostingController.modalPresentationStyle = .popover
-    //        self.present(hostingController, animated: true, completion: nil)
-    //    }
-    
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
             CalendarManager.shared.availableCalenders = self.eventStore.calendars(for: .event).map(CalendarViewModel.init)
@@ -269,7 +252,6 @@ class CalendarViewController: DayViewController {
             self.reloadData()
         }
     }
-    
     
     @objc func openProfileVC() {
         let profileView = ProfileUIView(eventStore: eventStore).onDisappear { self.createSpinnerView(withDelay: 1)
@@ -296,8 +278,6 @@ class CalendarViewController: DayViewController {
         dayView.move(to: Date.now)
         print("\(Date.now)")
     }
-    
-    
     
     // MARK: Step 6 -- Return Events from Core Data
     

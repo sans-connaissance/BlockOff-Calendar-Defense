@@ -21,17 +21,18 @@ struct BlockOffEventUIView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         Text(vm.title)
-                            .font(.headline)
+                            .font(.title3)
                             .fontWeight(.heavy)
+                            .padding(.top)
                         HStack {
-                            Text(vm.startDate?.description ?? "")
+                            Text(displayFullDate(date: ekEvent.startDate))
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)
                             Spacer()
                         }.padding(.top)
                         HStack {
-                            Text(vm.endDate?.description ?? "")
+                            Text("from \(displayHour(date:ekEvent.startDate)) to \(displayHour(date:ekEvent.endDate))")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)

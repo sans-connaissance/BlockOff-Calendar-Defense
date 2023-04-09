@@ -19,17 +19,18 @@ struct RealCalendarEventUIView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         Text(ekEvent.title)
-                            .font(.headline)
+                            .font(.title3)
                             .fontWeight(.heavy)
+                            .padding(.top)
                         HStack {
-                            Text(ekEvent.startDate.description)
+                            Text(displayFullDate(date: ekEvent.startDate))
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)
                             Spacer()
                         }.padding(.top)
                         HStack {
-                            Text(ekEvent.startDate.description)
+                            Text("from \(displayHour(date:ekEvent.startDate)) to \(displayHour(date:ekEvent.endDate))")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)

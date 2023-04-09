@@ -31,6 +31,16 @@ var dayFormatter: DateFormatter {
     return fmt
 }
 
+func displayFullDate(date: Date) -> String {
+    let formatted = date.formatted(date: .complete, time: .omitted)
+    return formatted
+}
+
+func displayHour(date: Date) -> String {
+    let formatted = date.formatted(date: .omitted, time: .shortened)
+    return formatted
+}
+
 extension Array where Element: Hashable {
     func difference(from other: [Element]) -> [Element] {
         let thisSet = Set(self)

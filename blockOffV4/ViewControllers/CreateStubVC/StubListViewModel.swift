@@ -40,7 +40,7 @@ class StubListViewModel: ObservableObject {
             self.stubs = fetchResults.map(StubViewModel.init)
             
             if let defaultStub = self.stubs.first(where: { $0.isDefault == true }) {
-             print("there is a default")
+             print("there is a default \(defaultStub)")
             } else {
                 let manager = CloudDataManager.shared
                 guard let stubId = self.stubs.first?.id else { return }
