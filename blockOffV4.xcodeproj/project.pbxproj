@@ -34,6 +34,7 @@
 		41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A540BC2975BC72005CE9CC /* StubUIView.swift */; };
 		41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */; };
 		41B807F929DF9B7E005DEAB7 /* OnboardingSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */; };
+		41B807FB29E4E962005DEAB7 /* SubUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -114,6 +115,7 @@
 		41A540BC2975BC72005CE9CC /* StubUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUIView.swift; sourceTree = "<group>"; };
 		41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome.swift; sourceTree = "<group>"; };
 		41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubscribe.swift; sourceTree = "<group>"; };
+		41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUnitViewModel.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				41DCCC7D29909BA900E12117 /* SubUnitUIView.swift */,
+				41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */,
 			);
 			path = SubUnitVC;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				4164EAB829DA5EF200F09EB4 /* Check+CoreDataProperties.swift in Sources */,
 				41F4B9B3293BA3A2009A6FD2 /* CoreDataManager.swift in Sources */,
 				41E7C06729C006FB0094F536 /* EditBlockOffEventViewModel.swift in Sources */,
+				41B807FB29E4E962005DEAB7 /* SubUnitViewModel.swift in Sources */,
 				41D24D142972FF6E00AD78F5 /* MockData.swift in Sources */,
 				41CD6D54293B99DD009012DF /* AppDelegate.swift in Sources */,
 				41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */,

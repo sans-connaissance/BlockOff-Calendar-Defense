@@ -9,60 +9,60 @@ import SwiftUI
 import EventKit
 
 struct SubUnitUIView: View {
-    
+    @StateObject private var vm = SubUnitViewModel()
     let eventStore: EKEventStore
     let units: [UnitViewModel]
     var stubs: [StubViewModel]
     
     var body: some View {
         List {
-            Section("Press to Block") {
+            Section("Tap to Block") {
                 ForEach(units) { unit in
-                    Button {
-                        let newEKEvent = EKEvent(eventStore: eventStore)
-                        let defaultStub = stubs.first(where: { $0.isDefault })
-                        newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-                        newEKEvent.title = defaultStub?.title ?? "Didn't work"
-                        
-                        guard let availability = defaultStub?.availability else { return }
-                        switch availability {
-                        case -1:
-                            newEKEvent.availability = .notSupported
-                        case 0:
-                            newEKEvent.availability = .busy
-                        case 1:
-                            newEKEvent.availability = .free
-                        case 2:
-                            newEKEvent.availability = .tentative
-                        case 3:
-                            newEKEvent.availability = .unavailable
-                        default:
-                            newEKEvent.availability = .busy
-                        }
-                        newEKEvent.notes = defaultStub?.notes ?? ""
-                        newEKEvent.location = defaultStub?.location ?? ""
-                        newEKEvent.startDate = unit.startDate
-                        newEKEvent.endDate = unit.endDate
-                        do {
-                            try eventStore.save(newEKEvent, span: .thisEvent)
-                            
-                        } catch {
-                            let nserror = error as NSError
-                            print("Could not delete. \(nserror)")
-                        }
-//                        print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
-                        
-                    } label: {
-                        HStack {
-                            Text(unit.start + " - " + unit.end)
-                            Spacer()
-                            // won't work -- need a viewmodel I think
-                       //     Text((unit.events.first?.text)!)
-                        }
-                    }
+                    QuarterHourButton(vm: vm, unit: unit, eventStore: eventStore)
                 }
             }
         }.listStyle(.inset)
+    }
+}
+
+struct QuarterHourButton: View {
+    var vm: SubUnitViewModel
+    @State private var selected: Bool = false
+    var unit: UnitViewModel
+    let eventStore: EKEventStore
+    
+    var body: some View {
+        Button {
+            vm.loadStubs()
+            selected.toggle()
+            if selected {
+                if let defaultStub = vm.stubs.first(where: { $0.isDefault }) {
+                    vm.saveStub(defaultStub: defaultStub, eventStore: eventStore, unit: unit)
+                }
+            }
+            if !selected {
+                vm.deleteEvent(eventStore: eventStore, unit: unit)
+            }
+        } label: {
+            HStack {
+                let defaultStub = vm.stubs.first(where: { $0.isDefault })
+                Text(unit.start + " - " + unit.end)
+                Spacer()
+                if selected {
+                    Text(defaultStub?.title ?? "")
+                }
+            }
+            .onChange(of: selected, perform: { _ in
+                vm.loadStubs()
+            })
+            .padding(.top, 10)
+            .padding(.bottom, 10)
+            .padding(.leading, 10)
+            .padding(.trailing, 10)
+            .background(selected ? Color.green : Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
+        }
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 

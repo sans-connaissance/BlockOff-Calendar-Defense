@@ -68,7 +68,6 @@ class CalendarViewController: DayViewController {
         }
     }
     
-    
     func getStubs() {
         let fetchResults = Stub.getAllStubs()
         stubs = fetchResults.map(StubViewModel.init)
