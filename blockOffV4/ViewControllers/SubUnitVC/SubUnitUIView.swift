@@ -53,7 +53,12 @@ struct SubUnitUIView: View {
 //                        print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
                         
                     } label: {
-                        Text(unit.start + " - " + unit.end)
+                        HStack {
+                            Text(unit.start + " - " + unit.end)
+                            Spacer()
+                            // won't work -- need a viewmodel I think
+                       //     Text((unit.events.first?.text)!)
+                        }
                     }
                 }
             }

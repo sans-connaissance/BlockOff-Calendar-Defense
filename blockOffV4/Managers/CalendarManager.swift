@@ -159,21 +159,62 @@ class CalendarManager {
             var endTime = Date()
             var firstStart = true
             
-            for unit in units {
-                if firstStart == true {
-                    if unit.events.count == 0 {
-                        firstStart = false
-                        startTime = unit.startDate
+            if units[0].events.count == 0 && units[1].events.count >= 1 && units[2].events.count == 0 && units[3].events.count == 0 {
+                startTime = units[0].startDate
+                endTime = units[0].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                startTime = units[2].startDate
+                endTime = units[3].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                
+            } else if units[0].events.count == 0 && units[1].events.count == 0 && units[2].events.count >= 1 && units[3].events.count == 0 {
+                startTime = units[0].startDate
+                endTime = units[1].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                startTime = units[3].startDate
+                endTime = units[3].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                
+            } else if units[0].events.count >= 1 && units[1].events.count == 0 && units[2].events.count >= 1 && units[3].events.count == 0 {
+                startTime = units[1].startDate
+                endTime = units[1].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                startTime = units[3].startDate
+                endTime = units[3].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                
+            } else if units[0].events.count == 0 && units[1].events.count == 1 && units[2].events.count == 0 && units[3].events.count == 1 {
+                startTime = units[0].startDate
+                endTime = units[0].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                startTime = units[2].startDate
+                endTime = units[2].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                
+            } else if units[0].events.count == 0 && units[1].events.count == 1 && units[2].events.count == 1 && units[3].events.count == 0 {
+                startTime = units[0].startDate
+                endTime = units[0].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+                startTime = units[3].startDate
+                endTime = units[3].endDate
+                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
+            } else {
+                for unit in units {
+                    if firstStart == true {
+                        if unit.events.count == 0 {
+                            firstStart = false
+                            startTime = unit.startDate
+                        }
+                    }
+                    if firstStart == false, unit.events.count == 0 {
+                        endTime = unit.endDate
                     }
                 }
-                if firstStart == false, unit.events.count == 0 {
-                    endTime = unit.endDate
+                let eventInterval = DateInterval(start: startTime, end: endTime)
+                let duration = eventInterval.duration
+                if duration > 100.0 {
+                    ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
                 }
-            }
-            let eventInterval = DateInterval(start: startTime, end: endTime)
-            let duration = eventInterval.duration
-            if duration > 100.0 {
-                ckEvents.append(createCKEvent(startTime: startTime, endTime: endTime))
             }
         }
         return ckEvents
