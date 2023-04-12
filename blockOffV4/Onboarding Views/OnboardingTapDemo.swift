@@ -11,7 +11,7 @@ struct OnboardingTapDemo: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Image("screenshot")
+                Image("screenshot2")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding()
