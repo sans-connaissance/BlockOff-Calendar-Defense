@@ -35,6 +35,7 @@
 		41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */; };
 		41B807F929DF9B7E005DEAB7 /* OnboardingSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */; };
 		41B807FB29E4E962005DEAB7 /* SubUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */; };
+		41B807FD29E6494B005DEAB7 /* OnboardingWelcome_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -116,6 +117,7 @@
 		41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome.swift; sourceTree = "<group>"; };
 		41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubscribe.swift; sourceTree = "<group>"; };
 		41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUnitViewModel.swift; sourceTree = "<group>"; };
+		41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome_.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				4164EB0E29DCAE2600F09EB4 /* OnboardingiCloudSignIn.swift */,
 				41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */,
 				41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */,
+				41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */,
 				41E7C06E29CD34220094F536 /* OnboardingView.swift in Sources */,
 				41F4B9AF293BA327009A6FD2 /* Day+CoreDataProperties.swift in Sources */,
+				41B807FD29E6494B005DEAB7 /* OnboardingWelcome_.swift in Sources */,
 				41CD6D56293B99DD009012DF /* SceneDelegate.swift in Sources */,
 				41A540A52973928D005CE9CC /* CalendarViewModel.swift in Sources */,
 				41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */,

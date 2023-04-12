@@ -1,39 +1,35 @@
 //
-//  OnboardingTapDemo.swift
+//  OnboardingWelcome_.swift
 //  blockOffV4
 //
-//  Created by David Malicke on 3/25/23.
+//  Created by David Malicke on 4/11/23.
 //
 
 import SwiftUI
 
-struct OnboardingTapDemo: View {
+struct OnboardingWelcome_: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Image("screenshot")
+                Image("blockoff-symbol")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding()
+                
             }.frame(maxWidth: 300, maxHeight: 300)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("Block Off Basics")
+                Text("Welcome to Block Off")
                     .font(.title)
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("Gray: Available to block off. One tap adds the default block to your calendar")
+                Text("Advanced Calendar Defense System")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("Green: Blocked off. One tap will delete the block from your calendar")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Red: Regular calendar event. This is a real event from your calendar")
+                Text("Use Block Off's one tap calendaring to defend available time on your calendar")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
@@ -44,8 +40,8 @@ struct OnboardingTapDemo: View {
     }
 }
 
-struct OnboardingTapDemo_Previews: PreviewProvider {
+struct OnboardingWelcome__Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingTapDemo()
+        OnboardingWelcome_()
     }
 }

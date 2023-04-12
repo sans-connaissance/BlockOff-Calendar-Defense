@@ -13,58 +13,46 @@ struct OnboardingCreateStub: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
+                Form {
+                    Section("Enter Title and Location") {
+                        TextField("Enter title", text: $vm.title)
+                        TextField("Location or Video Call", text: $vm.location)
+                    }
+                    Section("Select Availability") {
+                        Picker("Show As", selection: $vm.selectedAvailability) {
+                            ForEach(Availability.list, id: \.self) {
+                                Text($0.displayText)
+                            }
+                        }
+                    }
+                    Section("Add Notes") {
+                        TextField("Add Notes", text: $vm.notes)
+                    }
+                }
+                .onDisappear{
+                    vm.save()
+                }
+            }
+            .frame(maxWidth: 300, maxHeight: 300)
+            
+            VStack(alignment: .leading, spacing: 10) {
                 Text("Create a Block")
                     .font(.title)
                     .fontWeight(.heavy)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-            }.padding(.top, 80)
-            Form {
-                Section("Enter Title and Location") {
-                    TextField("Enter title", text: $vm.title)
-                    TextField("Location or Video Call", text: $vm.location)
-                }
-                Section("Select Availability") {
-                    Picker("Show As", selection: $vm.selectedAvailability) {
-                        ForEach(Availability.list, id: \.self) {
-                            Text($0.displayText)
-                        }
-                    }
-                }
-                Section("Add Notes") {
-                    TextField("Add Notes", text: $vm.notes)
-                }
-            }
-            .frame(maxHeight: 200)
-            .onDisappear{
-                vm.save()
-            }
-            VStack(alignment: .leading, spacing: 0) {
-                    Text("A Block will appear on your calendar as an event, and will contain the provided information.")
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.leading)
-                        .padding(.top, 25)
-                        .padding([.leading, .trailing])
-
-                HStack {
-                    Text("Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.leading)
-                        .padding([.leading, .trailing])
-                    
-                }.padding(.top)
+                Text("A Block will appear on your calendar as an event, and will contain the provided information.")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.trailing, .leading])
+                Text("Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.trailing, .leading])
                 
-//                HStack {
-//                    Text("Continue")
-//                        .font(.body)
-//                        .fontWeight(.medium)
-//                        .multilineTextAlignment(.center)
-//                        .padding([.trailing, .leading])
-//                    Image(systemName: "arrowshape.right.fill")
-//                }
-            }.padding(.bottom, 100)
+            }.frame(maxWidth: 500)
         }
     }
 }
