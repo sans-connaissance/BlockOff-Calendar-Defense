@@ -13,8 +13,10 @@ struct OnboardingTapDemo: View {
             VStack(alignment: .center) {
                 Image("screenshot2")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 300, height: 300)
+                    .clipped()
+                    .padding(.bottom)
             }.frame(maxWidth: 300, maxHeight: 300)
             
             VStack(alignment: .leading, spacing: 10) {
