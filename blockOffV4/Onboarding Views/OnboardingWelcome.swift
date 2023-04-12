@@ -34,14 +34,6 @@ struct OnboardingWelcome: View {
                 .padding([.trailing, .leading])
                 .padding(.top, 5)
                 .padding(.bottom, 20)
-            HStack {
-                Text("Swipe to get started")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .padding([.trailing, .leading])
-                Image(systemName: "arrowshape.right.fill")
-            }
         }
     }
 }
