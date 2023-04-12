@@ -40,8 +40,8 @@ struct RealCalendarEventUIView: View {
                             CalendarItemRow(title: "Organizer", item: ekEvent.organizer?.name ?? "", showTopDivider: true)
                             CalendarItemRow(title: "Calendar", item: ekEvent.calendar.title)
                             CalendarItemRow(title: "Show As", item: getStatus(ekEvent.availability.rawValue), isStatus: true)
-                            CalendarItemRow(title: "Location", item: ekEvent.location ?? "none")
-                            CalendarItemRowNotes(notes: ekEvent.notes ?? "none")
+                            CalendarItemRow(title: "Location", item: ekEvent.location ?? " ")
+                            CalendarItemRowNotes(notes: ekEvent.notes ?? " ")
                             ParticipantsListView(ekEvent: ekEvent)
                         }
 

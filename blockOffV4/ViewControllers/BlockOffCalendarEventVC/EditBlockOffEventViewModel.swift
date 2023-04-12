@@ -23,10 +23,10 @@ class EditBlockOffEventViewModel: ObservableObject {
 //    @Published var isDefault: Bool = false
     
     func load(ekEvent: EKEvent) {
-        self.title = ekEvent.title ?? "didn't work"
+        self.title = ekEvent.title ?? " "
         self.isAllDay = ekEvent.isAllDay
-        self.location = ekEvent.location ?? "none"
-        self.notes = ekEvent.notes ?? "none"
+        self.location = ekEvent.location ?? " "
+        self.notes = ekEvent.notes ?? " "
         
         self.selectedAvailability = Availability(rawValue: ekEvent.availability.rawValue) ?? .notSupported
         self.startDate = ekEvent.startDate

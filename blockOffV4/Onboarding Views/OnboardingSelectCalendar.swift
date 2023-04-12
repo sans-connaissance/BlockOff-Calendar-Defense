@@ -42,7 +42,7 @@ struct OnboardingSelectCalendar: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading,])
-                Text("Defend any calendar available in your iCal App")
+                Text("Defend any calendar available in your iCal App.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)

@@ -92,7 +92,7 @@ struct HeaderWithButton: View {
 
     var body: some View {
         HStack {
-            Text("Block Offs")
+            Text("BlockOffs")
             Spacer()
             Button {
                 isPresented = true

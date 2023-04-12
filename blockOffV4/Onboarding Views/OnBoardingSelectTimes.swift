@@ -25,7 +25,7 @@ struct OnBoardingSelectTimes: View {
                 .padding([.trailing, .leading])
                 .padding(.top, -40)
             HStack {
-                Text("Block Off use the selected hours to create blockable times, and to calculate your daily blockable vs booked. You can change your blockable time by tapping:  \(Image(systemName: "person.circle"))")
+                Text("BlockOff use the selected hours to create blockable times, and to calculate your daily blockable vs booked. You can change your blockable time by tapping:  \(Image(systemName: "person.circle"))")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)

@@ -21,11 +21,11 @@ class EditStubViewModel: ObservableObject {
     
     func loadStub(stubID: NSManagedObjectID) {
         guard let stub = Stub.getStubBy(id: stubID) else { return }
-        title = stub.title ?? "didn't work"
-        text = stub.text ?? "didn't work"
+        title = stub.title ?? " "
+        text = stub.text ?? " "
         isAllDay = stub.isAllDay
-        location = stub.location ?? "didn't work"
-        notes = stub.notes ?? "didn't work"
+        location = stub.location ?? " "
+        notes = stub.notes ?? " "
         
         selectedAvailability = Availability(rawValue: Int(stub.availability)) ?? .notSupported
     }

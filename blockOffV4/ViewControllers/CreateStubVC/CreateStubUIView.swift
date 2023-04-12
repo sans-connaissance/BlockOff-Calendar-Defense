@@ -36,7 +36,7 @@ struct CreateStubUIView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Create Block Off")
+        .navigationTitle("Create BlockOff")
         .toolbar(.automatic, for: .navigationBar)
         .toolbar {
             Button {

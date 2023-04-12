@@ -25,7 +25,7 @@ extension CalendarViewController {
                     let newEKEvent = EKEvent(eventStore: eventStore)
                     let defaultStub = stubs.first(where: { $0.isDefault })
                     newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-                    newEKEvent.title = defaultStub?.title ?? "Didn't work"
+                    newEKEvent.title = defaultStub?.title ?? " "
                     
                     guard let availability = defaultStub?.availability else { return }
                     switch availability {
@@ -71,7 +71,7 @@ extension CalendarViewController {
                     let randomStub = stubs.randomElement()
                     
                     newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-                    newEKEvent.title = randomStub?.title ?? "Didn't work"
+                    newEKEvent.title = randomStub?.title ?? " "
                     
                     guard let availability = randomStub?.availability else { return }
                     switch availability {
@@ -118,7 +118,7 @@ extension CalendarViewController {
                     let randomStub = stubsWithoutDefault.randomElement()
                     
                     newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-                    newEKEvent.title = randomStub?.title ?? "Didn't work"
+                    newEKEvent.title = randomStub?.title ?? " "
                     
                     guard let availability = randomStub?.availability else { return }
                     switch availability {

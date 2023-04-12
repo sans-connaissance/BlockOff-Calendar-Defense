@@ -41,7 +41,7 @@ struct OnboardingCreateStub: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("A Block will appear on your calendar as an event, and will contain the provided information")
+                Text("A Block will appear on your calendar as an event, and will contain the provided information.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
@@ -58,7 +58,7 @@ struct OnboardingCreateStub: View {
 }
 
 class OnboardingCreateStubViewModel: ObservableObject {
-    var title: String = "Block Off"
+    var title: String = "BlockOff"
     var text: String = ""
     var isAllDay: Bool = false
     var location: String = ""

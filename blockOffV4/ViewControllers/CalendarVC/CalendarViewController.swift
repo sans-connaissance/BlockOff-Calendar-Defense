@@ -38,7 +38,7 @@ class CalendarViewController: DayViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Block Off"
+        title = "BlockOff"
         createNavBar()
         getStubs()
         getChecks()
@@ -83,7 +83,7 @@ class CalendarViewController: DayViewController {
     
     func getCalendarTitle() {
         if let calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar) {
-            title = "Block Off: \(calendar.title)"
+            title = "BlockOff: \(calendar.title)"
         }
     }
     
@@ -214,7 +214,7 @@ class CalendarViewController: DayViewController {
     
     func presentICloudAlert() {
         
-        let alert = UIAlertController(title: "No iCloud Account", message: "Block Off works best when you are signed into iCloud", preferredStyle: .alert)
+        let alert = UIAlertController(title: "No iCloud Account", message: "BlockOff works best when you are signed into iCloud", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -340,7 +340,7 @@ class CalendarViewController: DayViewController {
             let newEKEvent = EKEvent(eventStore: eventStore)
             let defaultStub = stubs.first(where: { $0.isDefault })
             newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-            newEKEvent.title = defaultStub?.title ?? "Didn't work"
+            newEKEvent.title = defaultStub?.title ?? " "
             
             guard let availability = defaultStub?.availability else { return }
             switch availability {

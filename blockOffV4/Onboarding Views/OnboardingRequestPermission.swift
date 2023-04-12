@@ -24,7 +24,7 @@ struct OnboardingRequestPermission: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("Block Off requires access to your calendars in order to create, delete, and edit events. Without access to your calendars Block Off cannot defend them")
+                Text("BlockOff requires access to your calendars in order to create, delete, and edit events. Without access to your calendars BlockOff cannot defend them.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)

@@ -42,7 +42,7 @@ struct EditBlockOffEventUIView: View {
         .onAppear {
             vm.load(ekEvent: ekEvent)
         }
-        .navigationTitle("Edit Block Off Event")
+        .navigationTitle("Edit BlockOff Event")
         .toolbar(.automatic, for: .navigationBar)
         .toolbar {
             Button {

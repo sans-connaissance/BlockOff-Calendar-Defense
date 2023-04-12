@@ -11,7 +11,7 @@ struct OnboardingWelcome: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Welcome to Block Off")
+            Text("Welcome to BlockOff")
                 .font(.title)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
@@ -27,7 +27,7 @@ struct OnboardingWelcome: View {
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
                 .padding([.trailing, .leading])
-            Text("Use Block Off's one tap calendaring to defend available time on your calendar")
+            Text("Use BlockOff's one tap calendaring to defend available time on your calendar")
                 .font(.body)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.leading)

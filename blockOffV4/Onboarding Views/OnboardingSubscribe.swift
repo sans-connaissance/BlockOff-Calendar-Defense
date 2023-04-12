@@ -28,7 +28,7 @@ struct OnboardingSubscribe: View {
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
                 
-                Text("The first two weeks are free. After the trial period, continue denfending your calendar, and support the development of Block Off for $4.99 per year")
+                Text("The first week is free. After the trial period, continue defending your calendar, and support the development of BlockOff for $4.99 per year.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
@@ -40,8 +40,7 @@ struct OnboardingSubscribe: View {
                     UserDefaults.displayOnboarding = false
                     dismissAction()
                 } label: {
-                    Text("Launch Block Off")
-                    
+                    Text("Launch BlockOff")
                 }
                 .bold()
                 .foregroundColor(.white)
