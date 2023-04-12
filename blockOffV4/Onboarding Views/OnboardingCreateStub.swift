@@ -41,7 +41,7 @@ struct OnboardingCreateStub: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("A Block will appear on your calendar as an event, and will contain the provided information.")
+                Text("A Block will appear on your calendar as an event, and will contain the provided information")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
