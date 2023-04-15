@@ -48,3 +48,14 @@ extension Array where Element: Hashable {
         return Array(thisSet.symmetricDifference(otherSet))
     }
 }
+
+/*
+ Configuration file for your app's RevenueCat settings.
+ */
+
+struct Constants {
+    
+    static let revCatAPIiKey = "appl_CVUjPAIWAchidvmUnAjkflTwzBN"
+    static let entitlementID = "premium"
+    
+}

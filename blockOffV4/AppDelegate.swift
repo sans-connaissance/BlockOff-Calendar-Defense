@@ -8,6 +8,7 @@
 import UIKit
 import BackgroundTasks
 import CoreData
+import RevenueCat
 import WidgetKit
 
 @main
@@ -39,7 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.lastDayInCoreData = CalendarManager.shared.calendar.startOfDay(for: lastDay)
             CoreDataManager.shared.saveDays(days)
         }
+        
         CloudDataManager.shared.checkIcloudStatus()
+        
+        Purchases.logLevel = .debug
+        
+        Purchases.configure(
+            with: Configuration.Builder(withAPIKey: Constants.revCatAPIiKey)
+                .with(usesStoreKit2IfAvailable: true)
+                .build()
+        )
         
         return true
     }

@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 struct OnboardingSubscribe: View {
+    
+    @State var currentOffering: Offering?
+    @State var promoOfferText: String?
+    @State var currentIntroOffering: String?
     
     var dismissAction: (() -> Void)
     
@@ -27,27 +32,77 @@ struct OnboardingSubscribe: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                
-                Text("The first week is free. After the trial period, continue defending your calendar, and support the development of BlockOff for $4.99 per year.")
+                Text("Easily BlockOff time on your calendars.")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.trailing, .leading])
+                Text("Take control of your day.")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.trailing, .leading])
+                Text("Show what you're working on.")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.leading)
+                    .padding([.trailing, .leading])
+                Text("Or just appear to be busy.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
             }.frame(maxWidth: 500)
+            
             VStack(alignment: .center) {
-                Button {
-                    print("finished!")
-                    UserDefaults.displayOnboarding = false
-                    dismissAction()
-                } label: {
-                    Text("Launch BlockOff")
+                if currentOffering != nil {
+                    ForEach(currentOffering!.availablePackages) { package in
+                        Button {
+                            print("finished!")
+                            UserDefaults.displayOnboarding = false
+                            dismissAction()
+                        } label: {
+                            if let title = package.storeProduct.subscriptionPeriod?.periodTitle {
+                                let price = package.storeProduct.localizedPriceString
+                                
+                                VStack {
+                                    if currentIntroOffering != nil {
+                                        Text(currentIntroOffering!)
+                                    }
+                                    Text(title + "  " + price)
+                                }
+                            }
+                        }
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 250, height: 60)
+                        .background(Color.red)
+                        .cornerRadius(6)
+                        .padding()
+                    }
                 }
-                .bold()
-                .foregroundColor(.white)
-                .frame(width: 200, height: 50)
-                .background(Color.red)
-                .cornerRadius(6)
-                .padding()
+            }
+            .onAppear {
+                Purchases.shared.getOfferings { offerings, error in
+                    if let offer = offerings?.current, error == nil {
+                        currentOffering = offer
+                    }
+                }
+            }
+            .onAppear {
+                Purchases.shared.getOfferings { offerings, error in
+                    if let product = offerings?.current?.availablePackages.first?.storeProduct {
+                        Purchases.shared.checkTrialOrIntroDiscountEligibility(product: product) { eligibility in
+                            if eligibility == .eligible {
+                                if let offer = product.introductoryDiscount {
+                                    currentIntroOffering = offer.subscriptionPeriod.periodTitle + " " + offer.localizedPriceString
+                                }
+                            } else {
+                                // user is not eligible, show non-trial/introductory terms
+                            }
+                        }
+                    }
+                }
             }
         }
     }

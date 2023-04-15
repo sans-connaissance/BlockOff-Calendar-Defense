@@ -36,6 +36,8 @@
 		41B807F929DF9B7E005DEAB7 /* OnboardingSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */; };
 		41B807FB29E4E962005DEAB7 /* SubUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */; };
 		41B807FD29E6494B005DEAB7 /* OnboardingWelcome_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */; };
+		41B8080929E9D7EC005DEAB7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 41B8080829E9D7EC005DEAB7 /* RevenueCat */; };
+		41B8080B29E9D819005DEAB7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B8080A29E9D819005DEAB7 /* StoreKit.framework */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -118,6 +120,7 @@
 		41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubscribe.swift; sourceTree = "<group>"; };
 		41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUnitViewModel.swift; sourceTree = "<group>"; };
 		41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome_.swift; sourceTree = "<group>"; };
+		41B8080A29E9D819005DEAB7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 			files = (
 				41F4B99C293B9CA0009A6FD2 /* CalendarKit in Frameworks */,
 				4164EB0B29DBA93900F09EB4 /* CloudKit.framework in Frameworks */,
+				41B8080929E9D7EC005DEAB7 /* RevenueCat in Frameworks */,
+				41B8080B29E9D819005DEAB7 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +188,7 @@
 		4198A2F429D0E5000082A960 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41B8080A29E9D819005DEAB7 /* StoreKit.framework */,
 				4164EAB929DA679100F09EB4 /* CloudKit.framework */,
 				4198A2F729D0E5010082A960 /* SwiftUI.framework */,
 			);
@@ -421,6 +427,7 @@
 			name = blockOffV4;
 			packageProductDependencies = (
 				41F4B99B293B9CA0009A6FD2 /* CalendarKit */,
+				41B8080829E9D7EC005DEAB7 /* RevenueCat */,
 			);
 			productName = blockOffV4;
 			productReference = 41CD6D50293B99DD009012DF /* blockOffV4.app */;
@@ -452,6 +459,7 @@
 			mainGroup = 41CD6D47293B99DD009012DF;
 			packageReferences = (
 				41F4B99A293B9CA0009A6FD2 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				41B8080729E9D7EC005DEAB7 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 41CD6D51293B99DD009012DF /* Products */;
 			projectDirPath = "";
@@ -752,6 +760,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		41B8080729E9D7EC005DEAB7 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		41F4B99A293B9CA0009A6FD2 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
@@ -763,6 +779,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		41B8080829E9D7EC005DEAB7 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41B8080729E9D7EC005DEAB7 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
 		41F4B99B293B9CA0009A6FD2 /* CalendarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 41F4B99A293B9CA0009A6FD2 /* XCRemoteSwiftPackageReference "CalendarKit" */;
