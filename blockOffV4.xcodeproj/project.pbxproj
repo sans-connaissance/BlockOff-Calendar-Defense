@@ -38,6 +38,7 @@
 		41B807FD29E6494B005DEAB7 /* OnboardingWelcome_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */; };
 		41B8080929E9D7EC005DEAB7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 41B8080829E9D7EC005DEAB7 /* RevenueCat */; };
 		41B8080B29E9D819005DEAB7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B8080A29E9D819005DEAB7 /* StoreKit.framework */; };
+		41B8080D29EAC11B005DEAB7 /* OnboardingSubScribeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8080C29EAC11A005DEAB7 /* OnboardingSubScribeViewModel.swift */; };
 		41BDABBB2970DFDD00ABF867 /* BOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */; };
 		41C337CC29494D16008F7FF2 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CB29494D16008F7FF2 /* DayViewModel.swift */; };
 		41C337CE29494D73008F7FF2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C337CD29494D73008F7FF2 /* EventViewModel.swift */; };
@@ -121,6 +122,7 @@
 		41B807FA29E4E962005DEAB7 /* SubUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUnitViewModel.swift; sourceTree = "<group>"; };
 		41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcome_.swift; sourceTree = "<group>"; };
 		41B8080A29E9D819005DEAB7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		41B8080C29EAC11A005DEAB7 /* OnboardingSubScribeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubScribeViewModel.swift; sourceTree = "<group>"; };
 		41BDABBA2970DFDD00ABF867 /* BOTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTabBarController.swift; sourceTree = "<group>"; };
 		41C337CB29494D16008F7FF2 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		41C337CD29494D73008F7FF2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				41B807F629DF9AC5005DEAB7 /* OnboardingWelcome.swift */,
 				41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */,
 				41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */,
+				41B8080C29EAC11A005DEAB7 /* OnboardingSubScribeViewModel.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */,
 				41CAAB162985F4D00087EB74 /* ProfileViewModel.swift in Sources */,
 				41DCCC7E29909BA900E12117 /* SubUnitUIView.swift in Sources */,
+				41B8080D29EAC11B005DEAB7 /* OnboardingSubScribeViewModel.swift in Sources */,
 				41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */,
 				41DCCC852990A03100E12117 /* RealCalendarEventUIView.swift in Sources */,
 				41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */,

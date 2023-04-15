@@ -9,8 +9,12 @@ import SwiftUI
 import EventKit
 
 struct OnboardingView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var dismissAction: (() -> Void)
     let eventStore: EKEventStore
+    @State var shouldDismiss = false
+    
     
     var body: some View {
         TabView {
@@ -22,6 +26,8 @@ struct OnboardingView: View {
             
             OnboardingTapDemo()
             
+            // if purchased dismiss else show this sheet
+            // also add this sheet on the main view to check /// first launch + not purchased = show screen
             OnboardingSubscribe(dismissAction: dismissAction)
         }
         .tabViewStyle(PageTabViewStyle())

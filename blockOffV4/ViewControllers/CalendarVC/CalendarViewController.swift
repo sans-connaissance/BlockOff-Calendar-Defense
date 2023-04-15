@@ -12,6 +12,7 @@ import EventKitUI
 import SwiftUI
 import UIKit
 import WidgetKit
+import RevenueCat
 
 
 class CalendarViewController: DayViewController {
@@ -19,6 +20,7 @@ class CalendarViewController: DayViewController {
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
     var eventStore = CalendarManager.shared.eventStore
+    var subscriptionIsActive = false
     var currentSelectedDate: Date? {
         willSet {
             if newValue == currentSelectedDate {
@@ -109,6 +111,9 @@ class CalendarViewController: DayViewController {
     // MARK: Step 2 -- Get Permission to Calendar Code
     
     func requestCalendarAppPermission() {
+        
+        isSubscriptionActive()
+        
         eventStore.requestAccess(to: .event) { [weak self] success, _ in
             switch success {
             case true:
@@ -127,8 +132,10 @@ class CalendarViewController: DayViewController {
                     self.getChecks()
                     self.createTabBars()
                     self.reloadData()
-                    if UserDefaults.displayOnboarding {
+                    if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
                         self.openOnboarding()
+                    } else {
+                        UserDefaults.displayOnboarding = false
                     }
                 }
             case false:
@@ -144,8 +151,10 @@ class CalendarViewController: DayViewController {
                         self.present(hostingController, animated: true, completion: nil)
                         
                     } else {
-                        if UserDefaults.displayOnboarding {
+                        if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
                             self.openOnboarding()
+                        } else {
+                            UserDefaults.displayOnboarding = false
                         }
                     }
                 }
@@ -190,8 +199,10 @@ class CalendarViewController: DayViewController {
     // SET CALENDAR WHEN SOMEONE SIGNS IN AND OUT
     
     @objc func checkiCloud(_ notification: Notification) {
-        if UserDefaults.displayOnboarding {
+        if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
             self.openOnboarding()
+        } else {
+            UserDefaults.displayOnboarding = false
         }
         let child = SpinnerViewController()
         addChild(child)
@@ -230,6 +241,7 @@ class CalendarViewController: DayViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     func openOnboarding() {
         
         let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear {
@@ -238,6 +250,29 @@ class CalendarViewController: DayViewController {
             self.createTabBars()
         }
         let hostingController = UIHostingController(rootView: onboardingView)
+        hostingController.hidesBottomBarWhenPushed = true
+        hostingController.modalPresentationStyle = .fullScreen
+        self.present(hostingController, animated: true, completion: nil)
+    }
+    
+    func isSubscriptionActive() {
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            if customerInfo?.entitlements.all["defcon1"]?.isActive == true {
+                self.subscriptionIsActive = true
+            } else {
+                self.subscriptionIsActive = false
+            }
+        }
+    }
+    
+    func displayPayWall() {
+        let paywallView = OnboardingSubscribe(dismissAction: {self.dismiss(animated: true)}).onDisappear {
+            self.createSpinnerView(withDelay: 1)
+            self.getStubs()
+            self.createTabBars()
+        }
+        
+        let hostingController = UIHostingController(rootView: paywallView)
         hostingController.hidesBottomBarWhenPushed = true
         hostingController.modalPresentationStyle = .fullScreen
         self.present(hostingController, animated: true, completion: nil)
@@ -337,6 +372,9 @@ class CalendarViewController: DayViewController {
         }
         
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
+            
+            print("ADD BLOCK")
+            
             let newEKEvent = EKEvent(eventStore: eventStore)
             let defaultStub = stubs.first(where: { $0.isDefault })
             newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
