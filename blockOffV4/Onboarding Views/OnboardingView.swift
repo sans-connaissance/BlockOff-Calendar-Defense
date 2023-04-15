@@ -14,21 +14,28 @@ struct OnboardingView: View {
     var dismissAction: (() -> Void)
     let eventStore: EKEventStore
     @State var shouldDismiss = false
+    @State var isPurchasing = false
     
     
     var body: some View {
-        TabView {
-            OnboardingWelcome_()
-            
-            OnboardingSelectCalendar(eventStore: eventStore)
-            
-            OnboardingCreateStub()
-            
-            OnboardingTapDemo()
-            
-            // if purchased dismiss else show this sheet
-            // also add this sheet on the main view to check /// first launch + not purchased = show screen
-            OnboardingSubscribe(dismissAction: dismissAction)
+        ZStack {
+            TabView {
+                OnboardingWelcome_()
+                
+                OnboardingSelectCalendar(eventStore: eventStore)
+                
+                OnboardingCreateStub()
+                
+                OnboardingTapDemo()
+                
+                // if purchased dismiss else show this sheet
+                // also add this sheet on the main view to check /// first launch + not purchased = show screen
+                OnboardingSubscribe(isPurchasing: $isPurchasing, dismissAction: dismissAction)
+            }
+            Rectangle()
+                .foregroundColor(Color.black)
+                .opacity(isPurchasing ? 0.5: 0.0)
+                .edgesIgnoringSafeArea(.all)
         }
         .tabViewStyle(PageTabViewStyle())
         .onAppear {

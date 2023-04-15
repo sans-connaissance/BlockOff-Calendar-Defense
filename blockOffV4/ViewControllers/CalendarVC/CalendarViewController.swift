@@ -265,18 +265,18 @@ class CalendarViewController: DayViewController {
         }
     }
     
-    func displayPayWall() {
-        let paywallView = OnboardingSubscribe(dismissAction: {self.dismiss(animated: true)}).onDisappear {
-            self.createSpinnerView(withDelay: 1)
-            self.getStubs()
-            self.createTabBars()
-        }
-        
-        let hostingController = UIHostingController(rootView: paywallView)
-        hostingController.hidesBottomBarWhenPushed = true
-        hostingController.modalPresentationStyle = .fullScreen
-        self.present(hostingController, animated: true, completion: nil)
-    }
+//    func displayPayWall() {
+//        let paywallView = OnboardingSubscribe(dismissAction: {self.dismiss(animated: true)}, isPurchasing: <#Binding<Bool>#>).onDisappear {
+//            self.createSpinnerView(withDelay: 1)
+//            self.getStubs()
+//            self.createTabBars()
+//        }
+//
+//        let hostingController = UIHostingController(rootView: paywallView)
+//        hostingController.hidesBottomBarWhenPushed = true
+//        hostingController.modalPresentationStyle = .fullScreen
+//        self.present(hostingController, animated: true, completion: nil)
+//    }
     
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
