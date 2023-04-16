@@ -9,48 +9,6 @@ import CoreData
 import Foundation
 import CloudKit
 
-
-//class CloudDataManager {
-//    let persistentContainer: NSPersistentContainer
-//    static let shared = CloudDataManager()
-//
-//    var viewContext: NSManagedObjectContext {
-//        return persistentContainer.viewContext
-//    }
-//    private init() {
-//        persistentContainer = NSPersistentCloudKitContainer(name: "StubCheckDataModel")
-//        persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-//        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-//        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-//        persistentContainer.loadPersistentStores { (description, error) in
-//            if let error = error {
-//                fatalError("Unable to initialize Core Data \(error)")
-//            }
-//        }
-//    }
-//
-//    func deleteStub(_ stub: Stub) {
-//        viewContext.delete(stub)
-//
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            viewContext.rollback()
-//            print("Failed to delete movie \(error)")
-//        }
-//    }
-//
-//    func saveContext() {
-//        guard viewContext.hasChanges else { return }
-//
-//        do {
-//            try viewContext.save()
-//        } catch let error as NSError {
-//            print("Unresolved error \(error), \(error.userInfo)")
-//        }
-//    }
-//}
-
 class CloudDataManager {
     private let modelName: String
     

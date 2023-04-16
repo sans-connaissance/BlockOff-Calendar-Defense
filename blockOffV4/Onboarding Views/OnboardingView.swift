@@ -28,8 +28,6 @@ struct OnboardingView: View {
                 
                 OnboardingTapDemo()
                 
-                // if purchased dismiss else show this sheet
-                // also add this sheet on the main view to check /// first launch + not purchased = show screen
                 OnboardingSubscribe(isPurchasing: $isPurchasing, dismissAction: dismissAction)
             }
             Rectangle()

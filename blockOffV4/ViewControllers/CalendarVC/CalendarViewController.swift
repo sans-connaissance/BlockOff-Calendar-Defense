@@ -45,6 +45,7 @@ class CalendarViewController: DayViewController {
         getStubs()
         getChecks()
         
+        isSubscriptionActive()
         // MARK: Step 2 -- Get Permission to Calendar
         
         requestCalendarAppPermission()
@@ -111,8 +112,6 @@ class CalendarViewController: DayViewController {
     // MARK: Step 2 -- Get Permission to Calendar Code
     
     func requestCalendarAppPermission() {
-        
-        isSubscriptionActive()
         
         eventStore.requestAccess(to: .event) { [weak self] success, _ in
             switch success {
@@ -258,25 +257,28 @@ class CalendarViewController: DayViewController {
     func isSubscriptionActive() {
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
             if customerInfo?.entitlements.all["defcon1"]?.isActive == true {
+                print("IS ACTIVE YO!")
                 self.subscriptionIsActive = true
             } else {
+                print("IS NOT ACTIVE YO!")
                 self.subscriptionIsActive = false
             }
         }
     }
     
-//    func displayPayWall() {
-//        let paywallView = OnboardingSubscribe(dismissAction: {self.dismiss(animated: true)}, isPurchasing: <#Binding<Bool>#>).onDisappear {
-//            self.createSpinnerView(withDelay: 1)
-//            self.getStubs()
-//            self.createTabBars()
-//        }
-//
-//        let hostingController = UIHostingController(rootView: paywallView)
-//        hostingController.hidesBottomBarWhenPushed = true
-//        hostingController.modalPresentationStyle = .fullScreen
-//        self.present(hostingController, animated: true, completion: nil)
-//    }
+    func displayPayWall() {
+        let paywallView = RenewSubscriptionView(dismissAction: {self.dismiss(animated: true)}).onDisappear {
+            self.createSpinnerView(withDelay: 1)
+            self.getStubs()
+            self.createTabBars()
+            self.subscriptionIsActive = true
+        }
+
+        let hostingController = UIHostingController(rootView: paywallView)
+        hostingController.hidesBottomBarWhenPushed = true
+        hostingController.modalPresentationStyle = .fullScreen
+        self.present(hostingController, animated: true, completion: nil)
+    }
     
     @objc func storeChanged(_ notification: Notification) {
         DispatchQueue.main.async {
@@ -374,53 +376,58 @@ class CalendarViewController: DayViewController {
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             
             print("ADD BLOCK")
+            self.isSubscriptionActive()
             
-            let newEKEvent = EKEvent(eventStore: eventStore)
-            let defaultStub = stubs.first(where: { $0.isDefault })
-            newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
-            newEKEvent.title = defaultStub?.title ?? " "
-            
-            guard let availability = defaultStub?.availability else { return }
-            switch availability {
-            case -1:
-                newEKEvent.availability = .notSupported
-            case 0:
-                newEKEvent.availability = .busy
-            case 1:
-                newEKEvent.availability = .free
-            case 2:
-                newEKEvent.availability = .tentative
-            case 3:
-                newEKEvent.availability = .unavailable
-            default:
-                newEKEvent.availability = .busy
-            }
-            newEKEvent.notes = defaultStub?.notes ?? ""
-            newEKEvent.location = defaultStub?.location ?? ""
-            newEKEvent.startDate = descriptor.dateInterval.start
-            newEKEvent.endDate = descriptor.dateInterval.end
-            do {
-                try eventStore.save(newEKEvent, span: .thisEvent)
+            if subscriptionIsActive {
+                let newEKEvent = EKEvent(eventStore: eventStore)
+                let defaultStub = stubs.first(where: { $0.isDefault })
+                newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)
+                newEKEvent.title = defaultStub?.title ?? " "
                 
-            } catch {
-                let nserror = error as NSError
-                print("Could not delete this one 1. \(nserror)")
-                let alert = UIAlertController(title: "No Calendar", message: "Select a Calendar in your account", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                    switch action.style{
-                    case .default:
-                        print("default")
-                    case .cancel:
-                        print("cancel")
-                    case .destructive:
-                        print("destructive")
-                    @unknown default:
-                        fatalError()
-                    }
-                }))
-                self.present(alert, animated: true, completion: nil)
+                guard let availability = defaultStub?.availability else { return }
+                switch availability {
+                case -1:
+                    newEKEvent.availability = .notSupported
+                case 0:
+                    newEKEvent.availability = .busy
+                case 1:
+                    newEKEvent.availability = .free
+                case 2:
+                    newEKEvent.availability = .tentative
+                case 3:
+                    newEKEvent.availability = .unavailable
+                default:
+                    newEKEvent.availability = .busy
+                }
+                newEKEvent.notes = defaultStub?.notes ?? ""
+                newEKEvent.location = defaultStub?.location ?? ""
+                newEKEvent.startDate = descriptor.dateInterval.start
+                newEKEvent.endDate = descriptor.dateInterval.end
+                do {
+                    try eventStore.save(newEKEvent, span: .thisEvent)
+                    
+                } catch {
+                    let nserror = error as NSError
+                    print("Could not delete this one 1. \(nserror)")
+                    let alert = UIAlertController(title: "No Calendar", message: "Select a Calendar in your account", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        switch action.style{
+                        case .default:
+                            print("default")
+                        case .cancel:
+                            print("cancel")
+                        case .destructive:
+                            print("destructive")
+                        @unknown default:
+                            fatalError()
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
+            } else {
+                self.displayPayWall()
             }
-            print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
         }
     }
     

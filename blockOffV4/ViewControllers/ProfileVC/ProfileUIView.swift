@@ -8,15 +8,22 @@
 import EventKit
 import SwiftUI
 import UIKit
+import RevenueCat
 
 struct ProfileUIView: View {
     @StateObject private var vm = ProfileViewModel()
     let eventStore: EKEventStore
+    @State var subscriptionIsActive = false
 
     var body: some View {
         Form {
             Section("Subscription") {
-                Text("Active")
+                if subscriptionIsActive {
+                    Text("Active")
+                } else {
+                    Text("Not Active")
+                        .foregroundColor(.red)
+                }
             }
             Section("Blockable Hours") {
                 VStack(alignment: .leading) {
@@ -59,6 +66,15 @@ struct ProfileUIView: View {
             vm.getCalendars()
             vm.getDefaultCalendar(eventStore: eventStore)
             UIDatePicker.appearance().minuteInterval = 30
+        }
+        .onAppear {
+            Purchases.shared.getCustomerInfo { (customerInfo, error) in
+                if customerInfo?.entitlements.all["defcon1"]?.isActive == true {
+                    subscriptionIsActive = true
+                } else {
+                    subscriptionIsActive = false
+                }
+            }
         }
         .onDisappear {
             vm.setSelectedCalendarAsDefault()

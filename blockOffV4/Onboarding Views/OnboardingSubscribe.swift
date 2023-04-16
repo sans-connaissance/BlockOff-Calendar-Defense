@@ -12,12 +12,47 @@ struct OnboardingSubscribe: View {
     @StateObject private var vm = OnboardingSubScribeViewModel()
     @State var currentOffering: Offering?
     @State var currentIntroOffering: String?
+    @State var showRestoreAlert: Bool = false
+    @State var showUserCancelledAlert: Bool = false
     @Binding var isPurchasing: Bool
     
     var dismissAction: (() -> Void)
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                Button {
+                    Purchases.shared.restorePurchases { (customerInfo, error) in
+                        vm.isSubscriptionActive = customerInfo?.entitlements.all["defcon1"]?.isActive == true
+                        isPurchasing = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            if vm.isSubscriptionActive == true {
+                                UserDefaults.displayOnboarding = false
+                                dismissAction()
+                                isPurchasing = false
+                                
+                            } else {
+                                isPurchasing = false
+                                showRestoreAlert = true
+                                
+                            }
+                        }
+                    }
+                } label: {
+                    Text("Restore Purchase")
+                        .font(.system(size: 8, weight: .heavy, design: .default))
+                        .foregroundColor(.primary)
+                        .opacity(0.4)
+                    
+                }
+                .buttonStyle(.bordered)
+                .padding(.trailing)
+                .alert("No purchase to restore.", isPresented: $showRestoreAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+            }
+            Spacer()
             VStack(alignment: .center) {
                 Image("blockoff-symbol")
                     .resizable()
@@ -55,6 +90,7 @@ struct OnboardingSubscribe: View {
             }.frame(maxWidth: 500)
             
             VStack(alignment: .center) {
+                
                 if currentOffering != nil {
                     ForEach(currentOffering!.availablePackages) { package in
                         Button {
@@ -65,13 +101,13 @@ struct OnboardingSubscribe: View {
                                     dismissAction()
                                     isPurchasing = false
                                 }
+                                
+                                if userCancelled {
+                                    showUserCancelledAlert = true
+                                }
                             }
                             
                             UserDefaults.displayOnboarding = false
-                            
-                            if vm.isSubscriptionActive == true {
-                                dismissAction()
-                            }
                             
                         } label: {
                             if let title = package.storeProduct.subscriptionPeriod?.periodTitle {
@@ -92,6 +128,11 @@ struct OnboardingSubscribe: View {
                         .cornerRadius(6)
                         .padding()
                     }
+                }
+            }
+            .alert("You have cancelled the purchase.", isPresented: $showUserCancelledAlert) {
+                Button("OK", role: .cancel) {
+                    isPurchasing = false
                 }
             }
             .onAppear {
@@ -116,6 +157,7 @@ struct OnboardingSubscribe: View {
                     }
                 }
             }
+            Spacer()
         }
     }
 }

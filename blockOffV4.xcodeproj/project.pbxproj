@@ -74,6 +74,7 @@
 		41F4B9B8293BB04B009A6FD2 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */; };
 		41F4B9BA293BB256009A6FD2 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */; };
 		41F4B9BD293BF6C9009A6FD2 /* CalendarVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */; };
+		41FE258229EB5A7A0076FC1C /* RenewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE258129EB5A7A0076FC1C /* RenewSubscriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -159,6 +160,7 @@
 		41F4B9B7293BB04B009A6FD2 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
 		41F4B9B9293BB256009A6FD2 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		41F4B9BC293BF6C9009A6FD2 /* CalendarVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+Extensions.swift"; sourceTree = "<group>"; };
+		41FE258129EB5A7A0076FC1C /* RenewSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewSubscriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 				41B807F829DF9B7E005DEAB7 /* OnboardingSubscribe.swift */,
 				41B807FC29E6494B005DEAB7 /* OnboardingWelcome_.swift */,
 				41B8080C29EAC11A005DEAB7 /* OnboardingSubScribeViewModel.swift */,
+				41FE258129EB5A7A0076FC1C /* RenewSubscriptionView.swift */,
 			);
 			path = "Onboarding Views";
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				41CAAB162985F4D00087EB74 /* ProfileViewModel.swift in Sources */,
 				41DCCC7E29909BA900E12117 /* SubUnitUIView.swift in Sources */,
 				41B8080D29EAC11B005DEAB7 /* OnboardingSubScribeViewModel.swift in Sources */,
+				41FE258229EB5A7A0076FC1C /* RenewSubscriptionView.swift in Sources */,
 				41A540B02975AD1A005CE9CC /* StubViewModel.swift in Sources */,
 				41DCCC852990A03100E12117 /* RealCalendarEventUIView.swift in Sources */,
 				41B807F729DF9AC5005DEAB7 /* OnboardingWelcome.swift in Sources */,
