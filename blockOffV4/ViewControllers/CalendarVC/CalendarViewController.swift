@@ -92,7 +92,7 @@ class CalendarViewController: DayViewController {
     
     func setDefaultIfNeeded(stubs: [StubViewModel]) {
         if let defaultStub = stubs.first(where: { $0.isDefault == true }) {
-         print("there is a default\(defaultStub)")
+            print("there is a default\(defaultStub)")
         } else {
             let manager = CloudDataManager.shared
             guard let stubId = self.stubs.first?.id else { return }
@@ -166,6 +166,7 @@ class CalendarViewController: DayViewController {
     }
     
     func createSpinnerView(withDelay: Double) {
+        self.isSubscriptionActive()
         let child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
@@ -184,6 +185,10 @@ class CalendarViewController: DayViewController {
             if !UserDefaults.hasIcloudAccess {
                 self.presentICloudAlert()
             }
+            
+            if !self.subscriptionIsActive && !UserDefaults.displayOnboarding {
+                self.displayPayWall()
+            }
         }
     }
     
@@ -196,13 +201,16 @@ class CalendarViewController: DayViewController {
     }
     
     // SET CALENDAR WHEN SOMEONE SIGNS IN AND OUT
-    
     @objc func checkiCloud(_ notification: Notification) {
+        
         if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
             self.openOnboarding()
         } else {
             UserDefaults.displayOnboarding = false
         }
+        
+        self.isSubscriptionActive()
+        
         let child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
@@ -218,6 +226,10 @@ class CalendarViewController: DayViewController {
             } else {
                 CloudDataManager.shared.loadLocalContainer()
                 self.presentICloudAlert()
+            }
+            
+            if !self.subscriptionIsActive {
+                self.displayPayWall()
             }
         }
     }
@@ -245,8 +257,11 @@ class CalendarViewController: DayViewController {
         
         let onboardingView = OnboardingView(dismissAction: {self.dismiss(animated: true)}, eventStore: eventStore).onDisappear {
             self.createSpinnerView(withDelay: 1)
+            self.isSubscriptionActive()
             self.getStubs()
             self.createTabBars()
+            
+            
         }
         let hostingController = UIHostingController(rootView: onboardingView)
         hostingController.hidesBottomBarWhenPushed = true
@@ -257,10 +272,8 @@ class CalendarViewController: DayViewController {
     func isSubscriptionActive() {
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
             if customerInfo?.entitlements.all["defcon1"]?.isActive == true {
-                print("IS ACTIVE YO!")
                 self.subscriptionIsActive = true
             } else {
-                print("IS NOT ACTIVE YO!")
                 self.subscriptionIsActive = false
             }
         }
@@ -273,7 +286,7 @@ class CalendarViewController: DayViewController {
             self.createTabBars()
             self.subscriptionIsActive = true
         }
-
+        
         let hostingController = UIHostingController(rootView: paywallView)
         hostingController.hidesBottomBarWhenPushed = true
         hostingController.modalPresentationStyle = .fullScreen
@@ -375,7 +388,6 @@ class CalendarViewController: DayViewController {
         
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             
-            print("ADD BLOCK")
             self.isSubscriptionActive()
             
             if subscriptionIsActive {
