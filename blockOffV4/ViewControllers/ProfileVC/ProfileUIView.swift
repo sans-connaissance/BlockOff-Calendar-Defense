@@ -17,14 +17,6 @@ struct ProfileUIView: View {
 
     var body: some View {
         Form {
-            Section("Subscription") {
-                if subscriptionIsActive {
-                    Text("Active")
-                } else {
-                    Text("Not Active")
-                        .foregroundColor(.red)
-                }
-            }
             Section("Blockable Hours") {
                 VStack(alignment: .leading) {
                     DatePicker("Start time", selection: $vm.startTime, displayedComponents: .hourAndMinute)
@@ -57,6 +49,15 @@ struct ProfileUIView: View {
                         .cornerRadius(6)
                         .padding()
                     }
+                }
+            }
+            
+            Section("Subscription") {
+                if subscriptionIsActive {
+                    Text("Active")
+                } else {
+                    Text("Not Active")
+                        .foregroundColor(.red)
                 }
             }
         }
