@@ -41,7 +41,7 @@ struct OnboardingCreateStub: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("Create a block to quickly BlockOff time with one tap calendaring. ")
+                Text("Create a block to quickly BlockOff time with one-tap calendaring. ")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)

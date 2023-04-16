@@ -70,7 +70,7 @@ struct RenewSubscriptionView: View {
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.leading)
                         .padding([.trailing, .leading])
-                    Text("BlockOff time with one tap calendaring.")
+                    Text("BlockOff time with one-tap calendaring.")
                         .font(.body)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.leading)

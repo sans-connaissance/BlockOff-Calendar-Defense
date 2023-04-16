@@ -30,7 +30,7 @@ struct OnboardingWelcome_: View {
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
                     .padding([.trailing, .leading])
-                Text("Use BlockOff's one tap calendaring to defend available time on your calendar.")
+                Text("Use BlockOff's one-tap calendaring to defend available time on your calendar.")
                     .font(.body)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
