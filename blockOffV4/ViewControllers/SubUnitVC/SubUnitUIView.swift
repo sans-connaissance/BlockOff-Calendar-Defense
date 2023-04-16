@@ -28,6 +28,7 @@ struct SubUnitUIView: View {
 struct QuarterHourButton: View {
     var vm: SubUnitViewModel
     @State private var selected: Bool = false
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var unit: UnitViewModel
     let eventStore: EKEventStore
     
@@ -52,6 +53,7 @@ struct QuarterHourButton: View {
                     Text(defaultStub?.title ?? "")
                 }
             }
+            .foregroundColor(Color.primary)
             .onChange(of: selected, perform: { _ in
                 vm.loadStubs()
             })
@@ -59,7 +61,7 @@ struct QuarterHourButton: View {
             .padding(.bottom, 10)
             .padding(.leading, 10)
             .padding(.trailing, 10)
-            .background(selected ? Color.green.opacity(0.25) : Color.white)
+            .background(selected ? Color.green.opacity(0.25) : colorScheme == .light ? Color.white : Color.black )
             .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
         }
         .buttonStyle(BorderlessButtonStyle())
