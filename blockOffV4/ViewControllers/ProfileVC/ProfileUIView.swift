@@ -53,11 +53,15 @@ struct ProfileUIView: View {
             }
             
             Section("Subscription") {
-                if subscriptionIsActive {
-                    Text("Active")
-                } else {
-                    Text("Not Active")
-                        .foregroundColor(.red)
+                VStack (alignment: .leading) {
+                    if subscriptionIsActive {
+                        Text("Active")
+                    } else {
+                        Text("Not Active")
+                            .foregroundColor(.red)
+                    }
+                    Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                    Link("Privacy Policy", destination: URL(string: "https://frankfurtindustries.neocities.org/#privacy")!)
                 }
             }
         }
