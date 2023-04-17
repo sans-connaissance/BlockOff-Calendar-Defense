@@ -699,7 +699,7 @@
 				INFOPLIST_FILE = blockOffV4/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BlockOff;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system. BlockOff requires access to your calendars in order to create, delete, and edit events. It also stores some calendar data in iCloud to ensure a seamless experience across your iOS devices.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -730,7 +730,7 @@
 				INFOPLIST_FILE = blockOffV4/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BlockOff;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Activate calendar defense system. BlockOff requires access to your calendars in order to create, delete, and edit events. It also stores some calendar data in iCloud to ensure a seamless experience across your iOS devices.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
