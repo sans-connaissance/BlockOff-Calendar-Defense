@@ -44,9 +44,9 @@ struct RenewSubscriptionView: View {
                         }
                     } label: {
                         Text("Restore Purchase")
-                            .font(.system(size: 8, weight: .heavy, design: .default))
+                            .font(.system(size: 10, weight: .heavy, design: .default))
                             .foregroundColor(.primary)
-                            .opacity(0.4)
+                            .opacity(0.6)
                         
                     }
                     .buttonStyle(.bordered)
@@ -132,6 +132,9 @@ struct RenewSubscriptionView: View {
                             .padding()
                         }
                     }
+                    AccordionView()
+                        .padding([.leading, .trailing])
+                        .padding(.bottom, 20)
                 }
                 .alert("You have cancelled the purchase.", isPresented: $showUserCancelledAlert) {
                     Button("OK", role: .cancel) {
@@ -160,13 +163,13 @@ struct RenewSubscriptionView: View {
                         }
                     }
                 }
-                Spacer()
             }
             
             Rectangle()
                 .foregroundColor(Color.black)
                 .opacity(isPurchasing ? 0.5: 0.0)
                 .edgesIgnoringSafeArea(.all)
+            Spacer()
         }
     }
 }

@@ -53,7 +53,7 @@ struct ProfileUIView: View {
             }
             
             Section("Subscription") {
-                VStack (alignment: .leading) {
+                VStack (alignment: .leading, spacing: 8) {
                     if subscriptionIsActive {
                         Text("Active")
                     } else {

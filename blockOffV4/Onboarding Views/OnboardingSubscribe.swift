@@ -41,9 +41,9 @@ struct OnboardingSubscribe: View {
                     }
                 } label: {
                     Text("Restore Purchase")
-                        .font(.system(size: 8, weight: .heavy, design: .default))
+                        .font(.system(size: 10, weight: .heavy, design: .default))
                         .foregroundColor(.primary)
-                        .opacity(0.4)
+                        .opacity(0.6)
                     
                 }
                 .buttonStyle(.bordered)
@@ -129,6 +129,11 @@ struct OnboardingSubscribe: View {
                         .padding()
                     }
                 }
+                
+                AccordionView()
+                    .padding([.leading, .trailing])
+                    .padding(.bottom, 20)
+                
             }
             .alert("You have cancelled the purchase.", isPresented: $showUserCancelledAlert) {
                 Button("OK", role: .cancel) {
@@ -166,5 +171,66 @@ struct OnboardingSubscribe_Previews: PreviewProvider {
     static var previews: some View {
         let dismissAction: (() -> Void) = {}
         OnboardingSubscribe(isPurchasing: .constant(false), dismissAction: dismissAction)
+    }
+}
+
+struct AccordionView: View {
+    
+    @State var currentOffering: Offering?
+    @State var currentIntroOffering: String?
+    
+    var body: some View {
+        DisclosureGroup {
+            ScrollView {
+                VStack(alignment:.leading, spacing: 8) {
+                    Text("Purchase Information")
+                        .font(.body)
+                        .bold()
+                    if currentOffering != nil {
+                        ForEach(currentOffering!.availablePackages) { package in
+                            if let title = package.storeProduct.subscriptionPeriod?.periodTitle {
+                                let purchaseTitle = package.storeProduct.localizedDescription
+                                let price = package.storeProduct.localizedPriceString
+                                Text("A \(title + "  " + price) purchase for \(purchaseTitle) will be applied to your iTunes account at the end of the 1-week trial period. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. You can cancel anytime with your iTunes account settings. Any unused portion of a free trial will be forfeited if you purchase a subscription. For more information, see our Terms of Use and Privacy Policy below ")
+                                    .font(.footnote)
+                                    .fontWeight(.light)
+                                    .multilineTextAlignment(.leading)
+                            }
+                        }
+                    }
+                    
+                    Text("Terms of Use")
+                        .font(.body)
+                        .bold()
+                    Link("Tap to view Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                        .font(.footnote)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.leading)
+                    Text("Privacy Policy")
+                        .font(.body)
+                        .bold()
+                    Link("Tap to view Privacy Policy", destination: URL(string: "https://frankfurtindustries.neocities.org/#privacy")!)
+                        .font(.footnote)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom)
+                }
+            }
+            
+        } label: {
+            HStack {
+                Spacer()
+                Text("Learn More")
+                    .padding(.bottom, 15)
+                Spacer()
+            }
+            .onAppear {
+                Purchases.shared.getOfferings { offerings, error in
+                    if let offer = offerings?.current, error == nil {
+                        currentOffering = offer
+                    }
+                }
+            }
+        }.buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(false)
     }
 }
