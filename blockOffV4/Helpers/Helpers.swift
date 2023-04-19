@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 var dateIntervalFormatter: DateIntervalFormatter = {
  let dateIntervalFormatter = DateIntervalFormatter()
@@ -58,4 +59,20 @@ struct Constants {
     static let revCatAPIiKey = "appl_CVUjPAIWAchidvmUnAjkflTwzBN"
     static let entitlementID = "premium"
     
+}
+
+/// Custom vertical scroll view with centered content vertically
+///
+struct VScrollView<Content>: View where Content: View {
+  @ViewBuilder let content: Content
+  
+  var body: some View {
+    GeometryReader { geometry in
+      ScrollView(.vertical) {
+        content
+          .frame(width: geometry.size.width)
+          .frame(minHeight: geometry.size.height)
+      }
+    }
+  }
 }

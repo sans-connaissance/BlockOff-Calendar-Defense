@@ -9,34 +9,36 @@ import SwiftUI
 
 struct OnboardingWelcome_: View {
     var body: some View {
-        VStack {
-            VStack(alignment: .center) {
-                Image("blockoff-symbol")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
+        VScrollView {
+            VStack {
+                VStack(alignment: .center) {
+                    Image("blockoff-symbol")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                    
+                }.frame(maxWidth: 300, maxHeight: 300)
                 
-            }.frame(maxWidth: 300, maxHeight: 300)
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Welcome to BlockOff")
-                    .font(.title)
-                    .fontWeight(.heavy)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                    .padding(.bottom, -10)
-                Text("Advanced Calendar Defense System")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Use BlockOff's one-tap calendaring to defend available time on your calendar.")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                
-            }.frame(maxWidth: 500)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Welcome to BlockOff")
+                        .font(.title)
+                        .fontWeight(.heavy)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                        .padding(.bottom, -10)
+                    Text("Advanced Calendar Defense System")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("Use BlockOff's one-tap calendaring to defend available time on your calendar.")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    
+                }.frame(maxWidth: 500)
+            }
         }
     }
 }

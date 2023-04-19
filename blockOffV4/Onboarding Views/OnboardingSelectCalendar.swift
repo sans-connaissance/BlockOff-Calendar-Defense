@@ -12,57 +12,59 @@ struct OnboardingSelectCalendar: View {
     @StateObject private var vm = OnboardingSelectCalendarViewModel()
     let eventStore: EKEventStore
     var body: some View {
-        VStack {
-            VStack(alignment: .center) {
-                ZStack {
-                    Image("blockoff-symbol")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .opacity(0.02)
-                        .padding()
-                    Picker("Select a calendar", selection: $vm.selectedCalendar) {
-                        ForEach(vm.editableCalendars, id: \.self) {
-                            Text($0.title).tag($0 as CalendarViewModel?)
-                                .bold()
-                                .font(.title2)
+        VScrollView {
+            VStack {
+                VStack(alignment: .center) {
+                    ZStack {
+                        Image("blockoff-symbol")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .opacity(0.02)
+                            .padding()
+                        Picker("Select a calendar", selection: $vm.selectedCalendar) {
+                            ForEach(vm.editableCalendars, id: \.self) {
+                                Text($0.title).tag($0 as CalendarViewModel?)
+                                    .bold()
+                                    .font(.title2)
+                            }
                         }
+                        .pickerStyle(.inline)
+                        .onChange(of: vm.selectedCalendar, perform: { _ in
+                            vm.setSelectedCalendarAsDefault()
+                        })
+                        .id(vm.uuid)
+                        
                     }
-                    .pickerStyle(.inline)
-                    .onChange(of: vm.selectedCalendar, perform: { _ in
-                        vm.setSelectedCalendarAsDefault()
-                    })
-                    .id(vm.uuid)
+                }.frame(maxWidth: 300, maxHeight: 300)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Select a Calendar")
+                        .font(.title)
+                        .fontWeight(.heavy)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading,])
+                    Text("Defend any calendar available in your iCal App.")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
                     
                 }
-            }.frame(maxWidth: 300, maxHeight: 300)
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Select a Calendar")
-                    .font(.title)
-                    .fontWeight(.heavy)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading,])
-                Text("Defend any calendar available in your iCal App.")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("You can change calendars and blockable hours by tapping:  \(Image(systemName: "person.circle"))")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                
-            }
-            .frame(maxWidth: 500)
-            .onAppear {
-                vm.createUUID()
-                vm.getCalendars()
-                vm.getDefaultCalendar(eventStore: eventStore)
-            }
-            .onDisappear {
-                vm.setSelectedCalendarAsDefault()
-                print("Disappeared!!")
+                .frame(maxWidth: 500)
+                .onAppear {
+                    vm.createUUID()
+                    vm.getCalendars()
+                    vm.getDefaultCalendar(eventStore: eventStore)
+                }
+                .onDisappear {
+                    vm.setSelectedCalendarAsDefault()
+                    print("Disappeared!!")
+                }
             }
         }
     }

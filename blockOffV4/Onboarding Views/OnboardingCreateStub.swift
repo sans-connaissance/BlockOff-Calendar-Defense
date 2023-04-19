@@ -11,58 +11,60 @@ struct OnboardingCreateStub: View {
     @StateObject private var vm = OnboardingCreateStubViewModel()
     
     var body: some View {
-        VStack {
-            VStack(alignment: .center) {
-                Form {
-                    Section("Enter Title and Location") {
-                        TextField("Enter title", text: $vm.title)
-                        TextField("Location or Video Call", text: $vm.location)
-                    }
-                    Section("Select Availability") {
-                        Picker("Show As", selection: $vm.selectedAvailability) {
-                            ForEach(Availability.list, id: \.self) {
-                                Text($0.displayText)
+        VScrollView {
+            VStack {
+                VStack(alignment: .center) {
+                    Form {
+                        Section("Enter Title and Location") {
+                            TextField("Enter title", text: $vm.title)
+                            TextField("Location or Video Call", text: $vm.location)
+                        }
+                        Section("Select Availability") {
+                            Picker("Show As", selection: $vm.selectedAvailability) {
+                                ForEach(Availability.list, id: \.self) {
+                                    Text($0.displayText)
+                                }
                             }
                         }
+                        Section("Add Notes") {
+                            TextField("Add Notes", text: $vm.notes)
+                        }
                     }
-                    Section("Add Notes") {
-                        TextField("Add Notes", text: $vm.notes)
+                    .onDisappear{
+                        vm.save()
                     }
                 }
-                .onDisappear{
-                    vm.save()
-                }
-            }
-            .frame(maxWidth: 300, maxHeight: 300)
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Create First Block")
-                    .font(.title)
-                    .fontWeight(.heavy)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Create a block to quickly BlockOff time with one-tap calendaring. ")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Blocks are reusable.")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Blocks will appear on your calendar as an event with the provided information. ")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
-                Text("Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                    .padding([.trailing, .leading])
+                .frame(maxWidth: 300, maxHeight: 300)
                 
-            }.frame(maxWidth: 500)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Create First Block")
+                        .font(.title)
+                        .fontWeight(.heavy)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("Create a block to quickly BlockOff time with one-tap calendaring. ")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("Blocks are reusable.")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("Blocks will appear on your calendar as an event with the provided information. ")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    Text("Create and edit Blocks by tapping:  \(Image(systemName: "square.and.pencil"))")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.trailing, .leading])
+                    
+                }.frame(maxWidth: 500)
+            }
         }
     }
 }
