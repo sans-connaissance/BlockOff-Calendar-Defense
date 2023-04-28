@@ -20,11 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: Step 1 -- Check to see if Day objects exist
 
         /// check to see if any Day objects exist
-        let hasLaunchedBefore = Day.checkIfFirstLaunch()
+        let daysExist = Day.daysExist()
         /// if not, create days and associated units.
-        if !hasLaunchedBefore {
+        if !daysExist {
             createDaysAndUnits()
         }
+        
+        let isFirstLaunch = LaunchInfo.isFirstLaunch()
+        
+        if isFirstLaunch {
+            
+            var fourteenDayComponents = DateComponents()
+            fourteenDayComponents.day = 14
+            var oneDayComponents = DateComponents()
+            oneDayComponents.day = 1
+            var oneMinuteComponents = DateComponents()
+            oneMinuteComponents.minute = 1
+            let payWallDate = CalendarManager.shared.calendar.date(byAdding: fourteenDayComponents, to: Date.now)!
+            
+            let manager = CloudDataManager.shared
+            let launchInfo = LaunchInfo(context: manager.viewContext)
+            launchInfo.firstLaunchDate = Date.now
+            launchInfo.payWallDate = payWallDate
+            launchInfo.isFirstLaunch = false
+            manager.saveContext()
+            
+            print("It is first launch")
+        }
+        
 
         func createDaysAndUnits() {
             let days = Day.createDays(numberOfDays: 65, date: CalendarManager.shared.calendar.startOfDay(for: Date()))
@@ -33,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let units = Unit.createUnitIntervalsFor(day: day.start)
                 CoreDataManager.shared.saveUnits(units)
             }
+            
+            
+            
             UserDefaults.firstLaunchDate = CalendarManager.shared.calendar.startOfDay(for: Date())
             var dayComponents = DateComponents()
             dayComponents.day = 65

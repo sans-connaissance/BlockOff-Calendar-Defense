@@ -19,6 +19,7 @@ class CalendarViewController: DayViewController {
     lazy var coreDataStack = CoreDataManager.shared
     var stubs: [StubViewModel] = []
     var checks: [CheckViewModel] = []
+    var launchInfo: [LaunchInfoViewModel] = []
     var eventStore = CalendarManager.shared.eventStore
     var subscriptionIsActive = false
     var currentSelectedDate: Date? {
@@ -44,6 +45,7 @@ class CalendarViewController: DayViewController {
         createNavBar()
         getStubs()
         getChecks()
+        getLaunchInfo()
         
         isSubscriptionActive()
         // MARK: Step 2 -- Get Permission to Calendar
@@ -109,6 +111,13 @@ class CalendarViewController: DayViewController {
         }
     }
     
+    func getLaunchInfo() {
+        let fetchResults = LaunchInfo.getAllLaunchInfo()
+        DispatchQueue.main.async {
+            self.launchInfo = fetchResults.map(LaunchInfoViewModel.init)
+        }
+    }
+    
     // MARK: Step 2 -- Get Permission to Calendar Code
     
     func requestCalendarAppPermission() {
@@ -130,8 +139,9 @@ class CalendarViewController: DayViewController {
                     self.getStubs()
                     self.getChecks()
                     self.createTabBars()
+                    self.getLaunchInfo()
                     self.reloadData()
-                    if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
+                    if UserDefaults.displayOnboarding {
                         self.openOnboarding()
                     } else {
                         UserDefaults.displayOnboarding = false
@@ -150,7 +160,7 @@ class CalendarViewController: DayViewController {
                         self.present(hostingController, animated: true, completion: nil)
                         
                     } else {
-                        if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
+                        if UserDefaults.displayOnboarding {
                             self.openOnboarding()
                         } else {
                             UserDefaults.displayOnboarding = false
@@ -180,13 +190,14 @@ class CalendarViewController: DayViewController {
             self.getStubs()
             self.getChecks()
             self.createTabBars()
+            self.getLaunchInfo()
             self.reloadData()
             
             if !UserDefaults.hasIcloudAccess {
                 self.presentICloudAlert()
             }
-            
-            if !self.subscriptionIsActive && !UserDefaults.displayOnboarding {
+            let showPayWall = LaunchInfo.showPayWall()
+            if !self.subscriptionIsActive && showPayWall {
                 self.displayPayWall()
             }
         }
@@ -203,7 +214,7 @@ class CalendarViewController: DayViewController {
     // SET CALENDAR WHEN SOMEONE SIGNS IN AND OUT
     @objc func checkiCloud(_ notification: Notification) {
         
-        if UserDefaults.displayOnboarding && self.subscriptionIsActive == false {
+        if UserDefaults.displayOnboarding {
             self.openOnboarding()
         } else {
             UserDefaults.displayOnboarding = false
@@ -227,8 +238,8 @@ class CalendarViewController: DayViewController {
                 CloudDataManager.shared.loadLocalContainer()
                 self.presentICloudAlert()
             }
-            
-            if !self.subscriptionIsActive {
+            let showPayWall = LaunchInfo.showPayWall()
+            if !self.subscriptionIsActive && showPayWall {
                 self.displayPayWall()
             }
         }
@@ -389,8 +400,9 @@ class CalendarViewController: DayViewController {
         if let descriptor = eventView.descriptor as? CalendarKit.Event {
             
             self.isSubscriptionActive()
+            let showPayWall = LaunchInfo.showPayWall()
             
-            if subscriptionIsActive {
+            if subscriptionIsActive || !showPayWall {
                 let newEKEvent = EKEvent(eventStore: eventStore)
                 let defaultStub = stubs.first(where: { $0.isDefault })
                 newEKEvent.calendar = eventStore.calendar(withIdentifier: UserDefaults.primaryCalendar)

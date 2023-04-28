@@ -37,6 +37,16 @@ func displayFullDate(date: Date) -> String {
     return formatted
 }
 
+func displayLongDate(date: Date) -> String {
+    let formatted = date.formatted(date: .long, time: .omitted)
+    return formatted
+}
+
+func displayOmittedDate(date: Date) -> String {
+    let formatted = date.formatted(date: .omitted, time: .omitted)
+    return formatted
+}
+
 func displayHour(date: Date) -> String {
     let formatted = date.formatted(date: .omitted, time: .shortened)
     return formatted

@@ -4,6 +4,12 @@
         <attribute name="ekID" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="LaunchInfo" representedClassName="LaunchInfo" syncable="YES">
+        <attribute name="firstLaunchDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isFirstLaunch" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="payWallDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="showPayWall" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Stub" representedClassName="Stub" syncable="YES">
         <attribute name="availability" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

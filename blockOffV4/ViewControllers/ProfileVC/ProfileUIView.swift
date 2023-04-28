@@ -57,7 +57,7 @@ struct ProfileUIView: View {
                     if subscriptionIsActive {
                         Text("Active")
                     } else {
-                        Text("Not Active")
+                        Text("Free Trial Ends: \(displayFullDate(date: vm.payWallDate))")
                             .foregroundColor(.red)
                     }
                     Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
@@ -67,6 +67,7 @@ struct ProfileUIView: View {
         }
         .onAppear {
             vm.createUUID()
+            vm.setPayWallDate()
             vm.setDefaultTime(startTime: Date.now, endTime: Date.now)
             vm.getCalendars()
             vm.getDefaultCalendar(eventStore: eventStore)

@@ -10,10 +10,10 @@ import RevenueCat
 
 struct OnboardingSubscribe: View {
     @StateObject private var vm = OnboardingSubScribeViewModel()
-    @State var currentOffering: Offering?
-    @State var currentIntroOffering: String?
-    @State var showRestoreAlert: Bool = false
-    @State var showUserCancelledAlert: Bool = false
+    //    @State var currentOffering: Offering?
+    //    @State var currentIntroOffering: String?
+    //    @State var showRestoreAlert: Bool = false
+    //    @State var showUserCancelledAlert: Bool = false
     @Binding var isPurchasing: Bool
     
     var dismissAction: (() -> Void)
@@ -21,39 +21,6 @@ struct OnboardingSubscribe: View {
     var body: some View {
         VScrollView {
             VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        Purchases.shared.restorePurchases { (customerInfo, error) in
-                            vm.isSubscriptionActive = customerInfo?.entitlements.all["defcon1"]?.isActive == true
-                            isPurchasing = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                if vm.isSubscriptionActive == true {
-                                    UserDefaults.displayOnboarding = false
-                                    dismissAction()
-                                    isPurchasing = false
-                                    
-                                } else {
-                                    isPurchasing = false
-                                    showRestoreAlert = true
-                                    
-                                }
-                            }
-                        }
-                    } label: {
-                        Text("Restore Purchase")
-                            .font(.system(size: 10, weight: .heavy, design: .default))
-                            .foregroundColor(.primary)
-                            .opacity(0.6)
-                        
-                    }
-                    .padding()
-                    .buttonStyle(.bordered)
-                    .padding(.trailing)
-                    .alert("No purchase to restore.", isPresented: $showRestoreAlert) {
-                        Button("OK", role: .cancel) { }
-                    }
-                }
                 Spacer()
                 VStack(alignment: .center) {
                     Image("blockoff-symbol")
@@ -64,7 +31,7 @@ struct OnboardingSubscribe: View {
                 }.frame(maxWidth: 300, maxHeight: 300)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Subscribe and Defend")
+                    Text("Enjoy 14-Day Trial")
                         .font(.title)
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.leading)
@@ -93,77 +60,24 @@ struct OnboardingSubscribe: View {
                 
                 VStack(alignment: .center) {
                     
-                    if currentOffering != nil {
-                        ForEach(currentOffering!.availablePackages) { package in
-                            Button {
-                                isPurchasing = true
-                                Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
-                                    if customerInfo?.entitlements.all["defcon1"]?.isActive == true {
-                                        vm.isSubscriptionActive = true
-                                        dismissAction()
-                                        isPurchasing = false
-                                    }
-                                    
-                                    if userCancelled {
-                                        showUserCancelledAlert = true
-                                    }
-                                }
-                                
-                                UserDefaults.displayOnboarding = false
-                                
-                            } label: {
-                                if let title = package.storeProduct.subscriptionPeriod?.periodTitle {
-                                    let price = package.storeProduct.localizedPriceString
-                                    
-                                    VStack {
-                                        if currentIntroOffering != nil {
-                                            Text(currentIntroOffering!)
-                                        }
-                                        Text(title + "  " + price)
-                                    }
-                                }
-                            }
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 250, height: 60)
-                            .background(Color.red)
-                            .cornerRadius(6)
-                            .padding()
-                        }
+                    Button {
+                        dismissAction()
+                        UserDefaults.displayOnboarding = false
+                        
+                    } label: {
+                        Text("Launch BlockOff")
                     }
-                    
-                    AccordionView()
-                        .padding([.leading, .trailing])
-                        .padding(.bottom, 20)
+                    .bold()
+                    .foregroundColor(.white)
+                    .frame(width: 250, height: 60)
+                    .background(Color.red)
+                    .cornerRadius(6)
+                    .padding()
                     
                 }
-                .alert("You have cancelled the purchase.", isPresented: $showUserCancelledAlert) {
-                    Button("OK", role: .cancel) {
-                        isPurchasing = false
-                    }
-                }
-                .onAppear {
-                    Purchases.shared.getOfferings { offerings, error in
-                        if let offer = offerings?.current, error == nil {
-                            currentOffering = offer
-                        }
-                    }
-                }
-                .onAppear {
-                    Purchases.shared.getOfferings { offerings, error in
-                        if let product = offerings?.current?.availablePackages.first?.storeProduct {
-                            Purchases.shared.checkTrialOrIntroDiscountEligibility(product: product) { eligibility in
-                                if eligibility == .eligible {
-                                    if let offer = product.introductoryDiscount {
-                                        currentIntroOffering = offer.subscriptionPeriod.periodTitle + " " + offer.localizedPriceString
-                                    }
-                                } else {
-                                    // user is not eligible, show non-trial/introductory terms
-                                }
-                            }
-                        }
-                    }
-                }
+                FreeTrialView()
+                    .padding([.leading, .trailing])
+                    .padding(.bottom, 20)
                 Spacer()
             }
         }
@@ -177,46 +91,18 @@ struct OnboardingSubscribe_Previews: PreviewProvider {
     }
 }
 
-struct AccordionView: View {
-    
-    @State var currentOffering: Offering?
-    @State var currentIntroOffering: String?
-    
+struct FreeTrialView: View {
     var body: some View {
         DisclosureGroup {
             ScrollView {
                 VStack(alignment:.leading, spacing: 8) {
-                    Text("Purchase Information")
+                    Text("Free Trial Information")
                         .font(.body)
                         .bold()
-                    if currentOffering != nil {
-                        ForEach(currentOffering!.availablePackages) { package in
-                            if let title = package.storeProduct.subscriptionPeriod?.periodTitle {
-                                let purchaseTitle = package.storeProduct.localizedDescription
-                                let price = package.storeProduct.localizedPriceString
-                                Text("A \(title + "  " + price) purchase for \(purchaseTitle) will be applied to your iTunes account at the end of the 1-week trial period. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. You can cancel anytime with your iTunes account settings. Any unused portion of a free trial will be forfeited if you purchase a subscription. For more information, see our Terms of Use and Privacy Policy below ")
-                                    .font(.footnote)
-                                    .fontWeight(.light)
-                                    .multilineTextAlignment(.leading)
-                            }
-                        }
-                    }
-                    
-                    Text("Terms of Use")
-                        .font(.body)
-                        .bold()
-                    Link("Tap to view Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                    Text("Enjoy BlockOff with our completely free, no obligation 14-day trial. After the trial period you will be presented with the option to subscribe to BlockOff for $4.99 per year.")
                         .font(.footnote)
                         .fontWeight(.light)
                         .multilineTextAlignment(.leading)
-                    Text("Privacy Policy")
-                        .font(.body)
-                        .bold()
-                    Link("Tap to view Privacy Policy", destination: URL(string: "https://frankfurtindustries.neocities.org/#privacy")!)
-                        .font(.footnote)
-                        .fontWeight(.light)
-                        .multilineTextAlignment(.leading)
-                        .padding(.bottom)
                 }
             }
             
@@ -226,13 +112,6 @@ struct AccordionView: View {
                 Text("Learn More")
                     .padding(.bottom, 15)
                 Spacer()
-            }
-            .onAppear {
-                Purchases.shared.getOfferings { offerings, error in
-                    if let offer = offerings?.current, error == nil {
-                        currentOffering = offer
-                    }
-                }
             }
         }.buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(false)
     }

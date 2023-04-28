@@ -14,6 +14,7 @@ class ProfileViewModel: ObservableObject {
     @Published var selectedCalendar: CalendarViewModel?
     @Published var startTime = Date()
     @Published var endTime = Date()
+    @Published var payWallDate = Date()
     @Published var uuid = UUID()
         
     func getCalendars() {
@@ -48,6 +49,14 @@ class ProfileViewModel: ObservableObject {
     func setSelectedCalendarAsDefault() {
         if let selectedCalendar = selectedCalendar?.id {
             UserDefaults.primaryCalendar = selectedCalendar
+        }
+    }
+    
+    func setPayWallDate() {
+        if let launchInfo = LaunchInfo.getAllLaunchInfo().first {
+            if let launchInfoPayWallDate = launchInfo.payWallDate  {
+                payWallDate = launchInfoPayWallDate
+            }
         }
     }
     

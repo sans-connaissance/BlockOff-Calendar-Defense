@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		410AB74D2985773F001C7319 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */; };
 		410AB74E2985773F001C7319 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */; };
+		414D577A29F768DD00313ADD /* LaunchInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414D577829F768DD00313ADD /* LaunchInfo+CoreDataClass.swift */; };
+		414D577B29F768DD00313ADD /* LaunchInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414D577929F768DD00313ADD /* LaunchInfo+CoreDataProperties.swift */; };
+		414D577D29FA084500313ADD /* LaunchInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414D577C29FA084500313ADD /* LaunchInfoViewModel.swift */; };
 		4164EAAF29DA5D8A00F09EB4 /* StubCheckDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4164EAAD29DA5D8A00F09EB4 /* StubCheckDataModel.xcdatamodeld */; };
 		4164EAB529DA5EF200F09EB4 /* Stub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164EAB129DA5EF200F09EB4 /* Stub+CoreDataClass.swift */; };
 		4164EAB629DA5EF200F09EB4 /* Stub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164EAB229DA5EF200F09EB4 /* Stub+CoreDataProperties.swift */; };
@@ -93,6 +96,9 @@
 /* Begin PBXFileReference section */
 		410AB74B2985773F001C7319 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		410AB74C2985773F001C7319 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		414D577829F768DD00313ADD /* LaunchInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		414D577929F768DD00313ADD /* LaunchInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		414D577C29FA084500313ADD /* LaunchInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfoViewModel.swift; sourceTree = "<group>"; };
 		4164EAAE29DA5D8A00F09EB4 /* StubCheckDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StubCheckDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4164EAB129DA5EF200F09EB4 /* Stub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4164EAB229DA5EF200F09EB4 /* Stub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stub+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -181,6 +187,8 @@
 		4164EAB029DA5EBB00F09EB4 /* Cloud Models */ = {
 			isa = PBXGroup;
 			children = (
+				414D577829F768DD00313ADD /* LaunchInfo+CoreDataClass.swift */,
+				414D577929F768DD00313ADD /* LaunchInfo+CoreDataProperties.swift */,
 				4164EAB129DA5EF200F09EB4 /* Stub+CoreDataClass.swift */,
 				4164EAB229DA5EF200F09EB4 /* Stub+CoreDataProperties.swift */,
 				4164EAB329DA5EF200F09EB4 /* Check+CoreDataClass.swift */,
@@ -237,6 +245,7 @@
 				41A540A42973928D005CE9CC /* CalendarViewModel.swift */,
 				41A540AF2975AD1A005CE9CC /* StubViewModel.swift */,
 				41CAAB17298766020087EB74 /* CheckViewModel.swift */,
+				414D577C29FA084500313ADD /* LaunchInfoViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -493,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				414D577B29F768DD00313ADD /* LaunchInfo+CoreDataProperties.swift in Sources */,
 				41D24D1629733A9200AD78F5 /* CalendarVC+TabBars.swift in Sources */,
 				41A540AE2975ACCC005CE9CC /* View+Extensions.swift in Sources */,
 				4198A2EA29CFC5000082A960 /* OnboardingCreateStub.swift in Sources */,
@@ -550,7 +560,9 @@
 				41A540B82975B82D005CE9CC /* AddStubViewModel.swift in Sources */,
 				41E7C06129BD39F00094F536 /* EditStubViewModel.swift in Sources */,
 				41DCCC8229909FEF00E12117 /* BlockOffEventUIView.swift in Sources */,
+				414D577A29F768DD00313ADD /* LaunchInfo+CoreDataClass.swift in Sources */,
 				41A540BD2975BC72005CE9CC /* StubUIView.swift in Sources */,
+				414D577D29FA084500313ADD /* LaunchInfoViewModel.swift in Sources */,
 				4198A2E829CFAB0F0082A960 /* OnBoardingSelectTimes.swift in Sources */,
 				4164EAAF29DA5D8A00F09EB4 /* StubCheckDataModel.xcdatamodeld in Sources */,
 				41F4B99F293B9DEA009A6FD2 /* BlockOffDataModel.xcdatamodeld in Sources */,
